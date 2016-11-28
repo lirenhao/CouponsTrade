@@ -4,3 +4,8 @@ target/
 journal/
 snapshots/
 log/
+*.log
+node_modules
+build
+test/report.*
+customReportDir
