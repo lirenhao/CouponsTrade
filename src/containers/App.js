@@ -1,5 +1,6 @@
 import React from 'react'
 import {Navigator} from 'react-onsenui'
+import DevTools from './DevTools'
 
 import Tabs from './Tabs'
 
@@ -12,10 +13,13 @@ const App = React.createClass({
     },
     render: function () {
         return (
-            <Navigator
-                initialRoute={{comp: Tabs, props: {key: "tabs"}}}
-                renderPage={this.renderPage}
-            />
+            <div>
+                <Navigator
+                    initialRoute={{comp: Tabs, props: {key: "tabs"}}}
+                    renderPage={this.renderPage}
+                />
+                <DevTools/>
+            </div>
         )
     }
 });
