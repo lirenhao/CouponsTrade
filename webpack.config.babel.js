@@ -4,7 +4,6 @@
 import path from 'path'
 import HtmlWebpackPlugin from 'html-webpack-plugin'
 import OpenBrowserPlugin from 'open-browser-webpack-plugin'
-import webpack from 'webpack'
 
 export default {
     entry: {
@@ -17,7 +16,8 @@ export default {
     },
     module: {
         loaders: [
-            {test: /\.jsx?$/, loader: 'babel', exclude: path.resolve(__dirname, 'node_modules')},
+            {test: /\.jsx?$/, loader: 'babel-loader', exclude: path.resolve(__dirname, 'node_modules')},
+            {test: /\.css$/, loaders: ['style-loader', 'css-loader']},
         ]
     },
     plugins: [
