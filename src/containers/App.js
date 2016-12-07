@@ -1,27 +1,25 @@
 import React from 'react'
 import {Navigator} from 'react-onsenui'
+import Tabs from './Tabs'
 import DevTools from './DevTools'
 
-import Tabs from './Tabs'
+const renderPage = (route, navigator) => {
+    route.props = route.props || {};
+    route.props.navigator = navigator;
 
-const App = React.createClass({
-    renderPage: function (route, navigator) {
-        route.props = route.props || {};
-        route.props.navigator = navigator;
+    return React.createElement(route.comp, route.props)
+}
 
-        return React.createElement(route.comp, route.props)
-    },
-    render: function () {
-        return (
-            <div>
-                <Navigator
-                    initialRoute={{comp: Tabs, props: {key: "tabs"}}}
-                    renderPage={this.renderPage}
-                />
-                <DevTools/>
-            </div>
-        )
-    }
-});
+const App = () => {
+    return (
+        <div>
+            <Navigator
+                initialRoute={{comp: Tabs, props: {key: "tabs"}}}
+                renderPage={renderPage}
+            />
+            <DevTools/>
+        </div>
+    )
+}
 
 export default App
