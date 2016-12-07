@@ -12,7 +12,8 @@ export default {
     },
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, 'build'),
+        path: 'build',
+        publicPath: "/build/"
     },
     module: {
         loaders: [
@@ -32,6 +33,9 @@ export default {
                 loader: "url?limit=10000&mimetype=image/svg+xml"
             }
         ]
+    },
+    devServer: {
+        contentBase: "./src",
     },
     plugins: [
         new HtmlWebpackPlugin({
