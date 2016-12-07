@@ -35,7 +35,7 @@ export default {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: "测试页",
+            title: "优惠券交易平台",
         }),
         new OpenBrowserPlugin({
             url: "http://localhost:8080"

@@ -1,7 +1,7 @@
 {
   "private": true,
   "scripts": {
-    "start": "webpack && webpack-dev-server --inline --hot",
+    "start": "webpack && webpack-dev-server --inline --hot --host 0.0.0.0",
     "test": "./node_modules/.bin/webpack-dev-server --inline --hot",
     "build": "./node_modules/.bin/webpack"
   },
