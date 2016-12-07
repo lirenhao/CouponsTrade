@@ -34,9 +34,6 @@ export default {
             }
         ]
     },
-    devServer: {
-        contentBase: "./src",
-    },
     plugins: [
         new HtmlWebpackPlugin({
             title: "优惠券交易平台",
