@@ -1,8 +1,7 @@
 /**
  * Created by ALIENWARE17 on 2016/12/7.
  */
-import React, {Component} from 'react'
-import {render} from 'react-dom'
+import React from 'react'
 
 const App = () => {
     return (

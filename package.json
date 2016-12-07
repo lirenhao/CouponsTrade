@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "start": "webpack && webpack-dev-server --inline --hot",
     "test": "./node_modules/.bin/webpack-dev-server --inline --hot",
     "build": "./node_modules/.bin/webpack"
   },
@@ -24,6 +25,7 @@
     "css-loader": "^0.26.1",
     "enzyme": "^2.6.0",
     "enzyme-redux": "^0.1.6",
+    "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.24.1",
     "jsdom": "^9.8.3",
     "mocha": "^3.2.0",
@@ -36,6 +38,7 @@
     "redux-devtools-log-monitor": "^1.1.1",
     "sinon": "^1.17.6",
     "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7",
     "webpack": "^1.13.3",
     "webpack-dev-server": "^1.16.2"
   }
