@@ -3,13 +3,13 @@
  * Create Date：2016/12/8
  * Modified By：liRenhao
  * Why & What is modified  <修改原因描述>
- * 注册的组件
+ * 用户信息编辑组件
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Input, Button} from 'react-onsenui'
 
-const SignUpField = ({input, type, placeholder}) => {
+const UserEditField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
                type={type}
@@ -19,7 +19,7 @@ const SignUpField = ({input, type, placeholder}) => {
     )
 }
 
-const SignUp = (props) => {
+const UserEdit = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -27,43 +27,27 @@ const SignUp = (props) => {
                 <p>
                     <Field type="text"
                            name="nickname"
-                           component={SignUpField}
+                           component={UserEditField}
                            placeholder="Nickname"/>
                 </p>
                 <p>
                     <Field type="number"
                            name="phoneNumber"
-                           component={SignUpField}
+                           component={UserEditField}
                            placeholder="Phone number"/>
-                </p>
-                <p>
-                    <Field type="number"
-                           name="validateCode"
-                           component={SignUpField}
-                           placeholder="Validate code"/>
-                </p>
-                <p>
-                    <Field type="password"
-                           name="password"
-                           component={SignUpField}
-                           placeholder="Password"/>
                 </p>
                 <p>
                     <Field type="text"
                            name="inviteCode"
-                           component={SignUpField}
+                           component={UserEditField}
                            placeholder="Invite code"/>
                 </p>
                 <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>Sign up</button>
+                    <button className="button" type="submit" disabled={invalid || submitting}>Save</button>
                 </p>
             </section>
         </form>
     )
-}
-
-SignUp.propTypes = {
-    onSubmit: React.PropTypes.func.isRequired
 }
 
 const validate = (value) => {
@@ -74,12 +58,6 @@ const validate = (value) => {
     if (!value.phoneNumber) {
         errors.phoneNumber = 'Required'
     }
-    if (!value.validateCode) {
-        errors.validateCode = 'Required'
-    }
-    if (!value.password) {
-        errors.password = 'Required'
-    }
     if (!value.inviteCode) {
         errors.inviteCode = 'Required'
     }
@@ -87,5 +65,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "signUp", validate
-})(SignUp)
+    form: "userEdit", validate
+})(UserEdit)
