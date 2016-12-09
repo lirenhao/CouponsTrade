@@ -6,7 +6,7 @@
  * 用户信息展示组件
  */
 import React from 'react'
-import {Page, Toolbar, Fab, Icon, Row, Col} from 'react-onsenui'
+import {Page, Toolbar, SpeedDial, SpeedDialItem, Fab, Icon, Row, Col} from 'react-onsenui'
 
 const styles = {
     main: {
@@ -33,12 +33,20 @@ const styles = {
 }
 
 const UserShow = (props) => {
-    const {edit, user} = props
+    const {share, edit, user} = props
     return (
         <Page>
-            <Fab position='bottom right' modifier='mini' onChange={edit}>
-                <Icon icon='md-edit'/>
-            </Fab>
+            <SpeedDial position='bottom right'>
+                <Fab>
+                    <Icon icon='md-menu'/>
+                </Fab>
+                <SpeedDialItem onClick={share}>
+                    <Icon icon='md-share'/>
+                </SpeedDialItem>
+                <SpeedDialItem onClick={edit}>
+                    <Icon icon='md-edit'/>
+                </SpeedDialItem>
+            </SpeedDial>
             <div style={styles.main}>
                 <div style={styles.icon}>
                     <Icon icon='ion-person'/>
@@ -69,7 +77,15 @@ const UserShow = (props) => {
     )
 }
 
+/**
+ * UserShow所需的参数
+ * @param share 跳转生成邀请码组件的函数
+ * @param edit 跳转编辑个人信息组件的函数
+ * @param user 用户的基本信息
+ * @type {{share: *, edit: *, user: *}}
+ */
 UserShow.propTypes = {
+    share: React.PropTypes.func.isRequired,
     edit: React.PropTypes.func.isRequired,
     user: React.PropTypes.shape({
         nickname: React.PropTypes.string.isRequired,
