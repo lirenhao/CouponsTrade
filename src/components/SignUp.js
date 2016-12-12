@@ -28,34 +28,34 @@ const SignUp = (props) => {
                     <Field type="text"
                            name="nickname"
                            component={SignUpField}
-                           placeholder="Nickname"/>
+                           placeholder="输入昵称"/>
                 </p>
                 <p>
                     <Field type="number"
                            name="phoneNumber"
                            component={SignUpField}
-                           placeholder="Phone number"/>
+                           placeholder="输入手机号"/>
                 </p>
                 <p>
                     <Field type="number"
                            name="validateCode"
                            component={SignUpField}
-                           placeholder="Validate code"/>
+                           placeholder="输入验证码"/>
                 </p>
                 <p>
                     <Field type="password"
                            name="password"
                            component={SignUpField}
-                           placeholder="Password"/>
+                           placeholder="输入密码"/>
                 </p>
                 <p>
                     <Field type="text"
                            name="inviteCode"
                            component={SignUpField}
-                           placeholder="Invite code"/>
+                           placeholder="输入邀请码"/>
                 </p>
                 <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>Sign up</button>
+                    <button className="button" type="submit" disabled={invalid || submitting}>注册</button>
                 </p>
             </section>
         </form>
