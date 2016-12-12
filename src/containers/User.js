@@ -43,7 +43,7 @@ class User extends React.Component {
             <Page renderToolbar={() => (
                 <Toolbar>
                     <div className='left'><BackButton/></div>
-                    <div className='center'>个人中心</div>
+                    <div className='center'>个人信息</div>
                 </Toolbar>
             )}>
                 <UserShow
