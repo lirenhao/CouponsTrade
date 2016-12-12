@@ -6,12 +6,19 @@
  * 生成邀请码组件
  */
 import React from 'react'
-import {Input, Button} from 'react-onsenui'
+
+const styles = {
+    content: {
+        textAlign: 'center',
+        margin: '40px',
+        opacity: 0.8
+    }
+}
 
 const InviteCode = (props) => {
     return (
-        <div>
-            {props.inviteCode}
+        <div style={styles.content}>
+                {props.inviteCode}
         </div>
     )
 }
