@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button} from 'react-onsenui'
+import {Input} from 'react-onsenui'
 
 const SignInField = ({input, type, placeholder}) => {
     return (
@@ -28,16 +28,16 @@ const SignIn = (props) => {
                     <Field type="number"
                            name="username"
                            component={SignInField}
-                           placeholder="Username"/>
+                           placeholder="输入手机号"/>
                 </p>
                 <p>
                     <Field type="password"
                            name="password"
                            component={SignInField}
-                           placeholder="Password"/>
+                           placeholder="输入密码"/>
                 </p>
                 <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>Sign in</button>
+                    <button className="button" type="submit" disabled={invalid || submitting}>登录</button>
                 </p>
             </section>
         </form>
