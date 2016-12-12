@@ -50,6 +50,10 @@ const UserEdit = (props) => {
     )
 }
 
+UserEdit.propTypes = {
+    onSubmit: React.PropTypes.func.isRequired
+}
+
 const validate = (value) => {
     const errors = {}
     if (!value.nickname) {
