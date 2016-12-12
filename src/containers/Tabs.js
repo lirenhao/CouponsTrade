@@ -5,40 +5,43 @@ import {
     Tabbar,
     Toolbar
 } from 'react-onsenui'
+import Mine from '../containers/Mine'
 
-const renderToolbar = (title) => {
-    return () => (
-        <Toolbar>
-            <div className='center'>{title}</div>
-        </Toolbar>
-    )
-}
+class Tabs extends React.Component {
+    renderTabs() {
+        return [
+            {
+                content: <Page key="home" renderToolbar={() => (
+                    <Toolbar>
+                        <div className='center'>首页</div>
+                    </Toolbar>
+                )}>首页</Page>,
+                tab: <Tab key="home" label="首页" icon="ion-home"/>
+            },
+            {
+                content: <Page key="post" renderToolbar={() => (
+                    <Toolbar>
+                        <div className='center'>发布</div>
+                    </Toolbar>
+                )}>发布</Page>,
+                tab: <Tab key="post" label="发布" icon="ion-plus"/>
+            },
+            {
+                content: <Mine key="mine" navigator={this.props.navigator}/>,
+                tab: <Tab key="mine" label="我的" icon="ion-person"/>
+            }
+        ]
+    }
 
-const renderTabs = () => {
-    return [
-        {
-            content: <Page key="home" renderToolbar={renderToolbar("首页")}>首页</Page>,
-            tab: <Tab key="home" label="首页" icon="ion-home"/>
-        },
-        {
-            content: <Page key="post" renderToolbar={renderToolbar("发布")}>发布</Page>,
-            tab: <Tab key="post" label="发布" icon="ion-plus"/>
-        },
-        {
-            content: <Page key="mine" renderToolbar={renderToolbar("我的")}>我的</Page>,
-            tab: <Tab key="mine" label="我的" icon="ion-person"/>
-        }
-    ]
-}
-
-const Tabs = () => {
-    return (
-        <Page>
-            <Tabbar
-                renderTabs={renderTabs}
-            />
-        </Page>
-    )
+    render() {
+        return (
+            <Page>
+                <Tabbar
+                    renderTabs={this.renderTabs.bind(this)}
+                />
+            </Page>
+        )
+    }
 }
 
 export default Tabs
