@@ -22,7 +22,18 @@ class ViewCouponDetail extends React.Component{
                 </Toolbar>
             )}>
                 <CouponDetail
-                    DetailInformation={{nickname: "small_cat",CouponName:"西提厚牛排优惠券", price: "70", desc: "请各位小主们尽快下单吧~~"}}
+                    DetailInformation={{
+                        applyCity:"该券仅适用北京",
+                        nickname: "small_cat",
+                        originalPrice:"￥50",
+                        sellingPrice:"￥70",
+                        CouponName:"西提厚牛排优惠券",
+                        IsAutomaticRefund:"是",
+                        CouponType:"西餐",
+                        TicketPrice:"￥100",
+                        EffectiveDate:"2016年12月28日",
+                        MerchantPicture:"无",
+                        desc: "请各位小主们尽快下单吧~~"}}
                 />
             </Page>
         )
