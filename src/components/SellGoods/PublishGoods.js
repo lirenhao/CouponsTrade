@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input} from 'react-onsenui'
+import {Input,Switch} from 'react-onsenui'
 
 
 const InputComponent = ({input, type, placeholder}) => {
@@ -34,12 +34,7 @@ const TextAreaComponent = ({input, placeholder}) => {
 
 const CheckBoxComponent = ({input}) => {
     return (
-        <ons-switch className="switch" onClick={() => input.onChange(!input.value)}>
-            <input {...input} type="checkbox" className="switch__input"/>
-            <div className="switch__toggle">
-                <div className="switch__handle"></div>
-            </div>
-        </ons-switch>
+        <Switch onChange={(event)=>{input.onChange(event.target.checked)}}/>
     )
 };
 
