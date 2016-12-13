@@ -6,7 +6,7 @@
  * 重置密码容器
  */ 
 import React from 'react'
-import {Page,Toolbar} from 'react-onsenui'
+import {Page,Toolbar,BackButton} from 'react-onsenui'
 import Oldpassword from '../components/OldPassword'
 import Newpassword from '../components/NewPassword'
 
@@ -14,6 +14,9 @@ class ResetPassword extends React.Component{
     resetToolbar(){
         return (
             <Toolbar>
+                <div className="left">
+                    <BackButton>Back</BackButton>
+                </div>
                 <div className='center'>重置密码</div>
             </Toolbar>
         )
