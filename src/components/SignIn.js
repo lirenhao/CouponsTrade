@@ -23,7 +23,7 @@ const SignIn = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{marginTop: '50px',textAlign: 'center'}}>
+            <section style={{marginTop: '50px', textAlign: 'center'}}>
                 <p>
                     <Field type="number"
                            name="username"
@@ -39,8 +39,10 @@ const SignIn = (props) => {
                 <p style={{textAlign: 'right', marginRight: '50px'}}>
                     <Button style={{fontSize: '12px'}} modifier='quiet'>忘记密码？</Button>
                 </p>
-                <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>登录</button>
+                <p style={{marginLeft: '20%', marginRight: '20%'}}>
+                    <button className="button button--large" type="submit" disabled={invalid || submitting}>
+                        登录
+                    </button>
                 </p>
             </section>
         </form>

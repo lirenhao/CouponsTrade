@@ -37,7 +37,8 @@ const SignUp = (props) => {
                            placeholder="输入手机号"/>
                 </p>
                 <p>
-                    <Button style={{fontSize: '15px'}} modifier='large quiet'>获取验证码</Button>
+                    <Button style={{fontSize: '15px'}} modifier='quiet'>获取验证码</Button>
+                    <br/>
                     <Field type="number"
                            name="validateCode"
                            component={SignUpField}
@@ -55,8 +56,9 @@ const SignUp = (props) => {
                            component={SignUpField}
                            placeholder="输入邀请码"/>
                 </p>
-                <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>注册</button>
+                <p style={{marginLeft: '20%', marginRight: '20%'}}>
+                    <br/>
+                    <button className="button button--large" type="submit" disabled={invalid || submitting}>注册</button>
                 </p>
             </section>
         </form>
