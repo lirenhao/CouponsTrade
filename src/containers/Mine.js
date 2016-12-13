@@ -14,6 +14,7 @@ import {
 import Login from './Login'
 import User from './User'
 import ResetPassword from './ResetPassword'
+import ViewCouponDetail from './ViewCouponDetail'
 
 class Mine extends React.Component {
     render() {
@@ -43,6 +44,13 @@ class Mine extends React.Component {
                                 comp: ResetPassword,
                                 props: {key: "ResetPassword"}
                             })}>重置密码</Button>
+                </div>
+                <div style={{textAlign: 'center'}}>
+                    <Button modifier='large quiet'
+                            onClick={() => this.props.navigator.pushPage({
+                                comp: ViewCouponDetail,
+                                props: {key: "ViewCouponDetail"}
+                            })}>查看优惠券详情</Button>
                 </div>
             </Page>
         )
