@@ -18,6 +18,9 @@ const styles={
         textDecoration:'line-through',
         color:'#bbb',
         fontSize:'12px'
+    },
+    content:{
+        margin: '20px 0 0px 0'
     }
 }
 
@@ -29,7 +32,7 @@ const CouponDetail=(props)=>{
                 <Row className="list">
                     <Col className="list__item">
                         <div className="list__item__left">
-                            <img class="list__item__thumbnail"  alt="头像"></img>
+
                             <div className="list__item__center">
                                 <div className="list__item__title">{DetailInformation.nickname}</div>
                                 <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
@@ -40,47 +43,48 @@ const CouponDetail=(props)=>{
                             </div>
                         </div>
                     </Col>
-
                 </Row>
-                <Row>
-                    <Col>优惠券名称</Col>
-                    <Col>
+            </div>
+            <div style={styles.content}>
+                <Row className="list">
+                    <Col className="list__item">优惠券名称</Col>
+                    <Col className="list__item">
                         {DetailInformation.CouponName}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>是否支持优惠券未开启时自动退款</Col>
-                    <Col>
+                    <Col  className="list__item">是否支持优惠券未开启时自动退款</Col>
+                    <Col className="list__item">
                         {DetailInformation.IsAutomaticRefund}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>优惠券类别</Col>
-                    <Col>
+                    <Col  className="list__item">优惠券类别</Col>
+                    <Col className="list__item">
                         {DetailInformation.CouponType}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>券面值</Col>
-                    <Col>
+                    <Col  className="list__item">券面值</Col>
+                    <Col className="list__item">
                         {DetailInformation.TicketPrice}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>有效期区间</Col>
-                    <Col>
+                    <Col  className="list__item">有效期区间</Col>
+                    <Col className="list__item">
                         {DetailInformation.EffectiveDate}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>商户图片</Col>
-                    <Col>
+                    <Col  className="list__item">商户图片</Col>
+                    <Col className="list__item">
                         {DetailInformation.MerchantPicture}
                     </Col>
                 </Row>
                 <Row>
-                    <Col>描述</Col>
-                    <Col>
+                    <Col  className="list__item">描述</Col>
+                    <Col className="list__item">
                         {DetailInformation.desc}
                     </Col>
                 </Row>
