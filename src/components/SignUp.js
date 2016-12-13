@@ -37,6 +37,7 @@ const SignUp = (props) => {
                            placeholder="输入手机号"/>
                 </p>
                 <p>
+                    <Button style={{fontSize: '15px'}} modifier='large quiet'>获取验证码</Button>
                     <Field type="number"
                            name="validateCode"
                            component={SignUpField}
