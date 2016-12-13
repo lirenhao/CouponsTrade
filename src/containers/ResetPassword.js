@@ -15,7 +15,7 @@ class ResetPassword extends React.Component{
         return (
             <Toolbar>
                 <div className="left">
-                    <BackButton>Back</BackButton>
+                    <BackButton/>
                 </div>
                 <div className='center'>重置密码</div>
             </Toolbar>
