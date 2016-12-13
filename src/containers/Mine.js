@@ -9,7 +9,10 @@ import React from 'react'
 import {
     Page,
     Toolbar,
-    Button
+    Button,
+    List,
+    ListItem,
+    ListHeader
 } from 'react-onsenui'
 import Login from './Login'
 import User from './User'
@@ -24,34 +27,35 @@ class Mine extends React.Component {
                     <div className='center'>个人中心</div>
                 </Toolbar>
             )}>
-                <div style={{textAlign: 'center'}}>
-                    <Button modifier='large quiet'
-                            onClick={() => this.props.navigator.pushPage({
-                                comp: Login,
-                                props: {key: "Login"}
-                            })}>登录</Button>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                    <Button modifier='large quiet'
-                            onClick={() => this.props.navigator.pushPage({
-                                comp: User,
-                                props: {key: "User"}
-                            })}>信息</Button>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                    <Button modifier='large quiet'
-                            onClick={() => this.props.navigator.pushPage({
-                                comp: ResetPassword,
-                                props: {key: "ResetPassword"}
-                            })}>重置密码</Button>
-                </div>
-                <div style={{textAlign: 'center'}}>
-                    <Button modifier='large quiet'
-                            onClick={() => this.props.navigator.pushPage({
-                                comp: ViewCouponDetail,
-                                props: {key: "ViewCouponDetail"}
-                            })}>查看优惠券详情</Button>
-                </div>
+                <List modifier='inset'>
+                    <ListHeader/>
+                    <ListItem modifier='chevron'
+                              onClick={() => this.props.navigator.pushPage({
+                                  comp: Login, props: {key: "Login"}
+                              })}>
+                        登录
+                    </ListItem>
+                    <ListItem modifier='chevron'
+                              onClick={() => this.props.navigator.pushPage({
+                                  comp: User, props: {key: "User"}
+                              })}>
+                        信息
+                    </ListItem>
+                    <ListItem modifier='chevron'
+                              onClick={() => this.props.navigator.pushPage({
+                                  comp: ResetPassword,
+                                  props: {key: "ResetPassword"}
+                              })}>
+                        重置密码
+                    </ListItem>
+                    <ListItem modifier='chevron'
+                              onClick={() => this.props.navigator.pushPage({
+                                  comp: ViewCouponDetail,
+                                  props: {key: "ViewCouponDetail"}
+                              })}>
+                        查看优惠券详情
+                    </ListItem>
+                </List>
             </Page>
         )
     }
