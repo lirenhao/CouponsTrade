@@ -40,6 +40,7 @@ const CheckBoxComponent = ({input}) => {
 
 const PublishGoods = (props)=> {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
+
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -92,7 +93,7 @@ const PublishGoods = (props)=> {
                         placeholder="描述"/>
                 </p>
                 <p>
-                    <Button className="button"  onClick={props.submit} disabled={invalid || submitting}>确认发布</Button>
+                    <Button  onClick={props.submit}  disabled={invalid || submitting}>确认发布</Button>
                 </p>
             </section>
         </form>

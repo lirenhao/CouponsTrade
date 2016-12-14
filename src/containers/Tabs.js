@@ -22,7 +22,7 @@ class Tabs extends React.Component {
                         <div className='center'>发布</div>
                     </Toolbar>
                 )}>
-                    <PublishCoupon/>
+                    <PublishCoupon navigator={this.props.navigator}/>
                 </Page>,
                 tab: <Tab key="post" label="发布" icon="ion-plus"/>
             },

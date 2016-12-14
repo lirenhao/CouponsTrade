@@ -8,12 +8,24 @@
 
 import React from 'react'
 import PublishGoods from '../components/sellGoods/PublishGoods'
+import SellingCoupons from './SellCoupons'
+import ons from 'onsenui'
 
-
-
-const PublishCoupon =()=>{
+const PublishCoupon =(props)=>{
+    const {navigator} = props
+    const handleClick = () => {
+        ons.notification.confirm("是否确认发布", {title: "说明", buttonLabels: ["否", "是"]}).then(
+            res => {
+                if (res === 1)  {
+                    navigator.pushPage({
+                        comp: SellingCoupons, props: {key: "SellingCoupons"}
+                    })
+                }
+            }
+        )
+    };
     return(
-        <PublishGoods onSubmit={()=>{}}/>
+        <PublishGoods onSubmit={handleClick}/>
     )
 }
 
