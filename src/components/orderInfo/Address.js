@@ -1,5 +1,9 @@
 /**
- * Created by ALIENWARE17 on 2016/12/13.
+ * Author：Yky
+ * Create Date：2016/12/13
+ * Modified By：Yky
+ * Why & What is modified  <修改原因描述>
+ * 展示买方信息的组件
  */
 import React, {PropTypes} from 'react'
 import {Icon, Button} from 'react-onsenui'
@@ -14,7 +18,7 @@ const Address = ({name, tel}) => {
         <div style={{"margin": "20px 0", "backgroundColor": "white"}}>
             <div style={{
                 "float": "right", "padding": "0", "textAlign": "center",
-                "height": "21px", "width": "10%"
+                "width": "10%"
             }}
                  onClick={handleClickDialog}>
                 <Icon icon="ion-ios-arrow-right"/>
