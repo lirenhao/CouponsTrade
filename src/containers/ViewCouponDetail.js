@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {Page, Toolbar, BackButton,BottomToolbar} from 'react-onsenui'
+import {Page, Toolbar,BackButton,BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 
 class ViewCouponDetail extends React.Component {
@@ -16,13 +16,13 @@ class ViewCouponDetail extends React.Component {
             <Page renderToolbar={() => (
                 <Toolbar>
                     <div className='left'>
-                        <button className="button button--large" type="submit">我要买</button>
+                        <BackButton/>
                     </div>
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )}  renderBottomToolbar={() => (
                 <BottomToolbar modifier="material">
-                    <BuyButton value="我要买"/>
+                    <button className="button button--large" type="submit">我要买</button>
                 </BottomToolbar>
             )} >
                     <CouponDetail

@@ -17,6 +17,7 @@ class ViewCouponDetail extends React.Component {
                     <div className='left'>
                         <BackButton/>
                     </div>
+
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )}>
