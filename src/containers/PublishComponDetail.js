@@ -6,7 +6,7 @@
  * 发布优惠券列表中查看优惠券详情容器
  */
 import React from 'react'
-import {Page, Toolbar, BackButton,Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton,SpeedDial,Fab,Icon,SpeedDialItem} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 
 class ViewCouponDetail extends React.Component {
@@ -35,8 +35,19 @@ class ViewCouponDetail extends React.Component {
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
-                        <Button className="button--large" type="submit">编辑</Button>
-                        <Button className="button--large" type="submit">下架</Button>
+                        <SpeedDial position='bottom right'>
+                            <Fab>
+                                <Icon icon='md-menu'/>
+                            </Fab>
+                            <SpeedDialItem onClick=
+                                               {() => {}}>
+                                <Icon icon='md-share'/>
+                            </SpeedDialItem>
+                            <SpeedDialItem onClick=
+                                           {() => {}}>
+                                <Icon icon='md-edit'/>
+                            </SpeedDialItem>
+                        </SpeedDial>
                     </CouponDetail>
             </Page>
         )
