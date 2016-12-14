@@ -3,7 +3,7 @@
  * Create Date：2016/12/8
  * Modified By：pengfei
  * Why & What is modified  <修改原因描述>
- * <文件描述>
+ * 发布商品组建
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
@@ -32,7 +32,7 @@ const TextAreaComponent = ({input, placeholder}) => {
 
 const CheckBoxComponent = ({input}) => {
     return (
-        <Switch onChange={(event)=> {
+        <Switch checked={input.value} onChange={(event)=> {
             input.onChange(event.target.checked)
         }}/>
     )
@@ -57,7 +57,7 @@ const PublishGoods = (props)=> {
                 </p>
                 <p>
                     <Field type="number"
-                           name="OldPrise"
+                           name="oldPrise"
                            component={InputComponent}
                            placeholder="原价"/>
                 </p>
@@ -82,7 +82,7 @@ const PublishGoods = (props)=> {
 
                 <p>
                     <label className='center'>自动退货 </label>
-                    <Field name="isReturns" component={CheckBoxComponent}/>
+                    <Field name="isReturns"  component={CheckBoxComponent}/>
 
                 </p>
                 <p>
