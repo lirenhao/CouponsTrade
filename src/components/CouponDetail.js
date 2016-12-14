@@ -74,6 +74,7 @@ const CouponDetail=(props)=>{
                     </ListItem>
                 </List>
             </div>
+            {props.children}
         </Page>
     )
 }
@@ -84,13 +85,13 @@ CouponDetail.propTypes={
         nickname:React.PropTypes.string.isRequired,
         originalPrice:React.PropTypes.string.isRequired,
         sellingPrice:React.PropTypes.string.isRequired,
-        IsAutomaticRefund:React.PropTypes.string.isRequired,
-        CouponType:React.PropTypes.string.isRequired,
-        CouponName:React.PropTypes.string.isRequired,
-        TicketPrice:React.PropTypes.string.isRequired,
-        EffectiveDate:React.PropTypes.string.isRequired,
-        MerchantPicture:React.PropTypes.string.isRequired,
-        desc:React.PropTypes.string.isRequired
+        isAutomaticRefund:React.PropTypes.string.isRequired,
+        couponType:React.PropTypes.string.isRequired,
+        couponName:React.PropTypes.string.isRequired,
+        ticketPrice:React.PropTypes.string.isRequired,
+        effectiveDate:React.PropTypes.string.isRequired,
+        //merchantPicture:React.PropTypes.string.isRequired,
+        describe:React.PropTypes.string.isRequired
     }).isRequired
 }
 

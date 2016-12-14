@@ -18,6 +18,7 @@ import Login from './Login'
 import User from './User'
 import ResetPassword from './ResetPassword'
 import ViewCouponDetail from './ViewCouponDetail'
+import PublishComponDetail from './PublishComponDetail'
 
 class Mine extends React.Component {
     render() {
@@ -53,7 +54,14 @@ class Mine extends React.Component {
                                   comp: ViewCouponDetail,
                                   props: {key: "ViewCouponDetail"}
                               })}>
-                        查看优惠券详情
+                        查看优惠券详情(购买)
+                    </ListItem>
+                    <ListItem modifier='chevron'
+                              onClick={() => this.props.navigator.pushPage({
+                                  comp: PublishComponDetail,
+                                  props: {key: "PublishComponDetail"}
+                              })}>
+                        查看优惠券详情(发布)
                     </ListItem>
                 </List>
             </Page>

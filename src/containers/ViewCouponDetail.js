@@ -3,14 +3,15 @@
  * Create Date：2016/12/13
  * Modified By：likon
  * Why & What is modified  <修改原因描述>
- * 查看优惠券详细信息容器
- */ 
+ * 首页优惠券列表中查看优惠券详细信息容器
+ */
 
 import React from 'react'
-import {Page,Toolbar,BackButton} from 'react-onsenui'
+import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
+import BuyButton from '../components/Button'
 
-class ViewCouponDetail extends React.Component{
+class ViewCouponDetail extends React.Component {
     render() {
         return (
             <Page renderToolbar={() => (
@@ -21,21 +22,23 @@ class ViewCouponDetail extends React.Component{
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )}>
-                <CouponDetail
-                    DetailInformation={{
-                        applyCity:"该券仅适用北京",
-                        nickname: "small_cat",
-                        originalPrice:"￥50",
-                        sellingPrice:"￥70",
-                        CouponName:"西提厚牛排优惠券",
-                        IsAutomaticRefund:"是",
-                        CouponType:"西餐",
-                        TicketPrice:"￥100",
-                        EffectiveDate:"2016年12月28日",
-                        MerchantPicture:"无",
-                        desc: "请各位小主们尽快下单吧~~"}}
-                />
-            </Page>
+                    <CouponDetail
+                        DetailInformation={{
+                            applyCity: "该券仅适用北京",
+                            nickname: "small_cat",
+                            originalPrice: "￥50",
+                            sellingPrice: "￥70",
+                            couponName: "西提厚牛排优惠券",
+                            isAutomaticRefund: "是",
+                            couponType: "西餐",
+                            ticketPrice: "￥100",
+                            effectiveDate: "至2016年12月28日",
+                            //merchantPicture: "无",
+                            describe: "请各位小主们尽快下单吧~~"
+                        }}>
+                      <BuyButton/>
+                    </CouponDetail>
+           </Page>
         )
     }
 }
