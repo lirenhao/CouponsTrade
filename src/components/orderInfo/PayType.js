@@ -1,5 +1,9 @@
 /**
- * Created by ALIENWARE17 on 2016/12/13.
+ * Author：Yky
+ * Create Date：2016/12/13
+ * Modified By：Yky
+ * Why & What is modified  <修改原因描述>
+ * 展示支付信息的组件
  */
 import React from 'react'
 import {List, ListItem, Input, ListHeader} from 'react-onsenui'
