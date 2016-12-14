@@ -22,7 +22,9 @@ class ViewCouponDetail extends React.Component {
                 </Toolbar>
             )}  renderBottomToolbar={() => (
                 <BottomToolbar modifier="material">
-                    <button className="button button--large" type="submit">我要买</button>
+                    <div>
+                        <button className="button button--large" type="submit">我要买</button>
+                    </div>
                 </BottomToolbar>
             )} >
                     <CouponDetail
