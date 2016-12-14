@@ -17,7 +17,7 @@ import {
 import Login from './Login'
 import User from './User'
 import ResetPassword from './ResetPassword'
-import ViewCouponDetail from './ViewCouponDetail'
+import SellingCoupons from './SellCoupons'
 import PublishComponDetail from './PublishComponDetail'
 
 class Mine extends React.Component {
@@ -51,18 +51,19 @@ class Mine extends React.Component {
                     </ListItem>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
-                                  comp: ViewCouponDetail,
-                                  props: {key: "ViewCouponDetail"}
+                                  comp: SellingCoupons,
+                                  props: {key: "SellingCoupons", data: {}}
                               })}>
-                        查看优惠券详情(购买)
+                        发布的优惠券
                     </ListItem>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
                                   comp: PublishComponDetail,
                                   props: {key: "PublishComponDetail"}
                               })}>
-                        查看优惠券详情(发布)
+                        购买的优惠券
                     </ListItem>
+
                 </List>
             </Page>
         )
