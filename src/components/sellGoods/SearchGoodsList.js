@@ -9,13 +9,13 @@
 
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input,Button} from 'react-onsenui'
+import {Button} from 'react-onsenui'
 import SellingGoodsList from './SellingGoodsList'
 
 
 const SearchGoodsComponent = ({input, placeholder})=> {
     return (
-        <Input type="search"  placeholder={placeholder} className="search-input"/>
+        <input type="search"  placeholder={placeholder} className="search-input"/>
     )
 };
 
