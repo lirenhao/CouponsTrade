@@ -5,17 +5,14 @@ import {
     Tabbar,
     Toolbar
 } from 'react-onsenui'
+import Home from '../containers/Home'
 import Mine from '../containers/Mine'
 
 class Tabs extends React.Component {
     renderTabs() {
         return [
             {
-                content: <Page key="home" renderToolbar={() => (
-                    <Toolbar>
-                        <div className='center'>首页</div>
-                    </Toolbar>
-                )}>首页</Page>,
+                content: <Home key="home" navigator={this.props.navigator}/>,
                 tab: <Tab key="home" label="首页" icon="ion-home"/>
             },
             {

@@ -24,13 +24,9 @@ const itemData = {
 
 const renderToolbar = () => {
     return (
-        <Toolbar style={{"backgroundColor": "#dd1525"}}>
-            <div className='left'>
-                <BackButton style={{"color": "#fff"}} onClick={() => {
-                    ons.notification.alert("点击这里回到上级页面", {title: "说明"})
-                }}>返回</BackButton>
-            </div>
-            <div className="center" style={{"color": "#fff"}}>确认订单</div>
+        <Toolbar>
+            <div className='left'><BackButton/></div>
+            <div className="center">确认订单</div>
         </Toolbar>
     )
 };
