@@ -6,7 +6,7 @@
  * 发布优惠券列表中查看优惠券详情容器
  */
 import React from 'react'
-import {Page, Toolbar, BackButton} from 'react-onsenui'
+import {Page, Toolbar, BackButton,Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 
 class ViewCouponDetail extends React.Component {
@@ -35,8 +35,8 @@ class ViewCouponDetail extends React.Component {
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
-                        <button className="button button--large" type="submit">编辑</button>
-                        <button className="button button--large" type="submit">下架</button>
+                        <Button className="button--large" type="submit">编辑</Button>
+                        <Button className="button--large" type="submit">下架</Button>
                     </CouponDetail>
             </Page>
         )
