@@ -5,17 +5,17 @@
  * Why & What is modified  <修改原因描述>
  * 按钮组件
  */ 
-import React from 'react'
+import React from 'react';
 
-const Button =()=>{
-    // const {value}=props
+const Button =(props)=>{
+     const {value}=props;
     return (
-            <button className="button button--large" type="submit">确定</button>
+            <button className="button button--large" type="submit">{value}</button>
     )
-}
+};
 
-// Button.propTypes = {
-//     value: React.PropTypes.func.isRequired
-// }
+Button.propTypes = {
+    value: React.PropTypes.string.isRequired
+};
 
-export default Button
+export default Button;
