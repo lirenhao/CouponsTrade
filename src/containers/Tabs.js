@@ -7,6 +7,7 @@ import {
 } from 'react-onsenui'
 import Home from '../containers/Home'
 import Mine from '../containers/Mine'
+import PublishCoupon from './PublishCoupon'
 
 class Tabs extends React.Component {
     renderTabs() {
@@ -20,7 +21,9 @@ class Tabs extends React.Component {
                     <Toolbar>
                         <div className='center'>发布</div>
                     </Toolbar>
-                )}>发布</Page>,
+                )}>
+                    <PublishCoupon/>
+                </Page>,
                 tab: <Tab key="post" label="发布" icon="ion-plus"/>
             },
             {
