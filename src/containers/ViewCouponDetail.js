@@ -9,7 +9,6 @@
 import React from 'react'
 import {Page, Toolbar, BackButton,BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
-import BuyButton from '../components/Button'
 
 class ViewCouponDetail extends React.Component {
     render() {
@@ -17,7 +16,7 @@ class ViewCouponDetail extends React.Component {
             <Page renderToolbar={() => (
                 <Toolbar>
                     <div className='left'>
-                        <BackButton/>
+                        <button className="button button--large" type="submit">我要买</button>
                     </div>
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>

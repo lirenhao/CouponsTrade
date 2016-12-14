@@ -8,8 +8,6 @@
 import React from 'react'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
-import EditButton from '../components/Button'
-import SoldOutButton from '../components/Button'
 
 class ViewCouponDetail extends React.Component {
     render() {
@@ -36,8 +34,8 @@ class ViewCouponDetail extends React.Component {
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
-                      <EditButton value="编辑"/>
-                      <SoldOutButton value="下架"/>
+                        <button className="button button--large" type="submit">编辑</button>
+                        <button className="button button--large" type="submit">下架</button>
                     </CouponDetail>
             </Page>
         )
