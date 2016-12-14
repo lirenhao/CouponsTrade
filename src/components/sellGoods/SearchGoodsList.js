@@ -9,12 +9,13 @@
 
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
+import {Input,Button} from 'react-onsenui'
 import SellingGoodsList from './SellingGoodsList'
 
 
 const SearchGoodsComponent = ({input, placeholder})=> {
     return (
-        <input type="search" value="" placeholder={placeholder} />
+        <Input type="search"  placeholder={placeholder} className="search-input"/>
     )
 };
 
@@ -28,7 +29,7 @@ const SearchGoodsList = (props)=> {
                            name="search-input"
                            component={SearchGoodsComponent}
                            placeholder="商品名称"/>
-                    <button className="button--quiet" type="submit" disabled={invalid || submitting} >查找</button>
+                    <Button className="button--quiet" type="submit" disabled={invalid || submitting} >查找</Button>
                 </p>
             </section>
             <SellingGoodsList data={data} onClickPushPage={onClickPushPage}/>

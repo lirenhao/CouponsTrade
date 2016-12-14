@@ -13,8 +13,8 @@ import {
     ListItem,
     ListHeader
 } from 'react-onsenui'
-import PayOrder from './PayOrder'
-import OrderList from './OrderList'
+
+import SearchCoupons from './SearchCoupons'
 
 class Home extends React.Component {
     render() {
@@ -24,21 +24,7 @@ class Home extends React.Component {
                     <div className='center'>首页</div>
                 </Toolbar>
             )}>
-                <List modifier='inset'>
-                    <ListHeader/>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: PayOrder, props: {key: "payOrder"}
-                              })}>
-                        购买
-                    </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: OrderList, props: {key: "OrderList"}
-                              })}>
-                        查看订单
-                    </ListItem>
-                </List>
+                <SearchCoupons navigator={this.props.navigator}/>
             </Page>
         )
     }
