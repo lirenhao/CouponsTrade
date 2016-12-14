@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {Page,Row,Col} from 'react-onsenui'
+import {Page,List,ListItem} from 'react-onsenui'
 
 const styles={
     sellingPrice:{
@@ -28,8 +28,8 @@ const CouponDetail=(props)=>{
     const {DetailInformation}=props
     return (
         <Page>
-            <div className="list">
-                <li className="list__item">
+            <List>
+                <ListItem>
                     <div className="list__item__center">
                         <div className="list__item__title">{DetailInformation.nickname}</div>
                         <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
@@ -38,41 +38,41 @@ const CouponDetail=(props)=>{
                         <div className="list__item__title" style={styles.originalPrice}>{DetailInformation.originalPrice}</div>
                         <div className="list__item__subtitle" style={styles.sellingPrice}>{DetailInformation.sellingPrice}</div>
                     </div>
-                </li>
-            </div>
+                </ListItem>
+            </List>
             <div style={styles.content}>
-                <ul className="list">
-                    <li className="list__item">
+                <List>
+                    <ListItem>
                         <div className="list__item__center">优惠券名称</div>
                         <div className="list__item__right">{DetailInformation.CouponName}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">可自动退款</div>
                         <div className="list__item__right">{DetailInformation.IsAutomaticRefund}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">优惠券类别</div>
                         <div className="list__item__right">{DetailInformation.CouponType}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">优惠券面值</div>
                         <div className="list__item__right">{DetailInformation.TicketPrice}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">有效期区间</div>
                         <div className="list__item__right">{DetailInformation.EffectiveDate}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">优惠券图片</div>
                         <div className="list__item__right">{DetailInformation.MerchantPicture}</div>
-                    </li>
-                    <li className="list__item">
+                    </ListItem>
+                    <ListItem>
                         <div className="list__item__center">
                             <div className="list__item__title">优惠券详情</div>
                             <div className="list__item__subtitle">{DetailInformation.desc}</div>
                         </div>
-                    </li>
-                </ul>
+                    </ListItem>
+                </List>
             </div>
         </Page>
     )
