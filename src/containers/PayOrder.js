@@ -11,34 +11,34 @@ import Address from '../components/orderInfo/Address'
 import Payment_form from '../components/orderInfo/PaymentForm'
 
 const data = {
-    name: "张三",
-    tel: "18688886666"
+	name: "李四",
+	tel: "18688886666"
 };
 
 const itemData = {
-    item: "黑松白鹿",
-    price: 400
+	item: "黑松白鹿",
+	price: 400
 };
 
 const handleSubmit = () => {
 };
 
 const renderToolbar = () => {
-    return (
-        <Toolbar>
-            <div className='left'><BackButton/></div>
-            <div className="center">确认订单</div>
-        </Toolbar>
-    )
+	return (
+		<Toolbar>
+			<div className='left'><BackButton/></div>
+			<div className="center">确认订单</div>
+		</Toolbar>
+	)
 };
 
 const Payment = ({navigator}) => {
-    return (
-        <Page renderToolbar={renderToolbar}>
-            <Address {...data} navigator={navigator}/>
-            <Payment_form {...itemData} navigator={navigator} handleSubmit={handleSubmit}/>
-        </Page>
-    )
+	return (
+		<Page renderToolbar={renderToolbar}>
+			<Address {...data}/>
+			<Payment_form {...itemData} navigator={navigator} handleSubmit={handleSubmit}/>
+		</Page>
+	)
 };
 
 export default Payment

@@ -6,20 +6,26 @@
  * 展示商品信息的组件
  */
 import React, {PropTypes} from 'react'
-import {} from 'react-onsenui'
+import {List, ListItem, ListHeader} from 'react-onsenui'
 
 const ItemInfo = ({item, price}) => {
-    return (
-        <div style={{margin: "20px 0"}}>
-            <img alt="图片"/>
-            <span style={{float: "right", paddingRight: "20px"}}>{item + price}元</span>
-        </div>
-    )
+	return (
+		<List renderHeader={() => <ListHeader>商品信息</ListHeader>}>
+			<ListItem>
+				<div className='left'>
+					<img src={`http://placekitten.com/g/40/40`} alt="图片" className='list__item__thumbnail'/>
+				</div>
+				<div className='center'>
+					{item}<span>{price + "元"}</span>
+				</div>
+			</ListItem>
+		</List>
+	)
 };
 
 ItemInfo.propTypes = {
-    item: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+	item: PropTypes.string.isRequired,
+	price: PropTypes.number.isRequired,
 };
 
 export default ItemInfo
