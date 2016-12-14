@@ -27,14 +27,14 @@ const styles={
 const CouponDetail=(props)=>{
     const {DetailInformation}=props
     return (
-        <Page>
+        <div>
             <List>
                 <ListItem>
-                    <div className="list__item__center">
+                    <div className="center">
                         <div className="list__item__title">{DetailInformation.nickname}</div>
                         <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
                     </div>
-                    <div className="list__item__right">
+                    <div className="right">
                         <div className="list__item__title" style={styles.originalPrice}>{DetailInformation.originalPrice}</div>
                         <div className="list__item__subtitle" style={styles.sellingPrice}>{DetailInformation.sellingPrice}</div>
                     </div>
@@ -43,39 +43,41 @@ const CouponDetail=(props)=>{
             <div style={styles.content}>
                 <List>
                     <ListItem>
-                        <div className="list__item__center">优惠券名称</div>
-                        <div className="list__item__right">{DetailInformation.CouponName}</div>
+                        <div className="center">优惠券名称</div>
+                        <div className="right">{DetailInformation.couponName}</div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">可自动退款</div>
-                        <div className="list__item__right">{DetailInformation.IsAutomaticRefund}</div>
+                        <div className="center">可自动退款</div>
+                        <div className="right">{DetailInformation.isAutomaticRefund}</div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">优惠券类别</div>
-                        <div className="list__item__right">{DetailInformation.CouponType}</div>
+                        <div className="center">优惠券类别</div>
+                        <div className="right">{DetailInformation.couponType}</div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">优惠券面值</div>
-                        <div className="list__item__right">{DetailInformation.TicketPrice}</div>
+                        <div className="center">优惠券面值</div>
+                        <div className="right">{DetailInformation.ticketPrice}</div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">有效期区间</div>
-                        <div className="list__item__right">{DetailInformation.EffectiveDate}</div>
+                        <div className="center">截止日期</div>
+                        <div className="right">{DetailInformation.effectiveDate}</div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">优惠券图片</div>
-                        <div className="list__item__right">{DetailInformation.MerchantPicture}</div>
+                        <div className="center">优惠券图片</div>
+                        <div className="right"></div>
                     </ListItem>
                     <ListItem>
-                        <div className="list__item__center">
+                        <div className="center">
                             <div className="list__item__title">优惠券详情</div>
-                            <div className="list__item__subtitle">{DetailInformation.desc}</div>
+                            <div className="list__item__subtitle">{DetailInformation.describe}</div>
                         </div>
                     </ListItem>
                 </List>
             </div>
-            {props.children}
-        </Page>
+            <div>
+                {props.children}
+            </div>
+        </div>
     )
 }
 
@@ -85,9 +87,9 @@ CouponDetail.propTypes={
         nickname:React.PropTypes.string.isRequired,
         originalPrice:React.PropTypes.string.isRequired,
         sellingPrice:React.PropTypes.string.isRequired,
+        couponName:React.PropTypes.string.isRequired,
         isAutomaticRefund:React.PropTypes.string.isRequired,
         couponType:React.PropTypes.string.isRequired,
-        couponName:React.PropTypes.string.isRequired,
         ticketPrice:React.PropTypes.string.isRequired,
         effectiveDate:React.PropTypes.string.isRequired,
         //merchantPicture:React.PropTypes.string.isRequired,

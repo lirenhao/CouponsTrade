@@ -7,7 +7,7 @@
  */ 
 import React from 'react'
 
-const Button =(props)=>{
+const Button =()=>{
     // const {value}=props
     return (
             <button className="button" type="submit">确定</button>
