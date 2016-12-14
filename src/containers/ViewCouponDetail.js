@@ -23,7 +23,7 @@ class ViewCouponDetail extends React.Component {
                 </Toolbar>
             )}  renderBottomToolbar={() => (
                 <BottomToolbar modifier="material">
-                    <BuyButton/>
+                    <BuyButton value="我要买"/>
                 </BottomToolbar>
             )} >
                     <CouponDetail

@@ -36,8 +36,8 @@ class ViewCouponDetail extends React.Component {
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
-                      <EditButton/>
-                      <SoldOutButton/>
+                      <EditButton value="编辑"/>
+                      <SoldOutButton value="下架"/>
                     </CouponDetail>
             </Page>
         )
