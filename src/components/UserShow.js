@@ -35,7 +35,7 @@ const styles = {
 const UserShow = (props) => {
     const {share, edit, user} = props
     return (
-        <Page>
+        <div style={styles.main}>
             <SpeedDial position='bottom right'>
                 <Fab>
                     <Icon icon='md-menu'/>
@@ -47,33 +47,32 @@ const UserShow = (props) => {
                     <Icon icon='md-edit'/>
                 </SpeedDialItem>
             </SpeedDial>
-            <div style={styles.main}>
-                <div style={styles.icon}>
-                    <Icon icon='ion-person'/>
-                </div>
 
-                <div style={styles.name}>
-                    {user.nickname}
-                </div>
-
-                <Row style={styles.data}>
-                    <Col style={styles.dataKey} width="40%">
-                        手机号:
-                    </Col>
-                    <Col style={styles.dataValue} width="50%">
-                        {user.phoneNumber}
-                    </Col>
-                </Row>
-                <Row style={styles.data}>
-                    <Col style={styles.dataKey} width="40%">
-                        邀请码:
-                    </Col>
-                    <Col style={styles.dataValue} width="50%">
-                        {user.inviteCode}
-                    </Col>
-                </Row>
+            <div style={styles.icon}>
+                <Icon icon='ion-person'/>
             </div>
-        </Page>
+
+            <div style={styles.name}>
+                {user.nickname}
+            </div>
+
+            <Row style={styles.data}>
+                <Col style={styles.dataKey} width="40%">
+                    手机号:
+                </Col>
+                <Col style={styles.dataValue} width="50%">
+                    {user.phoneNumber}
+                </Col>
+            </Row>
+            <Row style={styles.data}>
+                <Col style={styles.dataKey} width="40%">
+                    邀请码:
+                </Col>
+                <Col style={styles.dataValue} width="50%">
+                    {user.inviteCode}
+                </Col>
+            </Row>
+        </div>
     )
 }
 
