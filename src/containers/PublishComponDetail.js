@@ -9,7 +9,7 @@ import React from 'react'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditButton from '../components/Button'
-import SoldoutButton from '../components/Button'
+import SoldOutButton from '../components/Button'
 
 class ViewCouponDetail extends React.Component {
     render() {
@@ -22,7 +22,7 @@ class ViewCouponDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )}>
-                    <CouponDetail>
+                    <CouponDetail
                         DetailInformation={{
                         applyCity: "该券仅适用北京",
                         nickname: "small_cat",
@@ -37,7 +37,7 @@ class ViewCouponDetail extends React.Component {
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
                       <EditButton/>
-                      <SoldoutButton/>
+                      <SoldOutButton/>
                     </CouponDetail>
             </Page>
         )
