@@ -6,7 +6,7 @@
  * 登录的组件
  */
 import React from 'react'
-import {Field, reduxForm, startSubmit} from 'redux-form'
+import {Field, reduxForm} from 'redux-form'
 import {Input, Button} from 'react-onsenui'
 
 const SignInField = ({input, type, placeholder}) => {
@@ -20,7 +20,7 @@ const SignInField = ({input, type, placeholder}) => {
 }
 
 const SignIn = (props) => {
-    const {handleSubmit, onSubmit, dispatch, invalid, submitting} = props
+    const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{marginTop: '50px', textAlign: 'center'}}>
@@ -42,7 +42,7 @@ const SignIn = (props) => {
                 <p style={{marginLeft: '20%', marginRight: '20%'}}>
                     <Button modifier="large"
                             disabled={invalid || submitting}
-                            onClick={() => dispatch(startSubmit('signIn'))}>
+                            onClick={props.submit}>
                         登录
                     </Button>
                 </p>

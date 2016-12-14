@@ -60,7 +60,7 @@ const SignUp = (props) => {
                     <br/>
                     <Button modifier="large"
                             disabled={invalid || submitting}
-                            onClick={() => dispatch(startSubmit('signIn'))}>
+                            onClick={props.submit}>
                         注册
                     </Button>
                 </p>
