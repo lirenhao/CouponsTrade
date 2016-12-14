@@ -19,21 +19,6 @@ const listData = {
 
 const itemKeys = Object.keys(listData);
 
-const renderRow = (row, index) => {
-    const x = 40 + Math.round(5 * (Math.random() - 0.5)),
-        y = 40 + Math.round(5 * (Math.random() - 0.5));
-    return (
-        <ListItem key={index} onClick={() => console.log("11")}>
-            <div className='left'>
-                <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
-            </div>
-            <div className='center'>
-                {row}<span>{listData[row] + "元"}</span>
-            </div>
-        </ListItem>
-    );
-};
-
 class OrderList extends React.Component {
     renderToolbar = () => {
         return (
@@ -42,15 +27,23 @@ class OrderList extends React.Component {
                 <div className="center">我的订单</div>
             </Toolbar>
         )
-    }
+    };
 
     renderRow = (row, index) => {
-        const x = 40 + Math.round(5 * (Math.random() - 0.5))
-        const y = 40 + Math.round(5 * (Math.random() - 0.5))
+        const x = 40 + index;
+        const y = 40 + index;
         return (
             <ListItem key={index} onClick={() => this.props.navigator.pushPage({
                 comp: OrderInfo,
-                props: {key: "orderInfo", username: 'username', sellName: 'sellName', itemName: 'itemName', orderId: 'orderId', orderTime: 'orderTime', price: 123}
+                props: {
+                    key: "orderInfo",
+                    username: '张三',
+                    sellName: '李四',
+                    itemName: row,
+                    orderId: "000" + index,
+                    orderTime: Date(),
+                    price: listData[row]
+                }
             })}>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
@@ -60,7 +53,7 @@ class OrderList extends React.Component {
                 </div>
             </ListItem>
         )
-    }
+    };
 
     render() {
         return (

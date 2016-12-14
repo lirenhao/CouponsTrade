@@ -7,20 +7,18 @@
  */
 import React, {PropTypes} from 'react'
 import {Icon, Button} from 'react-onsenui'
-import ons from 'onsenui'
+import User from '../../containers/User'
 
-const handleClickDialog = () => {
-    ons.notification.alert("点击这里会进入编辑个人联系方式界面", {title: "说明"})
-};
-
-const Address = ({name, tel}) => {
+const Address = ({name, tel, navigator}) => {
     return (
         <div style={{"margin": "20px 0", "backgroundColor": "white"}}>
             <div style={{
                 "float": "right", "padding": "0", "textAlign": "center",
                 "width": "10%"
             }}
-                 onClick={handleClickDialog}>
+                 onClick={() => navigator.pushPage({
+                     comp: User, props: {key: "User"}
+                 })}>
                 <Icon icon="ion-ios-arrow-right"/>
             </div>
             <p style={{"paddingLeft": "14px"}}>{name + "  " + tel}</p>
