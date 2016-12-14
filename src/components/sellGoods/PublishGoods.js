@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Switch} from 'react-onsenui'
+import {Input,Button, Switch} from 'react-onsenui'
 
 
 const InputComponent = ({input, type, placeholder}) => {
@@ -32,7 +32,7 @@ const TextAreaComponent = ({input, placeholder}) => {
 
 const CheckBoxComponent = ({input}) => {
     return (
-        <Switch checked={input.value} onChange={(event)=> {
+        <Switch checked={!!input.value} onChange={(event)=> {
             input.onChange(event.target.checked)
         }}/>
     )
@@ -92,7 +92,7 @@ const PublishGoods = (props)=> {
                         placeholder="描述"/>
                 </p>
                 <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>确认发布</button>
+                    <Button className="button"  onClick={props.submit} disabled={invalid || submitting}>确认发布</Button>
                 </p>
             </section>
         </form>

@@ -15,7 +15,7 @@ import SellingGoodsList from './SellingGoodsList'
 
 const SearchGoodsComponent = ({input, placeholder})=> {
     return (
-        <input type="search"  placeholder={placeholder} className="search-input"/>
+        <input type="search"  placeholder={placeholder} className="search-input" />
     )
 };
 
@@ -29,7 +29,7 @@ const SearchGoodsList = (props)=> {
                            name="search-input"
                            component={SearchGoodsComponent}
                            placeholder="商品名称"/>
-                    <Button className="button--quiet" type="submit" disabled={invalid || submitting} >查找</Button>
+                    {/*<Button modifier="quiet" onClick={props.submit} disabled={invalid || submitting} >查找</Button>*/}
                 </p>
             </section>
             <SellingGoodsList data={data} onClickPushPage={onClickPushPage}/>
