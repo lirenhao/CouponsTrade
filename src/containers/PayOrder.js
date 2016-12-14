@@ -8,7 +8,7 @@
 import React from 'react'
 import{Page, Toolbar, Button, Input, BackButton, Icon} from 'react-onsenui'
 import Address from '../components/orderInfo/Address'
-import Payment_form from '../components/orderInfo/Payment_form'
+import Payment_form from '../components/orderInfo/PaymentForm'
 
 const data = {
     name: "张三",
@@ -20,8 +20,7 @@ const itemData = {
     price: 400
 };
 
-const handleSubmit = (v) => {
-    alert(v);
+const handleSubmit = () => {
 };
 
 const renderToolbar = () => {
@@ -37,7 +36,7 @@ const Payment = ({navigator}) => {
     return (
         <Page renderToolbar={renderToolbar}>
             <Address {...data} navigator={navigator}/>
-            <Payment_form {...itemData} handleSubmit={handleSubmit}/>
+            <Payment_form {...itemData} navigator={navigator} handleSubmit={handleSubmit}/>
         </Page>
     )
 };
