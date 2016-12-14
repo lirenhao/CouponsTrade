@@ -6,7 +6,7 @@
  * 注册的组件
  */
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
+import {Field, reduxForm, startSubmit} from 'redux-form'
 import {Input, Button} from 'react-onsenui'
 
 const SignUpField = ({input, type, placeholder}) => {
@@ -20,7 +20,7 @@ const SignUpField = ({input, type, placeholder}) => {
 }
 
 const SignUp = (props) => {
-    const {handleSubmit, onSubmit, invalid, submitting} = props
+    const {handleSubmit, onSubmit, dispatch, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -58,7 +58,11 @@ const SignUp = (props) => {
                 </p>
                 <p style={{marginLeft: '20%', marginRight: '20%'}}>
                     <br/>
-                    <button className="button button--large" type="submit" disabled={invalid || submitting}>注册</button>
+                    <Button modifier="large"
+                            disabled={invalid || submitting}
+                            onClick={() => dispatch(startSubmit('signIn'))}>
+                        注册
+                    </Button>
                 </p>
             </section>
         </form>
