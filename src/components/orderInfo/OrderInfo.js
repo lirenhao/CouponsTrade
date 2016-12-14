@@ -6,7 +6,7 @@
  * 展示已生成订单详细信息的组件
  */
 import React, {PropTypes} from 'react'
-import {Page, Toolbar, BackButton} from 'react-onsenui'
+import {Page, Toolbar, BackButton, List, ListHeader, ListItem} from 'react-onsenui'
 
 const renderToolbar = () => {
     return (
@@ -19,14 +19,19 @@ const renderToolbar = () => {
     )
 };
 
-const OrderInfo = ({username, sellName, itemName, price, orderId, orderTime}) => {
+const OrderInfo = ({username, sellName, itemName, price, orderId, orderTime, handleClick}) => {
     return (
         <Page renderToolbar={renderToolbar}>
-            <div>卖家:{sellName}</div>
-            <div><img alt="商品图片"/>{itemName + " " + price + "元"}</div>
-            <div>收货人:{username}</div>
-            <div>订单编号:{orderId}</div>
-            <div>交易时间:{orderTime}</div>
+            <List>
+                <ListItem>卖家:{sellName}</ListItem>
+                <ListItem onClick={handleClick}>
+                    <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
+                    <div className="center">{itemName + " " + price + "元"}</div>
+                </ListItem>
+                <ListItem>收货人:{username}</ListItem>
+                <ListItem>订单编号:{orderId}</ListItem>
+                <ListItem>交易时间:{orderTime}</ListItem>
+            </List>
         </Page>
     )
 };

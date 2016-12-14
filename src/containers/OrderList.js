@@ -23,7 +23,7 @@ class OrderList extends React.Component {
     renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'><BackButton/></div>
+                <div className='left'><BackButton>返回</BackButton></div>
                 <div className="center">我的订单</div>
             </Toolbar>
         )
@@ -41,8 +41,11 @@ class OrderList extends React.Component {
                     sellName: '李四',
                     itemName: row,
                     orderId: "000" + index,
-                    orderTime: Date(),
-                    price: listData[row]
+                    orderTime: "2016-12-14",
+                    price: listData[row],
+                    handleClick: () => {
+                        console.log("预留事件")
+                    }
                 }
             })}>
                 <div className='left'>
