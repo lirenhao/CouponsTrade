@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {Page, Toolbar, BackButton} from 'react-onsenui'
+import {Page, Toolbar, BackButton,BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import BuyButton from '../components/Button'
 
@@ -21,7 +21,11 @@ class ViewCouponDetail extends React.Component {
                     </div>
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
-            )}>
+            )}  renderBottomToolbar={() => (
+                <BottomToolbar modifier="material">
+                    <BuyButton/>
+                </BottomToolbar>
+            )} >
                     <CouponDetail
                         DetailInformation={{
                             applyCity: "该券仅适用北京",
@@ -36,7 +40,6 @@ class ViewCouponDetail extends React.Component {
                             //merchantPicture: "无",
                             describe: "请各位小主们尽快下单吧~~"
                         }}>
-                      <BuyButton/>
                     </CouponDetail>
            </Page>
         )

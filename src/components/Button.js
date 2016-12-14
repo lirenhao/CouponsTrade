@@ -10,7 +10,7 @@ import React from 'react'
 const Button =()=>{
     // const {value}=props
     return (
-            <button className="button" type="submit">确定</button>
+            <button className="button button--large" type="submit">确定</button>
     )
 }
 
