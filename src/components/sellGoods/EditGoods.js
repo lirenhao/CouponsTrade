@@ -23,13 +23,13 @@ const EditGoods = (props)=> {
 
 EditGoods.propTypes = {
     goodsInfo: React.PropTypes.shape({
-        goodsTitle: React.PropTypes.string.isRequired,
-        goodsCode:React.PropTypes.string.isRequired,
-        oldPrise:React.PropTypes.string.isRequired,
-        newPrise: React.PropTypes.string.isRequired,
-        facePrise:React.PropTypes.string.isRequired,
-        validDate:React.PropTypes.string.isRequired,
-        isReturns:React.PropTypes.bool.isRequired,
+        couponName: React.PropTypes.string.isRequired,
+        couponCode:React.PropTypes.string.isRequired,
+        originalPrice:React.PropTypes.string.isRequired,
+        sellingPrice: React.PropTypes.string.isRequired,
+        TicketPrice:React.PropTypes.string.isRequired,
+        effectiveDate:React.PropTypes.string.isRequired,
+        isAutomaticRefund:React.PropTypes.bool.isRequired,
         description: React.PropTypes.string.isRequired
     }).isRequired,
     onSubmit: React.PropTypes.func.isRequired

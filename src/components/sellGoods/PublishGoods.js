@@ -45,44 +45,44 @@ const PublishGoods = (props)=> {
             <section style={{textAlign: 'center'}}>
                 <p>
                     <Field type="text"
-                           name="goodsTitle"
+                           name="couponName"
                            component={InputComponent}
                            placeholder="商品名称"/>
                 </p>
                 <p>
                     <Field type="text"
-                           name="goodsCode"
+                           name="couponCode"
                            component={InputComponent}
                            placeholder="商品码"/>
                 </p>
                 <p>
                     <Field type="number"
-                           name="oldPrise"
+                           name="originalPrice"
                            component={InputComponent}
                            placeholder="原价"/>
                 </p>
                 <p>
                     <Field type="number"
-                           name="newPrise"
+                           name="sellingPrice"
                            component={InputComponent}
                            placeholder="售卖价"/>
                 </p>
                 <p>
                     <Field type="number"
-                           name="facePrise"
+                           name="TicketPrice"
                            component={InputComponent}
                            placeholder="券面价"/>
                 </p>
                 <p>
                     <Field type="number"
-                           name="validDate"
+                           name="effectiveDate"
                            component={InputComponent}
-                           placeholder="有效期"/>
+                           placeholder="有效期截至日"/>
                 </p>
 
                 <p>
                     <label className='center'>自动退货 </label>
-                    <Field name="isReturns"  component={CheckBoxComponent}/>
+                    <Field name="isAutomaticRefund" component={CheckBoxComponent}/>
 
                 </p>
                 <p>

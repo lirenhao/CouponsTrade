@@ -8,29 +8,29 @@
 
 import React from 'react'
 import {ListItem} from 'react-onsenui'
-import PriseComponent from './Prise'
+import PriceComponent from './Price'
 
 const GoodsInfo = (props)=> {
-    const {goodsTitle, newPrise, description, onClick} = props;
+    const {couponName, sellingPrice, description, onClick} = props;
     return (
         <ListItem modifier='chevron' onClick={onClick}>
             <div className='left'>
-                {goodsTitle}
+                {couponName}
             </div>
 
             <div className='center'>
                 {description}
             </div>
             <div className='right'>
-                <PriseComponent {...{text: "价格", newPrise: newPrise}}/>
+                <PriceComponent {...{text: "价格", price: sellingPrice}}/>
             </div>
         </ListItem>
     )
 };
 
 GoodsInfo.propTypes = {
-    goodsTitle: React.PropTypes.string.isRequired,
-    newPrise: React.PropTypes.number.isRequired,
+    couponName: React.PropTypes.string.isRequired,
+    sellingPrice: React.PropTypes.number.isRequired,
     description: React.PropTypes.string.isRequired,
     onClick: React.PropTypes.func.isRequired
 };

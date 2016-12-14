@@ -7,24 +7,24 @@
  */
 import React from 'react'
 import {List, ListHeader} from 'react-onsenui'
-import ViewCouponDetail from '../../containers/ViewCouponDetail'
 import GoodsInfo from './GoodsInfo'
 
-const SellingGoodsList = ({data, navigator})=> {
-    const onClick = () => navigator.pushPage({
-        comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
-    });
+const SellingGoodsList = ({data, onClickPushPage})=> {
+
+    // const onClick = () => navigator.pushPage({
+    //     comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
+    // });
 
     const renderRow = (row)=> {
         return (
-            <GoodsInfo key={row.goodsTitle} {...row} onClick={onClick}/>
+            <GoodsInfo key={row.couponName} {...row} onClick={onClickPushPage}/>
         )
     };
 
     return (
         <List dataSource={data}
+              renderHeader={() => <ListHeader>优惠券列表</ListHeader>}
               renderRow={renderRow}
-              renderHeader={() => <ListHeader>发布中的商品列表</ListHeader>}
         />
     )
 };
@@ -32,11 +32,11 @@ const SellingGoodsList = ({data, navigator})=> {
 SellingGoodsList.propTypes = {
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
-            goodsTitle: React.PropTypes.string.isRequired,
-            newPrise: React.PropTypes.number.isRequired,
+            couponName: React.PropTypes.string.isRequired,
+            sellingPrice: React.PropTypes.number.isRequired,
             description: React.PropTypes.string.isRequired
         })).isRequired,
-    navigator:React.PropTypes.object.isRequired
+    onClickPushPage:React.PropTypes.func.isRequired
 };
 
 export default SellingGoodsList

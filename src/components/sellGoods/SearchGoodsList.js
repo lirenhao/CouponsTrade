@@ -19,7 +19,7 @@ const SearchGoodsComponent = ({input, placeholder})=> {
 };
 
 const SearchGoodsList = (props)=> {
-    const {handleSubmit, onSubmit, invalid, submitting, navigator, data} = props;
+    const {handleSubmit, onSubmit, invalid, submitting, onClickPushPage, data} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -31,7 +31,7 @@ const SearchGoodsList = (props)=> {
                     <button className="button--quiet" type="submit" disabled={invalid || submitting} >查找</button>
                 </p>
             </section>
-            <SellingGoodsList data={data} navigator={navigator}/>
+            <SellingGoodsList data={data} onClickPushPage={onClickPushPage}/>
         </form>
     )
 };
@@ -40,11 +40,11 @@ SearchGoodsList.propTypes = {
     onSubmit: React.PropTypes.func.isRequired,
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
-            goodsTitle: React.PropTypes.string.isRequired,
-            newPrise: React.PropTypes.number.isRequired,
+            couponName: React.PropTypes.string.isRequired,
+            sellingPrice: React.PropTypes.number.isRequired,
             description: React.PropTypes.string.isRequired
         })).isRequired,
-    navigator:React.PropTypes.object.isRequired
+    onClickPushPage:React.PropTypes.func.isRequired
 };
 
 export default reduxForm({
