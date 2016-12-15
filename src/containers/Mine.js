@@ -63,12 +63,6 @@ class Mine extends React.Component {
                               })}>
                         购买的优惠券
                     </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: PayOrder, props: {key: "payOrder"}
-                              })}>
-                        购买
-                    </ListItem>
                 </List>
             </Page>
         )
