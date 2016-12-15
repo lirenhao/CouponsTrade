@@ -2,125 +2,257 @@
 
 ## 一、state结构的定义
 - state对象包括四个对象：用户信息(包括用户Token、用户基本信息、用户已经够买的优惠券信息、用户已发布过的优惠券信息)、查询优惠券信息
+- 优惠券state的结构定义如下，在下面有该状态的翻译。
 
 ```
 var state={
- 用户信息{
-     用户Token:"111",
-     用户基本信息：{电话号码、邀请人个数、昵称},
-     用户已经够买的优惠券信息：
-      { 
-          查询条件:
+    userInfo:{
+        token:"111",
+        baseInfo:
+        {
+            phone:"",
+            inviteCount:"",
+            nickName:""
+        },
+        buyCouponsTradeInfo:
+        {
+          query:
           {
-             订单状态、名称
-          }
-          分页信息:
-          {
-             总数据条数,
-             当前加载第几页,
-             每次加载多少条,
+              orderState:"",
+              couponsName:""
           },
-          优惠券列表的信息:是一个数组
+          pageInfo:
+          {
+              sumCounts:"",
+              currentPage:"",
+              eachLoadCounts:""
+          },
+          couponsListInfo:
+          [{
+              iD:"",
+              name:"",
+              desc:"",
+              sellingPrice:"",
+              picture:""
+          }],
+          couponsDetailInfo:
+          {
+             iD:"",
+             name:"",
+             areaInfo:"",
+             isAutomaticRefund:"",
+             type:"",
+             modality:"",
+             couponCode:"",
+             sellingPrice:"",
+             originalPrice:"",
+             ticketPrice:"",
+             endDate:"",
+             picture:"",
+             describe:""
+          }
+      },
+
+        用户已发布过的优惠券信息:
+        {
+            query:
+            {
+                orderState:"",
+                couponsName:""
+            },
+            pageInfo:
+            {
+                sumCounts:"",
+                currentPage:"",
+                eachLoadCounts:""
+            },
+            couponsListInfo:
+                [{
+                    iD:"1212232321",
+                    name:"呷哺呷哺",
+                    desc:"该券仅限周三使用，请各位小主们尽快下单吧~~",
+                    sellingPrice:"70",
+                    picture:""
+                }],
+            couponsDetailInfo:
+            {
+                iD:"",
+                name:"呷哺呷哺",
+                areaInfo:"北京",
+                isAutomaticRefund:"是",
+                type:"西餐",
+                modality:"文本",
+                couponCode:"1234567890",
+                sellingPrice:"70",
+                originalPrice:"50",
+                ticketPrice:"100",
+                endDate:"20161215",
+                picture:"",
+                describe:"该券仅限周三使用，请各位小主们尽快下单吧~~"
+            }
+        }
+    },
+
+    查询优惠券:
+    {
+        query:
+        {
+            orderState:"",
+            couponsName:""
+        },
+        pageInfo:
+        {
+            sumCounts:"",
+            currentPage:"",
+            eachLoadCounts:""
+        },
+        couponsListInfo:
+            [{
+                iD:"",
+                name:"",
+                desc:"",
+                sellingPrice:"",
+                picture:""
+            }],
+        couponsDetailInfo:
+        {
+            iD:"",
+            name:"",
+            areaInfo:"",
+            isAutomaticRefund:"",
+            type:"",
+            modality:"",
+            couponCode:"",
+            sellingPrice:"",
+            originalPrice:"",
+            ticketPrice:"",
+            endDate:"",
+            picture:"",
+            describe:""
+        }
+    }
+}
+```
+
+
+```
+var state={
+ 用户信息(userInfo){
+     用户Token(token):"111",
+     用户基本信息(baseInfo)：{电话号码(phone)、邀请人个数(inviteCount)、昵称(nickName)},
+     用户已经够买的优惠券信息(buyCouponsTradeInfo)：
+      { 
+          查询条件(query):
+          {
+             订单状态(orderState)、名称(couponsName)
+          }
+          分页信息(pageInfo):
+          {
+             总数据条数(sumCounts),
+             当前加载第几页(currentPage),
+             每次加载多少条(eachLoadCounts),
+          },
+          优惠券列表的信息(couponsListInfo):是一个数组
           [{
               ID,
-              名称,
-              描述,
-              价格,
-              图片
+              名称(name),
+              描述(desc),
+              卖价(sellingPrice),
+              图片(picture)
           },{},{}],
-          优惠券详细的信息
+          优惠券详细的信息(couponsDetailInfo)
           {
              ID、
-             优惠券标题、
-             区域信息、
-             是否支持优惠券未开启时自动退货、
-             优惠券类别（中餐、西餐）、
-             券码形式选项（图片或文本）、
-             券码（图片或文本）、
-             卖价、
-             原价、
-             券面值、
-             有效期（区间）、
-             图片（与商户相关）、
-             优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
+             优惠券名称(name)、
+             区域信息(areaInfo)、
+             是否支持优惠券未开启时自动退货(isAutomaticRefund)、
+             优惠券类别（中餐、西餐）（type）、
+             券码形式选项（图片或文本）(modality)、
+             券码（图片或文本）（couponCode）、
+             卖价(sellingPrice)、
+             原价(originalPrice)、
+             券面值(ticketPrice)、
+             截止日期(endDate)、
+             图片（与商户相关）(picture)、
+             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）
           }
        },
       
       用户已发布过的优惠券信息：
       { 
-          查询条件:
+          查询条件(query):
           {
-             优惠券状态、名称
+             订单状态(orderState)、名称(couponsName)
           }
-          分页信息:
-          {
-             总数据条数,
-             当前加载第几页,
-             每次加载多少条,
-          },
-          优惠券列表的信息:是一个数组
-          [{
-              ID,
-              名称,
-              描述,
-              价格,
-              图片
-          },{},{}],
-          优惠券详细的信息
-          {
-             ID、
-             优惠券标题、
-             区域信息、
-             是否支持优惠券未开启时自动退货、
-             优惠券类别（中餐、西餐）、
-             券码形式选项（图片或文本）、
-             券码（图片或文本）、
-             卖价、
-             原价、
-             券面值、
-             有效期（区间）、
-             图片（与商户相关）、
-             优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
-          }
-       }
+          分页信息(pageInfo):
+        {
+           总数据条数(sumCounts),
+           当前加载第几页(currentPage),
+           每次加载多少条(eachLoadCounts),
+        },
+        优惠券列表的信息(couponsListInfo):是一个数组
+        [{
+            ID,
+            名称(name),
+            描述(desc),
+            卖价(sellingPrice),
+            图片(picture)
+        },{},{}],
+        优惠券详细的信息(couponsDetailInfo)
+        {
+           ID、
+           优惠券名称(name)、
+           区域信息(areaInfo)、
+           是否支持优惠券未开启时自动退货(isAutomaticRefund)、
+           优惠券类别（中餐、西餐）（type）、
+           券码形式选项（图片或文本）(modality)、
+           券码（图片或文本）（couponCode）、
+           卖价(sellingPrice)、
+           原价(originalPrice)、
+           券面值(ticketPrice)、
+           截止日期(endDate)、
+           图片（与商户相关）(picture)、
+           优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）
+        }
+     }
     },
     
  查询优惠券:
  { 
-    查询条件:
+    查询条件(query):
     {
-       优惠券名称(暂定)
+       优惠券名称（couponsName）(暂定)
     }
-    分页信息:
+    分页信息(pageInfo):
     {
-       总数据条数,
-       当前加载第几页,
-       每次加载多少条,
+       总数据条数(sumCounts),
+       当前加载第几页(currentPage),
+       每次加载多少条(eachLoadCounts),
     },
-    优惠券列表的信息:是一个数组
+    优惠券列表的信息(couponsListInfo):是一个数组
     [{
         ID,
-        名称,
-        描述,
-        价格,
-        图片
+        名称(name),
+        描述(desc),
+        卖价(sellingPrice),
+        图片(picture)
     },{},{}],
-    优惠券详细的信息
+    优惠券详细的信息(couponsDetailInfo)
     {
-            ID、
-            优惠券标题、
-            区域信息、
-            是否支持优惠券未开启时自动退货、
-            优惠券类别（中餐、西餐）、
-            券码形式选项（图片或文本）、
-            券码（图片或文本）、
-            卖价、
-            原价、
-            券面值、
-            有效期（区间）、
-            图片（与商户相关）、
-            优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
-         }
+       ID、
+       优惠券名称(name)、
+       区域信息(areaInfo)、
+       是否支持优惠券未开启时自动退货(isAutomaticRefund)、
+       优惠券类别（中餐、西餐）（type）、
+       券码形式选项（图片或文本）(modality)、
+       券码（图片或文本）（couponCode）、
+       卖价(sellingPrice)、
+       原价(originalPrice)、
+       券面值(ticketPrice)、
+       截止日期(endDate)、
+       图片（与商户相关）(picture)、
+       优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）
+    }
  }
 }
 ```
@@ -144,13 +276,13 @@ var state={
 
 #### 加载平台首页  
 
-- 需要**查询**state中的“查询优惠券”中部分数据（待定）
+- 需要**查询**state中的“查询优惠券”中部分数据（待定加载哪部分数据）
 - 操作的state为
   - state.查询优惠券.查询条件
   - state.查询优惠券.分页信息
   - state.查询优惠券.优惠券列表的信息
 
-#### 查询优惠券
+#### 查询优惠券列表
 
 - 需要**查询**state中的“查询优惠券”中的部分数据（待定）
 - 操作的state为
@@ -160,25 +292,37 @@ var state={
 
 #### 查看优惠券详情
 
-- 需要查询state中的“查询优惠券”中的部分数据
+- 需要**查询**state中的“查询优惠券”中的部分数据
 - 操作的state为
   - state.查询优惠券.优惠券详细的信息.所有信息
 
 #### 购买优惠券
 
-- 需要查询state中的“查询优惠券”中的部分数据
+- 需要**查询**state中的“查询优惠券”中的部分数据、“用户信息”的部分数据
 - 操作的state为
-  - state.查询优惠券.优惠券详细的信息.ID
+  - state.用户信息.用户基本信息.昵称
+  - state.查询优惠券.优惠券详细的信息.标题
+  - state.查询优惠券.优惠券详细的信息.卖价
+  - state.查询优惠券.优惠券详细的信息.商家图片
 
 #### 支付订单
 
+- 需要**查询**state中的"查询优惠券"中的优惠券详细的信息
+
 #### 查看订单
 
-
+- 需要**查询**state中的"用户已经够买的优惠券信息"中的优惠券详细的信息
+- 操作的state为
+  - state.用户已经够买的优惠券信息.查询条件（未支付）
+  - state.用户已经够买的优惠券信息.优惠券详细的信息
 
 ### 发布优惠券
 
-#### 　发布优惠券
+- 描述：“用户发布优惠券”和“发布过的优惠券”需要操作state的地方
+
+#### 发布优惠券
+
+- 
 
 #### 查看已发布优惠券列表
 
@@ -188,6 +332,17 @@ var state={
 
 #### 下架优惠券
 
+
+
+### 个人中心
+
+#### 查看个人信息
+
+#### 编辑个人信息
+
+#### 生成邀请码
+
+#### 重置密码
 
 
 
