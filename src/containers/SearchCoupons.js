@@ -10,7 +10,7 @@
 import React from 'react'
 import SearchGoodsList from '../components/sellGoods/SearchGoodsList'
 import ViewCouponDetail from '../containers/ViewCouponDetail'
-
+import ons from 'onsenui'
 
 const SearchCoupons = (props)=> {
     const {navigator} = props
@@ -21,7 +21,7 @@ const SearchCoupons = (props)=> {
                 {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}
             ]} onClickPushPage={() => navigator.pushPage({
                 comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
-            })} onSubmit={()=>{}}/>
+            })} onSearch={(value)=>{ ons.notification.alert(value)}}/>
     )
 };
 

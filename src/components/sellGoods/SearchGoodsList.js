@@ -12,40 +12,29 @@ import {Field, reduxForm} from 'redux-form'
 import {Button} from 'react-onsenui'
 import SellingGoodsList from './SellingGoodsList'
 
-
-const SearchGoodsComponent = ({input, placeholder})=> {
-    return (
-        <input type="search"  placeholder={placeholder} className="search-input" />
-    )
-};
-
 const SearchGoodsList = (props)=> {
-    const {handleSubmit, onSubmit, invalid, submitting, onClickPushPage, data} = props;
+    const {onSearch, onClickPushPage, data} = props;
     return (
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <div>
             <section style={{textAlign: 'center'}}>
                 <p>
-                    <Field type="text"
-                           name="search-input"
-                           component={SearchGoodsComponent}
-                           placeholder="商品名称"/>
-                    {/*<Button modifier="quiet" onClick={props.submit} disabled={invalid || submitting} >查找</Button>*/}
+                    <input type="search" placeholder="商品名称" className="search-input" onBlur={(e)=>onSearch(e.target.value) }/>
                 </p>
             </section>
             <SellingGoodsList data={data} onClickPushPage={onClickPushPage}/>
-        </form>
+        </div>
     )
 };
 
 SearchGoodsList.propTypes = {
-    onSubmit: React.PropTypes.func.isRequired,
+    onSearch: React.PropTypes.func.isRequired,
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
             couponName: React.PropTypes.string.isRequired,
             sellingPrice: React.PropTypes.number.isRequired,
             description: React.PropTypes.string.isRequired
         })).isRequired,
-    onClickPushPage:React.PropTypes.func.isRequired
+    onClickPushPage: React.PropTypes.func.isRequired
 };
 
 export default reduxForm({
