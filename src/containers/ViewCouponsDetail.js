@@ -9,9 +9,12 @@
 import React from 'react'
 import {Page, Toolbar,BackButton,BottomToolbar,Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
+import PayOrder from './PayOrder'
 
 class ViewCouponsDetail extends React.Component {
+
     render() {
+        // const {navigator} = props;
         return (
             <Page renderToolbar={() => (
                 <Toolbar>
@@ -23,7 +26,9 @@ class ViewCouponsDetail extends React.Component {
             )}  renderBottomToolbar={() => (
                 <BottomToolbar modifier="material">
                     <div>
-                        <Button className="button--large" type="submit">我要买</Button>
+                        <Button className="button--large" type="submit" onClick={() =>this.props.navigator.pushPage({
+                            comp: PayOrder, props: {key: "PayOrder" }
+                        })}>我要买</Button>
                     </div>
                 </BottomToolbar>
             )} >
