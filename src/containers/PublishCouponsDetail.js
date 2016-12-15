@@ -25,7 +25,7 @@ class PublishCouponsDetail extends React.Component {
                     <div className="tab-bar">
                         <div className="tab-bar__item">
                             <button className="tab-bar__button" type="submit"
-                                    onClick={() => this.props.navigator.pushPage({
+                                    onClick={() => this.props.navigator.replacePage({
                                         comp: EditCoupons, props: {key: "EditCoupons"}
                                     })}>编辑
                             </button>
