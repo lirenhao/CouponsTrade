@@ -8,14 +8,14 @@
 
 
 import React from 'react'
-import SearchGoodsList from '../components/sellGoods/SearchGoodsList'
+import SearchCouponList from '../components/sellGoods/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
 import ons from 'onsenui'
 
 const SearchCoupons = (props)=> {
     const {navigator} = props
     return (
-            <SearchGoodsList data={[
+            <SearchCouponList data={[
                 {couponName: "星巴克", sellingPrice: 20, description: "北京所有分店"},
                 {couponName: "肯德基", sellingPrice: 20, description: "北京所有分店"},
                 {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}

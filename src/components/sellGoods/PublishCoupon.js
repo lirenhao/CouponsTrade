@@ -38,7 +38,7 @@ const CheckBoxComponent = ({input}) => {
     )
 };
 
-const PublishGoods = (props)=> {
+const PublishCoupon = (props)=> {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -99,7 +99,7 @@ const PublishGoods = (props)=> {
     )
 };
 
-PublishGoods.propTypes = {
+PublishCoupon.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
 };
 
@@ -124,5 +124,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "PublishGoods", validate
-})(PublishGoods)
+    form: "PublishCoupon", validate
+})(PublishCoupon)

@@ -18,7 +18,6 @@ import Login from './Login'
 import User from './User'
 import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
-import PublishComponDetail from './PublishComponDetail'
 import PayOrder from './PayOrder'
 import OrderList from './OrderList'
 
@@ -60,8 +59,7 @@ class Mine extends React.Component {
                     </ListItem>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
-                                  comp: PublishComponDetail,
-                                  props: {key: "PublishComponDetail"}
+                                  comp: OrderList, props: {key: "OrderList"}
                               })}>
                         购买的优惠券
                     </ListItem>
@@ -70,12 +68,6 @@ class Mine extends React.Component {
                                   comp: PayOrder, props: {key: "payOrder"}
                               })}>
                         购买
-                    </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: OrderList, props: {key: "OrderList"}
-                              })}>
-                        查看订单
                     </ListItem>
                 </List>
             </Page>

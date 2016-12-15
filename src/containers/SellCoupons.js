@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Page,Toolbar,BackButton} from 'react-onsenui'
-import SellingGoodsList from '../components/sellGoods/SellingGoodsList'
+import SellingCouponList from '../components/sellGoods/SellingCouponList'
 import PublishCouponsDetail from './PublishCouponsDetail'
 
 const SellingCoupons = (props)=> {
@@ -21,7 +21,7 @@ const SellingCoupons = (props)=> {
                 <div className='center'>发布的优惠券</div>
             </Toolbar>
         )}>
-            <SellingGoodsList data={
+            <SellingCouponList data={
                 [
                     {couponName: "星巴克", sellingPrice: 20, description: "北京所有分店"},
                     {couponName: "肯德基", sellingPrice: 20, description: "北京所有分店"},

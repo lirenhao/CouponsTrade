@@ -10,7 +10,7 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Button} from 'react-onsenui'
-import SellingGoodsList from './SellingGoodsList'
+import SellingCouponList from './SellingCouponList'
 
 const SearchGoodsList = (props)=> {
     const {onSearch, onClickPushPage, data} = props;
@@ -21,7 +21,7 @@ const SearchGoodsList = (props)=> {
                     <input type="search" placeholder="商品名称" className="search-input" onBlur={(e)=>onSearch(e.target.value) }/>
                 </p>
             </section>
-            <SellingGoodsList data={data} onClickPushPage={onClickPushPage}/>
+            <SellingCouponList data={data} onClickPushPage={onClickPushPage}/>
         </div>
     )
 };

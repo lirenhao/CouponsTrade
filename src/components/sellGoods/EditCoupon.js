@@ -8,21 +8,21 @@
 
 
 import React from 'react'
-import PublishGoods from './PublishGoods'
+import PublishCoupon from './PublishCoupon'
 
 
-const EditGoods = (props)=> {
-    const {onSubmit, goodsInfo} = props;
+const EditCoupon = (props)=> {
+    const {onSubmit, couponInfo} = props;
     return (
         <div>
-            <PublishGoods onSubmit={onSubmit}
-                          initialValues={goodsInfo}/>
+            <PublishCoupon onSubmit={onSubmit}
+                          initialValues={couponInfo}/>
         </div>
     )
 };
 
-EditGoods.propTypes = {
-    goodsInfo: React.PropTypes.shape({
+EditCoupon.propTypes = {
+    couponInfo: React.PropTypes.shape({
         couponName: React.PropTypes.string.isRequired,
         couponCode:React.PropTypes.string.isRequired,
         originalPrice:React.PropTypes.string.isRequired,
@@ -36,7 +36,7 @@ EditGoods.propTypes = {
 };
 
 
-export default EditGoods
+export default EditCoupon
 
 
 

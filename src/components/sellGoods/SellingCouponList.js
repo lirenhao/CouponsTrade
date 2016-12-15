@@ -7,13 +7,13 @@
  */
 import React from 'react'
 import {List, ListHeader} from 'react-onsenui'
-import GoodsInfo from './GoodsInfo'
+import CouponInfo from './CouponInfo'
 
-const SellingGoodsList = ({data, onClickPushPage})=> {
+const SellingCouponList = ({data, onClickPushPage})=> {
 
     const renderRow = (row)=> {
         return (
-            <GoodsInfo key={row.couponName} {...row} onClick={onClickPushPage}/>
+            <CouponInfo key={row.couponName} {...row} onClick={onClickPushPage}/>
         )
     };
 
@@ -25,7 +25,7 @@ const SellingGoodsList = ({data, onClickPushPage})=> {
     )
 };
 
-SellingGoodsList.propTypes = {
+SellingCouponList.propTypes = {
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
             couponName: React.PropTypes.string.isRequired,
@@ -35,5 +35,5 @@ SellingGoodsList.propTypes = {
     onClickPushPage: React.PropTypes.func.isRequired
 };
 
-export default SellingGoodsList
+export default SellingCouponList
 

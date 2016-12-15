@@ -10,7 +10,7 @@ import React from 'react'
 import {ListItem} from 'react-onsenui'
 import PriceComponent from './Price'
 
-const GoodsInfo = (props)=> {
+const CouponInfo = (props)=> {
     const {couponName, sellingPrice, description, onClick} = props;
     return (
         <ListItem modifier='chevron' onClick={onClick}>
@@ -28,11 +28,11 @@ const GoodsInfo = (props)=> {
     )
 };
 
-GoodsInfo.propTypes = {
+CouponInfo.propTypes = {
     couponName: React.PropTypes.string.isRequired,
     sellingPrice: React.PropTypes.number.isRequired,
     description: React.PropTypes.string.isRequired,
     onClick: React.PropTypes.func.isRequired
 };
 
-export default GoodsInfo
+export default CouponInfo
