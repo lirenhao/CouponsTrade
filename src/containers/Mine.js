@@ -16,7 +16,7 @@ import {
 } from 'react-onsenui'
 import Login from './Login'
 import User from './User'
-import ResetPassword from './ResetPassword'
+import ResetPassword from './InputOldPassword'
 import SellingCoupons from './SellCoupons'
 import PayOrder from './PayOrder'
 import OrderList from './OrderList'

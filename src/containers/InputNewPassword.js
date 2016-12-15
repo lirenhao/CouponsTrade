@@ -1,38 +1,33 @@
 /**
  * Author：likon
- * Create Date：2016/12/12
+ * Create Date：2016/12/15
  * Modified By：likon
  * Why & What is modified  <修改原因描述>
- * 重置密码容器
- */ 
+ * 新密码容器
+ */
 import React from 'react'
 import {Page,Toolbar,BackButton} from 'react-onsenui'
-import Oldpassword from '../components/OldPassword'
 import Newpassword from '../components/NewPassword'
 
-class ResetPassword extends React.Component{
+class InputNewPassword extends React.Component{
     resetToolbar(){
         return (
             <Toolbar>
                 <div className="left">
                     <BackButton/>
                 </div>
-                <div className='center'>重置密码</div>
+                <div className='center'>新密码</div>
             </Toolbar>
         )
     }
     render(){
         return(
             <Page renderToolbar={this.resetToolbar.bind(this)}>
-                <Oldpassword onSubmit={(value)=>this.props.navigator.popPage()} />
+                <Newpassword onSubmit={(value)=>this.props.navigator.popPage()} />
             </Page>
         )
     }
 
 }
 
-export default ResetPassword
-
-
-
-
+export default InputNewPassword
