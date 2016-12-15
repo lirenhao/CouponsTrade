@@ -39,7 +39,15 @@ const CheckBoxComponent = ({input}) => {
 };
 
 const PublishCoupon = (props)=> {
-    const {handleSubmit, onSubmit, invalid, submitting} = props;
+    const {handleSubmit, onSubmit, invalid, submitting, flag} = props;
+    const one = () =>
+    {
+        if (flag === "1") {
+            return <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
+        } else {
+            return <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>确认提交</Button>
+        }
+    }
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -92,7 +100,8 @@ const PublishCoupon = (props)=> {
                         placeholder="描述"/>
                 </p>
                 <p>
-                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
+                    {one()}
+                    {console.log(onSubmit)}
                 </p>
             </section>
         </form>

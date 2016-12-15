@@ -12,10 +12,10 @@ import PublishCoupon from './PublishCoupon'
 
 
 const EditCoupon = (props)=> {
-    const {onSubmit, couponInfo} = props;
+    const {onSubmit, couponInfo,flag } = props;
     return (
         <div>
-            <PublishCoupon onSubmit={onSubmit}
+            <PublishCoupon onSubmit={onSubmit} flag={flag}
                           initialValues={couponInfo}/>
         </div>
     )

@@ -24,18 +24,18 @@ const OrderResult = ({res, navigator}) => {
     if (res === 0) {
         return (
             <Page renderToolbar={renderToolbar}>
-                <div>
+                <section style={{marginTop: "60px", width: "100%", textAlign: "center"}}>
                     支付失败，请返回重新支付！
-                </div>
+                </section>
             </Page>
         )
     } else {
         return (
             <Page renderToolbar={renderToolbar}>
-                <div>
-                    支付成功，点击按钮查看订单
-                </div>
-                <Button onClick={handleClick}>查看订单</Button>
+                <section style={{marginTop: "60px", width: "100%", textAlign: "center"}}>
+                    <p>支付成功，点击按钮查看订单</p>
+                    <Button onClick={handleClick}>查看订单</Button>
+                </section>
             </Page>
         )
     }
