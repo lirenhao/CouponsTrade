@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {Page,List,ListItem} from 'react-onsenui'
+import {List,ListItem} from 'react-onsenui'
 
 const styles={
     sellingPrice:{
@@ -22,14 +22,17 @@ const styles={
     content:{
         margin: '20px 0 0px 0'
     }
-}
+};
 
 const CouponDetail=(props)=>{
-    const {DetailInformation}=props
+    const {DetailInformation}=props;
     return (
         <div>
             <List>
                 <ListItem>
+                    <div className="left">
+                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
+                    </div>
                     <div className="center">
                         <div className="list__item__title">{DetailInformation.nickname}</div>
                         <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
@@ -79,7 +82,7 @@ const CouponDetail=(props)=>{
             </div>
         </div>
     )
-}
+};
 
 CouponDetail.propTypes={
     DetailInformation:React.PropTypes.shape({
@@ -95,7 +98,7 @@ CouponDetail.propTypes={
         //merchantPicture:React.PropTypes.string.isRequired,
         describe:React.PropTypes.string.isRequired
     }).isRequired
-}
+};
 
 export default CouponDetail
 
