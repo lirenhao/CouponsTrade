@@ -6,7 +6,7 @@
  * 发布优惠券列表中查看优惠券详情容器
  */
 import React from 'react'
-import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton, Button, BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
 
@@ -21,6 +21,22 @@ class PublishCouponsDetail extends React.Component {
 
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
+            )} renderBottomToolbar={() => (
+                    <div className="tab-bar">
+                        <div className="tab-bar__item">
+                            <button className="tab-bar__button" type="submit"
+                                    onClick={() => this.props.navigator.pushPage({
+                                        comp: EditCoupons, props: {key: "EditCoupons"}
+                                    })}>编辑
+                            </button>
+                        </div>
+                        <div className="tab-bar__item">
+                            <button className="tab-bar__button" type="submit"
+                                    onClick={() => this.props.navigator.popPage()
+                                    }>下架
+                            </button>
+                        </div>
+                    </div>
             )}>
                 <CouponDetail
                     DetailInformation={{
@@ -37,11 +53,11 @@ class PublishCouponsDetail extends React.Component {
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
                 </CouponDetail>
-                <Button className="button--large" type="submit" onClick={() => this.props.navigator.pushPage({
-                    comp: EditCoupons, props: {key: "EditCoupons"}
-                })}>编辑</Button>
-                <Button className="button--large" type="submit"
-                        onClick={() => this.props.navigator.popPage()}>下架</Button>
+                {/*<Button className="button--large" type="submit" onClick={() => this.props.navigator.pushPage({
+                 comp: EditCoupons, props: {key: "EditCoupons"}
+                 })}>编辑</Button>
+                 <Button className="button--large" type="submit"
+                 onClick={() => this.props.navigator.popPage()}>下架</Button>*/}
             </Page>
         )
     }
