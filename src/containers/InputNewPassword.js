@@ -8,6 +8,7 @@
 import React from 'react'
 import {Page,Toolbar,BackButton} from 'react-onsenui'
 import NewPassword from '../components/NewPassword'
+import Main from './Mine'
 
 class InputNewPassword extends React.Component{
     resetToolbar(){
@@ -23,7 +24,9 @@ class InputNewPassword extends React.Component{
     render(){
         return(
             <Page renderToolbar={this.resetToolbar.bind(this)}>
-                <NewPassword onSubmit={(value)=>this.props.navigator.popPage()} />
+                <NewPassword onSubmit={() =>this.props.navigator.pushPage({
+                    comp: Main, props: {key: "Main" }
+                })} />
             </Page>
         )
     }
