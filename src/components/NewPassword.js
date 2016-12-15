@@ -9,7 +9,7 @@ import React from 'react'
 import {Field,reduxForm} from 'redux-form'
 import {Input} from 'react-onsenui'
 
-const NewpasswordField = ({input, type, placeholder}) => {
+const newPasswordField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
                type={type}
@@ -17,23 +17,23 @@ const NewpasswordField = ({input, type, placeholder}) => {
                modifier='underbar'
                float/>
     )
-}
+};
 
 const NewPassword = (props) => {
-    const {handleSubmit, onSubmit, invalid, submitting} = props
+    const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
                 <p>
                     <Field type="text"
                            name="newPassword"
-                           component={NewpasswordField}
+                           component={newPasswordField}
                            placeholder="请输入新密码"/>
                 </p>
                 <p>
                     <Field type="text"
                            name="renewPassword"
-                           component={NewpasswordField}
+                           component={newPasswordField}
                            placeholder="请再次输入新密码"/>
                 </p>
                 <p>
@@ -42,21 +42,21 @@ const NewPassword = (props) => {
             </section>
         </form>
     )
-}
+};
 
 NewPassword.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
-}
+};
 
 const validate = (value) => {
-    const errors = {}
+    const errors = {};
     if (!value.newPassword) {
         errors.newPassword = 'Required'
     }
     if (!value.renewPassword) {
         errors.renewPassword = 'Required'
     }
-    if(value.newPassword!=!value.renewPassword){
+    if(value.newPassword!=value.renewPassword){
         errors.renewPassword = '两次输入的密码不一致'
     }
     return errors
