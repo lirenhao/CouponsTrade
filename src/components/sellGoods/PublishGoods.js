@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input,Button, Switch} from 'react-onsenui'
+import {Input, Button, Switch} from 'react-onsenui'
 
 
 const InputComponent = ({input, type, placeholder}) => {
@@ -40,8 +40,6 @@ const CheckBoxComponent = ({input}) => {
 
 const PublishGoods = (props)=> {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
-    console.log(invalid);
-    console.log(submitting);
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -94,7 +92,7 @@ const PublishGoods = (props)=> {
                         placeholder="描述"/>
                 </p>
                 <p>
-                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit} >确认发布</Button>
+                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
                 </p>
             </section>
         </form>
@@ -126,5 +124,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "PublishGoods",validate
+    form: "PublishGoods", validate
 })(PublishGoods)
