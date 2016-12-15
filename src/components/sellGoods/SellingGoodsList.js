@@ -11,10 +11,6 @@ import GoodsInfo from './GoodsInfo'
 
 const SellingGoodsList = ({data, onClickPushPage})=> {
 
-    // const onClick = () => navigator.pushPage({
-    //     comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
-    // });
-
     const renderRow = (row)=> {
         return (
             <GoodsInfo key={row.couponName} {...row} onClick={onClickPushPage}/>
@@ -36,7 +32,7 @@ SellingGoodsList.propTypes = {
             sellingPrice: React.PropTypes.number.isRequired,
             description: React.PropTypes.string.isRequired
         })).isRequired,
-    onClickPushPage:React.PropTypes.func.isRequired
+    onClickPushPage: React.PropTypes.func.isRequired
 };
 
 export default SellingGoodsList
