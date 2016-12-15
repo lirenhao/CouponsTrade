@@ -10,7 +10,7 @@ import React from 'react'
 import {Page, Toolbar,BackButton,BottomToolbar,Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 
-class ViewCouponDetail extends React.Component {
+class ViewCouponsDetail extends React.Component {
     render() {
         return (
             <Page renderToolbar={() => (
@@ -47,4 +47,4 @@ class ViewCouponDetail extends React.Component {
     }
 }
 
-export default  ViewCouponDetail
+export default  ViewCouponsDetail
