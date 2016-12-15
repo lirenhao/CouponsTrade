@@ -9,7 +9,7 @@ import React from 'react'
 import {Page, Toolbar, BackButton,SpeedDial,Fab,Icon,SpeedDialItem} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 
-class ViewCouponDetail extends React.Component {
+class PublishComponDetail extends React.Component {
     render() {
         return (
             <Page renderToolbar={() => (
@@ -54,4 +54,4 @@ class ViewCouponDetail extends React.Component {
     }
 }
 
-export default  ViewCouponDetail
+export default  PublishComponDetail
