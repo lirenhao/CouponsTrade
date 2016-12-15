@@ -62,8 +62,8 @@ const Payment_form = (props) => {
                 renderRow={renderRadioRow}
             />
             <ItemInfo item={props.item} price={props.price}/>
-            <label>留言</label>
-            <Field name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
+            <label htmlFor="content"><ListHeader>留言</ListHeader></label>
+            <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
             <div style={{
                 position: "absolute", bottom: "0", width: "100%",
                 lineHeight: "40px", overflow: "hidden"
