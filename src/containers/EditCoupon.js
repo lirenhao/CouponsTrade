@@ -14,7 +14,7 @@ import ons from 'onsenui'
 
 
 const EditCoupons = ()=> {
-    const handleClick1 = () => {
+    const handleEditClick = () => {
         console.log("2")
             ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
                 res => {
@@ -37,7 +37,7 @@ const EditCoupons = ()=> {
         )}>
             <EditCoupon couponInfo={
                 {couponName: "星巴克",couponCode:"11111111",originalPrice:"50", sellingPrice: "60", TicketPrice:"70",effectiveDate:"2016-12-10",isAutomaticRefund:true,description: "北京所有分店" }}
-                        onSubmit={ handleClick1} flag="0"/>
+                        onSubmit={ handleEditClick} flag="0"/>
         </Page>
     )
 }
