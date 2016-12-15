@@ -6,7 +6,7 @@
  * 发布优惠券列表中查看优惠券详情容器
  */
 import React from 'react'
-import {Page, Toolbar, BackButton,SpeedDial,Fab,Icon,SpeedDialItem} from 'react-onsenui'
+import {Page, Toolbar, BackButton,Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import SellCoupons from './SellCoupons'
 import EditCoupons from './EditCoupon'
@@ -37,24 +37,13 @@ class PublishCouponsDetail extends React.Component {
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
-                        <SpeedDial position='bottom right'>
-                            <Fab>
-                                <Icon icon='md-menu'/>
-                            </Fab>
-                            <SpeedDialItem onClick=
-                                               {() => this.props.navigator.pushPage({
-                                                   comp: SellCoupons, props: {key: "SellCoupons"}
-                                               })}>
-                                <Icon icon='md-share'/>
-                            </SpeedDialItem>
-                            <SpeedDialItem onClick=
-                                           {() => this.props.navigator.pushPage({
-                                               comp: EditCoupons, props: {key: "EditCoupons"}
-                                           })}>
-                                <Icon icon='md-edit'/>
-                            </SpeedDialItem>
-                        </SpeedDial>
                     </CouponDetail>
+                    <Button className="button--large" type="submit" onClick={() => this.props.navigator.pushPage({
+                        comp: EditCoupons, props: {key: "EditCoupons"}
+                    })}>编辑</Button>
+                    <Button className="button--large" type="submit" onClick={() => this.props.navigator.pushPage({
+                        comp: SellCoupons, props: {key: "SellCoupons"}
+                    })}>下架</Button>
             </Page>
         )
     }
