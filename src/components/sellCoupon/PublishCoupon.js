@@ -74,7 +74,7 @@ const PublishCoupon = (props)=> {
                            placeholder="券面价"/>
                 </p>
                 <p>
-                    <Field type="number"
+                    <Field type="date"
                            name="effectiveDate"
                            component={InputComponent}
                            placeholder="有效期截至日"/>
