@@ -28,7 +28,7 @@ const SellingCoupons = (props)=> {
                     {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}
                 ]
             } onClickPushPage={ () => navigator.pushPage({
-                comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}
+                comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"+ Math.random()}
             })}/>
         </Page>
     )

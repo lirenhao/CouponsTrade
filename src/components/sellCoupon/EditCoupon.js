@@ -5,18 +5,16 @@
  * Why & What is modified  <修改原因描述>
  * 编辑商品组建
  */
-
-
 import React from 'react'
-import PublishCoupon from './PublishCoupon'
+import EditCouponForm from  './EditCouponForm'
 
 
 const EditCoupon = (props)=> {
-    const {onSubmit, couponInfo,flag } = props;
+    const {onSubmit, couponInfo } = props;
     return (
         <div>
-            <PublishCoupon onSubmit={onSubmit} flag={flag}
-                          initialValues={couponInfo}/>
+            <EditCouponForm onSubmit={onSubmit}
+                            initialValues={couponInfo}/>
         </div>
     )
 };
@@ -37,6 +35,7 @@ EditCoupon.propTypes = {
 
 
 export default EditCoupon
+
 
 
 

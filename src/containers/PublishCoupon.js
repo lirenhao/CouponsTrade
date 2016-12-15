@@ -14,7 +14,6 @@ import ons from 'onsenui'
 const PublishCoupons = (props)=> {
     const {navigator} = props;
     const handleClick = () => {
-        console.log("1")
         ons.notification.confirm("是否确认发布", {title: "说明", buttonLabels: ["否", "是"]}).then(
             res => {
                 if (res === 1) {
@@ -27,7 +26,7 @@ const PublishCoupons = (props)=> {
     }
 
     return (
-        <PublishCoupon onSubmit={handleClick} flag="1"/>
+        <PublishCoupon onSubmit={handleClick}/>
     )
 }
 
