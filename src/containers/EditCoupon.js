@@ -19,9 +19,7 @@ const EditCoupons = (props)=> {
             ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
                 res => {
                     if (res === 1) {
-                        navigator.pushPage({
-                            comp: SellingCoupons, props: {key: "Edit_SellingCoupons"}
-                        })
+                        navigator.popPage()
                     }
                 }
             )
