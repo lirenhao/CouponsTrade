@@ -8,6 +8,10 @@ import ItemInfo from './ItemInfo'
 import ons from 'onsenui'
 import OrderResult from './OrderResult'
 
+const defaultValue = {
+    payment: "微信"
+};
+
 const MyRadio = ({input, row}) => {
     return (
         <Input
@@ -34,7 +38,7 @@ const renderRadioRow = (row) => {
 };
 
 const Payment_form = (props) => {
-    const {handleSubmit} = props;
+    const {handleSubmit, load} = props;
     const handleClick = () => {
         ons.notification.confirm("模拟支付结果", {title: "说明", buttonLabels: ["失败", "成功"]}).then(
             res => {
@@ -73,5 +77,6 @@ const Payment_form = (props) => {
 };
 
 export default reduxForm({
-    form: 'payment'
+    form: 'payment',
+    initialValues: defaultValue
 })(Payment_form)
