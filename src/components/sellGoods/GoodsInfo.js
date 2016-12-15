@@ -15,11 +15,11 @@ const GoodsInfo = (props)=> {
     return (
         <ListItem modifier='chevron' onClick={onClick}>
             <div className='left'>
-                {couponName}
+                <img className="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"/>
             </div>
-
             <div className='center'>
-                {description}
+                <div className="list__item__title">{couponName}</div>
+                <div className="list__item__subtitle">{description}</div>
             </div>
             <div className='right'>
                 <PriceComponent {...{text: "价格", price: sellingPrice}}/>
