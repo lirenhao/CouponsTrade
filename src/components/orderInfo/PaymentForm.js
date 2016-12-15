@@ -3,10 +3,35 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {List, ListItem, ListHeader, Button} from 'react-onsenui'
+import {List, ListItem, ListHeader, Button, Input} from 'react-onsenui'
 import ItemInfo from './ItemInfo'
 import ons from 'onsenui'
 import OrderResult from './OrderResult'
+
+const MyRadio = ({input, row}) => {
+    return (
+        <Input
+            inputId={`radio-${row}`}
+            checked={row === input.value}
+            onChange={(e) => {
+                input.onChange(e.target.value = row)
+            }}
+            type="radio"/>
+    )
+};
+
+const renderRadioRow = (row) => {
+    return (
+        <ListItem key={row} tappable>
+            <label className='right'>
+                <Field name="payment" component={MyRadio} row={row}/>
+            </label>
+            <label htmlFor={`radio-${row}`} className='center'>
+                {row}
+            </label>
+        </ListItem>
+    )
+};
 
 const Payment_form = (props) => {
     const {handleSubmit} = props;
@@ -27,15 +52,11 @@ const Payment_form = (props) => {
     };
     return (
         <form onSubmit={handleSubmit}>
-            <List>
-                <ListHeader>支付方式</ListHeader>
-                <ListItem>
-                    <label><Field name="payment" component="input" type="radio" value="微信"/> 微信</label>
-                </ListItem>
-                <ListItem>
-                    <label><Field name="payment" component="input" type="radio" value="支付宝"/> 支付宝</label>
-                </ListItem>
-            </List>
+            <List
+                dataSource={["微信", "支付宝"]}
+                renderHeader={() => <ListHeader>支付方式</ListHeader>}
+                renderRow={renderRadioRow}
+            />
             <ItemInfo item={props.item} price={props.price}/>
             <label>留言</label>
             <Field name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
