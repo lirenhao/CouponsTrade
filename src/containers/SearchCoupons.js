@@ -9,7 +9,7 @@
 
 import React from 'react'
 import SearchGoodsList from '../components/sellGoods/SearchGoodsList'
-import ViewCouponDetail from '../containers/ViewCouponDetail'
+import ViewCouponsDetail from '../containers/ViewCouponsDetail'
 import ons from 'onsenui'
 
 const SearchCoupons = (props)=> {
@@ -20,7 +20,7 @@ const SearchCoupons = (props)=> {
                 {couponName: "肯德基", sellingPrice: 20, description: "北京所有分店"},
                 {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}
             ]} onClickPushPage={() => navigator.pushPage({
-                comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
+                comp: ViewCouponsDetail, props: {key: "ViewCouponsDetail"}
             })} onSearch={(value)=>{ ons.notification.alert(value)}}/>
     )
 };

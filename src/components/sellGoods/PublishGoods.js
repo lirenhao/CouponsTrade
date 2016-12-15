@@ -56,25 +56,25 @@ const PublishGoods = (props)=> {
                            placeholder="商品码"/>
                 </p>
                 <p>
-                    <Field type="text"
+                    <Field type="number"
                            name="originalPrice"
                            component={InputComponent}
                            placeholder="原价"/>
                 </p>
                 <p>
-                    <Field type="text"
+                    <Field type="number"
                            name="sellingPrice"
                            component={InputComponent}
                            placeholder="售卖价"/>
                 </p>
                 <p>
-                    <Field type="text"
+                    <Field type="number"
                            name="TicketPrice"
                            component={InputComponent}
                            placeholder="券面价"/>
                 </p>
                 <p>
-                    <Field type="text"
+                    <Field type="number"
                            name="effectiveDate"
                            component={InputComponent}
                            placeholder="有效期截至日"/>

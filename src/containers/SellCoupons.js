@@ -8,7 +8,7 @@
 import React from 'react'
 import {Page,Toolbar,BackButton} from 'react-onsenui'
 import SellingGoodsList from '../components/sellGoods/SellingGoodsList'
-import ViewCouponDetail from '../containers/ViewCouponDetail'
+import PublishCouponsDetail from './PublishCouponsDetail'
 
 const SellingCoupons = (props)=> {
     const {data, navigator} = props;
@@ -28,7 +28,7 @@ const SellingCoupons = (props)=> {
                     {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}
                 ]
             } onClickPushPage={ () => navigator.pushPage({
-                comp: ViewCouponDetail, props: {key: "ViewCouponDetail"}
+                comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}
             })}/>
         </Page>
     )
