@@ -3,7 +3,7 @@
  * Create Date：2016/12/13
  * Modified By：Yky
  * Why & What is modified  <修改原因描述>
- * 展示买方信息的组件
+ * 展示卖家信息的组件
  */
 import React, {PropTypes} from 'react'
 import {List, ListItem, ListHeader} from 'react-onsenui'

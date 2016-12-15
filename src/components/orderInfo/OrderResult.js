@@ -1,5 +1,9 @@
 /**
- * Created by ALIENWARE17 on 2016/12/14.
+ * Author：Yky
+ * Create Date：2016/12/14
+ * Modified By：Yky
+ * Why & What is modified  <修改原因描述>
+ * 展示支付结果的组件
  */
 import React from 'react'
 import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
@@ -11,12 +15,19 @@ const OrderResult = ({res, navigator}) => {
             comp: OrderList, props: {key: "OrderList"}
         })
     };
+
+    const haveBack = () => {
+        return (
+            <div className='left'>
+                <BackButton>返回</BackButton>
+            </div>
+        )
+    };
+
     const renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'>
-                    <BackButton>返回</BackButton>
-                </div>
+                {haveBack()}
                 <div className="center">{res === 0 ? "支付失败" : "支付成功"}</div>
             </Toolbar>
         )

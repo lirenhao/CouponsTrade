@@ -1,5 +1,9 @@
 /**
- * Created by ALIENWARE17 on 2016/12/14.
+ * Author：Yky
+ * Create Date：2016/12/14
+ * Modified By：Yky
+ * Why & What is modified  <修改原因描述>
+ * 创建支付信息表单的组件
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
@@ -47,7 +51,7 @@ const Payment_form = (props) => {
                         comp: OrderResult, props: {key: "OrderResult", res: 0}
                     })
                 } else {
-                    props.navigator.pushPage({
+                    props.navigator.replacePage({
                         comp: OrderResult, props: {key: "OrderResultSuccess", res: 1, navigator: props.navigator}
                     })
                 }
