@@ -8,6 +8,8 @@
 import React from 'react'
 import {Page, Toolbar, BackButton,SpeedDial,Fab,Icon,SpeedDialItem} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
+import SellCoupons from './SellCoupons'
+import EditCoupons from './EditCoupon'
 
 class PublishCouponsDetail extends React.Component {
     render() {
@@ -40,11 +42,15 @@ class PublishCouponsDetail extends React.Component {
                                 <Icon icon='md-menu'/>
                             </Fab>
                             <SpeedDialItem onClick=
-                                               {() => {}}>
+                                               {() => this.props.navigator.pushPage({
+                                                   comp: SellCoupons, props: {key: "SellCoupons"}
+                                               })}>
                                 <Icon icon='md-share'/>
                             </SpeedDialItem>
                             <SpeedDialItem onClick=
-                                           {() => {}}>
+                                           {() => this.props.navigator.pushPage({
+                                               comp: EditCoupons, props: {key: "EditCoupons"}
+                                           })}>
                                 <Icon icon='md-edit'/>
                             </SpeedDialItem>
                         </SpeedDial>
