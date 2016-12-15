@@ -6,12 +6,23 @@
  * 新密码容器
  */
 import React from 'react'
-import {Page,Toolbar,BackButton} from 'react-onsenui'
+import {Page, Toolbar, BackButton} from 'react-onsenui'
 import NewPassword from '../components/NewPassword'
-import Main from './Mine'
+import ons from 'onsenui'
 
-class InputNewPassword extends React.Component{
-    resetToolbar(){
+class InputNewPassword extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleSubmit = this::this.handleSubmit;
+    }
+
+    handleSubmit() {
+        ons.notification.alert("修改密码成功", {title: "通知"}).then(v => {
+            this.props.navigator.popPage()
+        })
+    }
+
+    resetToolbar() {
         return (
             <Toolbar>
                 <div className="left">
@@ -21,12 +32,11 @@ class InputNewPassword extends React.Component{
             </Toolbar>
         )
     }
-    render(){
-        return(
+
+    render() {
+        return (
             <Page renderToolbar={this.resetToolbar.bind(this)}>
-                <NewPassword onSubmit={() =>this.props.navigator.pushPage({
-                    comp: Main, props: {key: "Main" }
-                })} />
+                <NewPassword onSubmit={this.handleSubmit}/>
             </Page>
         )
     }

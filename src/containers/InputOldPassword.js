@@ -24,7 +24,7 @@ class InputOldPassword extends React.Component{
     render(){
         return(
             <Page renderToolbar={this.resetToolbar.bind(this)}>
-                <OldPassword onSubmit={() =>this.props.navigator.pushPage({
+                <OldPassword onSubmit={() =>this.props.navigator.replacePage({
                     comp: InputNewPassword, props: {key: "InputNewPassword" }
                 })} />
             </Page>
