@@ -13,14 +13,14 @@ import {Page,Toolbar,BackButton} from 'react-onsenui'
 import ons from 'onsenui'
 
 
-const EditCoupons = ()=> {
+const EditCoupons = (props)=> {
+     const {navigator} = props;
     const handleEditClick = () => {
-        console.log("2")
             ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
                 res => {
                     if (res === 1) {
-                        navigator.popPage({
-                            comp: SellingCoupons, props: {key: "SellingCoupons" + Math.random()}
+                        navigator.pushPage({
+                            comp: SellingCoupons, props: {key: "Edit_SellingCoupons"}
                         })
                     }
                 }
@@ -37,7 +37,7 @@ const EditCoupons = ()=> {
         )}>
             <EditCoupon couponInfo={
                 {couponName: "星巴克",couponCode:"11111111",originalPrice:"50", sellingPrice: "60", TicketPrice:"70",effectiveDate:"2016-12-10",isAutomaticRefund:true,description: "北京所有分店" }}
-                        onSubmit={ handleEditClick} flag="0"/>
+                        onSubmit={ handleEditClick}/>
         </Page>
     )
 }
