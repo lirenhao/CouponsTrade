@@ -8,7 +8,7 @@
 
 
 import React from 'react'
-import SearchCouponList from '../components/sellGoods/SearchCouponList'
+import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
 import ons from 'onsenui'
 

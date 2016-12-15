@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import PublishGoods from '../components/sellGoods/PublishCoupon'
+import PublishGoods from '../components/sellCoupon/PublishCoupon'
 import SellingCoupons from './SellCoupons'
 import ons from 'onsenui'
 

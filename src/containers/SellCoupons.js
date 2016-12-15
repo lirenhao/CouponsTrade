@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Page,Toolbar,BackButton} from 'react-onsenui'
-import SellingCouponList from '../components/sellGoods/SellingCouponList'
+import SellingCouponList from '../components/sellCoupon/SellingCouponList'
 import PublishCouponsDetail from './PublishCouponsDetail'
 
 const SellingCoupons = (props)=> {
