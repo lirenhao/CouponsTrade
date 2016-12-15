@@ -10,7 +10,7 @@ import React from 'react'
 import {Field,reduxForm} from 'redux-form'
 import {Input} from 'react-onsenui'
 
-const oldpasswordField = ({input, type, placeholder}) => {
+const oldPasswordField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
                type={type}
@@ -28,7 +28,7 @@ const OldPassword = (props) => {
                 <p>
                     <Field type="text"
                            name="oldPassword"
-                           component={oldpasswordField}
+                           component={oldPasswordField}
                            placeholder="请输入原密码"/>
                 </p>
                 <p>
