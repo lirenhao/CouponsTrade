@@ -40,7 +40,8 @@ const CheckBoxComponent = ({input}) => {
 
 const PublishGoods = (props)=> {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
-
+    console.log(invalid);
+    console.log(submitting);
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section style={{textAlign: 'center'}}>
@@ -57,25 +58,25 @@ const PublishGoods = (props)=> {
                            placeholder="商品码"/>
                 </p>
                 <p>
-                    <Field type="number"
+                    <Field type="text"
                            name="originalPrice"
                            component={InputComponent}
                            placeholder="原价"/>
                 </p>
                 <p>
-                    <Field type="number"
+                    <Field type="text"
                            name="sellingPrice"
                            component={InputComponent}
                            placeholder="售卖价"/>
                 </p>
                 <p>
-                    <Field type="number"
+                    <Field type="text"
                            name="TicketPrice"
                            component={InputComponent}
                            placeholder="券面价"/>
                 </p>
                 <p>
-                    <Field type="number"
+                    <Field type="text"
                            name="effectiveDate"
                            component={InputComponent}
                            placeholder="有效期截至日"/>
@@ -93,7 +94,7 @@ const PublishGoods = (props)=> {
                         placeholder="描述"/>
                 </p>
                 <p>
-                    <Button  onClick={props.submit}  disabled={invalid || submitting}>确认发布</Button>
+                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit} >确认发布</Button>
                 </p>
             </section>
         </form>
@@ -104,6 +105,26 @@ PublishGoods.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
 };
 
+const validate = (value) => {
+    const errors = {}
+    if (!value.couponName) {
+        errors.couponName = 'Required'
+    }
+    if (!value.couponCode) {
+        errors.couponCode = 'Required'
+    }
+    if (!value.originalPrice) {
+        errors.originalPrice = 'Required'
+    }
+    if (!value.sellingPrice) {
+        errors.sellingPrice = 'Required'
+    }
+    if (!value.effectiveDate) {
+        errors.effectiveDate = 'Required'
+    }
+    return errors
+}
+
 export default reduxForm({
-    form: "PublishGoods"
+    form: "PublishGoods",validate
 })(PublishGoods)
