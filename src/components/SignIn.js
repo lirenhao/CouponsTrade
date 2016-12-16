@@ -7,46 +7,35 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button} from 'react-onsenui'
-
+import {Input, Button, List, ListItem} from 'react-onsenui'
 const SignInField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
+               className='text-input'
                type={type}
                placeholder={placeholder}
-               modifier='underbar'
                float/>
     )
-}
+};
 
 const SignIn = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{marginTop: '50px', textAlign: 'center'}}>
-                <p>
-                    <Field type="number"
-                           name="username"
-                           component={SignInField}
-                           placeholder="输入手机号"/>
-                </p>
-                <p>
-                    <Field type="password"
-                           name="password"
-                           component={SignInField}
-                           placeholder="输入密码"/>
-                </p>
-                <p style={{textAlign: 'right', marginRight: '50px'}}>
-                    <Button style={{fontSize: '12px'}} modifier='quiet'>忘记密码？</Button>
-                </p>
-                <p style={{marginLeft: '20%', marginRight: '20%'}}>
-                    <Button modifier="large"
-                            disabled={invalid || submitting}
-                            onClick={props.submit}>
-                        登录
-                    </Button>
-                </p>
-            </section>
+            <List modifier="inset">
+                <ListItem>
+                    <div className="center">
+                        <Field type="number" name="username" component={SignInField} placeholder="输入手机号"/>
+                    </div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">
+                        <Field type="password" name="password" component={SignInField} placeholder="输入密码"/>
+                    </div>
+                </ListItem>
+            </List>
+            <Button modifier='quiet'>忘记密码？</Button>
+            <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
         </form>
     )
 }
