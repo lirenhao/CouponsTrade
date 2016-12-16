@@ -8,6 +8,7 @@ import App from './containers/App'
 import DevTools from "./containers/DevTools"
 import '../node_modules/onsenui/css/onsenui.css'
 import './css/onsen-css-components.css'
+import './css/couponStyle.css'
 
 const store = createStore(reducer, DevTools.instrument())
 
