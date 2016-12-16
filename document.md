@@ -11,9 +11,10 @@ var state = {
     user: {
         token: "111",
         userInfo: {
-            phone: "",
-            inviteCount: "",
-            nickName: ""
+            nickname: ""
+            phoneNumber: "",
+            inviteCode: "",
+            inviteCount: ""
         },
         order: {
             query: {
