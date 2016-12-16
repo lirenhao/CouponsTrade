@@ -535,7 +535,11 @@ CouponsTrade:[
 ### 优惠券：couponsTrade
 - 发布优惠券：publish
 - 优惠券列表：couponList
-- 优惠券详情：coupon
+- 优惠券详情：couponInfo
+- 发布优惠券列表：publishCouponList
+- 发布优惠券详情：publishCouponInfo
+- 售卖优惠券列表：sellCouponList
+- 售卖优惠券详情：sellCouponInfo
 - 下架:soldOut
 - 编辑：edit
 - 查询：query
