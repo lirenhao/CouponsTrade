@@ -29,7 +29,7 @@ PublishCoupon.propTypes = {
 };
 
 const validate = (value) => {
-    const errors = {}
+    const errors = {};
     if (!value.couponName) {
         errors.couponName = 'Required'
     }
@@ -46,7 +46,7 @@ const validate = (value) => {
         errors.effectiveDate = 'Required'
     }
     return errors
-}
+};
 
 export default reduxForm({
     form: "PublishCoupon", validate
