@@ -17,7 +17,9 @@ const SearchGoodsList = (props)=> {
     return (
         <div>
             <section style={{textAlign: 'center',padding:'0 5px'}}>
-                <input type="search" placeholder="商品名称" className="search-input" onBlur={(e)=>onSearch(e.target.value) }/>
+                <input type="search" placeholder="商品名称" className="search-input" style={
+                    {borderTopLeftRadius:'0',borderTopRightRadius:'0'}}
+                       onBlur={(e)=>onSearch(e.target.value) }/>
             </section>
             <SellingCouponList data={data} onClickPushPage={onClickPushPage}/>
         </div>
