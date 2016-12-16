@@ -16,7 +16,7 @@ const EditCouponForm = (props)=> {
     const {handleSubmit, onSubmit, invalid, submitting } = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{textAlign: 'center',marginTop:'17px'}}>
+            <section style={{textAlign: 'center',marginTop:'1em'}}>
                 <CouponFields/>
                 <p style={{marginLeft:'8px',marginRight:'8px'}}>
                     <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>确认提交</Button>

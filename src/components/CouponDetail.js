@@ -20,7 +20,7 @@ const styles={
         fontSize:'14px'
     },
     content:{
-        margin: '17px 0 0px 0'
+        marginTop: '1em'
     }
 };
 

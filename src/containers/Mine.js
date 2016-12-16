@@ -29,7 +29,7 @@ class Mine extends React.Component {
                     <div className='center'>个人中心</div>
                 </Toolbar>
             )}>
-                <List modifier='inset'>
+                <List modifier='inset' style={{marginTop:'1em'}}>
                     <ListHeader/>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
