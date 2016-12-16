@@ -5,130 +5,112 @@
 - 优惠券state的结构定义如下，在下面有该状态的翻译。
 
 ```
-var state={
-    userInfo:{
-        token:"111",
-        baseInfo:
-        {
-            phone:"",
-            inviteCount:"",
-            nickName:""
+var state = {
+    user: {
+        token: "111",
+        userInfo: {
+            phone: "",
+            inviteCount: "",
+            nickName: ""
         },
-        buyCouponsTradeInfo:
-        {
-          query:
-          {
-              orderState:"",
-              couponsName:""
-          },
-          pageInfo:
-          {
-              sumCounts:"",
-              currentPage:"",
-              eachLoadCounts:""
-          },
-          couponsListInfo:
-          [{
-              iD:"",
-              name:"",
-              desc:"",
-              sellingPrice:"",
-              picture:""
-          }],
-          couponsDetailInfo:
-          {
-             iD:"",
-             name:"",
-             areaInfo:"",
-             isAutomaticRefund:"",
-             type:"",
-             modality:"",
-             couponCode:"",
-             sellingPrice:"",
-             originalPrice:"",
-             ticketPrice:"",
-             endDate:"",
-             picture:"",
-             describe:""
-          }
-      },
-
-        用户已发布过的优惠券信息:
-        {
-            query:
-            {
-                orderState:"",
-                couponsName:""
+        order: {
+            query: {
+                orderState: "",
+                couponsName: ""
             },
-            pageInfo:
-            {
-                sumCounts:"",
-                currentPage:"",
-                eachLoadCounts:""
+            page: {
+                total: "",
+                number: "",
+                size: ""
             },
-            couponsListInfo:
-                [{
-                    iD:"1212232321",
-                    name:"呷哺呷哺",
-                    desc:"该券仅限周三使用，请各位小主们尽快下单吧~~",
-                    sellingPrice:"70",
-                    picture:""
-                }],
-            couponsDetailInfo:
-            {
-                iD:"",
-                name:"呷哺呷哺",
-                areaInfo:"北京",
-                isAutomaticRefund:"是",
-                type:"西餐",
-                modality:"文本",
-                couponCode:"1234567890",
-                sellingPrice:"70",
-                originalPrice:"50",
-                ticketPrice:"100",
-                endDate:"20161215",
-                picture:"",
-                describe:"该券仅限周三使用，请各位小主们尽快下单吧~~"
+            orderList: [{
+                iD: "",
+                name: "",
+                desc: "",
+                sellingPrice: "",
+                picture: ""
+            }],
+            orderInfo: {
+                iD: "",
+                name: "",
+                areaInfo: "",
+                isAutomaticRefund: "",
+                type: "",
+                modality: "",
+                couponCode: "",
+                sellingPrice: "",
+                originalPrice: "",
+                ticketPrice: "",
+                endDate: "",
+                picture: "",
+                describe: ""
+            }
+        },
+        publish: {
+            query: {
+                orderState: "",
+                couponsName: ""
+            },
+            page: {
+                total: "",
+                number: "",
+                size: ""
+            },
+            publishList: [{
+                iD: "1212232321",
+                name: "呷哺呷哺",
+                desc: "该券仅限周三使用，请各位小主们尽快下单吧~~",
+                sellingPrice: "70",
+                picture: ""
+            }],
+            publishInfo: {
+                iD: "",
+                name: "呷哺呷哺",
+                areaInfo: "北京",
+                isAutomaticRefund: "是",
+                type: "西餐",
+                modality: "文本",
+                couponCode: "1234567890",
+                sellingPrice: "70",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "20161215",
+                picture: "",
+                describe: "该券仅限周三使用，请各位小主们尽快下单吧~~"
             }
         }
     },
-
-    查询优惠券:
-    {
-        query:
-        {
-            orderState:"",
-            couponsName:""
+    coupons: {
+        query: {
+            orderState: "",
+            couponsName: ""
         },
-        pageInfo:
-        {
-            sumCounts:"",
-            currentPage:"",
-            eachLoadCounts:""
+        page: {
+            total: "",
+            number: "",
+            size: ""
         },
-        couponsListInfo:
-            [{
-                iD:"",
-                name:"",
-                desc:"",
-                sellingPrice:"",
-                picture:""
-            }],
-        couponsDetailInfo:
-        {
-            iD:"",
-            name:"",
-            areaInfo:"",
-            isAutomaticRefund:"",
-            type:"",
-            modality:"",
-            couponCode:"",
-            sellingPrice:"",
-            originalPrice:"",
-            ticketPrice:"",
-            endDate:"",
-            picture:"",
-            describe:""
+        couponsList: [{
+            iD: "",
+            name: "",
+            desc: "",
+            sellingPrice: "",
+            picture: ""
+        }],
+        couponsInfo: {
+            iD: "",
+            name: "",
+            areaInfo: "",
+            isAutomaticRefund: "",
+            type: "",
+            modality: "",
+            couponCode: "",
+            sellingPrice: "",
+            originalPrice: "",
+            ticketPrice: "",
+            endDate: "",
+            picture: "",
+            describe: ""
         }
     }
 }
