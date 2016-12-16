@@ -4,7 +4,7 @@
 - state对象包括四个对象：用户信息(包括用户Token、用户基本信息、用户已经够买的优惠券信息、用户已发布过的优惠券信息)、查询优惠券信息
 
 ### state结构
-- 优惠券state的结构定义如下，在下面有该状态的翻译。
+- 优惠券state的结构定义如下，在下面有state结构定义的翻译。
 
 ```
 var state = {
@@ -172,76 +172,76 @@ var state={
           {                                                                                   
              订单状态(orderState)、名称(couponsName)                                          
           }                                                                                   
-          分页信息(page):                                                                     
-                         {                                                                                   
-                              总数据条数(total),                                                               
-                              当前加载第几页(number),                                                          
-                              每次加载多少条(size),                                                            
-                         },                                                                                  
-                         优惠券列表的信息(orderList):是一个数组                                              
-                         [{                                                                                  
-                               iD,                                                                             
-                               名称(name),                                                                     
-                               描述(desc),                                                                     
-                               卖价(sellingPrice),                                                             
-                               商家图片(picture)                                                               
-                         },{},{}],                                                                           
-                         优惠券详细的信息(orderInfo)                                                         
-                         {                                                                                   
-                              iD、                                                                             
-                              优惠券名称(name)、                                                               
-                              区域信息(areaInfo)、                                                             
-                              是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
-                              优惠券类别（中餐、西餐）（type）、                                               
-                              券码形式选项（图片或文本）(modality)、                                           
-                              券码（图片或文本）（couponCode）、                                               
-                              卖价(sellingPrice)、                                                             
-                              原价(originalPrice)、                                                            
-                              券面值(ticketPrice)、                                                            
-                              截止日期(endDate)、                                                              
-                              图片（与商户相关）(picture)、                                                    
-                              优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
-                         }                                                                                   
-      }                                                                                      
-    },                                                                                        
+         分页信息(page):                                                                     
+         {                                                                                   
+            总数据条数(total),                                                               
+            当前加载第几页(number),                                                          
+            每次加载多少条(size),                                                            
+         },                                                                                  
+         优惠券列表的信息(orderList):是一个数组                                              
+         [{                                                                                  
+             iD,                                                                             
+             名称(name),                                                                     
+             描述(desc),                                                                     
+             卖价(sellingPrice),                                                             
+             商家图片(picture)                                                               
+         },{},{}],                                                                           
+         优惠券详细的信息(orderInfo)                                                         
+         {                                                                                   
+             iD、                                                                             
+             优惠券名称(name)、                                                               
+             区域信息(areaInfo)、                                                             
+             是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
+             优惠券类别（中餐、西餐）（type）、                                               
+             券码形式选项（图片或文本）(modality)、                                           
+             券码（图片或文本）（couponCode）、                                               
+             卖价(sellingPrice)、                                                             
+             原价(originalPrice)、                                                            
+             券面值(ticketPrice)、                                                            
+             截止日期(endDate)、                                                              
+             图片（与商户相关）(picture)、                                                    
+             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
+        }                                                                                   
+     }                                                                                     
+ },                                                                                        
                                                                                               
  查询优惠券（coupons）:                                                                       
  {                                                                                            
-    查询条件(query):                                                                          
-    {                                                                                         
-       优惠券名称（couponsName）(暂定)                                                        
-    }                                                                                         
+    查询条件(query):                                                                    
+    {                                                                                   
+       优惠券名称(couponsName)                                          
+    }                                                                                   
     分页信息(page):                                                                     
-     {                                                                                   
-          总数据条数(total),                                                               
-          当前加载第几页(number),                                                          
-          每次加载多少条(size),                                                            
-     },                                                                                  
-     优惠券列表的信息(orderList):是一个数组                                              
-     [{                                                                                  
-           iD,                                                                             
-           名称(name),                                                                     
-           描述(desc),                                                                     
-           卖价(sellingPrice),                                                             
-           商家图片(picture)                                                               
-     },{},{}],                                                                           
-     优惠券详细的信息(orderInfo)                                                         
-     {                                                                                   
-          iD、                                                                             
-          优惠券名称(name)、                                                               
-          区域信息(areaInfo)、                                                             
-          是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
-          优惠券类别（中餐、西餐）（type）、                                               
-          券码形式选项（图片或文本）(modality)、                                           
-          券码（图片或文本）（couponCode）、                                               
-          卖价(sellingPrice)、                                                             
-          原价(originalPrice)、                                                            
-          券面值(ticketPrice)、                                                            
-          截止日期(endDate)、                                                              
-          图片（与商户相关）(picture)、                                                    
-          优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
-     }                                                                                          
- }                                                                                            
+    {                                                                                   
+       总数据条数(total),                                                               
+       当前加载第几页(number),                                                          
+       每次加载多少条(size),                                                            
+    },                                                                                  
+    优惠券列表的信息(orderList):是一个数组                                              
+    [{                                                                                  
+        iD,                                                                             
+        名称(name),                                                                     
+        描述(desc),                                                                     
+        卖价(sellingPrice),                                                             
+        商家图片(picture)                                                               
+    },{},{}],                                                                           
+    优惠券详细的信息(orderInfo)                                                         
+    {                                                                                   
+       iD、                                                                             
+       优惠券名称(name)、                                                               
+       区域信息(areaInfo)、                                                             
+       是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
+       优惠券类别（中餐、西餐）（type）、                                               
+       券码形式选项（图片或文本）(modality)、                                           
+       券码（图片或文本）（couponCode）、                                               
+       卖价(sellingPrice)、                                                             
+       原价(originalPrice)、                                                            
+       券面值(ticketPrice)、                                                            
+       截止日期(endDate)、                                                              
+       图片（与商户相关）(picture)、                                                    
+       优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
+  }                                                                                   
+}                                                                                        
 }                                                                                             
 ```
 
@@ -315,6 +315,21 @@ var state={
 #### 查看已发布优惠券列表
 
 #### 查看优惠券详情
+- 需要操作的state包括：
+  - 优惠券唯一标识：state.publish.orderInfo.iD
+  - 优惠券名称:state.publish.orderInfo.name
+  - 区域信息:state.publish.orderInfo.areaInfo
+  - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
+  - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
+  - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
+  - 券码（图片或文本）：state.publish.orderInfo.couponCode
+  - 卖价：state.publish.orderInfo.sellingPrice
+  - 原价：state.publish.orderInfo.originalPrice
+  - 券面值：state.publish.orderInfo.ticketPrice
+  - 截止日期：state.publish.orderInfo.endDate
+  - 图片（与商户相关）：state.publish.orderInfo.picture
+  - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
+
 
 #### 编辑优惠券
 
@@ -400,13 +415,12 @@ CouponsTrade:[
 
 ### 4、用户订单信息  
 
-用户已经够买的优惠券信息：是一个数组存了多个对象
-[
+用户已经够买的优惠券信息
    {
-      查询条件：{订单状态、名称},
-      分页信息: {总数据条数,当前加载第几页,每次加载多少条},
-      优惠券列表的信息：{ID,名称,描述,价格,图片},
-      优惠券详细的信息
+      查询条件:{订单状态、名称},
+      分页信息:{总数据条数,当前加载第几页,每次加载多少条},
+      优惠券列表的信息:[{iD,名称,描述,价格,图片},{},{}],
+      优惠券详细的信息:
       {
              ID、
              优惠券标题、
@@ -422,9 +436,8 @@ CouponsTrade:[
              图片（与商户相关）、
              优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
       }
-          
-   },{}，{}，{}，{}
-]
+   }
+
 
 ### 5、用户所有发布优惠券信息  
 
