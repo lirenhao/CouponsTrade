@@ -14,7 +14,6 @@ import {Input, Switch, List, ListItem} from 'react-onsenui'
 const InputComponent = ({input, type, placeholder}) => {
     return (
         <Input {...input}
-               className="text-input"
                type={type}
                placeholder={placeholder}
                float/>
