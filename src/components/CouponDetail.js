@@ -7,24 +7,11 @@
  */
 
 import React from 'react'
-import {List,ListItem} from 'react-onsenui'
+import {List, ListItem} from 'react-onsenui'
 
-const styles={
-    sellingPrice:{
-        color:'#FF0000',
-        fontWeight:'900'
-    },
-    originalPrice:{
-        textDecoration:'line-through',
-        color:'#bbb',
-        fontSize:'14px'
-    },
-    content:{
-        marginTop: '1em'
-    }
-};
 
-const CouponDetail=(props)=>{
+
+const CouponDetail = (props) => {
     const {DetailInformation}=props;
     return (
         <div>
@@ -38,45 +25,44 @@ const CouponDetail=(props)=>{
                         <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
                     </div>
                     <div className="right">
-                        <div className="list__item__title" style={styles.originalPrice}>{DetailInformation.originalPrice}</div>
-                        <div className="list__item__subtitle" style={styles.sellingPrice}>{DetailInformation.sellingPrice}</div>
+                        <div className="list__item__title">{DetailInformation.originalPrice}</div>
+                        <div className="list__item__subtitle">{DetailInformation.sellingPrice}</div>
                     </div>
                 </ListItem>
             </List>
-            <div style={styles.content}>
-                <List>
-                    <ListItem>
-                        <div className="center">优惠券名称</div>
-                        <div className="right">{DetailInformation.couponName}</div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">可自动退款</div>
-                        <div className="right">{DetailInformation.isAutomaticRefund}</div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">优惠券类别</div>
-                        <div className="right">{DetailInformation.couponType}</div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">优惠券面值</div>
-                        <div className="right">{DetailInformation.ticketPrice}</div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">截止日期</div>
-                        <div className="right">{DetailInformation.effectiveDate}</div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">优惠券图片</div>
-                        <div className="right"></div>
-                    </ListItem>
-                    <ListItem>
-                        <div className="center">
-                            <div className="list__item__title">优惠券详情</div>
-                            <div className="list__item__subtitle">{DetailInformation.describe}</div>
-                        </div>
-                    </ListItem>
-                </List>
-            </div>
+            <br/>
+            <List>
+                <ListItem>
+                    <div className="center">优惠券名称</div>
+                    <div className="right">{DetailInformation.couponName}</div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">可自动退款</div>
+                    <div className="right">{DetailInformation.isAutomaticRefund}</div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">优惠券类别</div>
+                    <div className="right">{DetailInformation.couponType}</div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">优惠券面值</div>
+                    <div className="right">{DetailInformation.ticketPrice}</div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">截止日期</div>
+                    <div className="right">{DetailInformation.effectiveDate}</div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">优惠券图片</div>
+                    <div className="right"></div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">
+                        <div className="list__item__title">优惠券详情</div>
+                        <div className="list__item__subtitle">{DetailInformation.describe}</div>
+                    </div>
+                </ListItem>
+            </List>
             <div>
                 {props.children}
             </div>
@@ -84,19 +70,19 @@ const CouponDetail=(props)=>{
     )
 };
 
-CouponDetail.propTypes={
-    DetailInformation:React.PropTypes.shape({
-        applyCity:React.PropTypes.string.isRequired,
-        nickname:React.PropTypes.string.isRequired,
-        originalPrice:React.PropTypes.string.isRequired,
-        sellingPrice:React.PropTypes.string.isRequired,
-        couponName:React.PropTypes.string.isRequired,
-        isAutomaticRefund:React.PropTypes.string.isRequired,
-        couponType:React.PropTypes.string.isRequired,
-        ticketPrice:React.PropTypes.string.isRequired,
-        effectiveDate:React.PropTypes.string.isRequired,
+CouponDetail.propTypes = {
+    DetailInformation: React.PropTypes.shape({
+        applyCity: React.PropTypes.string.isRequired,
+        nickname: React.PropTypes.string.isRequired,
+        originalPrice: React.PropTypes.string.isRequired,
+        sellingPrice: React.PropTypes.string.isRequired,
+        couponName: React.PropTypes.string.isRequired,
+        isAutomaticRefund: React.PropTypes.string.isRequired,
+        couponType: React.PropTypes.string.isRequired,
+        ticketPrice: React.PropTypes.string.isRequired,
+        effectiveDate: React.PropTypes.string.isRequired,
         //merchantPicture:React.PropTypes.string.isRequired,
-        describe:React.PropTypes.string.isRequired
+        describe: React.PropTypes.string.isRequired
     }).isRequired
 };
 
