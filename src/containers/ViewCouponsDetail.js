@@ -24,7 +24,7 @@ class ViewCouponsDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )}  renderBottomToolbar={() => (
-                <BottomToolbar modifier="material">
+                <BottomToolbar>
                     <div>
                         <Button className="button--large" type="submit" onClick={() =>this.props.navigator.pushPage({
                             comp: PayOrder, props: {key: "PayOrder" }
