@@ -186,7 +186,7 @@ var state={
              卖价(sellingPrice),                                                             
              商家图片(picture)                                                               
          },{},{}],                                                                           
-         优惠券详细的信息(orderInfo)                                                         
+         优惠券详细的信息(publishInfo)                                                         
          {                                                                                   
              iD、                                                                             
              优惠券名称(name)、                                                               
@@ -225,7 +225,7 @@ var state={
         卖价(sellingPrice),                                                             
         商家图片(picture)                                                               
     },{},{}],                                                                           
-    优惠券详细的信息(orderInfo)                                                         
+    优惠券详细的信息(couponsInfo)                                                         
     {                                                                                   
        iD、                                                                             
        优惠券名称(name)、                                                               
