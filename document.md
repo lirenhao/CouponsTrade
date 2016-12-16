@@ -519,3 +519,82 @@ CouponsTrade:[
 
 用户支付订单
 （Token、id-订单ID）=>（支付结果）
+
+## 平台字典名称
+
+### 登陆signIn、注册signUp
+- 用户名：phoneNo
+- 密码：passWord
+- 昵称：nickName
+- 手机号：phoneNo
+- 验证码：validateCode
+- 邀请码：inviteCode
+- 原密码：oldPassword
+- 新密码：newPassword
+
+### 优惠券：couponsTrade
+- 发布优惠券：publish
+- 优惠券列表：couponList
+- 优惠券详情：coupon
+- 下架:soldOut
+- 编辑：edit
+- 查询：query
+- 唯一标识：iD
+- 优惠券名称：name
+- 区域信息：areaInfo
+- 优惠券码：couponCode
+- 原价：originalPrice
+- 售卖价：sellingPrice
+- 券面价：ticketPrice
+- 截止日期：endDate
+- 自动退货：isAutomaticRefund
+- 优惠券类别（中餐、西餐）：type
+- 券码形式选项（图片或文本）：modality
+- 描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：describe
+- 图片（与商户相关）：picture
+
+### 订单：order
+- 付款方式：paymentMethod
+- 微信：weChat
+- 支付宝：alipay
+- 账号：accountNumber
+- 订单编号：orderNumber
+- 成交时间：transactionDate
+- 卖家昵称：sellNickName
+- 买家昵称：buyNickName
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
