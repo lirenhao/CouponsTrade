@@ -14,21 +14,30 @@ const styles = {
         textAlign: 'center',
     },
     icon: {
-        fontSize: '150px',
-        margin: '20px 0 0px 0'
+        fontSize: '60px',
+        marginTop: '1em',
+        opacity:'0.4'
+    },
+    icons: {
+        border:'1px solid #666',
+        borderRadius: '50%',
+        padding:'12px 20px',
+        boxShadow:'rgba(0, 0, 0, 0.2) 0px 2px 0px 0px'
     },
     name: {
-        fontSize: '30px'
+        fontSize: '1.25em',
+        margin:'1em 0'
     },
     data: {
-        fontSize: '20px',
-        margin: '10px 0px 10px 0px'
+        fontSize: '1em',
+        margin: '0.5em 0'
     },
     dataKey: {
         textAlign: 'right'
     },
     dataValue: {
-        textAlign: 'center'
+        textAlign: 'left',
+        marginLeft:'0.5em'
     }
 }
 
@@ -49,7 +58,7 @@ const UserShow = (props) => {
             </SpeedDial>
 
             <div style={styles.icon}>
-                <Icon icon='ion-person'/>
+                <Icon icon='ion-person' style={styles.icons}/>
             </div>
 
             <div style={styles.name}>
