@@ -11,7 +11,6 @@ import {Input, Button, List, ListItem} from 'react-onsenui'
 const SignInField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
-               className='text-input'
                type={type}
                placeholder={placeholder}
                float/>
@@ -22,6 +21,7 @@ const SignIn = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
+            <br/>
             <List modifier="inset">
                 <ListItem>
                     <div className="center">
@@ -35,7 +35,7 @@ const SignIn = (props) => {
                 </ListItem>
             </List>
             <Button modifier='quiet'>忘记密码？</Button>
-            <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
+            <Button modifier="large marginLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
         </form>
     )
 }
