@@ -55,7 +55,8 @@ h6 {
   left: 0px;
   right: 0px;
   bottom: 0px;
-  overflow: visible;
+  overflow-x: visible;
+  overflow-y: hidden;
   font-size: 17px;
   color: #1f1f21;
   -ms-overflow-style: none;
@@ -845,30 +846,6 @@ ons-range[disabled] .range {
     </div>
 */
 /* topdoc
-  name: Transparent Navigation Bar
-  class: navigation-bar--transparent
-  use: Toolbar Button, Navigation Bar
-  markup:
-    <div class="navigation-bar navigation-bar--transparent">
-      <div class="navigation-bar__left">
-        <span class="toolbar-button--quiet">
-          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-        </span>
-      </div>
-      <div class="navigation-bar__center">
-        Navigation Bar
-      </div>
-      <div class="navigation-bar__right">
-        <span class="toolbar-button--quiet">Label</span>
-      </div>
-    </div>
-*/
-.navigation-bar--transparent {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
-/* topdoc
   name: Navigation Bar with Outline Button
   use: Toolbar Button, Navigation Bar
   markup:
@@ -889,31 +866,6 @@ ons-range[disabled] .range {
       </div>
     </div>
 */
-/* topdoc
-  name: Transparent Navigation Bar
-  class: navigation-bar--transparent
-  use: Toolbar Button, Navigation Bar
-  markup:
-    <!-- Prerequisite=This example use ionicons(http://ionicons.com) to display icons. -->
-    <div class="navigation-bar navigation-bar--transparent">
-      <div class="navigation-bar__left">
-        <span class="toolbar-button--quiet">
-          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
-        </span>
-      </div>
-      <div class="navigation-bar__center">
-        Navigation Bar
-      </div>
-      <div class="navigation-bar__right">
-        <span class="toolbar-button--quiet">Label</span>
-      </div>
-    </div>
-*/
-.navigation-bar--transparent {
-  background-color: transparent;
-  background-image: none;
-  border: none;
-}
 /* topdoc
   name: Bottom Bar
   class: bottom-bar
@@ -1049,6 +1001,25 @@ ons-range[disabled] .range {
   -webkit-background-size: 0;
   background-size: 0;
 }
+/* topdoc
+  name: No Shadow Navigation Bar
+  class: navigation-bar--noshadow
+  use: Toolbar Button, Navigation Bar
+  markup:
+    <div class="navigation-bar navigation-bar--noshadow">
+      <div class="navigation-bar__left">
+        <span class="toolbar-button--quiet">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
+      <div class="navigation-bar__center">
+        Navigation Bar
+      </div>
+      <div class="navigation-bar__right">
+        <span class="toolbar-button--quiet">Label</span>
+      </div>
+    </div>
+*/
 .navigation-bar--noshadow {
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -1125,6 +1096,32 @@ ons-range[disabled] .range {
       </div>
     </div>
 */
+/* topdoc
+  name: Transparent Navigation Bar
+  class: navigation-bar--transparent
+  use: Toolbar Button, Navigation Bar
+  markup:
+    <div class="navigation-bar navigation-bar--transparent">
+      <div class="navigation-bar__left">
+        <span class="toolbar-button--quiet">
+          <i class="ion-navicon" style="font-size:32px; vertical-align:-6px;"></i>
+        </span>
+      </div>
+      <div class="navigation-bar__center">
+        Navigation Bar
+      </div>
+      <div class="navigation-bar__right">
+        <span class="toolbar-button--quiet">Label</span>
+      </div>
+    </div>
+*/
+.navigation-bar--transparent {
+  background-color: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background-image: none;
+  border-bottom: none;
+}
 /* topdoc
   name: Button
   class: button
@@ -2199,6 +2196,16 @@ ons-range[disabled] .range {
   font-weight: 400;
   font-size: 17px;
 }
+.tab-bar__badge.notification {
+  position: absolute;
+  top: 5px;
+  z-index: 10;
+  font-size: 12px;
+  height: 16px;
+  line-height: 16px;
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+}
 .tab-bar__icon + .tab-bar__label {
   font-size: 10px;
   line-height: 1;
@@ -2672,7 +2679,7 @@ ons-range[disabled] .range {
 }
 .toolbar-button--material:active {
   opacity: 1;
-  background-color: #26a69a;
+  background-color: rgba(255,255,255,0.15);
 }
 .back-button {
   height: 44px;
@@ -2724,7 +2731,7 @@ ons-range[disabled] .range {
 }
 .back-button--material:active {
   opacity: 1;
-  background-color: #26a69a;
+  background-color: rgba(255,255,255,0.15);
 }
 /* topdoc
   name: Checkbox
@@ -4765,7 +4772,31 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -webkit-transform: translate3d(0, 0, 0);
 }
 .text-input--material__label {
+  color: #afafaf;
+  position: absolute;
+  left: 0px;
+  top: 2px;
+  font-size: 16px;
+  font-weight: 400;
+  font-family: 'Roboto', 'Noto', sans-serif;
+  pointer-events: none;
+}
+.text-input--material__label--active {
   color: #009688;
+  -webkit-transform: translate(0, -75%) scale(0.75);
+  -moz-transform: translate(0, -75%) scale(0.75);
+  -ms-transform: translate(0, -75%) scale(0.75);
+  -o-transform: translate(0, -75%) scale(0.75);
+  transform: translate(0, -75%) scale(0.75);
+  -webkit-transform-origin: left top;
+  -moz-transform-origin: left top;
+  -ms-transform-origin: left top;
+  -o-transform-origin: left top;
+  transform-origin: left top;
+  -webkit-transition: -webkit-transform 0.1s ease-in, color 0.1s ease-in;
+  -moz-transition: -moz-transform 0.1s ease-in, color 0.1s ease-in;
+  -o-transition: -o-transform 0.1s ease-in, color 0.1s ease-in;
+  transition: transform 0.1s ease-in, color 0.1s ease-in;
 }
 .text-input--material:focus {
   background-image: -webkit-gradient(linear, left top, left bottom, from(#009688), to(#009688)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
@@ -5506,7 +5537,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   overflow: auto;
   min-height: 100px;
   max-height: 100%;
-  background-color: #fff;
+  background-color: rgba(255,255,255,NaN);
   -webkit-border-radius: 8px;
   border-radius: 8px;
   color: #1f1f21;
@@ -5529,10 +5560,10 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   -o-transform-origin: 50% 50% 0;
   transform-origin: 50% 50% 0;
   background-color: transparent;
-  background-image: -webkit-linear-gradient(45deg, #fff, #fff 50%, transparent 50%);
-  background-image: -moz-linear-gradient(45deg, #fff, #fff 50%, transparent 50%);
-  background-image: -o-linear-gradient(45deg, #fff, #fff 50%, transparent 50%);
-  background-image: linear-gradient(45deg, #fff, #fff 50%, transparent 50%);
+  background-image: -webkit-linear-gradient(45deg, rgba(255,255,255,NaN), rgba(255,255,255,NaN) 50%, transparent 50%);
+  background-image: -moz-linear-gradient(45deg, rgba(255,255,255,NaN), rgba(255,255,255,NaN) 50%, transparent 50%);
+  background-image: -o-linear-gradient(45deg, rgba(255,255,255,NaN), rgba(255,255,255,NaN) 50%, transparent 50%);
+  background-image: linear-gradient(45deg, rgba(255,255,255,NaN), rgba(255,255,255,NaN) 50%, transparent 50%);
   -webkit-border-radius: 0 0 0 4px;
   border-radius: 0 0 0 4px;
   margin: -9px;
