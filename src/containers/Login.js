@@ -15,7 +15,7 @@ import {
 import SignUp from '../components/SignUp'
 import SignIn from '../components/SignIn'
 
-const Enroll = () => {
+const Enroll = (props) => {
     return (
         <Page renderToolbar={() => (
             <Toolbar>
@@ -23,7 +23,7 @@ const Enroll = () => {
                 <div className='center'>注册</div>
             </Toolbar>
         )}>
-            <SignUp onSubmit={(value) => console.log(value)}/>
+            <SignUp onSubmit={(value) => props.navigator.popPage()}/>
         </Page>
     )
 }
