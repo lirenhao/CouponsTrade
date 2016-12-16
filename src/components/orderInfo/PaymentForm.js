@@ -52,7 +52,7 @@ const Payment_form = (props) => {
                     })
                 } else {
                     props.navigator.replacePage({
-                        comp: OrderResult, props: {key: "OrderResultSuccess", res: 1, navigator: props.navigator}
+                        comp: OrderResult, props: {key: "OrderResultSuccess", res: 1}
                     })
                 }
             }

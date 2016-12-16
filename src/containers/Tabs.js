@@ -22,7 +22,7 @@ class Tabs extends React.Component {
                         <div className='center'>发布</div>
                     </Toolbar>
                 )}>
-                    <PublishCoupon navigator={this.props.navigator } />
+                    <PublishCoupon navigator={this.props.navigator }/>
                 </Page>,
                 tab: <Tab key="post" label="发布" icon="ion-plus"/>
             },
@@ -36,8 +36,8 @@ class Tabs extends React.Component {
     render() {
         return (
             <Page>
-                <Tabbar
-                    renderTabs={this.renderTabs.bind(this)}
+                <Tabbar index={this.props.newIndex ? this.props.newIndex : 0}
+                        renderTabs={this.renderTabs.bind(this)}
                 />
             </Page>
         )

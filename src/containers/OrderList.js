@@ -8,6 +8,7 @@
 import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
+import Tabs from './Tabs'
 
 const listData = {
     "黑松白鹿": 400,
@@ -18,12 +19,20 @@ const listData = {
 };
 
 const itemKeys = Object.keys(listData);
-
+let index = 0;
 class OrderList extends React.Component {
     renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'><BackButton>返回</BackButton></div>
+                <div className='left'><BackButton onClick={() => {
+                    this.props.navigator.resetPageStack([{
+                        comp: Tabs,
+                        props: {
+                            key: "tabs" + index++,
+                            newIndex: 2
+                        }
+                    }])
+                }}>返回</BackButton></div>
                 <div className="center">我的订单</div>
             </Toolbar>
         )

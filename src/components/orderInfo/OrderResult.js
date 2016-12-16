@@ -17,11 +17,13 @@ const OrderResult = ({res, navigator}) => {
     };
 
     const haveBack = () => {
-        return (
-            <div className='left'>
-                <BackButton>返回</BackButton>
-            </div>
-        )
+        if (res === 0) {
+            return (
+                <div className='left'>
+                    <BackButton>返回</BackButton>
+                </div>
+            )
+        }
     };
 
     const renderToolbar = () => {
