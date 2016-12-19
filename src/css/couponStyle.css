@@ -47,3 +47,12 @@ ons-icon[icon="ion-arrow-down-b"]{
     top:-3px;
     left: 4px;
 }
+.price{
+    color: #EE3B3B;
+    font-size: 1.25em;
+}
+.price span{
+    font-size: 0.5em;
+    position: relative;
+    top:-2px;
+}
