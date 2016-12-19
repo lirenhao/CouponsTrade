@@ -16,11 +16,11 @@ export const loginRequest = createAction("LOGIN_REQUEST")
 export const updateToken = createAction("UPDATE_TOKEN")
 
 // 用户信息的请求action
-export const userInfoRequest = createAction("USER_INFO_REQUEST")
-// 更新用户信息的action
-export const updateUserInfo = createAction("UPDATE_USER_INFO")
+export const getUserInfoRequest = createAction("GET_USER_INFO_REQUEST")
 // 更新用户信息的请求action
 export const updateUserInfoRequest = createAction("UPDATE_USER_INFO_REQUEST")
+// 更新用户信息的action
+export const updateUserInfo = createAction("UPDATE_USER_INFO")
 
 // 生成邀请码的请求action
 export const createInviteCodeRequest = createAction("CREATE_INVITE_CODE_REQUEST")
