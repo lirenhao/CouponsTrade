@@ -1,14 +1,13 @@
-.button--marginT{
-    margin-top: 1em;
-}
+
 .list--marginT{
     margin-top: 1em;
 }
 
-.button--marginLR{
+.button--marginTLR{
     width: calc(100% - 16px) !important;
     margin-left: 8px;
     margin-right: 8px;
+    margin-top: 1em;
 }
 section .search-input,section .search-input:focus{
     margin:8px;
@@ -34,7 +33,7 @@ ons-list[modifier="noborder"]{
     border-bottom: 1px solid #ccc;
 }
 ons-list[modifier="noborder"] ons-col{
-    font-size: 0.8em;
+    font-size: 0.5em;
     color: #aaa;
     text-align: center;
     border-left: 1px #ccc solid;

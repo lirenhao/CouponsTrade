@@ -42,7 +42,7 @@ const CheckBoxComponent = ({input}) => {
 const CouponFields = () => {
     return (
         <div>
-            <List modifier="inset">
+            <List modifier="inset marginT">
                 <ListItem>
                     <div className="center">
                         <Field type="text" name="couponName" component={InputComponent} placeholder="商品名称"/>
