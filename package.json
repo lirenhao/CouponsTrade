@@ -6,6 +6,7 @@
     "build": "./node_modules/.bin/webpack"
   },
   "dependencies": {
+    "node-fetch": "^1.6.3",
     "onsenui": "^2.0.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
