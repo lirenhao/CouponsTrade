@@ -10,3 +10,40 @@
     margin-left: 8px;
     margin-right: 8px;
 }
+section .search-input,section .search-input:focus{
+    margin:8px;
+    width: calc(100% - 16px);
+    background-color: #fff;
+    border: none;
+}
+.text-input.text-input--material {
+    position: relative;
+    top:0;
+}
+label.text-input__container{
+    position: relative;
+    top:15px;
+}
+ons-input{
+    width: 100%;
+}
+.page__background{
+    background-color: #f5f5f5;
+}
+ons-list[modifier="noborder"]{
+    border-bottom: 1px solid #ccc;
+}
+ons-list[modifier="noborder"] ons-col{
+    font-size: 0.8em;
+    color: #aaa;
+    text-align: center;
+    border-left: 1px #ccc solid;
+}
+ons-list[modifier="noborder"] ons-col:nth-child(1){
+    border-left: none;
+}
+ons-icon[icon="ion-arrow-down-b"]{
+    position: relative;
+    top:-3px;
+    left: 4px;
+}

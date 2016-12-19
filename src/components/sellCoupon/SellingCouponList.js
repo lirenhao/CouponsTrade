@@ -19,7 +19,22 @@ const SellingCouponList = ({data, onClickPushPage})=> {
 
     return (
         <List dataSource={data}
-              renderHeader={() => <ListHeader>优惠券列表</ListHeader>}
+              renderHeader={() =><ons-list modifier="noborder">
+                  <ons-list-item>
+                      <ons-row>
+                          <ons-col>
+                              全部分类<ons-icon icon="ion-arrow-down-b"></ons-icon>
+                          </ons-col>
+                          <ons-col>
+                              全城<ons-icon icon="ion-arrow-down-b"></ons-icon>
+                          </ons-col>
+                          <ons-col>
+                              智能排序<ons-icon icon="ion-arrow-down-b"></ons-icon>
+                          </ons-col>
+                      </ons-row>
+                  </ons-list-item>
+              </ons-list>
+              }
               renderRow={renderRow}
         />
     )
