@@ -10,12 +10,11 @@ import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
 import OrderList from '../../containers/OrderList'
 import Tabs from '../../containers/Tabs'
 
-let index = 0;
 const OrderResult = ({res, navigator}) => {
     const handleClick = () => {
         navigator.resetPageStack([
             {
-                comp: Tabs, props: {key: "tabs" + index, newIndex: 2}
+                comp: Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
             },
             {
                 comp: OrderList, props: {key: "OrderList"}
