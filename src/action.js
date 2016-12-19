@@ -26,3 +26,8 @@ export const updateUserInfoRequest = createAction("UPDATE_USER_INFO_REQUEST")
 export const createInviteCodeRequest = createAction("CREATE_INVITE_CODE_REQUEST")
 // 更新邀请码的action
 export const updateInviteCode = createAction("UPDATE_INVITE_CODE")
+
+// 验证密码的请求action
+export const verifyPasswordRequest = createAction("VERIFY_PASSWORD_REQUEST")
+// 更改密码的请求action
+export const updatePasswordRequest = createAction("UPDATE_PASSWORD_REQUEST")
