@@ -36,6 +36,9 @@ var state = {
                 picture: ""
             }],
             orderInfo: {
+                orderId,
+                orderDate,
+                orderTime,
                 iD: "",
                 couponName: "",
                 areaInfo: "",
@@ -144,7 +147,7 @@ var state={
              当前加载第几页(number),                                                          
              每次加载多少条(size),                                                            
           },                                                                                  
-          优惠券列表的信息(orderList):是一个数组                                              
+          已购买优惠券列表的信息(orderList):是一个数组                                              
           [{                                                                                  
               iD,                                                                             
               名称(name),                                                                     
@@ -152,8 +155,11 @@ var state={
               卖价(sellingPrice),                                                             
               商家图片(picture)                                                               
           },{},{}],                                                                           
-          优惠券详细的信息(orderInfo)                                                         
-          {                                                                                   
+          已购买优惠券详细的信息(orderInfo)                                                         
+          {          
+             订单号（orderNo）、
+             订单日期(orderDate)、
+             订单时间(orderTime)、                                                                     
              iD、                                                                             
              优惠券名称(name)、                                                               
              区域信息(areaInfo)、                                                             
