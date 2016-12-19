@@ -48,7 +48,8 @@ var state = {
                 ticketPrice: "",
                 endDate: "",
                 picture: "",
-                describe: ""
+                describe: "",
+                isOpen:""
             }
         },
         publish: {
@@ -81,7 +82,8 @@ var state = {
                 ticketPrice: "100",
                 endDate: "20161215",
                 picture: "",
-                describe: "该券仅限周三使用，请各位小主们尽快下单吧~~"
+                describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
+                isOpen:""
             }
         }
     },
@@ -164,7 +166,8 @@ var state={
              券面值(ticketPrice)、                                                            
              截止日期(endDate)、                                                              
              图片（与商户相关）(picture)、                                                    
-             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
+             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ,
+             优惠券是否开启（isOpen）
           }                                                                                   
        },                                                                                     
                                                                                               
@@ -202,7 +205,8 @@ var state={
              券面值(ticketPrice)、                                                            
              截止日期(endDate)、                                                              
              图片（与商户相关）(picture)、                                                    
-             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） 
+             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
+             优惠券是否开启（isOpen）
         }                                                                                   
      }                                                                                     
  },                                                                                        
