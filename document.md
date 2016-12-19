@@ -21,7 +21,7 @@ var state = {
         order: {
             query: {
                 orderState: "",
-                couponsName: ""
+                couponName: ""
             },
             page: {
                 total: "",
@@ -30,7 +30,7 @@ var state = {
             },
             orderList: [{
                 iD: "",
-                name: "",
+                couponName: "",
                 describe: "",
                 sellingPrice: "",
                 picture: ""
@@ -54,7 +54,7 @@ var state = {
         publish: {
             query: {
                 orderState: "",
-                couponsName: ""
+                couponName: ""
             },
             page: {
                 total: "",
@@ -63,14 +63,14 @@ var state = {
             },
             publishList: [{
                 iD: "1212232321",
-                name: "呷哺呷哺",
+                couponName: "呷哺呷哺",
                 describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
                 sellingPrice: "70",
                 picture: ""
             }],
             publishInfo: {
                 iD: "",
-                name: "呷哺呷哺",
+                couponName: "呷哺呷哺",
                 areaInfo: "北京",
                 isAutomaticRefund: "是",
                 couponsType: "西餐",
@@ -87,7 +87,7 @@ var state = {
     },
     coupons: {
         query: {
-            couponsName: ""
+            couponName: ""
         },
         page: {
             total: "",
@@ -96,14 +96,14 @@ var state = {
         },
         couponsList: [{
             iD: "",
-            name: "",
+            couponName: "",
             describe: "",
             sellingPrice: "",
             picture: ""
         }],
         couponsInfo: {
             iD: "",
-            name: "",
+            couponName: "",
             areaInfo: "",
             isAutomaticRefund: "",
             couponType: "",
@@ -183,7 +183,7 @@ var state={
          优惠券列表的信息(orderList):是一个数组                                              
          [{                                                                                  
              iD,                                                                             
-             名称(name),                                                                     
+             名称(couponName),                                                                     
              描述(describe),                                                                     
              卖价(sellingPrice),                                                             
              商家图片(picture)                                                               
@@ -191,7 +191,7 @@ var state={
          优惠券详细的信息(publishInfo)                                                         
          {                                                                                   
              iD、                                                                             
-             优惠券名称(name)、                                                               
+             优惠券名称(couponName)、                                                               
              区域信息(areaInfo)、                                                             
              是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
              优惠券类别（中餐、西餐）（couponType）、                                               
@@ -211,7 +211,7 @@ var state={
  {                                                                                            
     查询条件(query):                                                                    
     {                                                                                   
-       优惠券名称(couponsName)                                          
+       优惠券名称(couponName)                                          
     }                                                                                   
     分页信息(page):                                                                     
     {                                                                                   
@@ -222,7 +222,7 @@ var state={
     优惠券列表的信息(orderList):是一个数组                                              
     [{                                                                                  
         iD,                                                                             
-        名称(name),                                                                     
+        名称(couponName),                                                                     
         描述(describe),                                                                     
         卖价(sellingPrice),                                                             
         商家图片(picture)                                                               
@@ -230,7 +230,7 @@ var state={
     优惠券详细的信息(couponsInfo)                                                         
     {                                                                                   
        iD、                                                                             
-       优惠券名称(name)、                                                               
+       优惠券名称(couponName)、                                                               
        区域信息(areaInfo)、                                                             
        是否支持优惠券未开启时自动退货(isAutomaticRefund)、                              
        优惠券类别（中餐、西餐）（couponType）、                                               
@@ -546,7 +546,7 @@ CouponsTrade:[
 - 编辑：edit
 - 查询：query
 - 唯一标识：iD
-- 优惠券名称：name
+- 优惠券名称：couponName
 - 区域信息：areaInfo
 - 优惠券码：couponCode
 - 原价：originalPrice
@@ -554,8 +554,8 @@ CouponsTrade:[
 - 券面价：ticketPrice
 - 截止日期：endDate
 - 自动退货：isAutomaticRefund
-- 优惠券类别（中餐、西餐）：type
-- 券码形式选项（图片或文本）：modality
+- 优惠券类别（中餐、西餐）：couponType
+- 券码形式选项（图片或文本）：couponModality
 - 描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：describe
 - 图片（与商户相关）：picture
 
