@@ -15,7 +15,8 @@ const InputComponent = ({input, type, placeholder}) => {
     return (
         <Input {...input}
                type={type}
-               placeholder={placeholder} required
+               placeholder={placeholder}
+               required
                float/>
     )
 };
