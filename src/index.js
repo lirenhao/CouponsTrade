@@ -2,7 +2,9 @@ import {AppContainer} from 'react-hot-loader'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import {Provider} from "react-redux"
-import {createStore} from "redux"
+import {createStore, compose, applyMiddleware} from "redux"
+import createSagaMiddleware from 'redux-saga'
+import sagas from './sagas'
 import reducer from "./reducers"
 import App from './containers/App'
 import DevTools from "./containers/DevTools"
@@ -10,7 +12,15 @@ import '../node_modules/onsenui/css/onsenui.css'
 import './css/onsen-css-components.css'
 import './css/couponStyle.css'
 
-const store = createStore(reducer, DevTools.instrument())
+const sagaMiddleware = createSagaMiddleware()
+const store = createStore(
+    reducer,
+    compose(
+        applyMiddleware(sagaMiddleware),
+        DevTools.instrument()
+    )
+)
+sagaMiddleware.run(sagas)
 
 const container = document.createElement('div')
 document.body.appendChild(container)

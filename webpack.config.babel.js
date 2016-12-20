@@ -8,6 +8,7 @@ import OpenBrowserPlugin from 'open-browser-webpack-plugin'
 export default {
     entry: {
         bundle: ['react-hot-loader/patch',
+            'babel-polyfill',
             './src/index.js'],
     },
     output: {
@@ -31,7 +32,8 @@ export default {
             {
                 test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
                 loader: "url?limit=10000&mimetype=image/svg+xml"
-            }
+            },
+            {test: /\.json$/, loader: "json"}
         ]
     },
     plugins: [
