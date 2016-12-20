@@ -6,73 +6,26 @@
  * 用户信息展示组件
  */
 import React from 'react'
-import {Page, Toolbar, SpeedDial, SpeedDialItem, Fab, Icon, Row, Col} from 'react-onsenui'
+import {Page, List, ListItem, ListHeader} from 'react-onsenui'
 
-const styles = {
-    main: {
-        fontFamily: 'sans-serif',
-        textAlign: 'center',
-    },
-    icon: {
-        fontSize: '150px',
-        margin: '20px 0 0px 0'
-    },
-    name: {
-        fontSize: '30px'
-    },
-    data: {
-        fontSize: '20px',
-        margin: '10px 0px 10px 0px'
-    },
-    dataKey: {
-        textAlign: 'right'
-    },
-    dataValue: {
-        textAlign: 'center'
-    }
-}
+
 
 const UserShow = (props) => {
     const {share, edit, user} = props
     return (
-        <div style={styles.main}>
-            <SpeedDial position='bottom right'>
-                <Fab>
-                    <Icon icon='md-menu'/>
-                </Fab>
-                <SpeedDialItem onClick={share}>
-                    <Icon icon='md-share'/>
-                </SpeedDialItem>
-                <SpeedDialItem onClick={edit}>
-                    <Icon icon='md-edit'/>
-                </SpeedDialItem>
-            </SpeedDial>
+        <List modifier='inset marginT'>
+            <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
+            <ListItem>
+                昵称 <div className="right">{user.nickname}</div>
+            </ListItem>
+            <ListItem>
+                手机号<div className="right">{user.phoneNumber}</div>
+            </ListItem>
+            <ListItem>
+                邀请码<div className="right">{user.inviteCode}</div>
+            </ListItem>
+        </List>
 
-            <div style={styles.icon}>
-                <Icon icon='ion-person'/>
-            </div>
-
-            <div style={styles.name}>
-                {user.nickname}
-            </div>
-
-            <Row style={styles.data}>
-                <Col style={styles.dataKey} width="40%">
-                    手机号:
-                </Col>
-                <Col style={styles.dataValue} width="50%">
-                    {user.phoneNumber}
-                </Col>
-            </Row>
-            <Row style={styles.data}>
-                <Col style={styles.dataKey} width="40%">
-                    邀请码:
-                </Col>
-                <Col style={styles.dataValue} width="50%">
-                    {user.inviteCode}
-                </Col>
-            </Row>
-        </div>
     )
 }
 

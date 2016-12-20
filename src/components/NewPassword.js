@@ -6,8 +6,8 @@
  * 新密码组件
  */
 import React from 'react'
-import {Field,reduxForm} from 'redux-form'
-import {Input,Button} from 'react-onsenui'
+import {Field, reduxForm} from 'redux-form'
+import {Input, Button} from 'react-onsenui'
 
 const newPasswordField = ({input, type, placeholder}) => {
     return (
@@ -23,23 +23,22 @@ const NewPassword = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{textAlign: 'center'}}>
-                <p>
-                    <Field type="text"
-                           name="newPassword"
-                           component={newPasswordField}
-                           placeholder="请输入新密码"/>
-                </p>
-                <p>
-                    <Field type="text"
-                           name="renewPassword"
-                           component={newPasswordField}
-                           placeholder="请再次输入新密码"/>
-                </p>
-                <p>
-                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
-                </p>
+            <section>
+                <br/>
+                <Field type="text"
+                       name="newPassword"
+                       component={newPasswordField}
+                       placeholder="请输入新密码"
+                       required/>
+                <Field type="text"
+                       name="renewPassword"
+                       component={newPasswordField}
+                       placeholder="请再次输入新密码"
+                       required/>
             </section>
+            <br/>
+            <br/>
+            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
         </form>
     )
 };
@@ -56,7 +55,7 @@ const validate = (value) => {
     if (!value.renewPassword) {
         errors.renewPassword = 'Required'
     }
-    if(value.newPassword!=value.renewPassword){
+    if (value.newPassword != value.renewPassword) {
         errors.renewPassword = '两次输入的密码不一致'
     }
     return errors
