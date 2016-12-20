@@ -6,6 +6,8 @@
  * 用户登录界面
  */
 import React from 'react'
+import {connect} from 'react-redux'
+import {loginRequest} from '../action'
 import {
     Page,
     Toolbar,
@@ -48,12 +50,20 @@ class Login extends React.Component {
     render() {
         return (
             <Page renderToolbar={this.loginToolbar.bind(this)}>
-                <SignIn
-                    onSubmit={(value) =>
-                        this.props.navigator.popPage()}/>
+                <SignIn onSubmit={(value) => this.props.login(value)}/>
             </Page>
         )
     }
 }
 
-export default Login
+const mapStateToProps = (state)=> ({
+    token: state.token
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    login: (value) => {
+        dispatch(loginRequest(value))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

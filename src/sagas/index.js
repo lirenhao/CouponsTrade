@@ -6,29 +6,11 @@
  * <文件描述>
  */
 import {takeEvery} from 'redux-saga'
-import {call, put} from 'redux-saga/effects'
-import {onload, unload, loginRequest, login, logoutRequest, logout} from '../action'
-import fetch from '../fetch'
-
-export function* loginAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, "login", req.payload)
-    if (res.code == 'success')
-        yield put(login(res.token))
-    else
-        console.log(res)
-    yield put(unload())
-}
+import {loginRequest, logoutRequest} from '../action'
+import {loginAsync, logoutAsync} from './async'
 
 export function* watchLoginRequest() {
     yield* takeEvery(loginRequest.getType(), loginAsync)
-}
-
-export function* logoutAsync() {
-    yield put(onload())
-    yield call(fetch, "logout")
-    yield put(logout())
-    yield put(unload())
 }
 
 export function* watchLogoutRequest() {
