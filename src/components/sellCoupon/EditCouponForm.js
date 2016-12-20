@@ -18,7 +18,7 @@ const EditCouponForm = (props)=> {
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
                 <CouponFields/>
-                <Button modifier="large marginLR" disabled={invalid || submitting} onClick={props.submit}>确认提交</Button>
+                <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确认提交</Button>
             </section>
         </form>
     )

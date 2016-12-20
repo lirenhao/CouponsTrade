@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field,reduxForm} from 'redux-form'
-import {Input} from 'react-onsenui'
+import {Input,Button} from 'react-onsenui'
 
 const newPasswordField = ({input, type, placeholder}) => {
     return (
@@ -37,7 +37,7 @@ const NewPassword = (props) => {
                            placeholder="请再次输入新密码"/>
                 </p>
                 <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>确定</button>
+                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
                 </p>
             </section>
         </form>
