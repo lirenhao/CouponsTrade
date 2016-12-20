@@ -16,7 +16,7 @@ const PublishCoupon = (props)=> {
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
                 <CouponFields/>
-                <Button modifier="large marginLR" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
+                <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
             </section>
         </form>
     )

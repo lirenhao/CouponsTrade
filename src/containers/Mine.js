@@ -29,8 +29,8 @@ class Mine extends React.Component {
                     <div className='center'>个人中心</div>
                 </Toolbar>
             )}>
-                <List modifier='inset' style={{marginTop:'1em'}}>
-                    <ListHeader/>
+                <List modifier='inset marginT'>
+                    <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
                                   comp: Login, props: {key: "Login"}
@@ -62,6 +62,14 @@ class Mine extends React.Component {
                                   comp: OrderList, props: {key: "OrderList"}
                               })}>
                         购买的优惠券
+                    </ListItem>
+                </List>
+                <List modifier='inset marginT'>
+                    <ListItem modifier='chevron'>
+                        预留1
+                    </ListItem>
+                    <ListItem modifier='chevron'>
+                        预留2
                     </ListItem>
                 </List>
             </Page>

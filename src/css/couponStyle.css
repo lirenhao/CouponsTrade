@@ -1,12 +1,71 @@
-.button--marginT{
-    margin-top: 1em;
-}
+
 .list--marginT{
     margin-top: 1em;
 }
 
-.button--marginLR{
+.button--marginTLR{
     width: calc(100% - 16px) !important;
     margin-left: 8px;
     margin-right: 8px;
+    margin-top: 1em;
+}
+section .search-input,section .search-input:focus{
+    margin:8px;
+    width: calc(100% - 16px);
+    background-color: #fff;
+    border: none;
+}
+.text-input.text-input--material {
+    position: relative;
+    top:0;
+}
+label.text-input__container{
+    position: relative;
+    top:15px;
+}
+ons-input{
+    width: 100%;
+}
+.page__background{
+    background-color: #f5f5f5;
+}
+ons-list[modifier="noborder"]{
+    border-bottom: 1px solid #ccc;
+}
+ons-list[modifier="noborder"] ons-col{
+    font-size: 0.5em;
+    color: #aaa;
+    text-align: center;
+    border-left: 1px #ccc solid;
+}
+ons-list[modifier="noborder"] ons-col:nth-child(1){
+    border-left: none;
+}
+ons-icon[icon="ion-arrow-down-b"]{
+    position: relative;
+    top:-3px;
+    left: 4px;
+}
+.price{
+    color: #EE3B3B;
+    font-size: 1.25em;
+}
+.price span{
+    font-size: 0.5em;
+    position: relative;
+    top:-2px;
+}
+ons-list-header img{
+    width: fit-content;
+    margin: 0 auto 1em;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+ons-list-header{
+    background-color: #fff;
+}
+.list__header--material img{
+    margin: 1em auto;
 }

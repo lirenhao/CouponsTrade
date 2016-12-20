@@ -15,7 +15,7 @@ const InputComponent = ({input, type, placeholder}) => {
     return (
         <Input {...input}
                type={type}
-               placeholder={placeholder}
+               placeholder={placeholder} required
                float/>
     )
 };
@@ -42,7 +42,7 @@ const CheckBoxComponent = ({input}) => {
 const CouponFields = () => {
     return (
         <div>
-            <List modifier="inset">
+            <List modifier="inset marginT">
                 <ListItem>
                     <div className="center">
                         <Field type="text" name="couponName" component={InputComponent} placeholder="商品名称"/>
@@ -70,7 +70,7 @@ const CouponFields = () => {
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <Field type="date" name="effectiveDate" component={InputComponent} placeholder="有效期截至日"/>
+                        <Field type="date" name="effectiveDate" component={InputComponent} placeholder=""/>
                     </div>
                 </ListItem>
                 <ListItem>
