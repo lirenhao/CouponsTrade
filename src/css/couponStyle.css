@@ -55,3 +55,17 @@ ons-icon[icon="ion-arrow-down-b"]{
     position: relative;
     top:-2px;
 }
+ons-list-header img{
+    width: fit-content;
+    margin: 0 auto 1em;
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+}
+ons-list-header{
+    background-color: #fff;
+}
+.list__header--material img{
+    margin: 1em auto;
+}
