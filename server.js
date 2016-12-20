@@ -20,10 +20,10 @@ app.use(function(req, res, next) {
 
 app.post('/login', function (req, res) {
     const {username, password} = req.body
-    if (username == 'lrh' && password == '111')
-        res.json({token: "111"})
+    if (username == '1' && password == '1')
+        res.json({code: "success", token: "1234567890"})
     else
-        res.json({error: "密码错误"})
+        res.json({code: "field", msg: "账号或密码错误"})
 })
 
 // TODO 添加后台服务

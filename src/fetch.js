@@ -3,7 +3,7 @@
  * Create Date：2016/12/19
  * Modified By：liRenhao
  * Why & What is modified  <修改原因描述>
- * <文件描述>
+ * 向后台发送数据
  */
 import fetch from 'node-fetch'
 
@@ -23,6 +23,6 @@ export default (path, param = {}) => {
             return res.json()
         })
         .catch(function (e) {
-            return {error: "网络异常"}
+            return {code: "timeout", msg: "请求超时"}
         })
 }
