@@ -7,6 +7,11 @@
  */
 import {createAction} from "redux-act"
 
+// 开始等待action
+export const onload = createAction("ONLOAD")
+// 取消等待action
+export const unload = createAction("UNLOAD")
+
 // 注册的请求action
 export const signUpRequest = createAction("SIGN_UP_REQUEST")
 
