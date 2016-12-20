@@ -257,112 +257,7 @@ var state={
 }                                                                                             
 ```
 
-## 二、何时会操作state--20161216
-
-- 详细分析优惠券交易平台项目操作中从state里面**存和取**数据。
-
-### 登陆
-
-- 需要**查询**验证“state中用户信息的Token”与“服务器返回的Token”是否一致
-- state.用户信息.用户Token  
-
-### 注册
-
-- 无
-
-### 购买优惠券   
-
-- 描述：用户购买优惠券需要操作state的地方
-
-#### 加载平台首页  
-
-- 需要**查询**state中的“查询优惠券”中部分数据（待定加载哪部分数据）
-- 操作的state为
-  - state.查询优惠券.查询条件
-  - state.查询优惠券.分页信息
-  - state.查询优惠券.优惠券列表的信息
-
-#### 查询优惠券列表
-
-- 需要**查询**state中的“查询优惠券”中的部分数据（待定）
-- 操作的state为
-  - state.查询优惠券.查询条件
-  - state.查询优惠券.分页信息
-  - state.查询优惠券.优惠券列表的信息
-
-#### 查看优惠券详情
-
-- 需要**查询**state中的“查询优惠券”中的部分数据
-- 操作的state为
-  - state.查询优惠券.优惠券详细的信息.所有信息
-
-#### 购买优惠券
-
-- 需要**查询**state中的“查询优惠券”中的部分数据、“用户信息”的部分数据
-- 操作的state为
-  - state.用户信息.用户基本信息.昵称
-  - state.查询优惠券.优惠券详细的信息.标题
-  - state.查询优惠券.优惠券详细的信息.卖价
-  - state.查询优惠券.优惠券详细的信息.商家图片
-
-#### 支付订单
-
-- 需要**查询**state中的"查询优惠券"中的优惠券详细的信息
-
-#### 查看订单
-
-- 需要**查询**state中的"用户已经够买的优惠券信息"中的优惠券详细的信息
-- 操作的state为
-  - state.用户已经够买的优惠券信息.查询条件（未支付）
-  - state.用户已经够买的优惠券信息.优惠券详细的信息
-
-### 发布优惠券
-
-- 描述：“用户发布优惠券”和“发布过的优惠券”需要操作state的地方
-
-#### 发布优惠券
-
-- 
-
-#### 查看已发布优惠券列表
-
-#### 查看优惠券详情
-- 需要操作的state包括：
-  - 优惠券唯一标识：state.publish.orderInfo.iD
-  - 优惠券名称:state.publish.orderInfo.name
-  - 区域信息:state.publish.orderInfo.areaInfo
-  - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-  - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
-  - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
-  - 券码（图片或文本）：state.publish.orderInfo.couponCode
-  - 卖价：state.publish.orderInfo.sellingPrice
-  - 原价：state.publish.orderInfo.originalPrice
-  - 券面值：state.publish.orderInfo.ticketPrice
-  - 截止日期：state.publish.orderInfo.endDate
-  - 图片（与商户相关）：state.publish.orderInfo.picture
-  - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
-
-
-#### 编辑优惠券
-
-#### 下架优惠券
-
-
-
-### 个人中心
-
-#### 查看个人信息
-
-#### 编辑个人信息
-
-#### 生成邀请码
-
-#### 重置密码
-
-
-
-
-## 三、state的结构分析--20161216
+## 二、state的结构分析--20161216
 
 - 优惠券交易平台系统的state应该如何存储数据，该文档定义state的结构进行定义
 
@@ -487,12 +382,12 @@ CouponsTrade:[
 
 
 
-## 本次讨论注意事项  
+## 三、本次讨论注意事项  
 
 ### 1. BackButton按钮
 - 描述BackButton按钮不能用太多，防止退回到某个编辑页面，如：支付页面
 
-##  后台接口简单描述--20161216
+##  四、后台接口简单描述--20161216
 注册
 （昵称、手机号、验证码、密码、邀请码）=>（成功/失败）
 
@@ -532,7 +427,7 @@ CouponsTrade:[
 用户支付订单
 （Token、id-订单ID）=>（支付结果）
 
-## 平台字典名称--20161216
+## 五、平台字典名称--20161216
 
 ### 登陆signIn、注册signUp
 - 用户名：phoneNo
@@ -579,61 +474,61 @@ CouponsTrade:[
 - 卖家昵称：sellNickName
 - 买家昵称：buyNickName
 
+## 分析异步async操作和action-20161220
 
-## 分析异步async操作-20161220
+### 分析异步async操作
 - watching
 - 后台请求
 - action的成功处理、失败处理
 - 结束watch
 
-## 分析action-20161220
-
+### 分析action
 - Loading 共用
 - success 发起action有结果的数据，单独写
 - field   共用（暂定）
 - unload 共用
 
-## 共用action-20161220
+### 共用action
 共用消息提示action:提示用户结果
 
-## 用户-20161220
+### 用户
 
-### 注册
+#### 注册
 - 注册action
 - 共用消息提示action
 - 请求
   - 参数：昵称、手机号、验证码（只录入模拟验证码）、密码、邀请码
   - 响应回：注册结果（成功、失败）
 
-### 登陆
+#### 登陆
 - 登陆action
 - 更新token的action
 - 请求
   - 参数：用户名、密码
   - 响应回数据：token
 
-### 获取用户信息
+#### 获取用户信息
 - 获取用户信息action
 - 更新用户信息action
 - 请求
   - 参数：token
   - 返回：昵称、手机号、邀请码（该用户使用的）、可邀请的数量
 
-### 编辑用户信息
+#### 编辑用户信息
 - 编辑用户信息action
 - 更新用户信息action(同获取用户信息中的更新用户信息action)
 - 请求
   - 参数：token、昵称、手机号、邀请码
   - 返回：更新结果（成功、失败）
   
-### 生成邀请码
+#### 生成邀请码
 - 生成邀请码的action
 - 更新邀请码的action
 - 请求
   - 参数：token
   - 返回：邀请码
   
-### 重置密码
+#### 重置密码
 - 验证原密码的action
 - 验证原密码返回结果action(待定TODO)
 - 更新新密码的action
@@ -646,28 +541,29 @@ CouponsTrade:[
   - 返回：重置密码结果（成功、失败）
 
 
-## 发布
+### 发布
 
-### 发布优惠券
+#### 发布优惠券
 - 发布action
 - 请求
   - 参数（token、优惠券的信息）
     - 优惠券的信息如下：
-    - name: "呷哺呷哺"
-    - areaInfo: "北京"
-    - isAutomaticRefund: "是"
-    - type: "西餐"
-    - modality: "文本"
-    - couponCode: "1234567890"
-    - sellingPrice: "70"
-    - originalPrice: "50"
-    - ticketPrice: "100"
-    - endDate: "20161215"
-    - picture: ""
-    - describe: "该券仅限周三使用，请各位小主们尽快下单吧~~"
+      - 优惠券唯一标识：state.publish.orderInfo.iD
+      - 优惠券名称:state.publish.orderInfo.name
+      - 区域信息:state.publish.orderInfo.areaInfo
+      - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
+      - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
+      - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
+      - 券码（图片或文本）：state.publish.orderInfo.couponCode
+      - 卖价：state.publish.orderInfo.sellingPrice
+      - 原价：state.publish.orderInfo.originalPrice
+      - 券面值：state.publish.orderInfo.ticketPrice
+      - 截止日期：state.publish.orderInfo.endDate
+      - 图片（与商户相关）：state.publish.orderInfo.picture
+      - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
    - 响应回的数据：发布结果：成功、失败
 
-### 查询发布的优惠券列表（首页）
+#### 查询发布的优惠券列表（首页）
 - 公共查询发布的优惠券action
 - 更新查询优惠券列表的action
 - 插入优惠券列表的action
@@ -675,27 +571,28 @@ CouponsTrade:[
   - 参数：优惠券名称、页数
   - 响应：分页信息（第几页、总条数、每页的条数）、优惠券部分数据组成的数组：优惠券发布的ID、优惠券名称、优惠券售卖价、描述、商家图片
 
-### 查询优惠券详情（首页）
+#### 查询优惠券详情（首页）
 - 查询优惠券详情的action
 - 更新优惠券详情的action
 - 请求
   - 参数：优惠券ID
   - 响应：优惠券详细信息
-    iD: "",
-    couponName: "呷哺呷哺"
-    areaInfo: "北京"
-    isAutomaticRefund: "是"
-    type: "西餐"
-    modality: "文本"
-    couponCode: "1234567890"
-    sellingPrice: "70"
-    originalPrice: "50"
-    ticketPrice: "100"
-    endDate: "20161215"
-    picture: "",
-    nickName
+      - 优惠券唯一标识：state.publish.orderInfo.iD
+      - 优惠券名称:state.publish.orderInfo.name
+      - 区域信息:state.publish.orderInfo.areaInfo
+      - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
+      - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
+      - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
+      - 券码（图片或文本）：state.publish.orderInfo.couponCode
+      - 卖价：state.publish.orderInfo.sellingPrice
+      - 原价：state.publish.orderInfo.originalPrice
+      - 券面值：state.publish.orderInfo.ticketPrice
+      - 截止日期：state.publish.orderInfo.endDate
+      - 图片（与商户相关）：state.publish.orderInfo.picture
+      - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
+      - 昵称：nickName
 
-### 查询已发布优惠券列表
+#### 查询已发布优惠券列表
 - 查询已发布优惠券列表action
 - 更新已发布优惠券列表action
 - 插入已发布优惠券列表action
@@ -703,44 +600,41 @@ CouponsTrade:[
   - 参数：用户token、优惠券的状态（已售卖、已下架、正在售卖）、优惠券名称（允许为空）
   - 响应：分页信息（第几页、总条数、每页的条数）、优惠券部分数据组成的数组：优惠券发布的ID、优惠券名称、优惠券售卖价、描述、商家图片
 
-
-### 查询优惠券详情（发布）
+#### 查询优惠券详情（发布）
 
 - 同查询优惠券详情（首页）  暂定
 - 比它多展示一个优惠券的券码（加密过的）
 
-### 下架优惠券
+#### 下架优惠券
 - 下架优惠券action
 - 更新优惠券action
 - 请求
   - 参数：用户Token、优惠券ID
   - 响应:下架结果（成功、失败）
   
-### 编辑优惠券  
+#### 编辑优惠券  
 - 编辑优惠券action
 - 更新优惠券action
 - 请求
   - 参数:用户token,除券码之外的所有优惠券详情字段
   - 响应：返回结果（成功、失败）
 
-## 订单
+### 订单
 
-### 生成订单
+#### 生成订单
 - 生成订单action 
 - 更新订单action
 - 请求
   - 参数：用户token,优惠券id
   - 响应：订单详细信息（订单id、生成订单时间、优惠券详细信息）
   
-**注：需要修改state**
-
-### 支付
+#### 支付
 - 支付action
 - 请求
   - 参数：用户token,订单id
   - 响应：支付结果（成功、失败）注：按照模拟的情况响应数据
 
-### 查看订单列表
+#### 查看订单列表
 - 查看订单列表action
 - 更新订单列表action
 - 插入订单列表action
@@ -748,14 +642,14 @@ CouponsTrade:[
   - 参数：用户token，订单状态（待支付、已支付、取消、已完成）
   - 响应：优惠券的名称、优惠券商家图片、优惠券的价格、订单状态
 
-### 查看订单详情
+#### 查看订单详情
 - 查看订单详情的action
 - 更新订单详情的action
 - 请求
   - 参数：用户token，订单ID
   - 响应：卖家昵称、买家昵称、商品图片、优惠券名称、售卖价、生成订单日期、订单编号
   
-### 开启券码  
+#### 开启券码  
 - 开启优惠券action
 - 更新开启优惠券action
 - 请求
@@ -764,7 +658,7 @@ CouponsTrade:[
 
  
   
-## 问题：
+### 问题-20161220
 - 当正在查询优惠券时，有新发布的优惠券和新编辑的优惠券，怎么处理
  - 服务器中查询的数据，给平台总数和前10条数据
  - 假如新发布的优惠券在服务器中的前10条，就会导致11-n查不到该条数据
