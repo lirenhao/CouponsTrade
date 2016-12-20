@@ -18,14 +18,11 @@ export default (path, param = {}) => {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }
-    return fetch(`http://localhost:9000/${path}`, options)
+    return fetch(`http://localhost:3000/${path}`, options)
         .then(function (res) {
             return res.json()
         })
-        .then(function (json) {
-            console.log(json)
-        })
         .catch(function (e) {
-            console.log(e);
+            return {error: "网络异常"}
         })
 }

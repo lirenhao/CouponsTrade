@@ -17,8 +17,12 @@ export const signUpRequest = createAction("SIGN_UP_REQUEST")
 
 // 登录的请求action
 export const loginRequest = createAction("LOGIN_REQUEST")
-// 更新Token的action
-export const updateToken = createAction("UPDATE_TOKEN")
+// 注销请求的action
+export const logoutRequest = createAction("LOGOUT_REQUEST")
+// 登录的action
+export const login = createAction("LOGIN")
+// 注销的action
+export const logout = createAction("LOGOUT")
 
 // 用户信息的请求action
 export const getUserInfoRequest = createAction("GET_USER_INFO_REQUEST")
