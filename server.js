@@ -12,6 +12,12 @@ const app = express()
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: true}))
 
+app.use(function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", req.get("origin"));
+    res.header("Access-Control-Allow-Credentials", true);
+    next();
+});
+
 app.post('/login', function (req, res) {
     const {username, password} = req.body
     if (username == 'lrh' && password == '111')
