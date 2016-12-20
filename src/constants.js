@@ -9,7 +9,13 @@
 // 服务器地址
 export const ServerPath = {
     LOGIN: "login",
-    LOGOUT: "logout"
+    LOGOUT: "logout",
+    SIGN_UP: "signUp",
+    GET_USER_INFO: "getUserInfo",
+    UPDATE_USER_INFO: "updateUserInfo",
+    CREATE_INVITE_CODE: "createInviteCode",
+    VERIFY_PASSWORD: "verifyPassword",
+    UPDATE_PASSWORD: "updatePassword"
 }
 
 // 响应码
