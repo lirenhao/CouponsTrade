@@ -42,10 +42,10 @@ export const verifyPasswordRequest = createAction("VERIFY_PASSWORD_REQUEST")
 export const updatePasswordRequest = createAction("UPDATE_PASSWORD_REQUEST")
 
 // 发布优惠券action
-export const publishCoupon = createAction("PUBLISH_COUPON")
+export const publishCouponRequest = createAction("PUBLISH_COUPON_REQUEST")
 
 // 搜索优惠券action
-export const searchCoupons = createAction("SEARCH_COUPONS")
+export const searchCouponsRequest = createAction("SEARCH_COUPONS_REQUEST")
 
 // 更新优惠券列表
 export const updateCoupons = createAction("UPDATE_COUPONS")
@@ -54,10 +54,13 @@ export const updateCoupons = createAction("UPDATE_COUPONS")
 export const insertCoupons = createAction("INSERT_COUPONS")
 
 // 查看优惠券明细action
-export const getCouponDetails = createAction("GET_COUPON_DETAILS")
+export const getCouponDetailsRequest = createAction("GET_COUPON_DETAILS_REQUEST")
+
+// 更新优惠券明细action
+export const insertCouponDetails = createAction("INSERT_COUPON_DETAILS")
 
 //查看用户已发布过的优惠券列表
-export const getUserCoupons = createAction("GET_USER_COUPONS")
+export const getUserCouponsRequest = createAction("GET_USER_COUPONS_REQUEST")
 
 // 更新用户优惠券列表
 export const updateUserCoupons = createAction("UPDATE_USER_COUPONS")
@@ -66,29 +69,39 @@ export const updateUserCoupons = createAction("UPDATE_USER_COUPONS")
 export const insertUserCoupons = createAction("INSERT_USER_COUPONS")
 
 // 下架优惠券
-export const stopUserCoupon = createAction("STOP_USER_COUPON")
+export const stopUserCouponRequest = createAction("STOP_USER_COUPON_REQUEST")
 
 //编辑优惠券
-export const editUserCoupon = createAction("EDIT_USER_COUPON")
+export const editUserCouponRequest = createAction("EDIT_USER_COUPON_REQUEST")
 
 //更新编辑优惠券信息
 export const updateUserCoupon = createAction("UPDATE_USER_COUPON")
 
-//支付订单
-export const pay = createAction("PAY")
+//支付订单请求
+export const payRequest = createAction("PAY_REQUEST")
 
-//取消订单
-export const cancelOrder = createAction("CANCEL_ORDER")
+//取消订单请求
+export const cancelOrderRequest = createAction("CANCEL_ORDER_REQUEST")
 
-//查看订单列表
-export const getOrderList = createAction("GET_ORDER_LIST")
+//查看订单列表请求
+export const getOrderListRequest = createAction("GET_ORDER_LIST_REQUEST")
 
-//查看订单详情
-export const getOrderInfo = createAction("GET_ORDER_INFO")
+//更新订单列表
+export const setOrderList = createAction("SET_ORDER_LIST")
 
-//开启优惠券
+//插入订单列表
+export const insertOrderList = createAction("INSERT_ORDER_LIST")
+
+//查看订单详情请求
+export const getOrderInfoRequest = createAction("GET_ORDER_INFO_REQUEST")
+
+//更新订单详情
+export const setOrderInfo = createAction("SET_ORDER_INFO")
+
+//开启优惠券请求
+export const openCouponRequest = createAction("OPEN_COUPON_REQUEST")
+
+//更新优惠券开启信息
 export const openCoupon = createAction("OPEN_COUPON")
-
-
 
 
