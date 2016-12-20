@@ -24,17 +24,17 @@ const OldPassword = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{textAlign: 'center'}}>
-                <p>
+            <br/>
+            <section>
                     <Field type="text"
                            name="oldPassword"
                            component={oldPasswordField}
-                           placeholder="请输入原密码"/>
-                </p>
-                <p>
-                    <Button modifier="large" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
-                </p>
+                           placeholder="请输入原密码"
+                           required/>
+                <br/>
             </section>
+            <br/>
+            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
         </form>
     )
 };
