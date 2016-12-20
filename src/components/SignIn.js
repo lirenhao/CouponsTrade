@@ -13,6 +13,7 @@ const SignInField = ({input, type, placeholder}) => {
         <Input {...input}
                type={type}
                placeholder={placeholder}
+               required
                float/>
     )
 };
@@ -33,9 +34,12 @@ const SignIn = (props) => {
                         <Field type="password" name="password" component={SignInField} placeholder="输入密码"/>
                     </div>
                 </ListItem>
+                <ListItem>
+                    <div className="center"><a href="#">切换账户</a></div>
+                    <div className="right"><a href="#">忘记密码？</a></div>
+                </ListItem>
             </List>
-            <Button modifier='quiet'>忘记密码？</Button>
-            <Button modifier="large marginLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
+            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
         </form>
     )
 }
