@@ -92,6 +92,9 @@ export const cancelOrderRequest = createAction("CANCEL_ORDER_REQUEST")
 //查看订单列表请求
 export const getOrderListRequest = createAction("GET_ORDER_LIST_REQUEST")
 
+//更新订单列表的分页信息
+export const setOrderPage = createAction("SET_ORDER_PAGE")
+
 //更新订单列表
 export const setOrderList = createAction("SET_ORDER_LIST")
 
