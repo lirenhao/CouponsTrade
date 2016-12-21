@@ -1,4 +1,9 @@
-# 优惠券交易平台项目
+[TOC]:#
+# Table of Contents
+- [1、分析异步async操作和action-20161220](#1分析异步async操作和action-20161220)
+    - [1.1 分析异步async操作](#11-分析异步async操作)
+    - [1.2 分析action](#12-分析action)
+
 
 ## 1、分析异步async操作和action-20161220
 ### 1.1 分析异步async操作
@@ -9,7 +14,7 @@
 
 ### 1.2 分析action
 - Loading： 共用
-- success： 发起action有结果的数据，单独写，按照用户、发布优惠券、订单三大类进行如下描述
+- success： 发起action有结果的数据，单独写，按照用户、发布优惠券、订单三大类进行如下分析action描述
 - field：   共用（暂定）
 - unload： 共用
 
