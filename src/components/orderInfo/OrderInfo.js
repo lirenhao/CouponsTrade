@@ -22,12 +22,17 @@ const renderToolbar = () => {
 const OrderInfo = ({username, sellName, itemName, price, orderId, orderTime, handleClick}) => {
     return (
         <Page renderToolbar={renderToolbar}>
-            <List>
-                <ListItem>卖家:{sellName}</ListItem>
+            <List modifier="inset marginT">
                 <ListItem onClick={handleClick}>
-                    <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
-                    <div className="center">{itemName + " " + price + "元"}</div>
+                    <div className="left">
+                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
+                    </div>
+                    <div className="center">{itemName }</div>
+                    <div className="right"><span className="price">{price + "元"}</span></div>
                 </ListItem>
+            </List>
+            <List modifier="inset marginT">
+                <ListItem>卖家:{sellName}</ListItem>
                 <ListItem>收货人:{username}</ListItem>
                 <ListItem>订单编号:{orderId}</ListItem>
                 <ListItem>交易时间:{orderTime}</ListItem>
