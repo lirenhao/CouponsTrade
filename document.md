@@ -86,7 +86,8 @@ var state = {
                 endDate: "20161215",
                 picture: "",
                 describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
-                isOpen:""
+                isOpen:"",
+                state:"已下架"
             }
         }
     },
@@ -591,6 +592,7 @@ CouponsTrade:[
       - 图片（与商户相关）：state.publish.orderInfo.picture
       - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
       - 昵称：nickName
+      - 优惠券的状态：state
 
 #### 查询已发布优惠券列表
 - 查询已发布优惠券列表action
