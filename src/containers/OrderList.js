@@ -25,7 +25,7 @@ class OrderList extends React.Component {
         return (
             <Toolbar>
                 <div className='left'><BackButton>返回</BackButton></div>
-                <div className="center">我的订单</div>
+                <div className="center">我的优惠券</div>
             </Toolbar>
         )
     };
@@ -53,7 +53,8 @@ class OrderList extends React.Component {
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
                 </div>
                 <div className='center'>
-                    {row}<span>{listData[row] + "元"}</span>
+                    <div className="list__item__title">{row}</div>
+                    <div className="list__item__subtitle">{listData[row] + "元"}</div>
                 </div>
             </ListItem>
         )
@@ -63,9 +64,10 @@ class OrderList extends React.Component {
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <List
+                    modifier="order"
                     dataSource={itemKeys}
                     renderRow={this.renderRow.bind(this)}
-                    renderHeader={() => <ListHeader>订单列表</ListHeader>}
+                    /*renderHeader={() => <ListHeader>我的优惠券</ListHeader>}*/
                 />
             </Page>
         )

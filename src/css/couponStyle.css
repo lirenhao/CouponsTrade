@@ -102,3 +102,13 @@ input[name*="Password"] + .text-input--material__label--active{
 .list--marginB .list__item:last-child{
     height: 2em;
 }
+.list__item--material__center{
+    padding-right: 0;
+}
+.list--order .left img{
+    width: 70px;
+    height: 70px;
+}
+.list--order .center{
+    padding-left: 1em;
+}
