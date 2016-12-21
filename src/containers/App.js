@@ -3,7 +3,9 @@ import {connect} from 'react-redux'
 import {Navigator} from 'react-onsenui'
 import Tabs from './Tabs'
 import DevTools from './DevTools'
+import Dialog from '../components/Dialog'
 import Loading from '../components/Loading'
+import {hideDialog} from '../action'
 
 const renderPage = (route, navigator) => {
     route.props = route.props || {};
@@ -19,6 +21,7 @@ const App = (props) => {
                 initialRoute={{comp: Tabs, props: {key: "tabs"}}}
                 renderPage={renderPage}
             />
+            <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
             <Loading loading={props.loading}/>
             <DevTools/>
         </div>
@@ -26,7 +29,14 @@ const App = (props) => {
 }
 
 const mapStateToProps = (state) => ({
+    dialog: state.dialog,
     loading: state.loading
 })
 
-export default connect(mapStateToProps)(App)
+const mapDispatchToProps = (dispatch) => ({
+    hideDialog: () => {
+        dispatch(hideDialog())
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)

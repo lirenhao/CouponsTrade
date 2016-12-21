@@ -6,10 +6,11 @@ import inviteCode from './inviteCode'
 import userInfo from './userInfo'
 import orderList from './orderList'
 import orderInfo from './orderInfo'
+import dialog from './dialog'
 
 const order = combineReducers({orderList, orderInfo});
 
 export default combineReducers({
     form, token, loading, inviteCode, userInfo,
-    order
+    order, dialog
 })

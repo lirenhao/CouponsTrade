@@ -8,7 +8,7 @@
 import {call, put} from 'redux-saga/effects'
 import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
-import {onload, unload, login, logout, updateUserInfo, updateInviteCode, setOrderList} from '../action'
+import {onload, unload, login, logout, updateUserInfo, updateInviteCode, showDialog, setOrderList} from '../action'
 
 /**
  * 注册的异步处理
@@ -31,10 +31,12 @@ export function* signUpAsync(req) {
 export function* loginAsync(req) {
     yield put(onload())
     const res = yield call(fetch, ServerPath.LOGIN, req.payload)
-    if (res.code == ResponseCode.SUCCESS)
+    if (res.code == ResponseCode.SUCCESS){
         yield put(login(res.token))
-    else
-        console.log(res)
+        // TODO 跳转处理
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 

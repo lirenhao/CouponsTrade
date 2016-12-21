@@ -12,6 +12,11 @@ export const onload = createAction("ONLOAD")
 // 取消等待action
 export const unload = createAction("UNLOAD")
 
+// 显示消息框的action
+export const showDialog = createAction("SHOW_DIALOG")
+// 隐藏消息框的action
+export const hideDialog = createAction("HIDE_DIALOG")
+
 // 注册的请求action
 export const signUpRequest = createAction("SIGN_UP_REQUEST")
 
