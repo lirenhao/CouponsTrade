@@ -49,12 +49,12 @@
 - 支付宝：alipay
 - 账号：accountNumber
 - 订单编号：orderNumber
-- 成交时间：transactionDate
-- 卖家昵称：sellNickName
-- 买家昵称：buyNickName
-- 卖家订单列表：orderList
-- 卖家订单详情：orderInfo
-- 买家订单列表：
-- 买家订单详情：
+- 成交日期：transactionDate
+- 卖家昵称：sellerNickName
+- 买家昵称：buyerNickName
+- 卖家订单列表：sellerOrderList
+- 卖家订单详情：sellerOrderInfo
+- 买家订单列表：buyerOrderList
+- 买家订单详情：buyerOrderList
 
 ***
