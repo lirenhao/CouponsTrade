@@ -50,7 +50,10 @@ export const updatePasswordRequest = createAction("UPDATE_PASSWORD_REQUEST")
 export const publishCouponRequest = createAction("PUBLISH_COUPON_REQUEST")
 
 // 搜索优惠券action
-export const searchCouponsRequest = createAction("SEARCH_COUPONS_REQUEST")
+export const queryCouponsRequest = createAction("QUERY_COUPONS_REQUEST")
+
+// 更新优惠券列表的分页信息
+export const setCouponPage =createAction("SET_COUPON_PAGE")
 
 // 更新优惠券列表
 export const setCoupons = createAction("SET_COUPONS")
@@ -67,6 +70,9 @@ export const insertCouponDetails = createAction("INSERT_COUPON_DETAILS")
 //查看用户已发布过的优惠券列表
 export const getUserCouponsRequest = createAction("GET_USER_COUPONS_REQUEST")
 
+// 更新用户已发布过优惠券列表的分页信息
+export const setUserCouponPage =createAction("SET_USER_COUPON_PAGE")
+
 // 更新用户优惠券列表
 export const setUserCoupons = createAction("SET_USER_COUPONS")
 
@@ -77,10 +83,10 @@ export const insertUserCoupons = createAction("INSERT_USER_COUPONS")
 export const insertUserCouponDetails = createAction("INSERT_USER_COUPON_DETAILS")
 
 // 下架优惠券
-export const offShelveCouponRequest = createAction("OFF_SHELVE_COUPON_REQUEST")
+export const soldOutCouponRequest = createAction("SOLD_OUT_COUPON_REQUEST")
 
 // 更新下架优惠券状态
-export const updateOffShelveCoupon = createAction("UPDATE_OFF_SHELVE_COUPON")
+export const updateSoldOutCoupon = createAction("UPDATE_SOLD_OUT_COUPON")
 
 //编辑优惠券
 export const editUserCouponRequest = createAction("EDIT_USER_COUPON_REQUEST")

@@ -17,12 +17,12 @@ export const ServerPath = {
     VERIFY_PASSWORD: "verifyPassword",
     UPDATE_PASSWORD: "updatePassword",
     PUBLISH_COUPON: "publishCoupon",
-    SEARCH_COUPONS: "searchCoupons",
     GET_COUPON_DETAILS: "getCouponDetails",
     GET_USER_COUPONS: "getUserCoupons",
-    OFF_SHELVE_COUPON: "offShelveCoupon",
     EDIT_USER_COUPON: "editUserCoupon",
-    GET_ORDER_LIST: "getOrderList"
+    GET_ORDER_LIST: "getOrderList",
+    QUERY_COUPONS:"queryCoupons",
+    SOLD_OUT_COUPON:"soldOutCoupon",
 }
 
 // 响应码
