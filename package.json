@@ -2,9 +2,9 @@
   "private": true,
   "scripts": {
     "start": "webpack && webpack-dev-server --inline --hot --host 0.0.0.0",
-    "test": "./node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0",
-    "build": "./node_modules/.bin/webpack",
-    "server": "babel-node server.js"
+    "test": "node_modules/.bin/webpack-dev-server --inline --hot --host 0.0.0.0",
+    "build": "node_modules/.bin/webpack",
+    "server": "node_modules/.bin/babel-node server.js"
   },
   "dependencies": {
     "node-fetch": "^1.6.3",

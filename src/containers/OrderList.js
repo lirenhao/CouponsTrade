@@ -8,19 +8,13 @@
 import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
-import Tabs from './Tabs'
-
-const listData = {
-    "黑松白鹿": 400,
-    "大渔铁板烧": 200,
-    "星巴克": 40,
-    "必胜客": 80,
-    "呷哺呷哺": 75
-};
-
-const itemKeys = Object.keys(listData);
+import {connect} from 'react-redux'
 
 class OrderList extends React.Component {
+    constructor(props) {
+        super(props)
+    }
+
     renderToolbar = () => {
         return (
             <Toolbar>
@@ -53,8 +47,8 @@ class OrderList extends React.Component {
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
                 </div>
                 <div className='center'>
-                    <div className="list__item__title">{row}</div>
-                    <div className="list__item__subtitle">{listData[row] + "元"}</div>
+                    <div className="list__item__title">{row.couponName}</div>
+                    <div className="list__item__subtitle">{row.sellingPrice + "元"}</div>
                 </div>
             </ListItem>
         )
@@ -65,13 +59,16 @@ class OrderList extends React.Component {
             <Page renderToolbar={this.renderToolbar}>
                 <List
                     modifier="order"
-                    dataSource={itemKeys}
+                    dataSource={this.props.orderList}
                     renderRow={this.renderRow.bind(this)}
-                    /*renderHeader={() => <ListHeader>我的优惠券</ListHeader>}*/
                 />
             </Page>
         )
     }
 }
 
-export default OrderList
+const mapStateToProps = state => {
+    return {orderList: state.order.orderList}
+};
+
+export default connect(mapStateToProps)(OrderList)

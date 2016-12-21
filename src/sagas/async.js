@@ -8,7 +8,7 @@
 import {call, put} from 'redux-saga/effects'
 import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
-import {onload, unload, login, logout, updateUserInfo, updateInviteCode} from '../action'
+import {onload, unload, login, logout, updateUserInfo, updateInviteCode, setOrderList} from '../action'
 
 /**
  * 注册的异步处理
@@ -99,5 +99,17 @@ export function* updatePasswordAsync(req) {
     yield put(onload())
     const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, req.payload)
 
+    yield put(unload())
+}
+
+/**
+ * 获取订单列表的异步处理
+ * @param action
+ */
+
+export function* fetchOrderList(action) {
+    yield put(onload())
+    const orderList = yield call(fetch, ServerPath.GET_ORDER_LIST, action.payload);
+    yield put(setOrderList(orderList));
     yield put(unload())
 }

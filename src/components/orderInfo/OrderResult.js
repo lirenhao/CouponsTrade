@@ -9,9 +9,12 @@ import React from 'react'
 import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
 import OrderList from '../../containers/OrderList'
 import Tabs from '../../containers/Tabs'
+import {connect} from 'react-redux'
+import {getOrderListRequest} from '../../action'
 
-const OrderResult = ({res, navigator}) => {
+const OrderResult = ({res, navigator, dispatch}) => {
     const handleClick = () => {
+        dispatch(getOrderListRequest({token: 1234567890}));
         navigator.resetPageStack([
             {
                 comp: Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
@@ -60,4 +63,4 @@ const OrderResult = ({res, navigator}) => {
     }
 };
 
-export default OrderResult
+export default connect()(OrderResult)

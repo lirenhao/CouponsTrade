@@ -16,12 +16,13 @@ export const ServerPath = {
     CREATE_INVITE_CODE: "createInviteCode",
     VERIFY_PASSWORD: "verifyPassword",
     UPDATE_PASSWORD: "updatePassword",
-    PUBLISH_COUPON:"publishCoupon",
-    SEARCH_COUPONS:"searchCoupons",
-    GET_COUPON_DETAILS:"getCouponDetails",
-    GET_USER_COUPONS:"getUserCoupons",
-    OFF_SHELVE_COUPON:"offShelveCoupon",
-    EDIT_USER_COUPON:"editUserCoupon"
+    PUBLISH_COUPON: "publishCoupon",
+    SEARCH_COUPONS: "searchCoupons",
+    GET_COUPON_DETAILS: "getCouponDetails",
+    GET_USER_COUPONS: "getUserCoupons",
+    OFF_SHELVE_COUPON: "offShelveCoupon",
+    EDIT_USER_COUPON: "editUserCoupon",
+    GET_ORDER_LIST: "getOrderList"
 }
 
 // 响应码
