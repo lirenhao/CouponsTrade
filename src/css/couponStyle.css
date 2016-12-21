@@ -112,3 +112,19 @@ input[name*="Password"] + .text-input--material__label--active{
 .list--order .center{
     padding-left: 1em;
 }
+.modal--load circle:nth-child(2){
+    stroke: #aaa;
+}
+.head-bg{
+    background-color: #bed2ea;
+    text-align: center;
+    line-height: 52px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #fff;
+    background-image: none;
+}
+.search-bg{
+    background-color: #bed2ea;
+    border: 1px solid #bed2ea;
+}

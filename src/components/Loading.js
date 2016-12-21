@@ -10,13 +10,9 @@ import {Modal, ProgressCircular, Button} from 'react-onsenui'
 
 const Loading = (props) => {
     return (
-        <Modal animation='fade'
+        <Modal modifier="load" animation='fade'
             isOpen={props.loading}>
-            <section style={{margin: '16px'}}>
-                <p style={{opacity: 0.6}}>
-                    <ProgressCircular indeterminate/>
-                </p>
-            </section>
+               <ProgressCircular indeterminate/>
         </Modal>
     )
 }

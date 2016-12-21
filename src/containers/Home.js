@@ -20,8 +20,8 @@ class Home extends React.Component {
     render() {
         return (
             <Page renderToolbar={() => (
-                <Toolbar>
-                    <div className='center'>首页</div>
+                <Toolbar className="head-bg">
+                    <div>首页</div>
                 </Toolbar>
             )}>
                 <SearchCoupons navigator={this.props.navigator}/>
