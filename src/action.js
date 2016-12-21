@@ -69,7 +69,7 @@ export const updateUserCoupons = createAction("UPDATE_USER_COUPONS")
 export const insertUserCoupons = createAction("INSERT_USER_COUPONS")
 
 // 下架优惠券
-export const stopUserCouponRequest = createAction("STOP_USER_COUPON_REQUEST")
+export const offShelveCouponRequest = createAction("OFF_SHELVE_COUPON_REQUEST")
 
 //编辑优惠券
 export const editUserCouponRequest = createAction("EDIT_USER_COUPON_REQUEST")
