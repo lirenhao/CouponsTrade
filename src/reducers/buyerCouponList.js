@@ -14,6 +14,6 @@ import {createReducer} from 'redux-act'
 export default createReducer({
     [setCoupons]: (state, couponList)=> couponList,
     [insertCoupons]: (state, couponList)=> {
-        return {...state, ...couponList}
+        return [...state, ...couponList]
     }
 }, [])
