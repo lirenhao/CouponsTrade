@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import {Page, Toolbar,BackButton,BottomToolbar,Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton, BottomToolbar, Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import PayOrder from './PayOrder'
 
@@ -23,31 +23,29 @@ class ViewCouponsDetail extends React.Component {
                     </div>
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
-            )}  renderBottomToolbar={() => (
+            )} renderBottomToolbar={() => (
                 <BottomToolbar>
-                    <div>
-                        <Button className="button--large" type="submit" onClick={() =>this.props.navigator.pushPage({
-                            comp: PayOrder, props: {key: "PayOrder" }
-                        })}>我要买</Button>
-                    </div>
+                    <Button modifier="large noRadius" type="submit" onClick={() => this.props.navigator.pushPage({
+                        comp: PayOrder, props: {key: "PayOrder"}
+                    })}>我要买</Button>
                 </BottomToolbar>
-            )} >
-                    <CouponDetail
-                        DetailInformation={{
-                            applyCity: "该券仅适用北京",
-                            nickname: "small_cat",
-                            originalPrice: "￥50",
-                            sellingPrice: "￥70",
-                            couponName: "西提厚牛排优惠券",
-                            isAutomaticRefund: "是",
-                            couponType: "西餐",
-                            ticketPrice: "￥100",
-                            effectiveDate: "至2016年12月28日",
-                            //merchantPicture: "无",
-                            describe: "请各位小主们尽快下单吧~~"
-                        }}>
-                    </CouponDetail>
-           </Page>
+            )}>
+                <CouponDetail
+                    DetailInformation={{
+                        applyCity: "该券仅适用北京",
+                        nickname: "small_cat",
+                        originalPrice: "￥50",
+                        sellingPrice: "￥70",
+                        couponName: "西提厚牛排优惠券",
+                        isAutomaticRefund: "是",
+                        couponType: "西餐",
+                        ticketPrice: "￥100",
+                        effectiveDate: "至2016年12月28日",
+                        //merchantPicture: "无",
+                        describe: "请各位小主们尽快下单吧~~"
+                    }}>
+                </CouponDetail>
+            </Page>
         )
     }
 }

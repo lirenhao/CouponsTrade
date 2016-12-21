@@ -115,3 +115,6 @@ input[name*="Password"] + .text-input--material__label--active{
 .modal--load circle:nth-child(2){
     stroke: #aaa;
 }
+.button--noRadius{
+    border-radius: 0;
+}
