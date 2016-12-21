@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {setOrderList, insertOrderList} from '../action'
+import {setOrderList, insertOrderList} from '../../action'
 
 export default createReducer({
     [setOrderList]: (state, payload) => payload,

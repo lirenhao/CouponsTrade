@@ -20,6 +20,8 @@ import ResetPassword from './InputOldPassword'
 import SellingCoupons from './SellCoupons'
 import PayOrder from './PayOrder'
 import OrderList from './OrderList'
+import {connect} from 'react-redux'
+import {getOrderListRequest} from '../action'
 
 class Mine extends React.Component {
     render() {
@@ -58,9 +60,12 @@ class Mine extends React.Component {
                         发布的优惠券
                     </ListItem>
                     <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: OrderList, props: {key: "OrderList"}
-                              })}>
+                              onClick={() => {
+                                  this.props.dispatch(getOrderListRequest({token: 1234567890}));
+                                  this.props.navigator.pushPage({
+                                      comp: OrderList, props: {key: "OrderList"}
+                                  })
+                              }}>
                         购买的优惠券
                     </ListItem>
                 </List>
@@ -77,4 +82,4 @@ class Mine extends React.Component {
     }
 }
 
-export default Mine
+export default connect()(Mine)

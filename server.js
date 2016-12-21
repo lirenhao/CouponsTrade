@@ -39,31 +39,61 @@ const state = {
             size: ""
         },
         orderList: [{
-            iD: "100100001",
+            id: "100100001",
             couponName: "黑松白鹿五折券",
             describe: "298自助餐二人同行一人免单",
             sellingPrice: "400",
             picture: ""
         }, {
-            iD: "100100002",
+            id: "100100002",
             couponName: "必胜客100元代金券",
             describe: "",
             sellingPrice: "50",
             picture: ""
         }, {
-            iD: "100100003",
+            id: "100100003",
             couponName: "星巴克五折券",
             describe: "最高价值58元套餐一份",
             sellingPrice: "35",
             picture: ""
         }, {
-            iD: "100100004",
+            id: "100100004",
             couponName: "必胜客100元代金券",
             describe: "",
             sellingPrice: "50",
             picture: ""
         }, {
-            iD: "100100005",
+            id: "100100005",
+            couponName: "呷哺呷哺100元代金券",
+            describe: "",
+            sellingPrice: "50",
+            picture: ""
+        }, {
+            id: "100100001",
+            couponName: "黑松白鹿五折券",
+            describe: "298自助餐二人同行一人免单",
+            sellingPrice: "400",
+            picture: ""
+        }, {
+            id: "100100002",
+            couponName: "必胜客100元代金券",
+            describe: "",
+            sellingPrice: "50",
+            picture: ""
+        }, {
+            id: "100100003",
+            couponName: "星巴克五折券",
+            describe: "最高价值58元套餐一份",
+            sellingPrice: "35",
+            picture: ""
+        }, {
+            id: "100100004",
+            couponName: "必胜客100元代金券",
+            describe: "",
+            sellingPrice: "50",
+            picture: ""
+        }, {
+            id: "100100005",
             couponName: "呷哺呷哺100元代金券",
             describe: "",
             sellingPrice: "50",
