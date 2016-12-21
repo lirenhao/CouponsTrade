@@ -99,14 +99,14 @@ var state = {
             number: "",
             size: ""
         },
-        couponList: [{
+        sellCouponList: [{
             id: "",
             couponName: "",
             describe: "",
             sellingPrice: "",
             picture: ""
         }],
-        couponInfo: {
+        sellCouponInfo: {
             id: "",
             couponName: "",
             areaInfo: "",
@@ -149,7 +149,7 @@ var state={
           },                                                                                  
           已购买优惠券列表的信息(orderList):是一个数组                                              
           [{                                                                                  
-              id,                                                                             
+              优惠券唯一标识（id）,                                                                             
               名称(name),                                                                     
               描述(describe),                                                                     
               卖价(sellingPrice),                                                             
@@ -433,7 +433,7 @@ CouponsTrade:
 - 新密码：newPassword
 
 ### 5.2 优惠券：couponsTrade
-- 发布优惠券：publish
+- 发布优惠券：publishCoupon
 - 发布优惠券列表：publishCouponList
 - 发布优惠券详情：publishCouponInfo
 - 售卖优惠券列表：sellCouponList
