@@ -10,7 +10,7 @@ import {List, ListItem, ListHeader} from 'react-onsenui'
 
 const Address = ({name, tel}) => {
     return (
-        <List renderHeader={() => <ListHeader>卖家信息</ListHeader>}>
+        <List modifier="pay" renderHeader={() => <ListHeader>卖家信息</ListHeader>}>
             <ListItem>{name + " " + tel}</ListItem>
         </List>
     )

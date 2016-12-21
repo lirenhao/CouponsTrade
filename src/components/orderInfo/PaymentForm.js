@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {List, ListItem, ListHeader, Button, Input} from 'react-onsenui'
+import {List, ListItem, ListHeader, Button, Input, BottomToolbar} from 'react-onsenui'
 import ItemInfo from './ItemInfo'
 import ons from 'onsenui'
 import OrderResult from './OrderResult'
@@ -61,21 +61,20 @@ const Payment_form = (props) => {
     return (
         <form onSubmit={handleSubmit}>
             <List
+                modifier="pay"
                 dataSource={["微信", "支付宝"]}
                 renderHeader={() => <ListHeader>支付方式</ListHeader>}
                 renderRow={renderRadioRow}
             />
             <ItemInfo item={props.item} price={props.price}/>
-            <label htmlFor="content"><ListHeader>留言</ListHeader></label>
-            <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
-            <div style={{
-                position: "absolute", bottom: "0", width: "100%",
-                lineHeight: "40px", overflow: "hidden"
-            }}>
-                应付金额：{props.price}元
-                <Button style={{float: "right", width: "30%", textAlign: "center"}}
-                        onClick={handleClick}
-                >支付</Button></div>
+            <List modifier="pay">
+                <label htmlFor="content"><ListHeader>留言</ListHeader></label>
+                <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
+            </List>
+            {/*<p>应付金额：{props.price}元</p>*/}
+            <BottomToolbar>
+                <Button modifier="large noRadius" type="submit" onClick={handleClick}>确认支付</Button>
+            </BottomToolbar>
         </form>
     )
 };

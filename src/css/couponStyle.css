@@ -118,3 +118,13 @@ input[name*="Password"] + .text-input--material__label--active{
 .button--noRadius{
     border-radius: 0;
 }
+.list--pay .list__header{
+    background-color: #f2f2f2;
+    color: #aaa;
+}
+.list--pay textarea{
+    background-color: #fff;
+    border: none;
+    padding: 4px 14px;
+    min-height: 64px;
+}
