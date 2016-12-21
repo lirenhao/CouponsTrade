@@ -128,3 +128,7 @@ input[name*="Password"] + .text-input--material__label--active{
     padding: 4px 14px;
     min-height: 64px;
 }
+.button--result{
+    color: #fff;
+    text-decoration: underline;
+}

@@ -6,7 +6,7 @@
  * 展示支付结果的组件
  */
 import React from 'react'
-import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton, Button, Modal} from 'react-onsenui'
 import OrderList from '../../containers/OrderList'
 import Tabs from '../../containers/Tabs'
 import {connect} from 'react-redux'
@@ -46,18 +46,24 @@ const OrderResult = ({res, navigator, dispatch}) => {
     if (res === 0) {
         return (
             <Page renderToolbar={renderToolbar}>
-                <section style={{marginTop: "60px", width: "100%", textAlign: "center"}}>
-                    支付失败，请返回重新支付！
-                </section>
+                <div className="modal">
+                    <div className="modal__content">
+                        支付失败，请返回重新支付！
+                    </div>
+                </div>
             </Page>
         )
     } else {
         return (
             <Page renderToolbar={renderToolbar}>
-                <section style={{marginTop: "60px", width: "100%", textAlign: "center"}}>
-                    <p>支付成功，点击按钮查看订单</p>
-                    <Button onClick={handleClick}>查看订单</Button>
-                </section>
+                <div className="modal">
+                    <div className="modal__content">
+                        支付成功，点击按钮查看订单
+                        <br/>
+                        <br/>
+                        <Button modifier="quiet result" onClick={handleClick}>查看订单</Button>
+                    </div>
+                </div>
             </Page>
         )
     }
