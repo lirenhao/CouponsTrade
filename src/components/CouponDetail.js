@@ -15,7 +15,7 @@ const CouponDetail = (props) => {
     const {DetailInformation}=props;
     return (
         <div>
-            <List>
+            <List modifier="inset marginT">
                 <ListItem>
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
@@ -30,8 +30,7 @@ const CouponDetail = (props) => {
                     </div>
                 </ListItem>
             </List>
-            <br/>
-            <List>
+            <List modifier="inset marginT">
                 <ListItem>
                     <div className="center">优惠券名称</div>
                     <div className="right">{DetailInformation.couponName}</div>
