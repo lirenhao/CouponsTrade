@@ -171,7 +171,7 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     console.log("收到获取订单列表请求");
     const {token}=req.body;
     if (state.token == token) {
-        setTimeout(() => res.json(state.order.orderList), 2000)
+        res.json({code: ResponseCode.SUCCESS, orderList: state.order.orderList})
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
 });
