@@ -16,20 +16,18 @@ const renderPage = (route, navigator) => {
     return React.createElement(route.comp, route.props)
 }
 
-class App extends React.Component{
-    render(){
+const App = (props) => {
         return (
             <div>
                 <Navigator
-                    initialRoute={{comp: Tabs, props: {key: "tabs", router: this.props.router}}}
+                    initialRoute={{comp: Tabs, props: {key: "tabs", router: props.router}}}
                     renderPage={renderPage}
                 />
-                <Dialog show={this.props.dialog.show} msg={this.props.dialog.msg} hideDialog={this.props.hideDialog}/>
-                <Loading loading={this.props.loading}/>
+                <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
+                <Loading loading={props.loading}/>
                 <DevTools/>
             </div>
         )
-    }
 }
 
 const mapStateToProps = (state) => ({
