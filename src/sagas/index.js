@@ -9,14 +9,14 @@ import {takeEvery} from 'redux-saga'
 import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
-    getOrderListRequest, getOrderInfoRequest, payRequest
-    logoutRequest, getUserInfoRequest, getOrderListRequest,publishCouponRequest
+    getOrderListRequest, getOrderInfoRequest, payRequest,
+    publishCouponRequest, popRouter, pushRouter, resetRouter
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
-    fetchOrderList, fetchOrderInfo, fetchPay
-    logoutAsync, getUserInfoAsync, fetchOrderList,publishCouponAsync
+    fetchOrderList, fetchOrderInfo, fetchPay,
+    publishCouponAsync
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -51,7 +51,25 @@ export function* watchPublishCouponRequest() {
     yield takeEvery(publishCouponRequest.getType(), publishCouponAsync)
 }
 
-export default function* sagas() {
+export function* watchPopRouter(getState) {
+    yield* takeEvery(popRouter.getType(), () =>  {
+        getState().router.popPage()
+    })
+}
+
+export function* watchPushRouter(getState) {
+    yield* takeEvery(pushRouter.getType(), (action) =>  {
+        getState().router.pushPage(action.payload)
+    })
+}
+
+export function* watchResetRouter(getState) {
+    yield* takeEvery(resetRouter.getType(), (action) =>  {
+        getState().router.resetPage(action.payload)
+    })
+}
+
+export default function* sagas(getState) {
     yield [
         watchSignUpRequest(),
         watchLoginRequest(),
@@ -60,6 +78,9 @@ export default function* sagas() {
         watchPublishCouponRequest(),
         watchGetOrderListRequest(),
         watchGetOrderInfoRequest(),
-        watchPay()
+        watchPay(),
+        watchPopRouter(getState),
+        watchPushRouter(getState),
+        watchResetRouter(getState)
     ]
 }

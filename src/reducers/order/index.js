@@ -8,8 +8,9 @@
 
 import orderList from './orderList'
 import orderInfo from './orderInfo'
+import page from './page'
 import {combineReducers} from 'redux'
 
 export default combineReducers({
-    orderList, orderInfo
+    orderList, orderInfo, page
 })

@@ -129,4 +129,9 @@ export const openCouponRequest = createAction("OPEN_COUPON_REQUEST")
 //更新优惠券开启信息
 export const openCoupon = createAction("OPEN_COUPON")
 
+//初始化分页信息（订单列表）
+export const initialPage = createAction("INITIAL_PAGE");
+
+//更新分页信息（订单列表）
+export const setPage = createAction("SET_PAGE");
 

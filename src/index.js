@@ -20,7 +20,7 @@ const store = createStore(
         DevTools.instrument()
     )
 )
-sagaMiddleware.run(sagas)
+sagaMiddleware.run(sagas, store.getState)
 
 const container = document.createElement('div')
 document.body.appendChild(container)
