@@ -56,6 +56,7 @@ export default function* sagas() {
         watchSignUpRequest(),
         watchLoginRequest(),
         watchLogoutRequest(),
+        watchGetUserInfoRequest(),
         watchPublishCouponRequest(),
         watchGetOrderListRequest(),
         watchGetOrderInfoRequest(),
