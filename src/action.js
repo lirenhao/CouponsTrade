@@ -7,6 +7,11 @@
  */
 import {createAction} from "redux-act"
 
+export const initialRouter = createAction("INITIAL_ROUTER")
+export const popRouter = createAction("POP_ROUTER")
+export const pushRouter = createAction("PUSH_ROUTER")
+export const resetRouter = createAction("RESET_ROUTER")
+
 // 开始等待action
 export const onload = createAction("ONLOAD")
 // 取消等待action
@@ -53,7 +58,7 @@ export const publishCouponRequest = createAction("PUBLISH_COUPON_REQUEST")
 export const queryCouponsRequest = createAction("QUERY_COUPONS_REQUEST")
 
 // 更新优惠券列表的分页信息
-export const setCouponPage =createAction("SET_COUPON_PAGE")
+export const setCouponPage = createAction("SET_COUPON_PAGE")
 
 // 更新优惠券列表
 export const setCoupons = createAction("SET_COUPONS")
@@ -71,7 +76,7 @@ export const insertCouponDetails = createAction("INSERT_COUPON_DETAILS")
 export const getUserCouponsRequest = createAction("GET_USER_COUPONS_REQUEST")
 
 // 更新用户已发布过优惠券列表的分页信息
-export const setUserCouponPage =createAction("SET_USER_COUPON_PAGE")
+export const setUserCouponPage = createAction("SET_USER_COUPON_PAGE")
 
 // 更新用户优惠券列表
 export const setUserCoupons = createAction("SET_USER_COUPONS")

@@ -5,27 +5,31 @@ import Tabs from './Tabs'
 import DevTools from './DevTools'
 import Dialog from '../components/Dialog'
 import Loading from '../components/Loading'
-import {hideDialog} from '../action'
+import {initialRouter, hideDialog} from '../action'
+import uuid from 'uuid'
 
 const renderPage = (route, navigator) => {
     route.props = route.props || {};
     route.props.navigator = navigator;
+    route.props.key = route.props.key || uuid.v4();
 
     return React.createElement(route.comp, route.props)
 }
 
-const App = (props) => {
-    return (
-        <div>
-            <Navigator
-                initialRoute={{comp: Tabs, props: {key: "tabs"}}}
-                renderPage={renderPage}
-            />
-            <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
-            <Loading loading={props.loading}/>
-            <DevTools/>
-        </div>
-    )
+class App extends React.Component{
+    render(){
+        return (
+            <div>
+                <Navigator
+                    initialRoute={{comp: Tabs, props: {key: "tabs", router: this.props.router}}}
+                    renderPage={renderPage}
+                />
+                <Dialog show={this.props.dialog.show} msg={this.props.dialog.msg} hideDialog={this.props.hideDialog}/>
+                <Loading loading={this.props.loading}/>
+                <DevTools/>
+            </div>
+        )
+    }
 }
 
 const mapStateToProps = (state) => ({
@@ -34,6 +38,9 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
+    router: (navigator) => {
+        dispatch(initialRouter(navigator))
+    },
     hideDialog: () => {
         dispatch(hideDialog())
     }
