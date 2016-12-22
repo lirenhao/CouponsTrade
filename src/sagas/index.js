@@ -9,14 +9,14 @@ import {takeEvery} from 'redux-saga'
 import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
-    getOrderListRequest, getOrderInfoRequest, payRequest
-    logoutRequest, getUserInfoRequest, getOrderListRequest,publishCouponRequest
+    getOrderListRequest, getOrderInfoRequest, payRequest,
+    publishCouponRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
-    fetchOrderList, fetchOrderInfo, fetchPay
-    logoutAsync, getUserInfoAsync, fetchOrderList,publishCouponAsync
+    fetchOrderList, fetchOrderInfo, fetchPay,
+    publishCouponAsync
 } from './async'
 
 export function* watchSignUpRequest() {
