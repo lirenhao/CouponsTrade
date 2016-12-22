@@ -10,13 +10,13 @@ import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest,
-    publishCouponRequest, popRouter, pushRouter, resetRouter
+    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     fetchOrderList, fetchOrderInfo, fetchPay,
-    publishCouponAsync
+    publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -52,22 +52,31 @@ export function* watchPublishCouponRequest() {
 }
 
 export function* watchPopRouter(getState) {
-    yield* takeEvery(popRouter.getType(), () =>  {
+    yield* takeEvery(popRouter.getType(), () => {
         getState().router.popPage()
     })
 }
 
 export function* watchPushRouter(getState) {
-    yield* takeEvery(pushRouter.getType(), (action) =>  {
+    yield* takeEvery(pushRouter.getType(), (action) => {
         getState().router.pushPage(action.payload)
     })
 }
 
 export function* watchResetRouter(getState) {
-    yield* takeEvery(resetRouter.getType(), (action) =>  {
+    yield* takeEvery(resetRouter.getType(), (action) => {
         getState().router.resetPage(action.payload)
     })
 }
+
+export function* watchGetCouponDetailsRequest() {
+    yield takeEvery(getCouponDetailsRequest.getType(), getCouponDetailsAsync)
+}
+
+export function* watchQueryCouponsRequest() {
+    yield takeEvery(queryCouponsRequest.getType(), queryCouponsAsync)
+}
+
 
 export default function* sagas(getState) {
     yield [
@@ -81,6 +90,8 @@ export default function* sagas(getState) {
         watchPay(),
         watchPopRouter(getState),
         watchPushRouter(getState),
-        watchResetRouter(getState)
+        watchResetRouter(getState),
+        watchQueryCouponsRequest(),
+        watchGetCouponDetailsRequest()
     ]
 }
