@@ -11,7 +11,8 @@ import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
     showDialog, setOrderList, setOrderInfo, payRequest, popRouter,
-    initialPage
+    initialPage,setCoupons,insertCoupons,insertCouponDetails,setUserCoupons,
+    insertUserCoupons,insertUserCouponDetails,updateSoldOutCoupon,updateUserCoupon
 } from '../action'
 
 /**
@@ -162,10 +163,47 @@ export function* fetchPay(action) {
     yield put(unload())
 }
 
+/**
+ * 搜索优惠券请求
+ * @param req
+ */
+export function *queryCouponsAsync(req) {
+    yield put(onload())
+    const res = yield call (fetch,ServerPath.QUERY_COUPONS,req.payload)
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setCoupons(res.couponList))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
 
+/**
+ * 发布优惠券请求
+ * @param req
+ */
 export function *publishCouponAsync(req) {
     yield put(onload())
     const res = yield call (fetch,ServerPath.PUBLISH_COUPON,req.payload)
     yield put(showDialog(res.msg))
+    yield put(unload())
+}
+
+/**
+ * 请求优惠券详细信息
+ * @param req
+ */
+export function *getCouponDetailsAsync(req) {
+    yield put(onload())
+    const res = yield call (fetch,ServerPath.QUERY_COUPONS,req.payload)
+    if (res.code == ResponseCode.SUCCESS) {
+        if(res.flag==="1"){
+            yield put(insertUserCouponDetails(res.couponInfo))
+        }else {
+            yield put(insertCouponDetails(res.couponInfo))
+        }
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }

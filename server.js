@@ -321,7 +321,7 @@ const state = {
             ticketPrice: "50",
             endDate: "2016-12-31",
             describe: "所有地区通用券",
-            username:"1"
+            username: "1"
 
         },
         {
@@ -336,7 +336,7 @@ const state = {
             ticketPrice: "50",
             endDate: "2016-12-31",
             describe: "所有地区通用券",
-            username:"1"
+            username: "1"
         }
     ]
 }
@@ -453,7 +453,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
             const len = state.publishCouponList.length;
             const username = state.login.username
             state.publishCouponList.push({
-                id:len,
+                id: len,
                 couponName,
                 isAutomaticRefund,
                 couponType,
@@ -466,12 +466,36 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
                 describe,
                 username
             })
-            res.json({code: ResponseCode.SUCCESS,msg:"发布成功"})
+            res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
 })
 
+
+app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
+    const {couponName} = req.body
+    const couponList = state.publishCouponList.filter((r)=> {
+        return r.value.match(couponName)
+    })
+    res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+})
+
+app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
+    const {id,username} = req.body
+    const couponList = state.publishCouponList.filter((r)=> {
+        return r.value===id
+    })
+    if(couponList.length!==0){
+        const couponInfo = couponList[0]
+        if(couponInfo.username ===username){
+            res.json({code: ResponseCode.SUCCESS,flag:"1", couponInfo: couponInfo})
+        }else {
+            res.json({code: ResponseCode.SUCCESS,flag:"0", couponInfo: couponInfo})
+        }
+    }
+    res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
+})
 
 // TODO 添加后台服务
 
