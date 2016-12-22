@@ -2,6 +2,9 @@
 .list--marginT{
     margin-top: 1em;
 }
+.list--marginB{
+    margin-bottom: 1em;
+}
 
 .button--marginTLR{
     width: calc(100% - 16px) !important;
