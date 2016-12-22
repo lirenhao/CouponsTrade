@@ -29,5 +29,6 @@ export const ServerPath = {
 // 响应码
 export const ResponseCode = {
     SUCCESS: "success",
-    FAIL: "fail"
+    FAIL: "fail",
+    TIMEOUT: "timeout"
 }

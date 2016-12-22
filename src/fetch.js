@@ -6,6 +6,7 @@
  * 向后台发送数据
  */
 import fetch from 'node-fetch'
+import {ResponseCode} from './constants'
 
 export default (path, param = {}) => {
     const content = Object.keys(param)
@@ -23,6 +24,6 @@ export default (path, param = {}) => {
             return res.json()
         })
         .catch(function (e) {
-            return {code: "timeout", msg: "请求超时"}
+            return {code: ResponseCode.TIMEOUT, msg: "请求超时"}
         })
 }
