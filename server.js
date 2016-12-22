@@ -33,11 +33,6 @@ const state = {
     },
     inviteCode: "InviteCodeB",
     order: {
-        page: {
-            total: "",
-            number: "",
-            size: ""
-        },
         orderList: [{
             id: "100100001",
             couponName: "黑松白鹿五折券",
@@ -339,7 +334,7 @@ const state = {
             username: "1"
         }
     ]
-}
+};
 
 
 app.post(`/${ServerPath.SIGN_UP}`, function (req, res) {
@@ -409,9 +404,20 @@ app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     console.log("收到获取订单列表请求");
-    const {token}=req.body;
+    const {token, number, size}=req.body;
+    const total = state.order.orderList.length;
+    let result = [];
+    let max = (number * 1 + 1) * size;
+    max = max <= total ? max : total;
+    for (let i = number * size; i < max; i++) {
+        result.push(state.order.orderList[i])
+    }
     if (state.token == token) {
-        res.json({code: ResponseCode.SUCCESS, orderList: state.order.orderList})
+        res.json({
+            code: ResponseCode.SUCCESS,
+            orderList: result,
+            page: {total: total, number: number * 1 + 1,}
+        })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
 });
@@ -431,27 +437,27 @@ app.post(`/${ServerPath.PAY}`, (req, res) => {
     if (state.token == token && payment === "支付宝") {
         res.json({code: ResponseCode.SUCCESS})
     } else
-        res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
+        res.json({code: ResponseCode.FAIL, msg: "支付失败"})
 });
 
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
-    console.log(res)
-    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body
-    const isHave = (arr)=> {
-        for (var i = 0; i < arr.length; i++) {
+    console.log(res);
+    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
+    const isHave = (arr) => {
+        for (let i = 0; i < arr.length; i++) {
             if (arr[i].name === "1") {
                 return true;
             }
         }
         return false
-    }
+    };
     if (state.token == token) {
         if (isHave(state.publishCouponList)) {
             res.json({code: ResponseCode.FAIL, msg: "该优惠券码已发布过"})
         } else {
             const len = state.publishCouponList.length;
-            const username = state.login.username
+            const username = state.login.username;
             state.publishCouponList.push({
                 id: len,
                 couponName,
@@ -465,37 +471,37 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
                 endDate,
                 describe,
                 username
-            })
+            });
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
-    const {couponName} = req.body
-    const couponList = state.publishCouponList.filter((r)=> {
+    const {couponName} = req.body;
+    const couponList = state.publishCouponList.filter((r) => {
         return r.value.match(couponName)
-    })
+    });
     res.json({code: ResponseCode.SUCCESS, couponList: couponList})
-})
+});
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
-    const {id,username} = req.body
-    const couponList = state.publishCouponList.filter((r)=> {
-        return r.value===id
-    })
-    if(couponList.length!==0){
-        const couponInfo = couponList[0]
-        if(couponInfo.username ===username){
-            res.json({code: ResponseCode.SUCCESS,flag:"1", couponInfo: couponInfo})
-        }else {
-            res.json({code: ResponseCode.SUCCESS,flag:"0", couponInfo: couponInfo})
+    const {id, username} = req.body;
+    const couponList = state.publishCouponList.filter((r) => {
+        return r.value === id
+    });
+    if (couponList.length !== 0) {
+        const couponInfo = couponList[0];
+        if (couponInfo.username === username) {
+            res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: couponInfo})
+        } else {
+            res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: couponInfo})
         }
     }
     res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
-})
+});
 
 // TODO 添加后台服务
 

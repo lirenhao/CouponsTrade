@@ -6,10 +6,10 @@
  * 展示已生成订单列表信息的容器组件
  */
 import React from 'react'
-import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
+import {Toolbar, Page, BackButton, List, ListItem, ListHeader, Button} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
-import {getOrderInfoRequest} from '../action'
+import {getOrderInfoRequest, getOrderListRequest} from '../action'
 
 class OrderList extends React.Component {
     constructor(props) {
@@ -61,13 +61,24 @@ class OrderList extends React.Component {
                     dataSource={this.props.orderList}
                     renderRow={this::this.renderRow}
                 />
+                <Button onClick={() => {
+                    this.props.dispatch(getOrderListRequest({
+                        token: 1234567890, number: this.props.number,
+                        size: this.props.size
+                    }))
+                }}>测试按钮</Button>
             </Page>
         )
     }
 }
 
 const mapStateToProps = state => {
-    return {orderList: state.order.orderList, orderInfo: state.order.orderInfo}
+    return {
+        orderList: state.order.orderList,
+        orderInfo: state.order.orderInfo,
+        number: state.order.page.number,
+        size: state.order.page.size
+    }
 };
 
 export default connect(mapStateToProps)(OrderList)

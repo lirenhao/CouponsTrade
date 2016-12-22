@@ -9,8 +9,10 @@ import {createReducer} from 'redux-act'
 import {initialPage, setPage} from '../../action'
 
 export default createReducer({
-    [initialPage]: (state, payload) => payload,
+    [initialPage]: (state, payload) => {
+        return {...state, ...payload}
+    },
     [setPage]: (state, payload) => {
         return {...state, number: payload}
     }
-}, {})
+}, {total: 0, number: 0, size: 5})

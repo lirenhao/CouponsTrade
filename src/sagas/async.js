@@ -10,9 +10,9 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, payRequest, popRouter,
-    initialPage,setCoupons,insertCoupons,insertCouponDetails,setUserCoupons,
-    insertUserCoupons,insertUserCouponDetails,updateSoldOutCoupon,updateUserCoupon
+    showDialog, setOrderList, setOrderInfo, insertOrderList, popRouter, setPage,
+    initialPage, setCoupons, insertCoupons, insertCouponDetails, setUserCoupons,
+    insertUserCoupons, insertUserCouponDetails, updateSoldOutCoupon, updateUserCoupon
 } from '../action'
 
 /**
@@ -20,12 +20,12 @@ import {
  * @param req 注册发起signUpRequest的action
  */
 export function* signUpAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.SIGN_UP, req.payload)
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.SIGN_UP, req.payload);
     if (res.code == ResponseCode.SUCCESS)
-        console.log(res)
+        console.log(res);
     else
-        console.log(res)
+        console.log(res);
     yield put(unload())
 }
 
@@ -34,10 +34,10 @@ export function* signUpAsync(req) {
  * @param req 登录发起loginRequest的action
  */
 export function* loginAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.LOGIN, req.payload)
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.LOGIN, req.payload);
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(login(res.token))
+        yield put(login(res.token));
         yield put(popRouter())
     } else {
         yield put(showDialog(res.msg))
@@ -49,9 +49,9 @@ export function* loginAsync(req) {
  * 注销的异步处理
  */
 export function* logoutAsync() {
-    yield put(onload())
-    yield call(fetch, ServerPath.LOGOUT)
-    yield put(logout())
+    yield put(onload());
+    yield call(fetch, ServerPath.LOGOUT);
+    yield put(logout());
     yield put(unload())
 }
 
@@ -60,9 +60,9 @@ export function* logoutAsync() {
  * @param req
  */
 export function* getUserInfoAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.GET_USER_INFO, req.payload)
-    yield put(updateUserInfo(res))
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.GET_USER_INFO, req.payload);
+    yield put(updateUserInfo(res));
     yield put(unload())
 }
 
@@ -71,9 +71,9 @@ export function* getUserInfoAsync(req) {
  * @param req
  */
 export function* updateUserInfoAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, req.payload)
-    yield put(updateUserInfo(res))
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, req.payload);
+    yield put(updateUserInfo(res));
     yield put(unload())
 }
 
@@ -81,9 +81,9 @@ export function* updateUserInfoAsync(req) {
  *生成邀请码的异步处理
  */
 export function* createInviteCodeAsync() {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE)
-    yield put(updateInviteCode(res.inviteCode))
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE);
+    yield put(updateInviteCode(res.inviteCode));
     yield put(unload())
 }
 
@@ -92,9 +92,9 @@ export function* createInviteCodeAsync() {
  * @param req
  */
 export function* verifyPasswordAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.VERIFY_PASSWORD, req.payload)
-    yield put(updateInviteCode(res.inviteCode))
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.VERIFY_PASSWORD, req.payload);
+    yield put(updateInviteCode(res.inviteCode));
     yield put(unload())
 }
 
@@ -103,8 +103,8 @@ export function* verifyPasswordAsync(req) {
  * @param req
  */
 export function* updatePasswordAsync(req) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, req.payload)
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, req.payload);
 
     yield put(unload())
 }
@@ -117,11 +117,14 @@ export function* updatePasswordAsync(req) {
 export function* fetchOrderList(action) {
     yield put(onload());
     const res = yield call(fetch, ServerPath.GET_ORDER_LIST, action.payload);
-    if (res.code == ResponseCode.SUCCESS) {
+    if (res.code == ResponseCode.SUCCESS && res.page.number == 1) {
         yield put(initialPage(res.page));
         yield put(setOrderList(res.orderList));
+    } else if (res.code == ResponseCode.SUCCESS) {
+        yield put(setPage(res.page.number));
+        yield put(insertOrderList(res.orderList));
     } else {
-        yield put(showDialog(res.msg))
+        yield put(showDialog(res.msg));
     }
     yield put(unload())
 }
@@ -168,8 +171,8 @@ export function* fetchPay(action) {
  * @param req
  */
 export function *queryCouponsAsync(req) {
-    yield put(onload())
-    const res = yield call (fetch,ServerPath.QUERY_COUPONS,req.payload)
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.QUERY_COUPONS, req.payload);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCoupons(res.couponList))
     } else {
@@ -183,9 +186,9 @@ export function *queryCouponsAsync(req) {
  * @param req
  */
 export function *publishCouponAsync(req) {
-    yield put(onload())
-    const res = yield call (fetch,ServerPath.PUBLISH_COUPON,req.payload)
-    yield put(showDialog(res.msg))
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, req.payload);
+    yield put(showDialog(res.msg));
     yield put(unload())
 }
 
@@ -194,12 +197,12 @@ export function *publishCouponAsync(req) {
  * @param req
  */
 export function *getCouponDetailsAsync(req) {
-    yield put(onload())
-    const res = yield call (fetch,ServerPath.QUERY_COUPONS,req.payload)
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.QUERY_COUPONS, req.payload);
     if (res.code == ResponseCode.SUCCESS) {
-        if(res.flag==="1"){
+        if (res.flag === "1") {
             yield put(insertUserCouponDetails(res.couponInfo))
-        }else {
+        } else {
             yield put(insertCouponDetails(res.couponInfo))
         }
     } else {

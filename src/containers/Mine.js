@@ -61,7 +61,11 @@ class Mine extends React.Component {
                     </ListItem>
                     <ListItem modifier='chevron'
                               onClick={() => {
-                                  this.props.dispatch(getOrderListRequest({token: 1234567890}));
+                                  this.props.dispatch(getOrderListRequest(
+                                      {
+                                          token: 1234567890,
+                                          ...this.props.page
+                                      }));
                                   this.props.navigator.pushPage({
                                       comp: OrderList, props: {key: "OrderList"}
                                   })
@@ -82,4 +86,8 @@ class Mine extends React.Component {
     }
 }
 
-export default connect()(Mine)
+const mapStateToProps = state => {
+    return {page: state.order.page}
+};
+
+export default connect(mapStateToProps)(Mine)

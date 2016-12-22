@@ -12,13 +12,17 @@ import Tabs from '../../containers/Tabs'
 import {connect} from 'react-redux'
 import {getOrderListRequest} from '../../action'
 
-const OrderResult = ({res, navigator, dispatch}) => {
+const OrderResult = ({res, navigator, dispatch, page}) => {
     const handleClick = () => {
-        dispatch(getOrderListRequest({token: 1234567890}));
-        navigator.resetPageStack([
+        dispatch(getOrderListRequest(
             {
-                comp: Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
-            },
+                token: 1234567890,
+                ...page
+            }));
+        navigator.resetPageStack([
+            // {
+            //     comp: Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
+            // },
             {
                 comp: OrderList, props: {key: "OrderList"}
             },
@@ -68,5 +72,8 @@ const OrderResult = ({res, navigator, dispatch}) => {
         )
     }
 };
+const mapStateToProps = state => {
+    return {page: state.order.page}
+};
 
-export default connect()(OrderResult)
+export default connect(mapStateToProps)(OrderResult)

@@ -35,7 +35,10 @@ const renderToolbar = () => {
 
 const Payment = ({navigator, dispatch}) => {
     const handleSubmit = (value) => {
-        dispatch(payRequest({token: "1234567890", ...value, route: navigator, com: OrderResult}));
+        dispatch(payRequest({
+            token: "1234567890", ...value,
+            route: navigator, com: OrderResult
+        }));
     };
     return (
         <Page renderToolbar={renderToolbar}>
