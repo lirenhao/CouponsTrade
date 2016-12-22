@@ -307,8 +307,40 @@ const state = {
                 sellerNickName: "李四"
             },
         },
-    }
-};
+    },
+    publishCouponList: [
+        {
+            id: "1",
+            couponName: "星巴克",
+            isAutomaticRefund: "true",
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "123456",
+            sellingPrice: "30",
+            originalPrice: "20",
+            ticketPrice: "50",
+            endDate: "2016-12-31",
+            describe: "所有地区通用券",
+            username:"1"
+
+        },
+        {
+            id: "2",
+            couponName: "星巴克",
+            isAutomaticRefund: "true",
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "123456",
+            sellingPrice: "30",
+            originalPrice: "20",
+            ticketPrice: "50",
+            endDate: "2016-12-31",
+            describe: "所有地区通用券",
+            username:"1"
+        }
+    ]
+}
+
 
 app.post(`/${ServerPath.SIGN_UP}`, function (req, res) {
     const {inviteCode} = req.body;
@@ -401,6 +433,45 @@ app.post(`/${ServerPath.PAY}`, (req, res) => {
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
 });
+
+
+app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
+    console.log(res)
+    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body
+    const isHave = (arr)=> {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i].name === "1") {
+                return true;
+            }
+        }
+        return false
+    }
+    if (state.token == token) {
+        if (isHave(state.publishCouponList)) {
+            res.json({code: ResponseCode.FAIL, msg: "该优惠券码已发布过"})
+        } else {
+            const len = state.publishCouponList.length;
+            const username = state.login.username
+            state.publishCouponList.push({
+                id:len,
+                couponName,
+                isAutomaticRefund,
+                couponType,
+                couponModality,
+                couponCode,
+                sellingPrice,
+                originalPrice,
+                ticketPrice,
+                endDate,
+                describe,
+                username
+            })
+            res.json({code: ResponseCode.SUCCESS,msg:"发布成功"})
+        }
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
+})
+
 
 // TODO 添加后台服务
 

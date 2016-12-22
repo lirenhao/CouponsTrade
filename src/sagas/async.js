@@ -159,3 +159,11 @@ export function* fetchPay(action) {
     }
     yield put(unload())
 }
+
+
+export function *publishCouponAsync(req) {
+    yield put(onload())
+    const res = yield call (fetch,ServerPath.PUBLISH_COUPON,req.payload)
+    yield put(showDialog(res.msg))
+    yield put(unload())
+}

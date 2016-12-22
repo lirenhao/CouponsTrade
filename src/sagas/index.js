@@ -10,11 +10,13 @@ import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest
+    logoutRequest, getUserInfoRequest, getOrderListRequest,publishCouponRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     fetchOrderList, fetchOrderInfo, fetchPay
+    logoutAsync, getUserInfoAsync, fetchOrderList,publishCouponAsync
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -45,12 +47,16 @@ export function* watchPay() {
     yield takeEvery(payRequest.getType(), fetchPay)
 }
 
+export function* watchPublishCouponRequest() {
+    yield takeEvery(publishCouponRequest.getType(), publishCouponAsync)
+}
+
 export default function* sagas() {
     yield [
         watchSignUpRequest(),
         watchLoginRequest(),
         watchLogoutRequest(),
-        watchGetUserInfoRequest(),
+        watchPublishCouponRequest(),
         watchGetOrderListRequest(),
         watchGetOrderInfoRequest(),
         watchPay()
