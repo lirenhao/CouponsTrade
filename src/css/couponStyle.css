@@ -5,6 +5,9 @@
 .list--marginB{
     margin-bottom: 1em;
 }
+.list--marginB .list__item:last-child{
+    min-height: 2.85em;
+}
 
 .button--marginTLR{
     width: calc(100% - 16px) !important;
