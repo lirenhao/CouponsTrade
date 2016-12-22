@@ -6,20 +6,8 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {initialRouter, popRouter, pushRouter, resetRouter} from "../action"
+import {initialRouter} from "../action"
 
 export default createReducer({
-    [initialRouter]: (state, navigator) => navigator,
-    [popRouter]: (state) => {
-        state.popPage()
-        return {...state}
-    },
-    [pushRouter]: (state, payload) => {
-        state.pushPage({...payload})
-        return {...state}
-    },
-    [resetRouter]: (state, payload) => {
-        state.resetPage({...payload})
-        return {...state}
-    }
+    [initialRouter]: (state, navigator) => navigator
 }, {})
