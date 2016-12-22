@@ -19,7 +19,13 @@ const renderToolbar = () => {
     )
 };
 
-const OrderInfo = ({username, sellName, itemName, price, orderId, orderTime, handleClick}) => {
+const OrderInfo = (props) => {
+    const {
+        orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
+        couponType, couponModality, couponCode, sellingPrice, originalPrice,
+        ticketPrice, endDate, describe, isOpen, handleClick, sellerNickName
+    }=props;
+    console.log(props);
     return (
         <Page renderToolbar={renderToolbar}>
             <List modifier="inset marginT">
@@ -27,33 +33,30 @@ const OrderInfo = ({username, sellName, itemName, price, orderId, orderTime, han
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
                     </div>
-                    <div className="center">{itemName }</div>
-                    <div className="right"><span className="price">{price + "元"}</span></div>
+                    <div className="center">{couponName }</div>
+                    <div className="right"><span className="price">{sellingPrice + "元"}</span></div>
                 </ListItem>
             </List>
             <List modifier="inset marginT">
-                <ListItem>卖家:{sellName}</ListItem>
-                <ListItem>收货人:{username}</ListItem>
-                <ListItem>订单编号:{orderId}</ListItem>
-                <ListItem>交易时间:{orderTime}</ListItem>
+                <ListItem>卖家昵称:{sellerNickName}</ListItem>
+                <ListItem>商品ID:{id}</ListItem>
+                <ListItem>是否支持未开始时自动退货:{isAutomaticRefund ? "是" : "否"}</ListItem>
+                <ListItem>优惠券类别:{couponType}</ListItem>
+                <ListItem>券码形式:{couponModality}</ListItem>
+                <ListItem>券码:{couponCode}</ListItem>
+                <ListItem>卖价:{sellingPrice}</ListItem>
+                <ListItem>原价:{originalPrice}</ListItem>
+                <ListItem>券面值:{ticketPrice}</ListItem>
+                <ListItem>截止日期:{endDate}</ListItem>
+                <ListItem>描述:{describe}</ListItem>
+                <ListItem>是否已开启:{isOpen ? "是" : "否"}</ListItem>
+                <ListItem>订单编号:{orderNo}</ListItem>
+                <ListItem>交易时间:{orderDate + " " + orderTime}</ListItem>
             </List>
         </Page>
     )
 };
 
-OrderInfo.propTypes = {
-    username: PropTypes.string.isRequired,
-    sellName: PropTypes.string.isRequired,
-    itemName: PropTypes.string.isRequired,
-    orderId: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]).isRequired,
-    orderTime: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]).isRequired,
-    price: PropTypes.number.isRequired,
-};
+OrderInfo.propTypes = {};
 
 export default OrderInfo

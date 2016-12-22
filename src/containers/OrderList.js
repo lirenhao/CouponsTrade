@@ -9,6 +9,7 @@ import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
+import {getOrderInfoRequest} from '../action'
 
 class OrderList extends React.Component {
     constructor(props) {
@@ -28,21 +29,19 @@ class OrderList extends React.Component {
         const x = 40 + index;
         const y = 40 + index;
         return (
-            <ListItem key={index} onClick={() => this.props.navigator.pushPage({
-                comp: OrderInfo,
-                props: {
-                    key: "orderInfo",
-                    username: '张三',
-                    sellName: '李四',
-                    itemName: row,
-                    orderId: "000" + index,
-                    orderTime: "2016-12-14",
-                    price: listData[row],
-                    handleClick: () => {
-                        console.log("预留事件")
+            <ListItem key={index} onClick={() => {
+                this.props.dispatch(getOrderInfoRequest({token: 1234567890, id: row.id}));
+                this.props.navigator.pushPage({
+                    comp: OrderInfo,
+                    props: {
+                        key: "orderInfo" + index,
+                        ...this.props.orderInfo,
+                        handleClick: () => {
+                            console.log("预留事件")
+                        }
                     }
-                }
-            })}>
+                })
+            }}>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
                 </div>
@@ -60,7 +59,7 @@ class OrderList extends React.Component {
                 <List
                     modifier="order"
                     dataSource={this.props.orderList}
-                    renderRow={this.renderRow.bind(this)}
+                    renderRow={this::this.renderRow}
                 />
             </Page>
         )
@@ -68,7 +67,7 @@ class OrderList extends React.Component {
 }
 
 const mapStateToProps = state => {
-    return {orderList: state.order.orderList}
+    return {orderList: state.order.orderList, orderInfo: state.order.orderInfo}
 };
 
 export default connect(mapStateToProps)(OrderList)

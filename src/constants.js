@@ -21,8 +21,9 @@ export const ServerPath = {
     GET_USER_COUPONS: "getUserCoupons",
     EDIT_USER_COUPON: "editUserCoupon",
     GET_ORDER_LIST: "getOrderList",
-    QUERY_COUPONS:"queryCoupons",
-    SOLD_OUT_COUPON:"soldOutCoupon",
+    GET_ORDER_INFO: "getOrderInfo",
+    QUERY_COUPONS: "queryCoupons",
+    SOLD_OUT_COUPON: "soldOutCoupon",
 }
 
 // 响应码

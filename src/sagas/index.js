@@ -8,11 +8,13 @@
 import {takeEvery} from 'redux-saga'
 import {
     signUpRequest, loginRequest,
-    logoutRequest, getUserInfoRequest, getOrderListRequest
+    logoutRequest, getUserInfoRequest,
+    getOrderListRequest, getOrderInfoRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
-    logoutAsync, getUserInfoAsync, fetchOrderList
+    logoutAsync, getUserInfoAsync,
+    fetchOrderList, fetchOrderInfo
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -31,8 +33,12 @@ export function* watchGetUserInfoRequest() {
     yield* takeEvery(getUserInfoRequest.getType(), getUserInfoAsync)
 }
 
-export function* watchGetOrderInfoRequest() {
+export function* watchGetOrderListRequest() {
     yield takeEvery(getOrderListRequest.getType(), fetchOrderList)
+}
+
+export function* watchGetOrderInfoRequest() {
+    yield takeEvery(getOrderInfoRequest.getType(), fetchOrderInfo)
 }
 
 export default function* sagas() {
@@ -41,6 +47,7 @@ export default function* sagas() {
         watchLoginRequest(),
         watchLogoutRequest(),
         watchGetUserInfoRequest(),
+        watchGetOrderListRequest(),
         watchGetOrderInfoRequest()
     ]
 }

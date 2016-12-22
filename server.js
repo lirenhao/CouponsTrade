@@ -69,36 +69,63 @@ const state = {
             sellingPrice: "50",
             picture: ""
         }, {
-            id: "100100001",
+            id: "100100006",
             couponName: "黑松白鹿五折券",
             describe: "298自助餐二人同行一人免单",
             sellingPrice: "400",
             picture: ""
         }, {
-            id: "100100002",
+            id: "100100007",
             couponName: "必胜客100元代金券",
             describe: "",
             sellingPrice: "50",
             picture: ""
         }, {
-            id: "100100003",
+            id: "100100008",
             couponName: "星巴克五折券",
             describe: "最高价值58元套餐一份",
             sellingPrice: "35",
             picture: ""
         }, {
-            id: "100100004",
+            id: "100100009",
             couponName: "必胜客100元代金券",
             describe: "",
             sellingPrice: "50",
             picture: ""
         }, {
-            id: "100100005",
+            id: "100100010",
+            couponName: "呷哺呷哺100元代金券",
+            describe: "",
+            sellingPrice: "50",
+            picture: ""
+        }, {
+            id: "100100011",
             couponName: "呷哺呷哺100元代金券",
             describe: "",
             sellingPrice: "50",
             picture: ""
         }],
+        orderInfo: {
+            "100100011": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }
+        },
     }
 }
 
@@ -174,6 +201,15 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
         res.json({code: ResponseCode.SUCCESS, orderList: state.order.orderList})
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
+});
+
+app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
+    console.log("收到获取订单详情请求");
+    const {token, id}=req.body;
+    if (state.token == token) {
+        res.json({code: ResponseCode.SUCCESS, orderInfo: state.order.orderInfo[id]})
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
 });
 
 // TODO 添加后台服务

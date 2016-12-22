@@ -10,7 +10,7 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList
+    showDialog, setOrderList, setOrderInfo
 } from '../action'
 
 /**
@@ -117,6 +117,22 @@ export function* fetchOrderList(action) {
     const res = yield call(fetch, ServerPath.GET_ORDER_LIST, action.payload);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setOrderList(res.orderList));
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
+
+/**
+ * 获取订单详情的异步处理
+ * @param action
+ */
+
+export function* fetchOrderInfo(action) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, action.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setOrderInfo(res.orderInfo));
     } else {
         yield put(showDialog(res.msg))
     }
