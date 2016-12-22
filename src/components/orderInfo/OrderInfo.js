@@ -25,7 +25,6 @@ const OrderInfo = (props) => {
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
         ticketPrice, endDate, describe, isOpen, handleClick, sellerNickName
     }=props;
-    console.log(props);
     return (
         <Page renderToolbar={renderToolbar}>
             <List modifier="inset marginT">
