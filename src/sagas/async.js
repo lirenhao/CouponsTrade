@@ -10,7 +10,8 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, payRequest, popRouter
+    showDialog, setOrderList, setOrderInfo, payRequest, popRouter,
+    initialPage
 } from '../action'
 
 /**
@@ -116,6 +117,7 @@ export function* fetchOrderList(action) {
     yield put(onload());
     const res = yield call(fetch, ServerPath.GET_ORDER_LIST, action.payload);
     if (res.code == ResponseCode.SUCCESS) {
+        yield put(initialPage(res.page));
         yield put(setOrderList(res.orderList));
     } else {
         yield put(showDialog(res.msg))
