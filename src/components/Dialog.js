@@ -11,13 +11,12 @@ import {Dialog as OnsDialog, Button} from 'react-onsenui'
 const Dialog = (props) => {
     return (
         <OnsDialog isOpen={props.show} isCancelable={false}>
-            <div style={{textAlign: 'center', margin: '20px'}}>
-                <p style={{opacity: 0.5}}>
+            <div className="myDialog">
+                <span onClick={props.hideDialog} className="ion-close-round"></span>
+                <p>
                     {props.msg}
                 </p>
-                <p>
-                    <Button onClick={props.hideDialog}>Close</Button>
-                </p>
+                <Button onClick={props.hideDialog}>Close</Button>
             </div>
         </OnsDialog>
     )

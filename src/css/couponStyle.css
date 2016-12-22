@@ -132,3 +132,19 @@ input[name*="Password"] + .text-input--material__label--active{
     color: #fff;
     text-decoration: underline;
 }
+.myDialog{
+    padding: 1.5em 0 1em;
+    text-align: center;
+    position: relative;
+}
+.myDialog span{
+    width: 1.75em;
+    height: 1.75em;
+    background-color: #aaa;
+    color: #fff;
+    position: absolute;
+    line-height: 1.75em;
+    box-shadow: #000 0 0 4px;
+    right: 0;
+    top: 0;
+}
