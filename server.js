@@ -9,9 +9,9 @@ import express from 'express'
 import bodyParser from 'body-parser'
 import {ServerPath, ResponseCode} from './src/constants'
 
-const app = express()
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}))
+const app = express();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 
 app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Origin", req.get("origin"));
@@ -106,6 +106,187 @@ const state = {
             picture: ""
         }],
         orderInfo: {
+            "100100001": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100002": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100003": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100004": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100005": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100006": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100007": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100008": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100009": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            }, "100100010": {
+                orderNo: "100100011",
+                orderDate: "2016-12-22",
+                orderTime: "08:07",
+                id: "1",
+                couponName: "呷哺呷哺100元代金券",
+                isAutomaticRefund: true,
+                couponType: "火锅",
+                couponModality: "文本",
+                couponCode: "1234567",
+                sellingPrice: "50",
+                originalPrice: "50",
+                ticketPrice: "100",
+                endDate: "2016-12-31",
+                picture: "",
+                describe: "无",
+                isOpen: false,
+                sellerNickName: "李四"
+            },
             "100100011": {
                 orderNo: "100100011",
                 orderDate: "2016-12-22",
@@ -124,75 +305,75 @@ const state = {
                 describe: "无",
                 isOpen: false,
                 sellerNickName: "李四"
-            }
+            },
         },
     }
-}
+};
 
 app.post(`/${ServerPath.SIGN_UP}`, function (req, res) {
-    const {inviteCode} = req.body
+    const {inviteCode} = req.body;
     if (state.inviteCode == inviteCode)
-        res.json({code: ResponseCode.SUCCESS})
+        res.json({code: ResponseCode.SUCCESS});
     else
         res.json({code: ResponseCode.FAIL, msg: "邀请码错误"})
-})
+});
 
 app.post(`/${ServerPath.LOGIN}`, function (req, res) {
-    const {username, password} = req.body
+    const {username, password} = req.body;
     if (state.login.username == username && state.login.password == password)
-        res.json({code: ResponseCode.SUCCESS, token: state.token})
+        res.json({code: ResponseCode.SUCCESS, token: state.token});
     else
         res.json({code: ResponseCode.FAIL, msg: "账号或密码错误"})
-})
+});
 
 app.post(`/${ServerPath.LOGOUT}`, function (req, res) {
     res.json({code: ResponseCode.SUCCESS})
-})
+});
 
 app.post(`/${ServerPath.GET_USER_INFO}`, function (req, res) {
-    const {token} = req.body
+    const {token} = req.body;
     if (state.token == token)
-        res.json({code: ResponseCode.SUCCESS, userInfo: state.userInfo})
+        res.json({code: ResponseCode.SUCCESS, userInfo: state.userInfo});
     else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 app.post(`/${ServerPath.UPDATE_USER_INFO}`, function (req, res) {
-    const {token, ...userInfo} = req.body
+    const {token, ...userInfo} = req.body;
     if (state.token == token) {
-        state.userInfo = userInfo
+        state.userInfo = userInfo;
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 app.post(`/${ServerPath.CREATE_INVITE_CODE}`, function (req, res) {
-    const {token} = req.body
+    const {token} = req.body;
     if (state.token == token) {
         res.json({code: ResponseCode.SUCCESS, inviteCode: state.inviteCode})
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 app.post(`/${ServerPath.VERIFY_PASSWORD}`, function (req, res) {
-    const {token, oldPassword} = req.body
+    const {token, oldPassword} = req.body;
     if (state.token == token) {
         if (state.login.password == oldPassword)
-            res.json({code: ResponseCode.SUCCESS})
+            res.json({code: ResponseCode.SUCCESS});
         else
             res.json({code: ResponseCode.FAIL, msg: "密码错误"})
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
-    const {token, newPassword} = req.body
+    const {token, newPassword} = req.body;
     if (state.token == token) {
-        state.login.password = newPassword
+        state.login.password = newPassword;
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-})
+});
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     console.log("收到获取订单列表请求");
@@ -212,8 +393,17 @@ app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
         res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
 });
 
+app.post(`/${ServerPath.PAY}`, (req, res) => {
+    console.log("收到支付请求");
+    const {token, payment, content} = req.body;
+    if (state.token == token && payment === "支付宝") {
+        res.json({code: ResponseCode.SUCCESS})
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
+});
+
 // TODO 添加后台服务
 
 app.listen(3000, function () {
     console.log('server start!')
-})
+});

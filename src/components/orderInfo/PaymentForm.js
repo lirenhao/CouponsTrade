@@ -42,21 +42,22 @@ const renderRadioRow = (row) => {
 };
 
 const Payment_form = (props) => {
-    const {handleSubmit, load} = props;
+    const {handleSubmit, invalid, submitting} = props;
     const handleClick = () => {
-        ons.notification.confirm("模拟支付结果", {title: "说明", buttonLabels: ["失败", "成功"]}).then(
-            res => {
-                if (res === 0) {
-                    props.navigator.pushPage({
-                        comp: OrderResult, props: {key: "OrderResult", res: 0}
-                    })
-                } else {
-                    props.navigator.replacePage({
-                        comp: OrderResult, props: {key: "OrderResultSuccess", res: 1}
-                    })
-                }
-            }
-        )
+        props.submit();
+        // ons.notification.confirm("模拟支付结果", {title: "说明", buttonLabels: ["失败", "成功"]}).then(
+        //     res => {
+        //         if (res === 0) {
+        //             props.navigator.pushPage({
+        //                 comp: OrderResult, props: {key: "OrderResult", res: 0}
+        //             })
+        //         } else {
+        //             props.navigator.replacePage({
+        //                 comp: OrderResult, props: {key: "OrderResultSuccess", res: 1}
+        //             })
+        //         }
+        //     }
+        // )
     };
     return (
         <form onSubmit={handleSubmit}>
@@ -73,7 +74,8 @@ const Payment_form = (props) => {
             </List>
             {/*<p>应付金额：{props.price}元</p>*/}
             <BottomToolbar>
-                <Button modifier="large noRadius" type="submit" onClick={handleClick}>确认支付</Button>
+                <Button modifier="large noRadius" type="submit" disabled={submitting}
+                        onClick={handleClick}>确认支付</Button>
             </BottomToolbar>
         </form>
     )

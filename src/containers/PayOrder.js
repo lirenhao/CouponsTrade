@@ -8,7 +8,10 @@
 import React from 'react'
 import{Page, Toolbar, BackButton} from 'react-onsenui'
 import Address from '../components/orderInfo/Address'
-import Payment_form from '../components/orderInfo/PaymentForm'
+import PaymentForm from '../components/orderInfo/PaymentForm'
+import {connect} from 'react-redux'
+import {payRequest} from '../action'
+import OrderResult from '../components/orderInfo/OrderResult'
 
 const data = {
     name: "李四",
@@ -20,8 +23,6 @@ const itemData = {
     price: 400
 };
 
-const handleSubmit = () => {
-};
 
 const renderToolbar = () => {
     return (
@@ -32,13 +33,16 @@ const renderToolbar = () => {
     )
 };
 
-const Payment = ({navigator}) => {
+const Payment = ({navigator, dispatch}) => {
+    const handleSubmit = (value) => {
+        dispatch(payRequest({token: "1234567890", ...value, route: navigator, com: OrderResult}));
+    };
     return (
         <Page renderToolbar={renderToolbar}>
             <Address {...data}/>
-            <Payment_form {...itemData} navigator={navigator} handleSubmit={handleSubmit}/>
+            <PaymentForm {...itemData} navigator={navigator} onSubmit={value => handleSubmit(value)}/>
         </Page>
     )
 };
 
-export default Payment
+export default connect()(Payment)

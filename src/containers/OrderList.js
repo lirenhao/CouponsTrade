@@ -31,7 +31,7 @@ class OrderList extends React.Component {
         return (
             <ListItem key={index} onClick={() => {
                 this.props.dispatch(getOrderInfoRequest({token: 1234567890, id: row.id}));
-                this.props.navigator.pushPage({
+                setTimeout(() => this.props.navigator.pushPage({
                     comp: OrderInfo,
                     props: {
                         key: "orderInfo" + index,
@@ -40,7 +40,7 @@ class OrderList extends React.Component {
                             console.log("预留事件")
                         }
                     }
-                })
+                }), 500)
             }}>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>

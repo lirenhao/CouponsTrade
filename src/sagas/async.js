@@ -10,7 +10,7 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo
+    showDialog, setOrderList, setOrderInfo, payRequest
 } from '../action'
 
 /**
@@ -135,6 +135,27 @@ export function* fetchOrderInfo(action) {
         yield put(setOrderInfo(res.orderInfo));
     } else {
         yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
+
+/**
+ * 支付的异步处理
+ * @param action
+ */
+
+export function* fetchPay(action) {
+    const {route, com}=action.payload;
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.PAY, action.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield route.replacePage({
+            comp: com, props: {key: "OrderResultSuccess", res: 1}
+        })
+    } else {
+        yield route.pushPage({
+            comp: com, props: {key: "OrderResult", res: 0}
+        })
     }
     yield put(unload())
 }
