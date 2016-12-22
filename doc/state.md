@@ -64,7 +64,7 @@ var state = {
                 picture: "",
                 describe: "",
                 isOpen:""，
-                nickName
+                sellerNickName
             }
         },
         publishCoupon: {
@@ -186,7 +186,7 @@ var state={
              图片（与商户相关）(picture)，                                                    
              优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
              优惠券是否开启（isOpen），
-             卖家昵称（nickName）
+             卖家昵称（sellerNickName）
            }                                                                                   
        },                                                                                     
                                                                                               
