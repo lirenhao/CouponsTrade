@@ -10,7 +10,7 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, payRequest
+    showDialog, setOrderList, setOrderInfo, payRequest, popRouter
 } from '../action'
 
 /**
@@ -36,7 +36,7 @@ export function* loginAsync(req) {
     const res = yield call(fetch, ServerPath.LOGIN, req.payload)
     if (res.code == ResponseCode.SUCCESS) {
         yield put(login(res.token))
-        // TODO 跳转处理
+        yield put(popRouter())
     } else {
         yield put(showDialog(res.msg))
     }

@@ -15,11 +15,11 @@ export default createReducer({
         return {...state}
     },
     [pushRouter]: (state, payload) => {
-        state.pushPage({comp: payload.comp})
+        state.pushPage({...payload})
         return {...state}
     },
-    [resetRouter]: (state, comp) => {
-        state.resetPage({comp})
+    [resetRouter]: (state, payload) => {
+        state.resetPage({...payload})
         return {...state}
     }
 }, {})
