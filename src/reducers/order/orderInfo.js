@@ -10,7 +10,7 @@ import {setOrderInfo, openCoupon} from '../../action'
 
 export default createReducer({
     [setOrderInfo]: (state, payload) => payload,
-    [openCoupon]: state => {
-        return {...state, isOpen: true}
+    [openCoupon]: (state, payload) => {
+        return {...state, isOpen: true, couponCode: payload}
     }
 }, {})

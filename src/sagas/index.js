@@ -9,13 +9,13 @@ import {takeEvery} from 'redux-saga'
 import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
-    getOrderListRequest, getOrderInfoRequest, payRequest,
+    getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest,
     publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
-    fetchOrderList, fetchOrderInfo, fetchPay,
+    fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync
 } from './async'
 
@@ -45,6 +45,10 @@ export function* watchGetOrderInfoRequest() {
 
 export function* watchPay() {
     yield takeEvery(payRequest.getType(), fetchPay)
+}
+
+export function* watchOpenCoupon() {
+    yield takeEvery(openCouponRequest.getType(), fetchOPenCoupon)
 }
 
 export function* watchPublishCouponRequest() {
@@ -88,6 +92,7 @@ export default function* sagas(getState) {
         watchGetOrderListRequest(),
         watchGetOrderInfoRequest(),
         watchPay(),
+        watchOpenCoupon(),
         watchPopRouter(getState),
         watchPushRouter(getState),
         watchResetRouter(getState),

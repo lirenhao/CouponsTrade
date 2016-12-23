@@ -19,7 +19,7 @@ app.use(function (req, res, next) {
     next();
 });
 
-const state = {
+let state = {
     token: "1234567890",
     login: {
         username: "1",
@@ -426,7 +426,14 @@ app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
     console.log("收到获取订单详情请求");
     const {token, id}=req.body;
     if (state.token == token) {
-        res.json({code: ResponseCode.SUCCESS, orderInfo: state.order.orderInfo[id]})
+        const result = state.order.orderInfo[id];
+        res.json({
+            code: ResponseCode.SUCCESS,
+            orderInfo: {
+                ...result,
+                couponCode: result.isOpen ? result.couponCode : "******"
+            }
+        })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
 });
@@ -438,6 +445,19 @@ app.post(`/${ServerPath.PAY}`, (req, res) => {
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "支付失败"})
+});
+
+app.post(`/${ServerPath.OPEN_COUPON}`, (req, res) => {
+    console.log("收到打开优惠券请求");
+    const {token, id} = req.body;
+    if (state.token == token) {
+        state.order.orderInfo[id].isOpen = true;
+        res.json({
+            code: ResponseCode.SUCCESS, isOpen: true,
+            couponCode: state.order.orderInfo[id].couponCode
+        })
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "请求失败"})
 });
 
 

@@ -10,7 +10,7 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, insertOrderList, popRouter, setPage,
+    showDialog, setOrderList, setOrderInfo, insertOrderList, popRouter, setPage, openCoupon,
     initialPage, setCoupons, insertCoupons, insertCouponDetails, setUserCoupons,
     insertUserCoupons, insertUserCouponDetails, updateSoldOutCoupon, updateUserCoupon
 } from '../action'
@@ -151,9 +151,9 @@ export function* fetchOrderInfo(action) {
  */
 
 export function* fetchPay(action) {
-    const {route, com}=action.payload;
+    const {route, com, ...data}=action.payload;
     yield put(onload());
-    const res = yield call(fetch, ServerPath.PAY, action.payload);
+    const res = yield call(fetch, ServerPath.PAY, data);
     if (res.code == ResponseCode.SUCCESS) {
         yield route.replacePage({
             comp: com, props: {key: "OrderResultSuccess", res: 1}
@@ -165,6 +165,23 @@ export function* fetchPay(action) {
     }
     yield put(unload())
 }
+
+/**
+ * 打开优惠券的异步处理
+ * @param action
+ */
+
+export function* fetchOPenCoupon(action) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.OPEN_COUPON, action.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(openCoupon(res.couponCode))
+    } else {
+        yield put(showDialog(res.msg));
+    }
+    yield put(unload())
+}
+
 
 /**
  * 搜索优惠券请求

@@ -9,7 +9,7 @@ import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader, Button} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
-import {getOrderInfoRequest, getOrderListRequest} from '../action'
+import {getOrderInfoRequest, getOrderListRequest, openCouponRequest} from '../action'
 
 class OrderList extends React.Component {
     constructor(props) {
@@ -37,7 +37,7 @@ class OrderList extends React.Component {
                         key: "orderInfo" + index,
                         ...this.props.orderInfo,
                         handleClick: () => {
-                            console.log("预留事件")
+                            this.props.dispatch(openCouponRequest({token: 1234567890, id: row.id}))
                         }
                     }
                 }), 500)
@@ -66,7 +66,7 @@ class OrderList extends React.Component {
                         token: 1234567890, number: this.props.number,
                         size: this.props.size
                     }))
-                }}>测试按钮</Button>
+                }}>测试翻页按钮</Button>
             </Page>
         )
     }

@@ -23,13 +23,14 @@ export const ServerPath = {
     GET_ORDER_LIST: "getOrderList",
     GET_ORDER_INFO: "getOrderInfo",
     PAY: "pay",
+    OPEN_COUPON: "openCoupon",
     QUERY_COUPONS: "queryCoupons",
     SOLD_OUT_COUPON: "soldOutCoupon",
-}
+};
 
 // 响应码
 export const ResponseCode = {
     SUCCESS: "success",
     FAIL: "fail",
     TIMEOUT: "timeout"
-}
+};
