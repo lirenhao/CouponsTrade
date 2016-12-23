@@ -17,16 +17,11 @@ const OrderResult = ({res, navigator, dispatch, page}) => {
         dispatch(getOrderListRequest(
             {
                 token: 1234567890,
-                ...page
+                ...page,
+                route: navigator,
+                com: {Tabs, OrderList},
+                from: "order"
             }));
-        navigator.resetPageStack([
-            // {
-            //     comp: Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
-            // },
-            {
-                comp: OrderList, props: {key: "OrderList"}
-            },
-        ])
     };
 
     const haveBack = () => {

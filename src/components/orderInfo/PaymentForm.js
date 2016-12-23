@@ -9,8 +9,6 @@ import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {List, ListItem, ListHeader, Button, Input, BottomToolbar} from 'react-onsenui'
 import ItemInfo from './ItemInfo'
-import ons from 'onsenui'
-import OrderResult from './OrderResult'
 
 const defaultValue = {
     payment: "微信"
@@ -42,22 +40,9 @@ const renderRadioRow = (row) => {
 };
 
 const Payment_form = (props) => {
-    const {handleSubmit, invalid, submitting} = props;
+    const {handleSubmit, submitting} = props;
     const handleClick = () => {
         props.submit();
-        // ons.notification.confirm("模拟支付结果", {title: "说明", buttonLabels: ["失败", "成功"]}).then(
-        //     res => {
-        //         if (res === 0) {
-        //             props.navigator.pushPage({
-        //                 comp: OrderResult, props: {key: "OrderResult", res: 0}
-        //             })
-        //         } else {
-        //             props.navigator.replacePage({
-        //                 comp: OrderResult, props: {key: "OrderResultSuccess", res: 1}
-        //             })
-        //         }
-        //     }
-        // )
     };
     return (
         <form onSubmit={handleSubmit}>

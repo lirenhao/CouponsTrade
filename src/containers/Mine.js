@@ -18,7 +18,6 @@ import Login from './Login'
 import User from './User'
 import ResetPassword from './InputOldPassword'
 import SellingCoupons from './SellCoupons'
-import PayOrder from './PayOrder'
 import OrderList from './OrderList'
 import {connect} from 'react-redux'
 import {getUserInfoRequest, getOrderListRequest} from '../action'
@@ -63,11 +62,11 @@ class Mine extends React.Component {
                                   this.props.dispatch(getOrderListRequest(
                                       {
                                           token: 1234567890,
-                                          ...this.props.page
+                                          ...this.props.page,
+                                          route: this.props.navigator,
+                                          com: OrderList,
+                                          from: "mine"
                                       }));
-                                  this.props.navigator.pushPage({
-                                      comp: OrderList, props: {key: "OrderList"}
-                                  })
                               }}>
                         购买的优惠券
                     </ListItem>
@@ -88,12 +87,12 @@ class Mine extends React.Component {
 const mapStateToProps = (state) => ({
     token: state.token,
     page: state.order.page
-})
+});
 
 const mapDispatchToProps = (dispatch) => ({
     getUserInfo: (token, navigator) => {
         dispatch(getUserInfoRequest({token, navigator, router: {comp: User, props: {key: "User"}}}))
     }
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mine)

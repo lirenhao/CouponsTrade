@@ -10,18 +10,18 @@ import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
     updateUserInfoRequest, createInviteCodeRequest,
-    getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest,
-    publishCouponRequest, getCouponDetailsRequest,
-    queryCouponsRequest,getUserCouponsRequest,
-    soldOutCouponRequest,editUserCouponRequest
+    queryCouponsRequest, getUserCouponsRequest,
+    soldOutCouponRequest, editUserCouponRequest
+    getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest, insertOrderListRequest,
+    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     updateUserInfoAsync, createInviteCodeAsync,
-    fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon,
+    fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon, fetchInsetOrderList,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync,
-    getUserCouponsAsync,soldOutCouponAsync,editUserCouponAsync
+    getUserCouponsAsync, soldOutCouponAsync, editUserCouponAsync
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -50,6 +50,10 @@ export function* watchCreateInviteCodeRequest() {
 
 export function* watchGetOrderListRequest() {
     yield takeEvery(getOrderListRequest.getType(), fetchOrderList)
+}
+
+export function* watchInsetOrderListRequest() {
+    yield takeEvery(insertOrderListRequest.getType(), fetchInsetOrderList)
 }
 
 export function* watchGetOrderInfoRequest() {
@@ -99,6 +103,7 @@ export default function* sagas(getState) {
         watchCreateInviteCodeRequest(),
         watchPublishCouponRequest(),
         watchGetOrderListRequest(),
+        watchInsetOrderListRequest(),
         watchGetOrderInfoRequest(),
         watchPay(),
         watchOpenCoupon(),

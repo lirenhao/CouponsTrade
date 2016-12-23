@@ -9,7 +9,7 @@ import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader, Button} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
-import {getOrderInfoRequest, getOrderListRequest, openCouponRequest} from '../action'
+import {getOrderInfoRequest, insertOrderListRequest} from '../action'
 
 class OrderList extends React.Component {
     constructor(props) {
@@ -30,17 +30,12 @@ class OrderList extends React.Component {
         const y = 40 + index;
         return (
             <ListItem key={index} onClick={() => {
-                this.props.dispatch(getOrderInfoRequest({token: 1234567890, id: row.id}));
-                setTimeout(() => this.props.navigator.pushPage({
-                    comp: OrderInfo,
-                    props: {
-                        key: "orderInfo" + index,
-                        ...this.props.orderInfo,
-                        handleClick: () => {
-                            this.props.dispatch(openCouponRequest({token: 1234567890, id: row.id}))
-                        }
-                    }
-                }), 500)
+                this.props.dispatch(getOrderInfoRequest({
+                    token: 1234567890,
+                    id: row.id,
+                    route: this.props.navigator,
+                    com: OrderInfo
+                }));
             }}>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
@@ -62,8 +57,9 @@ class OrderList extends React.Component {
                     renderRow={this::this.renderRow}
                 />
                 <Button onClick={() => {
-                    this.props.dispatch(getOrderListRequest({
-                        token: 1234567890, number: this.props.number,
+                    this.props.dispatch(insertOrderListRequest({
+                        token: 1234567890,
+                        number: this.props.number,
                         size: this.props.size
                     }))
                 }}>测试翻页按钮</Button>

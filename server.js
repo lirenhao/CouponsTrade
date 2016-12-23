@@ -102,7 +102,7 @@ let state = {
         }],
         orderInfo: {
             "100100001": {
-                orderNo: "100100011",
+                orderNo: "100100001",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -120,7 +120,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100002": {
-                orderNo: "100100011",
+                orderNo: "100100002",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -138,7 +138,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100003": {
-                orderNo: "100100011",
+                orderNo: "100100003",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -156,7 +156,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100004": {
-                orderNo: "100100011",
+                orderNo: "100100004",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -174,7 +174,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100005": {
-                orderNo: "100100011",
+                orderNo: "100100005",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -192,7 +192,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100006": {
-                orderNo: "100100011",
+                orderNo: "100100006",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -210,7 +210,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100007": {
-                orderNo: "100100011",
+                orderNo: "100100007",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -228,7 +228,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100008": {
-                orderNo: "100100011",
+                orderNo: "100100008",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -246,7 +246,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100009": {
-                orderNo: "100100011",
+                orderNo: "100100009",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -264,7 +264,7 @@ let state = {
                 isOpen: false,
                 sellerNickName: "李四"
             }, "100100010": {
-                orderNo: "100100011",
+                orderNo: "100100010",
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
@@ -405,6 +405,24 @@ app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     console.log("收到获取订单列表请求");
+    const {token, size}=req.body;
+    const total = state.order.orderList.length;
+    let result = [];
+    for (let i = 0; i < size; i++) {
+        result.push(state.order.orderList[i])
+    }
+    if (state.token == token) {
+        res.json({
+            code: ResponseCode.SUCCESS,
+            orderList: result,
+            page: {total: total, number: 1,}
+        })
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
+});
+
+app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
+    console.log("收到更新订单列表请求");
     const {token, number, size}=req.body;
     const total = state.order.orderList.length;
     let result = [];
@@ -420,7 +438,7 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
             page: {total: total, number: number * 1 + 1,}
         })
     } else
-        res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
+        res.json({code: ResponseCode.FAIL, msg: "更新列表失败"})
 });
 
 app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
@@ -533,7 +551,7 @@ app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
     if (!couponState && typeof(couponState) != "undefined") {
         const newCouponList = couponList.filter((r) => {
             return r.couponState === couponState
-        })
+        });
         res.json({code: ResponseCode.SUCCESS, couponList: newCouponList})
     }
     res.json({code: ResponseCode.SUCCESS, couponList: couponList})
@@ -552,9 +570,9 @@ app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
-    const {id, token,couponName, isAutomaticRefund, couponType,couponCode, couponModality, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
+    const {id, token, couponName, isAutomaticRefund, couponType, couponCode, couponModality, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
     if (state.token == token) {
-        const couponInfo ={
+        const couponInfo = {
             id,
             couponName,
             isAutomaticRefund,
@@ -566,13 +584,13 @@ app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
             ticketPrice,
             endDate,
             describe,
-            userName:state.login.username,
+            userName: state.login.username,
             couponState: "1"
-        }
-       const publishCouponList= state.publishCouponList.map((r) => {
-           return r.id === id ? r = couponInfo : r
+        };
+        const publishCouponList = state.publishCouponList.map((r) => {
+            return r.id === id ? r = couponInfo : r
         });
-        state =[...state,publishCouponList]
+        state = [...state, publishCouponList];
         res.json({code: ResponseCode.SUCCESS, couponState: "2"})
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户不能编辑，请重新登录"})

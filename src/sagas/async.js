@@ -10,7 +10,7 @@ import fetch from '../fetch'
 import {ServerPath, ResponseCode} from '../constants'
 import {
     onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, insertOrderList, popRouter, setPage, openCoupon,
+    showDialog, setOrderList, setOrderInfo, insertOrderList, setOrderPage, openCoupon,
     initialPage, setCoupons, insertCoupons, insertCouponDetails, setUserCoupons,
     insertUserCoupons, insertUserCouponDetails, updateSoldOutCoupon, updateUserCoupon
 } from '../action'
@@ -20,11 +20,11 @@ import {
  * @param req 注册发起signUpRequest的action
  */
 export function* signUpAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.SIGN_UP, param)
+    yield put(onload());
+    const {param, navigator} = req.payload;
+    const res = yield call(fetch, ServerPath.SIGN_UP, param);
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(showDialog("注册成功"))
+        yield put(showDialog("注册成功"));
         navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
@@ -37,11 +37,11 @@ export function* signUpAsync(req) {
  * @param req 登录发起loginRequest的action
  */
 export function* loginAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.LOGIN, param)
+    yield put(onload());
+    const {param, navigator} = req.payload;
+    const res = yield call(fetch, ServerPath.LOGIN, param);
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(login(res.token))
+        yield put(login(res.token));
         navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
@@ -64,11 +64,11 @@ export function* logoutAsync() {
  * @param req
  */
 export function* getUserInfoAsync(req) {
-    yield put(onload())
-    const {token, navigator, router} = req.payload
-    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token})
+    yield put(onload());
+    const {token, navigator, router} = req.payload;
+    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token});
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserInfo(res.userInfo))
+        yield put(updateUserInfo(res.userInfo));
         navigator.pushPage(router)
     } else {
         yield put(showDialog(res.msg))
@@ -81,11 +81,11 @@ export function* getUserInfoAsync(req) {
  * @param req
  */
 export function* updateUserInfoAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, param)
+    yield put(onload());
+    const {param, navigator} = req.payload;
+    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, param);
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserInfo(param))
+        yield put(updateUserInfo(param));
         navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
@@ -97,9 +97,9 @@ export function* updateUserInfoAsync(req) {
  *生成邀请码的异步处理
  */
 export function* createInviteCodeAsync(req) {
-    yield put(onload())
-    const {token, navigator, comp} = req.payload
-    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE, {token})
+    yield put(onload());
+    const {token, navigator, comp} = req.payload;
+    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE, {token});
     if (res.code == ResponseCode.SUCCESS) {
         navigator.pushPage({comp, props: {key: "userShare", inviteCode: res.inviteCode}})
     } else {
@@ -131,18 +131,48 @@ export function* updatePasswordAsync(req) {
 }
 
 /**
- * 获取订单列表的异步处理
+ * 初始化列表的异步处理
  * @param action
  */
 
 export function* fetchOrderList(action) {
+    const {route, com, ...data}=action.payload;
     yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, action.payload);
-    if (res.code == ResponseCode.SUCCESS && res.page.number == 1) {
+    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data);
+    if (res.code == ResponseCode.SUCCESS) {
         yield put(initialPage(res.page));
         yield put(setOrderList(res.orderList));
-    } else if (res.code == ResponseCode.SUCCESS) {
-        yield put(setPage(res.page.number));
+        if (data.from === "order") {
+            route.resetPageStack([
+                {
+                    comp: com.Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
+                },
+                {
+                    comp: com.OrderList, props: {key: "OrderList"}
+                },
+            ])
+        } else {
+            route.pushPage({
+                comp: com, props: {key: "OrderList"}
+            })
+        }
+    } else {
+        yield put(showDialog(res.msg));
+    }
+    yield put(unload())
+}
+
+/**
+ * 更新订单列表的异步处理
+ * @param action
+ */
+
+export function* fetchInsetOrderList(action) {
+    const {...data}=action.payload;
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.INSET_ORDER_LIST, data);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setOrderPage(res.page.number));
         yield put(insertOrderList(res.orderList));
     } else {
         yield put(showDialog(res.msg));
@@ -157,9 +187,14 @@ export function* fetchOrderList(action) {
 
 export function* fetchOrderInfo(action) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, action.payload);
+    const {route, com, ...data}=action.payload;
+    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, data);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setOrderInfo(res.orderInfo));
+        route.pushPage({
+            comp: com,
+            props: {key: "orderInfo"}
+        })
     } else {
         yield put(showDialog(res.msg))
     }
