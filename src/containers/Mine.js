@@ -16,7 +16,7 @@ import {
 } from 'react-onsenui'
 import Login from './Login'
 import User from './User'
-import ResetPassword from './InputOldPassword'
+import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
 import OrderList from './OrderList'
 import {connect} from 'react-redux'
@@ -46,7 +46,7 @@ class Mine extends React.Component {
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
                                   comp: ResetPassword,
-                                  props: {key: "ResetPassword"}
+                                  props: {key: "resetPassword"}
                               })}>
                         重置密码
                     </ListItem>

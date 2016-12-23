@@ -5,15 +5,29 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-import {call, put} from 'redux-saga/effects'
-import fetch from '../fetch'
-import {ServerPath, ResponseCode} from '../constants'
+import {call, put} from "redux-saga/effects";
+import fetch from "../fetch";
+import {ServerPath, ResponseCode} from "../constants";
 import {
-    onload, unload, login, logout, updateUserInfo, updateInviteCode,
-    showDialog, setOrderList, setOrderInfo, insertOrderList, setOrderPage, openCoupon,
-    initialPage, setCoupons, insertCoupons, insertCouponDetails, setUserCoupons,
-    insertUserCoupons, insertUserCouponDetails, updateSoldOutCoupon, updateUserCoupon
-} from '../action'
+    onload,
+    unload,
+    login,
+    logout,
+    updateUserInfo,
+    showDialog,
+    setOrderList,
+    setOrderInfo,
+    insertOrderList,
+    setOrderPage,
+    openCoupon,
+    initialPage,
+    setCoupons,
+    insertCouponDetails,
+    setUserCoupons,
+    insertUserCouponDetails,
+    updateSoldOutCoupon,
+    updateUserCoupon
+} from "../action";
 
 /**
  * 注册的异步处理
@@ -114,10 +128,10 @@ export function* createInviteCodeAsync(req) {
  */
 export function* verifyPasswordAsync(req) {
     yield put(onload())
-    const {param, navigator, comp} = req.payload
+    const {param, navigator, comp, props} = req.payload
     const res = yield call(fetch, ServerPath.VERIFY_PASSWORD, param)
     if (res.code == ResponseCode.SUCCESS) {
-        navigator.replacePage({comp, props: {key: "updatePassword", token: param.token}})
+        navigator.replacePage({comp, props})
     } else {
         yield put(showDialog(res.msg))
     }
@@ -129,9 +143,14 @@ export function* verifyPasswordAsync(req) {
  * @param req
  */
 export function* updatePasswordAsync(req) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, req.payload);
-
+    yield put(onload())
+    const {param, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, param)
+    if (res.code == ResponseCode.SUCCESS) {
+        navigator.popPage()
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 
