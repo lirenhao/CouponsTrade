@@ -13,7 +13,8 @@ import {
     verifyPasswordRequest, updatePasswordRequest,
     queryCouponsRequest, getUserCouponsRequest,
     soldOutCouponRequest, editUserCouponRequest,
-    getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest, insertOrderListRequest,
+    getOrderListRequest, getOrderInfoRequest, payRequest,
+    openCouponRequest, insertOrderListRequest,
     publishCouponRequest, getCouponDetailsRequest
 } from '../action'
 import {
