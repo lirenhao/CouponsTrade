@@ -19,7 +19,7 @@ const CouponInfo = (props)=> {
             </div>
             <div className='center'>
                 <div className="list__item__title">{couponName}</div>
-                <b>退</b>
+                <em>限</em><i>稀</i><b>退</b>
                 <div className="list__item__subtitle">{description}</div>
             </div>
             <div className='right'>

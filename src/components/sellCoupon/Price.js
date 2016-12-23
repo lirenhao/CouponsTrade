@@ -11,7 +11,7 @@ import React from 'react'
 
 const PriceComponent = ({text, price})=> {
     return (
-        <div className="price">￥{price.toString()}<span>元</span></div>
+        <div className="price">￥{price.toString()}</div>
     )
 };
 
