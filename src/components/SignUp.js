@@ -23,7 +23,7 @@ const SignUp = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <List modifier="inset marginT marginB">
+            <List modifier="inset marginT ">
                 <ListItem>
                     <div className="center">
                         <Field type="text"
@@ -43,7 +43,7 @@ const SignUp = (props) => {
                 <ListItem>
                 </ListItem>
             </List>
-            <Button modifier='quiet marginTLR'>获取验证码</Button>
+            <Button modifier='large quiet'>获取验证码</Button>
             <List modifier="inset marginB">
                 <ListItem>
                     <div className="center">

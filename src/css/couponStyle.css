@@ -85,7 +85,8 @@ ons-list-header{
 }
 .list--limit .center b{
     display: block;
-    margin-top: 2px;
+    font-style: normal;
+    margin: 2px 2px 0 0;
     width: 14px;
     height: 14px;
     background-color: #00a9f3;
@@ -93,11 +94,12 @@ ons-list-header{
     font-size: 0.5em;
     color: #fff;
     text-align: center;
-    font-weight: 300;
     line-height: 14px;
+    font-weight: 100;
 }
 .list--limit .center i{
     display: block;
+    font-style: normal;
     margin: 2px 2px 0 0;
     width: 14px;
     height: 14px;
