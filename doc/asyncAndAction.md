@@ -79,8 +79,8 @@
       - 优惠券名称:state.publish.orderInfo.couponName
       - 区域信息:state.publish.orderInfo.areaInfo
       - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.type
-      - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
+      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.couponType
+      - 券码形式选项（图片或文本）:state.publish.orderInfo.couponModality
       - 券码（图片或文本）：state.publish.orderInfo.couponCode
       - 卖价：state.publish.orderInfo.sellingPrice
       - 原价：state.publish.orderInfo.originalPrice
@@ -108,7 +108,7 @@
       - 优惠券名称:state.publish.orderInfo.couponName
       - 区域信息:state.publish.orderInfo.areaInfo
       - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、其他）:state.publish.orderInfo.couponType
+      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.couponType
       - 券码形式选项（图片或文本）:state.publish.orderInfo.couponModality
       - 券码（图片或文本）：state.publish.orderInfo.couponCode
       - 卖价：state.publish.orderInfo.sellingPrice
@@ -117,7 +117,7 @@
       - 截止日期：state.publish.orderInfo.endDate
       - 图片（与商户相关）：state.publish.orderInfo.picture
       - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
-      - 昵称：nickName
+      - 卖家昵称：sellerNickName
       - 优惠券状态：couponState
 
 ##### 1.2.2.4 查询已发布优惠券列表（发布）
