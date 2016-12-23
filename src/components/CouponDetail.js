@@ -15,7 +15,7 @@ const CouponDetail = (props) => {
     const {DetailInformation}=props;
     return (
         <div>
-            <List modifier="inset marginT">
+            <List modifier="inset marginT title">
                 <ListItem>
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>

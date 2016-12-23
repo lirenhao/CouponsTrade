@@ -56,12 +56,7 @@ ons-icon[icon="ion-arrow-down-b"]{
     color: #EE3B3B;
     font-size: 1.25em;
 }
-.price span{
-    font-size: 0.5em;
-    position: relative;
-    top:-2px;
-}
-ons-list-header img{
+.list--mine img{
     width: fit-content;
     margin: 0 auto 1em;
     display: block;
@@ -75,33 +70,33 @@ ons-list-header{
 .list__header--material img{
     margin: 1em auto;
 }
-ons-list-item .right .list__item__subtitle{
+.list--title .right .list__item__subtitle{
     font-size: 0.5em;
     color: #aaa;
     text-decoration: line-through;
 }
-ons-list-item .center .list__item__subtitle{
+.list--title .right .list__item__title{
+    font-size: 1.25em;
+    color: #EE3B3B;
+}
+.list--title .center .list__item__subtitle{
     font-size: 0.8em;
     color: #aaa;
 }
-ons-list-item .center b{
+.list--limit .center b{
     display: block;
     margin-top: 2px;
-    width: 12px;
-    height: 12px;
+    width: 14px;
+    height: 14px;
     background-color: #00a9f3;
     border-radius: 2px;
     font-size: 0.5em;
     color: #fff;
     text-align: center;
-    line-height: 12px;
+    line-height: 14px;
 }
-ons-list-item .right .list__item__title{
-    font-size: 1.25em;
-    color: #EE3B3B;
-}
-ons-list-item a{
-    font-size: 0.5em;
+.list--signIn a{
+    font-size: 0.8em;
     color: #aaa;
     text-decoration: none;
     display: block;

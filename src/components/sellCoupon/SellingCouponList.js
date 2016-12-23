@@ -19,6 +19,7 @@ const SellingCouponList = ({data, onClickPushPage})=> {
 
     return (
         <List dataSource={data}
+              modifier=" limit"
               renderHeader={() =><ons-list modifier="noborder">
                   <ons-list-item>
                       <ons-row>

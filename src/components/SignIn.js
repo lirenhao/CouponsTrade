@@ -23,7 +23,7 @@ const SignIn = (props) => {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <br/>
-            <List modifier="inset">
+            <List modifier="inset signIn">
                 <ListItem>
                     <div className="center">
                         <Field type="number" name="username" component={SignInField} placeholder="输入手机号"/>

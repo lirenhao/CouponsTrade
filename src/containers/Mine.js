@@ -31,7 +31,7 @@ class Mine extends React.Component {
                     <div className='center'>个人中心</div>
                 </Toolbar>
             )}>
-                <List modifier='inset marginT'>
+                <List modifier='inset marginT mine'>
                     <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({

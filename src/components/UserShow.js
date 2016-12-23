@@ -23,7 +23,7 @@ const UserShow = (props) => {
                     <Icon icon='md-edit'/>
                 </SpeedDialItem>
             </SpeedDial>
-            <List modifier='inset marginT'>
+            <List modifier='inset marginT mine'>
                 <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
                 <ListItem>
                     昵称
