@@ -8,6 +8,7 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button} from 'react-onsenui'
 import {connect} from 'react-redux'
+import {openCouponRequest} from '../../action'
 
 const renderToolbar = () => {
     return (
@@ -24,8 +25,8 @@ const OrderInfo = (props) => {
     const {
         orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
-        ticketPrice, endDate, describe, isOpen, handleClick, sellerNickName
-    }=props;
+        ticketPrice, endDate, describe, isOpen, sellerNickName
+    }=props.orderInfo;
     return (
         <Page renderToolbar={renderToolbar}>
             <List modifier="inset marginT">
@@ -54,8 +55,10 @@ const OrderInfo = (props) => {
                     <div className="right">{couponModality}</div>
                 </ListItem>
                 <ListItem>券码:
-                    <div className="right">{props.orderInfo.isOpen ? props.orderInfo.couponCode :
-                        <Button onClick={handleClick}>打开优惠券</Button>}</div>
+                    <div className="right">{isOpen ? couponCode : <Button onClick={() => {
+                            props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
+                        }
+                        }>打开优惠券</Button>}</div>
                 </ListItem>
                 <ListItem>卖价:
                     <div className="right">{sellingPrice}</div>
@@ -75,7 +78,7 @@ const OrderInfo = (props) => {
                     <div className="right">{describe}</div>
                 </ListItem>
                 <ListItem>是否已开启:
-                    <div className="right">{props.orderInfo.isOpen ? "是" : "否"}</div>
+                    <div className="right">{isOpen ? "是" : "否"}</div>
                 </ListItem>
                 <ListItem>订单编号:
                     <div className="right">{orderNo}</div>

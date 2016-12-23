@@ -21,6 +21,7 @@ export const ServerPath = {
     GET_USER_COUPONS: "getUserCoupons",
     EDIT_USER_COUPON: "editUserCoupon",
     GET_ORDER_LIST: "getOrderList",
+    INSET_ORDER_LIST: "insertOrderList",
     GET_ORDER_INFO: "getOrderInfo",
     PAY: "pay",
     OPEN_COUPON: "openCoupon",
