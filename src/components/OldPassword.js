@@ -34,7 +34,7 @@ const OldPassword = (props) => {
                 <br/>
             </section>
             <br/>
-            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
+            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确定</Button>
         </form>
     )
 };
