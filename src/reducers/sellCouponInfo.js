@@ -15,8 +15,8 @@ export default createReducer({
     [insertUserCouponDetails]: (state, couponInfo)=> {
         return {state,...couponInfo}
     },
-    [updateUserCoupon]: (state, couponInfo)=> {
-        return {state, ...couponInfo}
+    [updateUserCoupon]: (state, couponState)=> {
+        return {state, couponState}
     },
     [updateSoldOutCoupon]:(state,couponState) =>{
         return{...state,couponState}

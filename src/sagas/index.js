@@ -11,12 +11,19 @@ import {
     logoutRequest, getUserInfoRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest,
     publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
+    getOrderListRequest, getOrderInfoRequest, payRequest,
+    publishCouponRequest, popRouter, pushRouter, resetRouter,
+    getCouponDetailsRequest, queryCouponsRequest,getUserCouponsRequest,
+    soldOutCouponRequest,editUserCouponRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync
+    fetchOrderList, fetchOrderInfo, fetchPay,
+    publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync,
+    getUserCouponsAsync,soldOutCouponAsync,editUserCouponAsync
 } from './async'
 
 export function* watchSignUpRequest() {
@@ -81,6 +88,18 @@ export function* watchQueryCouponsRequest() {
     yield takeEvery(queryCouponsRequest.getType(), queryCouponsAsync)
 }
 
+export function* watchGetUserCouponsRequest() {
+    yield takeEvery(getUserCouponsRequest.getType(), getUserCouponsAsync)
+}
+
+export function* watchSoldOutCouponRequest() {
+    yield takeEvery(soldOutCouponRequest.getType(), soldOutCouponAsync)
+}
+
+export function* watchEditUserCouponRequest() {
+    yield takeEvery(editUserCouponRequest.getType(), editUserCouponAsync)
+}
+
 
 export default function* sagas(getState) {
     yield [
@@ -97,6 +116,9 @@ export default function* sagas(getState) {
         watchPushRouter(getState),
         watchResetRouter(getState),
         watchQueryCouponsRequest(),
-        watchGetCouponDetailsRequest()
+        watchGetCouponDetailsRequest(),
+        watchGetUserCouponsRequest(),
+        watchSoldOutCouponRequest(),
+        watchEditUserCouponRequest()
     ]
 }

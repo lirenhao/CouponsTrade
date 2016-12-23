@@ -231,3 +231,48 @@ export function *getCouponDetailsAsync(req) {
     }
     yield put(unload())
 }
+
+/**
+ * 获取用户自己发布的优惠券信息请求
+ * @param req
+ */
+export function *getUserCouponsAsync(req) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, req.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setUserCoupons(res.couponList))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
+
+/**
+ * 用户下架优惠券请求
+ * @param req
+ */
+export function *soldOutCouponAsync(req) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.SOLD_OUT_COUPON, req.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(updateSoldOutCoupon(res.couponState))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
+
+/**
+ * 用户编辑优惠券请求
+ * @param req
+ */
+export function *editUserCouponAsync(req) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, req.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(updateUserCoupon(res.couponState))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}

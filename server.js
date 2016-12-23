@@ -316,8 +316,8 @@ let state = {
             ticketPrice: "50",
             endDate: "2016-12-31",
             describe: "所有地区通用券",
-            username: "1"
-
+            userName: "1",
+            couponState: "1"
         },
         {
             id: "2",
@@ -331,7 +331,8 @@ let state = {
             ticketPrice: "50",
             endDate: "2016-12-31",
             describe: "所有地区通用券",
-            username: "1"
+            userName: "1",
+            couponState: "1"
         }
     ]
 };
@@ -477,7 +478,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
             res.json({code: ResponseCode.FAIL, msg: "该优惠券码已发布过"})
         } else {
             const len = state.publishCouponList.length;
-            const username = state.login.username;
+            const userName = state.login.username;
             state.publishCouponList.push({
                 id: len,
                 couponName,
@@ -490,7 +491,8 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
                 ticketPrice,
                 endDate,
                 describe,
-                username
+                userName,
+                couponState: "1"
             });
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
@@ -502,7 +504,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
     const couponList = state.publishCouponList.filter((r) => {
-        return r.value.match(couponName)
+        return r.couponName.match(couponName)
     });
     res.json({code: ResponseCode.SUCCESS, couponList: couponList})
 });
@@ -510,7 +512,7 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, username} = req.body;
     const couponList = state.publishCouponList.filter((r) => {
-        return r.value === id
+        return r.id === id
     });
     if (couponList.length !== 0) {
         const couponInfo = couponList[0];
@@ -521,6 +523,60 @@ app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
         }
     }
     res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
+});
+
+app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
+    const {userName, couponName, couponState} = req.body;
+    const couponList = state.publishCouponList.filter((r) => {
+        return r.userName === userName && r.couponName.match(couponName)
+    });
+    if (!couponState && typeof(couponState) != "undefined") {
+        const newCouponList = couponList.filter((r) => {
+            return r.couponState === couponState
+        })
+        res.json({code: ResponseCode.SUCCESS, couponList: newCouponList})
+    }
+    res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+});
+
+app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
+    const {id, token} = req.body;
+    if (state.token == token) {
+        state.publishCouponList.map((r) => {
+            r.id === id ? r.couponState = "2" : r.couponState
+        });
+        res.json({code: ResponseCode.SUCCESS, couponState: "2"})
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户不具有下架权限，请重新登录"})
+    }
+});
+
+app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
+    const {id, token,couponName, isAutomaticRefund, couponType,couponCode, couponModality, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
+    if (state.token == token) {
+        const couponInfo ={
+            id,
+            couponName,
+            isAutomaticRefund,
+            couponType,
+            couponModality,
+            couponCode,
+            sellingPrice,
+            originalPrice,
+            ticketPrice,
+            endDate,
+            describe,
+            userName:state.login.username,
+            couponState: "1"
+        }
+       const publishCouponList= state.publishCouponList.map((r) => {
+           return r.id === id ? r = couponInfo : r
+        });
+        state =[...state,publishCouponList]
+        res.json({code: ResponseCode.SUCCESS, couponState: "2"})
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户不能编辑，请重新登录"})
+    }
 });
 
 // TODO 添加后台服务
