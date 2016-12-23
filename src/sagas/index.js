@@ -10,18 +10,14 @@ import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest,
-    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
-    getOrderListRequest, getOrderInfoRequest, payRequest,
-    publishCouponRequest, popRouter, pushRouter, resetRouter,
-    getCouponDetailsRequest, queryCouponsRequest,getUserCouponsRequest,
+    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest,
+    queryCouponsRequest,getUserCouponsRequest,
     soldOutCouponRequest,editUserCouponRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon,
-    publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync
-    fetchOrderList, fetchOrderInfo, fetchPay,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync,
     getUserCouponsAsync,soldOutCouponAsync,editUserCouponAsync
 } from './async'
