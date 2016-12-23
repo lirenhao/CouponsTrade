@@ -11,9 +11,9 @@ import {
     logoutRequest, getUserInfoRequest,
     updateUserInfoRequest, createInviteCodeRequest,
     queryCouponsRequest, getUserCouponsRequest,
-    soldOutCouponRequest, editUserCouponRequest
+    soldOutCouponRequest, editUserCouponRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest, insertOrderListRequest,
-    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest, queryCouponsRequest
+    publishCouponRequest, getCouponDetailsRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
