@@ -1,12 +1,12 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import {Navigator} from 'react-onsenui'
-import Tabs from './Tabs'
-import DevTools from './DevTools'
-import Dialog from '../components/Dialog'
-import Loading from '../components/Loading'
-import {initialRouter, hideDialog} from '../action'
-import uuid from 'uuid'
+import React from "react";
+import {connect} from "react-redux";
+import {Navigator} from "react-onsenui";
+import Tabs from "./Tabs";
+import DevTools from "./DevTools";
+import Dialog from "../components/Dialog";
+import Loading from "../components/Loading";
+import {hideDialog} from "../action";
+import uuid from "uuid";
 
 const renderPage = (route, navigator) => {
     route.props = route.props || {};
