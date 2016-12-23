@@ -6,9 +6,8 @@ import inviteCode from './inviteCode'
 import userInfo from './userInfo'
 import dialog from './dialog'
 import order from './order'
-import router from './router'
 
 export default combineReducers({
     form, token, loading, inviteCode, userInfo,
-    order, dialog, router
+    order, dialog
 })

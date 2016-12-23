@@ -55,7 +55,7 @@ class User extends React.Component {
                             key: 'userEdit',
                             user: this.props.userInfo,
                             userEdit: (param) => {
-                                this.props.updateUserInfo(param, this.props.navigator)
+                                this.props.updateUserInfo({...param, token: this.props.token}, this.props.navigator)
                             }
                         }
                     })}

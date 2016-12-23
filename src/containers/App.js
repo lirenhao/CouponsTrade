@@ -20,7 +20,7 @@ const App = (props) => {
         return (
             <div>
                 <Navigator
-                    initialRoute={{comp: Tabs, props: {key: "tabs", router: props.router}}}
+                    initialRoute={{comp: Tabs, props: {key: "tabs"}}}
                     renderPage={renderPage}
                 />
                 <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
@@ -36,9 +36,6 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    router: (navigator) => {
-        dispatch(initialRouter(navigator))
-    },
     hideDialog: () => {
         dispatch(hideDialog())
     }

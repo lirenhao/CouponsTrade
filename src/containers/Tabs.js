@@ -10,9 +10,6 @@ import Mine from '../containers/Mine'
 import PublishCoupon from './PublishCoupon'
 
 class Tabs extends React.Component {
-    componentDidMount() {
-        this.props.router(this.props.navigator)
-    }
     renderTabs() {
         return [
             {

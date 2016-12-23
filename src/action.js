@@ -7,11 +7,6 @@
  */
 import {createAction} from "redux-act"
 
-export const initialRouter = createAction("INITIAL_ROUTER");
-export const popRouter = createAction("POP_ROUTER");
-export const pushRouter = createAction("PUSH_ROUTER");
-export const resetRouter = createAction("RESET_ROUTER");
-
 // 开始等待action
 export const onload = createAction("ONLOAD");
 // 取消等待action
