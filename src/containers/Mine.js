@@ -21,7 +21,7 @@ import SellingCoupons from './SellCoupons'
 import PayOrder from './PayOrder'
 import OrderList from './OrderList'
 import {connect} from 'react-redux'
-import {getOrderListRequest} from '../action'
+import {getUserInfoRequest, getOrderListRequest} from '../action'
 
 class Mine extends React.Component {
     render() {
@@ -32,19 +32,18 @@ class Mine extends React.Component {
                 </Toolbar>
             )}>
                 <List modifier='inset marginT mine'>
-                    <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: Login, props: {key: "Login"}
-                              })}>
-                        登录
-                    </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: User, props: {key: "User"}
-                              })}>
-                        信息
-                    </ListItem>
+                    <ListHeader onClick={() => {
+                        if (this.props.token == "") {
+                            this.props.navigator.pushPage({
+                                comp: Login, props: {key: "Login"}
+                            })
+                        } else {
+                            // 获取用户基本信息
+                            this.props.getUserInfo(this.props.token, this.props.navigator)
+                        }
+                    }}>
+                        <img src={`http://placekitten.com/g/40/40`} alt=""/>
+                    </ListHeader>
                     <ListItem modifier='chevron'
                               onClick={() => this.props.navigator.pushPage({
                                   comp: ResetPassword,
@@ -86,8 +85,15 @@ class Mine extends React.Component {
     }
 }
 
-const mapStateToProps = state => {
-    return {page: state.order.page}
-};
+const mapStateToProps = (state) => ({
+    token: state.token,
+    page: state.order.page
+})
 
-export default connect(mapStateToProps)(Mine)
+const mapDispatchToProps = (dispatch) => ({
+    getUserInfo: (token, navigator) => {
+        dispatch(getUserInfoRequest({token, navigator, router: {comp: User, props: {key: "User"}}}))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Mine)

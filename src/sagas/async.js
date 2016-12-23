@@ -64,9 +64,15 @@ export function* logoutAsync() {
  * @param req
  */
 export function* getUserInfoAsync(req) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_USER_INFO, req.payload);
-    yield put(updateUserInfo(res));
+    yield put(onload())
+    const {token, navigator, router} = req.payload
+    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token})
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(updateUserInfo(res.userInfo))
+        navigator.pushPage(router)
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 

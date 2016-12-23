@@ -3,13 +3,15 @@
  * Create Date：2016/12/9
  * Modified By：liRenhao
  * Why & What is modified  <修改原因描述>
- * 测试导航
+ * 用戶信息界面
  */
-import React from 'react'
-import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
-import UserShow from '../components/UserShow'
-import UserEdit from '../components/UserEdit'
-import InviteCode from "../components/InviteCode"
+import React from "react";
+import {connect} from "react-redux";
+import {Page, Toolbar, BackButton, Button} from "react-onsenui";
+import {updateUserInfoRequest} from '../action'
+import UserShow from "../components/UserShow";
+import UserEdit from "../components/UserEdit";
+import InviteCode from "../components/InviteCode";
 
 const Edit = (props) => {
     return (
@@ -50,24 +52,35 @@ class User extends React.Component {
                     edit={() => this.props.navigator.pushPage({
                         comp: Edit,
                         props: {
-                            key: "userEdit",
+                            key: 'userEdit',
                             onSubmit: (value) => console.log(value),
-                            user: {nickname: "昵称", phoneNumber: "18310809129", inviteCode: "ABCD1234ef"}
+                            user: {nickname: '昵称', phoneNumber: '18310809129', inviteCode: 'ABCD1234ef'}
                         }
                     })}
                     share={() => this.props.navigator.pushPage({
                         comp: Share,
                         props: {
-                            key: "userShare",
-                            inviteCode: "ABCD1234ef"
+                            key: 'userShare',
+                            inviteCode: 'ABCD1234ef'
                         }
                     })}
-                    user={{nickname: "昵称", phoneNumber: "18310809129", inviteCode: "ABCD1234ef"}}
+                    user={this.props.userInfo}
                 />
             </Page>
         )
     }
 }
 
-export default User
+const mapStateToProps = (state) => ({
+    token: state.token,
+    userInfo: state.userInfo
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    updateUserInfo: (param, navigator) => {
+        dispatch(updateUserInfoRequest({param, navigator}))
+    }
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(User)
 

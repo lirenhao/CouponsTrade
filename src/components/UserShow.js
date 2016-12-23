@@ -31,7 +31,7 @@ const UserShow = (props) => {
                 </ListItem>
                 <ListItem>
                     手机号
-                    <div className="right">{user.phoneNumber}</div>
+                    <div className="right">{user.phoneNo}</div>
                 </ListItem>
                 <ListItem>
                     邀请码
@@ -54,7 +54,7 @@ UserShow.propTypes = {
     edit: React.PropTypes.func.isRequired,
     user: React.PropTypes.shape({
         nickname: React.PropTypes.string.isRequired,
-        phoneNumber: React.PropTypes.string.isRequired,
+        phoneNo: React.PropTypes.string.isRequired,
         inviteCode: React.PropTypes.string.isRequired
     }).isRequired
 }
