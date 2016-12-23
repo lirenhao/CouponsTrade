@@ -5,17 +5,12 @@
  * Why & What is modified  <修改原因描述>
  * 用户登录界面
  */
-import React from 'react'
-import {connect} from 'react-redux'
-import {loginRequest} from '../action'
-import {
-    Page,
-    Toolbar,
-    Button,
-    BackButton
-} from 'react-onsenui'
-import SignUp from '../components/SignUp'
-import SignIn from '../components/SignIn'
+import React from "react";
+import {connect} from "react-redux";
+import {loginRequest, signUpRequest} from "../action";
+import {Page, Toolbar, Button, BackButton} from "react-onsenui";
+import SignUp from "../components/SignUp";
+import SignIn from "../components/SignIn";
 
 const Enroll = (props) => {
     return (
@@ -25,7 +20,9 @@ const Enroll = (props) => {
                 <div className='center'>注册</div>
             </Toolbar>
         )}>
-            <SignUp onSubmit={(value) => props.navigator.popPage()}/>
+            <SignUp onSubmit={(param) => {
+                props.signUp(param, props.navigator)
+            }}/>
         </Page>
     )
 }
@@ -40,7 +37,7 @@ class Login extends React.Component {
                     <Button modifier='quiet' onClick={() =>
                         this.props.navigator.pushPage({
                             comp: Enroll,
-                            props: {key: "enroll"}
+                            props: {key: "enroll", signUp: this.props.signUp}
                         })}>注册</Button>
                 </div>
             </Toolbar>
@@ -50,19 +47,22 @@ class Login extends React.Component {
     render() {
         return (
             <Page renderToolbar={this.loginToolbar.bind(this)}>
-                <SignIn onSubmit={(value) => this.props.login(value)}/>
+                <SignIn onSubmit={(param) => this.props.login(param, this.props.navigator)}/>
             </Page>
         )
     }
 }
 
-const mapStateToProps = (state)=> ({
+const mapStateToProps = (state) => ({
     token: state.token
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (value) => {
-        dispatch(loginRequest(value))
+    login: (param, navigator) => {
+        dispatch(loginRequest({param, navigator}))
+    },
+    signUp: (param, navigator) => {
+        dispatch(signUpRequest({param, navigator}))
     }
 })
 

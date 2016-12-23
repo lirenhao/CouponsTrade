@@ -20,12 +20,15 @@ import {
  * @param req 注册发起signUpRequest的action
  */
 export function* signUpAsync(req) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.SIGN_UP, req.payload);
-    if (res.code == ResponseCode.SUCCESS)
-        console.log(res);
-    else
-        console.log(res);
+    yield put(onload())
+    const {param, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.SIGN_UP, param)
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(showDialog("注册成功"))
+        navigator.popPage()
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 
@@ -34,11 +37,12 @@ export function* signUpAsync(req) {
  * @param req 登录发起loginRequest的action
  */
 export function* loginAsync(req) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.LOGIN, req.payload);
+    yield put(onload())
+    const {param, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.LOGIN, param)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(login(res.token));
-        yield put(popRouter())
+        yield put(login(res.token))
+        navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
     }
