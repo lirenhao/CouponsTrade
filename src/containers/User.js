@@ -59,7 +59,7 @@ class User extends React.Component {
                             }
                         }
                     })}
-                    share={() => this.props.createInviteCode(this.props.navigator)}
+                    share={() => this.props.createInviteCode(this.props.token, this.props.navigator)}
                     user={this.props.userInfo}
                 />
             </Page>
@@ -76,8 +76,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateUserInfo: (param, navigator) => {
         dispatch(updateUserInfoRequest({param, navigator}))
     },
-    createInviteCode: (navigator) => {
-        dispatch(createInviteCodeRequest({navigator, router: {comp: Share, props: {key: "userShare"}}}))
+    createInviteCode: (token, navigator) => {
+        dispatch(createInviteCodeRequest({token, navigator, comp: Share}))
     }
 })
 

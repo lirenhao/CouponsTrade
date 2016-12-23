@@ -96,10 +96,15 @@ export function* updateUserInfoAsync(req) {
 /**
  *生成邀请码的异步处理
  */
-export function* createInviteCodeAsync() {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE);
-    yield put(updateInviteCode(res.inviteCode));
+export function* createInviteCodeAsync(req) {
+    yield put(onload())
+    const {token, navigator, comp} = req.payload
+    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE, {token})
+    if (res.code == ResponseCode.SUCCESS) {
+        navigator.pushPage({comp, props: {key: "userShare", inviteCode: res.inviteCode}})
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 
