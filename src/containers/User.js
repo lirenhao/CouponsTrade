@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton, Button} from "react-onsenui";
-import {updateUserInfoRequest} from '../action'
+import {updateUserInfoRequest} from "../action";
 import UserShow from "../components/UserShow";
 import UserEdit from "../components/UserEdit";
 import InviteCode from "../components/InviteCode";
@@ -21,7 +21,7 @@ const Edit = (props) => {
                 <div className='center'>编辑个人信息</div>
             </Toolbar>
         )}>
-            <UserEdit onSubmit={props.onSubmit} initialValues={props.user}/>
+            <UserEdit onSubmit={props.userEdit} initialValues={props.user}/>
         </Page>
     )
 }
@@ -53,8 +53,10 @@ class User extends React.Component {
                         comp: Edit,
                         props: {
                             key: 'userEdit',
-                            onSubmit: (value) => console.log(value),
-                            user: {nickname: '昵称', phoneNumber: '18310809129', inviteCode: 'ABCD1234ef'}
+                            user: this.props.userInfo,
+                            userEdit: (value) => {
+
+                            }
                         }
                     })}
                     share={() => this.props.navigator.pushPage({

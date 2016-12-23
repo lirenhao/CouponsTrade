@@ -32,7 +32,7 @@ const UserEdit = (props) => {
                 </p>
                 <p>
                     <Field type="number"
-                           name="phoneNumber"
+                           name="phoneNo"
                            component={UserEditField}
                            placeholder="Phone number"/>
                 </p>
@@ -59,8 +59,8 @@ const validate = (value) => {
     if (!value.nickname) {
         errors.nickname = 'Required'
     }
-    if (!value.phoneNumber) {
-        errors.phoneNumber = 'Required'
+    if (!value.phoneNo) {
+        errors.phoneNo = 'Required'
     }
     if (!value.inviteCode) {
         errors.inviteCode = 'Required'
