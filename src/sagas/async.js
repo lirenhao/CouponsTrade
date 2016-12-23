@@ -81,9 +81,15 @@ export function* getUserInfoAsync(req) {
  * @param req
  */
 export function* updateUserInfoAsync(req) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, req.payload);
-    yield put(updateUserInfo(res));
+    yield put(onload())
+    const {param, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, param)
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(updateUserInfo(param))
+        navigator.popPage()
+    } else {
+        yield put(showDialog(res.msg))
+    }
     yield put(unload())
 }
 

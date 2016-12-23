@@ -8,15 +8,15 @@
 import {takeEvery} from 'redux-saga'
 import {
     signUpRequest, loginRequest,
-    logoutRequest, getUserInfoRequest,
+    logoutRequest, getUserInfoRequest, updateUserInfoRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest,
-    publishCouponRequest, popRouter, pushRouter, resetRouter, getCouponDetailsRequest,
+    publishCouponRequest, getCouponDetailsRequest,
     queryCouponsRequest,getUserCouponsRequest,
     soldOutCouponRequest,editUserCouponRequest
 } from '../action'
 import {
     signUpAsync, loginAsync,
-    logoutAsync, getUserInfoAsync,
+    logoutAsync, getUserInfoAsync, updateUserInfoAsync,
     fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync,
     getUserCouponsAsync,soldOutCouponAsync,editUserCouponAsync
@@ -38,6 +38,10 @@ export function* watchGetUserInfoRequest() {
     yield* takeEvery(getUserInfoRequest.getType(), getUserInfoAsync)
 }
 
+export function* watchUpdateUserInfoRequest() {
+    yield* takeEvery(updateUserInfoRequest.getType(), updateUserInfoAsync)
+}
+
 export function* watchGetOrderListRequest() {
     yield takeEvery(getOrderListRequest.getType(), fetchOrderList)
 }
@@ -56,24 +60,6 @@ export function* watchOpenCoupon() {
 
 export function* watchPublishCouponRequest() {
     yield takeEvery(publishCouponRequest.getType(), publishCouponAsync)
-}
-
-export function* watchPopRouter(getState) {
-    yield* takeEvery(popRouter.getType(), () => {
-        getState().router.popPage()
-    })
-}
-
-export function* watchPushRouter(getState) {
-    yield* takeEvery(pushRouter.getType(), (action) => {
-        getState().router.pushPage(action.payload)
-    })
-}
-
-export function* watchResetRouter(getState) {
-    yield* takeEvery(resetRouter.getType(), (action) => {
-        getState().router.resetPage(action.payload)
-    })
 }
 
 export function* watchGetCouponDetailsRequest() {
@@ -103,14 +89,12 @@ export default function* sagas(getState) {
         watchLoginRequest(),
         watchLogoutRequest(),
         watchGetUserInfoRequest(),
+        watchUpdateUserInfoRequest(),
         watchPublishCouponRequest(),
         watchGetOrderListRequest(),
         watchGetOrderInfoRequest(),
         watchPay(),
         watchOpenCoupon(),
-        watchPopRouter(getState),
-        watchPushRouter(getState),
-        watchResetRouter(getState),
         watchQueryCouponsRequest(),
         watchGetCouponDetailsRequest(),
         watchGetUserCouponsRequest(),

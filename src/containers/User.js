@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton, Button} from "react-onsenui";
-import {updateUserInfoRequest} from "../action";
+import {updateUserInfoRequest, createInviteCodeRequest} from "../action";
 import UserShow from "../components/UserShow";
 import UserEdit from "../components/UserEdit";
 import InviteCode from "../components/InviteCode";
@@ -54,18 +54,12 @@ class User extends React.Component {
                         props: {
                             key: 'userEdit',
                             user: this.props.userInfo,
-                            userEdit: (value) => {
-
+                            userEdit: (param) => {
+                                this.props.updateUserInfo(param, this.props.navigator)
                             }
                         }
                     })}
-                    share={() => this.props.navigator.pushPage({
-                        comp: Share,
-                        props: {
-                            key: 'userShare',
-                            inviteCode: 'ABCD1234ef'
-                        }
-                    })}
+                    share={() => this.props.createInviteCode(this.props.navigator)}
                     user={this.props.userInfo}
                 />
             </Page>
@@ -81,6 +75,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     updateUserInfo: (param, navigator) => {
         dispatch(updateUserInfoRequest({param, navigator}))
+    },
+    createInviteCode: (navigator) => {
+        dispatch(createInviteCodeRequest({navigator, router: {comp: Share, props: {key: "userShare"}}}))
     }
 })
 

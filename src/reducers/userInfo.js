@@ -10,6 +10,6 @@ import {updateUserInfo} from "../action"
 
 export default createReducer({
     [updateUserInfo]: (state, userInfo) => {
-        return {...userInfo}
+        return {...state, ...userInfo}
     }
 }, {})
