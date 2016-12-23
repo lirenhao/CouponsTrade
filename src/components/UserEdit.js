@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button} from 'react-onsenui'
+import {Input, Button, List, ListItem} from 'react-onsenui'
 
 const UserEditField = ({input, type, placeholder}) => {
     return (
@@ -23,29 +23,35 @@ const UserEdit = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <section style={{textAlign: 'center'}}>
-                <p>
-                    <Field type="text"
-                           name="nickname"
-                           component={UserEditField}
-                           placeholder="Nickname"/>
-                </p>
-                <p>
-                    <Field type="number"
-                           name="phoneNo"
-                           component={UserEditField}
-                           placeholder="Phone number"/>
-                </p>
-                <p>
-                    <Field type="text"
-                           name="inviteCode"
-                           component={UserEditField}
-                           placeholder="Invite code"/>
-                </p>
-                <p>
-                    <button className="button" type="submit" disabled={invalid || submitting}>Save</button>
-                </p>
-            </section>
+            <List modifier="inset marginT">
+                <ListItem>
+                    <div className="center">
+                        <Field type="text"
+                               name="nickname"
+                               component={UserEditField}
+                               placeholder="昵称"/>
+                    </div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">
+                        <Field type="number"
+                               name="phoneNo"
+                               component={UserEditField}
+                               placeholder="手机号"/>
+                    </div>
+                </ListItem>
+                <ListItem>
+                    <div className="center">
+                        <Field type="text"
+                               name="inviteCode"
+                               component={UserEditField}
+                               placeholder="邀请码"/>
+                    </div>
+                </ListItem>
+                <ListItem>
+                </ListItem>
+            </List>
+            <Button modifier="large marginTLR" type="submit" disabled={invalid || submitting}>确认修改</Button>
         </form>
     )
 }

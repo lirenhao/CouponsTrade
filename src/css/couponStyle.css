@@ -86,7 +86,7 @@ ons-list-header{
 .list--limit .center b{
     display: block;
     font-style: normal;
-    margin: 2px 2px 0 0;
+    margin: 2px;
     width: 14px;
     height: 14px;
     background-color: #00a9f3;
@@ -100,7 +100,7 @@ ons-list-header{
 .list--limit .center i{
     display: block;
     font-style: normal;
-    margin: 2px 2px 0 0;
+    margin: 2px;
     width: 14px;
     height: 14px;
     background-color: #ffb359;
@@ -113,7 +113,7 @@ ons-list-header{
 .list--limit .center em{
     display: block;
     font-style: normal;
-    margin: 2px 2px 0 0;
+    margin: 2px;
     width: 14px;
     height: 14px;
     background-color: #eb5757;
