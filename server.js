@@ -95,7 +95,7 @@ let state = {
             picture: ""
         }, {
             id: "100100011",
-            couponName: "呷哺呷哺100元代金券",
+            couponName: "最后一条",
             describe: "",
             sellingPrice: "50",
             picture: ""
@@ -287,7 +287,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "最后一条",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -426,7 +426,13 @@ app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
     const {token, number, size}=req.body;
     const total = state.order.orderList.length;
     let result = [];
-    let max = (number * 1 + 1) * size;
+    let newNumber = 1;
+    if (number * size < total) {
+        newNumber = number * 1 + 1
+    } else {
+        newNumber = number * 1
+    }
+    let max = newNumber * size;
     max = max <= total ? max : total;
     for (let i = number * size; i < max; i++) {
         result.push(state.order.orderList[i])
@@ -435,7 +441,10 @@ app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
         res.json({
             code: ResponseCode.SUCCESS,
             orderList: result,
-            page: {total: total, number: number * 1 + 1,}
+            page: {
+                total: total,
+                number: newNumber
+            }
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "更新列表失败"})

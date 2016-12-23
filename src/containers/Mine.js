@@ -59,14 +59,14 @@ class Mine extends React.Component {
                     </ListItem>
                     <ListItem modifier='chevron'
                               onClick={() => {
-                                  this.props.dispatch(getOrderListRequest(
+                                  this.props.getOrderList(
                                       {
                                           token: 1234567890,
                                           ...this.props.page,
                                           route: this.props.navigator,
                                           com: OrderList,
                                           from: "mine"
-                                      }));
+                                      });
                               }}>
                         购买的优惠券
                     </ListItem>
@@ -92,6 +92,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
     getUserInfo: (token, navigator) => {
         dispatch(getUserInfoRequest({token, navigator, router: {comp: User, props: {key: "User"}}}))
+    },
+    getOrderList: (action) => {
+        dispatch(getOrderListRequest(action))
     }
 });
 
