@@ -10,6 +10,7 @@ import {
     signUpRequest, loginRequest,
     logoutRequest, getUserInfoRequest,
     updateUserInfoRequest, createInviteCodeRequest,
+    verifyPasswordRequest, updatePasswordRequest,
     queryCouponsRequest, getUserCouponsRequest,
     soldOutCouponRequest, editUserCouponRequest,
     getOrderListRequest, getOrderInfoRequest, payRequest, openCouponRequest, insertOrderListRequest,
@@ -19,6 +20,7 @@ import {
     signUpAsync, loginAsync,
     logoutAsync, getUserInfoAsync,
     updateUserInfoAsync, createInviteCodeAsync,
+    verifyPasswordAsync, updatePasswordAsync,
     fetchOrderList, fetchOrderInfo, fetchPay, fetchOPenCoupon, fetchInsetOrderList,
     publishCouponAsync, getCouponDetailsAsync, queryCouponsAsync,
     getUserCouponsAsync, soldOutCouponAsync, editUserCouponAsync
@@ -46,6 +48,14 @@ export function* watchUpdateUserInfoRequest() {
 
 export function* watchCreateInviteCodeRequest() {
     yield* takeEvery(createInviteCodeRequest.getType(), createInviteCodeAsync)
+}
+
+export function* watchVerifyPasswordRequest() {
+    yield* takeEvery(verifyPasswordRequest.getType(), verifyPasswordAsync)
+}
+
+export function* watchUpdatePasswordRequest() {
+    yield* takeEvery(updatePasswordRequest.getType(), updatePasswordAsync)
 }
 
 export function* watchGetOrderListRequest() {
@@ -101,6 +111,8 @@ export default function* sagas(getState) {
         watchGetUserInfoRequest(),
         watchUpdateUserInfoRequest(),
         watchCreateInviteCodeRequest(),
+        watchVerifyPasswordRequest(),
+        watchUpdatePasswordRequest(),
         watchPublishCouponRequest(),
         watchGetOrderListRequest(),
         watchInsetOrderListRequest(),
