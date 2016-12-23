@@ -75,11 +75,11 @@
 - 请求
   - 参数（token、优惠券的信息）
     - 优惠券的信息如下：
-      - 优惠券唯一标识：state.publish.orderInfo.iD
-      - 优惠券名称:state.publish.orderInfo.name
+      - 优惠券唯一标识：state.publish.orderInfo.couponId
+      - 优惠券名称:state.publish.orderInfo.couponName
       - 区域信息:state.publish.orderInfo.areaInfo
       - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-      - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
+      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.type
       - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
       - 券码（图片或文本）：state.publish.orderInfo.couponCode
       - 卖价：state.publish.orderInfo.sellingPrice
@@ -104,12 +104,12 @@
 - 请求
   - 参数：优惠券ID
   - 响应：优惠券详细信息
-      - 优惠券唯一标识：state.publish.orderInfo.iD
-      - 优惠券名称:state.publish.orderInfo.name
+      - 优惠券唯一标识：state.publish.orderInfo.couponId
+      - 优惠券名称:state.publish.orderInfo.couponName
       - 区域信息:state.publish.orderInfo.areaInfo
       - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-      - 优惠券类别（中餐、西餐）:state.publish.orderInfo.type
-      - 券码形式选项（图片或文本）:state.publish.orderInfo.modality
+      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、其他）:state.publish.orderInfo.couponType
+      - 券码形式选项（图片或文本）:state.publish.orderInfo.couponModality
       - 券码（图片或文本）：state.publish.orderInfo.couponCode
       - 卖价：state.publish.orderInfo.sellingPrice
       - 原价：state.publish.orderInfo.originalPrice
@@ -118,14 +118,14 @@
       - 图片（与商户相关）：state.publish.orderInfo.picture
       - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
       - 昵称：nickName
-      - 优惠券的状态：state
+      - 优惠券状态：couponState
 
 ##### 1.2.2.4 查询已发布优惠券列表（发布）
 - 查询已发布优惠券列表action
 - 更新已发布优惠券列表action
 - 插入已发布优惠券列表action
 - 请求
-  - 参数：用户token、优惠券的状态（已售卖、已下架、正在售卖）、优惠券名称（允许为空）
+  - 参数：用户token、优惠券状态（已售卖、已下架、正在售卖）、优惠券名称（允许为空）
   - 响应：分页信息（第几页、总条数、每页的条数）、优惠券部分数据组成的数组：优惠券发布的ID、优惠券名称、优惠券售卖价、描述、商家图片
 
 ##### 1.2.2.5 查询优惠券详情（发布）

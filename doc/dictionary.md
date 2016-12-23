@@ -29,7 +29,7 @@
 - 下架优惠券:soldOut
 - 编辑优惠券：edit
 - 查询优惠券：query
-- 优惠券唯一标识：id
+- 优惠券唯一标识：couponId
 - 优惠券名称：couponName
 - 优惠券码：couponCode
 - 优惠券原价：originalPrice
@@ -37,11 +37,12 @@
 - 优惠券券面价：ticketPrice
 - 优惠券截止日期：endDate
 - 优惠券自动退货：isAutomaticRefund
-- 优惠券类别（中餐、西餐）：couponType
+- 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）：couponType
 - 券码形式选项（图片或文本）：couponModality
 - 优惠券描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：describe
 - 优惠券图片（与商户相关）：picture
 - 优惠券是否开启：isOpen
+- 优惠券状态(已售卖、已下架、正在售卖)：couponState
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -56,5 +57,6 @@
 - 卖家订单详情：sellerOrderInfo
 - 买家订单列表：buyerOrderList
 - 买家订单详情：buyerOrderList
+- 订单状态（待支付、已支付、取消、已完成、已退货、已退款）：orderState
 
 ***
