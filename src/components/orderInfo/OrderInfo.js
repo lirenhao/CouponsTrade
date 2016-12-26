@@ -39,51 +39,51 @@ const OrderInfo = (props) => {
                 </ListItem>
             </List>
             <List modifier="inset marginT">
-                <ListItem>卖家昵称:
+                <ListItem>卖家昵称
                     <div className="right">{sellerNickName}</div>
                 </ListItem>
-                <ListItem>商品ID:
+                <ListItem>商品ID
                     <div className="right">{id}</div>
                 </ListItem>
-                <ListItem>是否支持未开始时自动退货:
+                <ListItem>是否支持未开始时自动退货
                     <div className="right">{isAutomaticRefund ? "是" : "否"}</div>
                 </ListItem>
-                <ListItem>优惠券类别:
+                <ListItem>优惠券类别
                     <div className="right">{couponType}</div>
                 </ListItem>
-                <ListItem>券码形式:
+                <ListItem>券码形式
                     <div className="right">{couponModality}</div>
                 </ListItem>
-                <ListItem>券码:
+                <ListItem>券码
                     <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
                             props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
                         }
                         }>获取券码</span>}</div>
                 </ListItem>
-                <ListItem>卖价:
+                <ListItem>卖价
                     <div className="right">{sellingPrice}</div>
                 </ListItem>
             </List>
             <List modifier="inset marginT marginB">
-                <ListItem>原价:
+                <ListItem>原价
                     <div className="right">{originalPrice}</div>
                 </ListItem>
-                <ListItem>券面值:
+                <ListItem>券面值
                     <div className="right">{ticketPrice}</div>
                 </ListItem>
-                <ListItem>截止日期:
+                <ListItem>截止日期
                     <div className="right">{endDate}</div>
                 </ListItem>
-                <ListItem>描述:
+                <ListItem>描述
                     <div className="right">{describe}</div>
                 </ListItem>
-                <ListItem>是否已开启:
+                <ListItem>是否已开启
                     <div className="right">{isOpen ? "是" : "否"}</div>
                 </ListItem>
-                <ListItem>订单编号:
+                <ListItem>订单编号
                     <div className="right">{orderNo}</div>
                 </ListItem>
-                <ListItem>交易时间:
+                <ListItem>交易时间
                     <div className="right">{orderDate + " " + orderTime}</div>
                 </ListItem>
             </List>
