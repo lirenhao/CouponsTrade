@@ -32,12 +32,12 @@ class Tabs extends React.Component {
     render() {
         return (
             <Page>
-                <Tabbar index={this.props.newIndex || 0}
+                <Tabbar index={this.props.index || 0}
                         renderTabs={this.renderTabs.bind(this)}
                         onPreChange={(event) => {
                             if (this.props.token == "" && event.index != 0) {
                                 this.props.navigator.pushPage({
-                                    comp: Login, props: {key: "Login"}
+                                    comp: Login, props: {key: "Login", index: event.index}
                                 })
                                 {/* TODO 解决错误Uncaught Canceled*/}
                                 event.cancel()

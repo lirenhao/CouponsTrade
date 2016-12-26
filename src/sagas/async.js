@@ -52,11 +52,11 @@ export function* signUpAsync(req) {
  */
 export function* loginAsync(req) {
     yield put(onload());
-    const {param, navigator} = req.payload;
+    const {param, navigator, router} = req.payload;
     const res = yield call(fetch, ServerPath.LOGIN, param);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(login(res.token));
-        navigator.popPage()
+        yield call([navigator, navigator.resetPage], router)
     } else {
         yield put(showDialog(res.msg))
     }
