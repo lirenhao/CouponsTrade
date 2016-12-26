@@ -14,7 +14,6 @@ import {
     ListItem,
     ListHeader
 } from 'react-onsenui'
-import Login from './Login'
 import User from './User'
 import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
@@ -32,61 +31,47 @@ class Mine extends React.Component {
             )}>
                 <List modifier='inset marginT mine'>
                     <ListHeader onClick={() => {
-                        if (this.props.token == "") {
-                            this.props.navigator.pushPage({
-                                comp: Login, props: {key: "Login"}
-                            })
-                        } else {
-                            this.props.getUserInfo(this.props.token, this.props.navigator)
-                        }
+                        this.props.getUserInfo(this.props.token, this.props.navigator)
                     }}>
                         <img src={`http://placekitten.com/g/40/40`} alt=""/>
                     </ListHeader>
-                    <ListItem modifier='chevron'
-                              onClick={() => {
-                                  if (this.props.token == "") {
-                                      this.props.navigator.pushPage({
-                                          comp: Login, props: {key: "Login"}
-                                      })
-                                  } else {
-                                      this.props.getUserInfo(this.props.token, this.props.navigator)
-                                  }
-                              }}>
+                    <ListItem modifier='chevron' onClick={() => {
+                        this.props.getUserInfo(this.props.token, this.props.navigator)
+                    }}>
                         查看用户信息
                     </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() =>
-                                  this.props.createInviteCode(this.props.token, this.props.navigator)
-                              }>
+                    <ListItem modifier='chevron' onClick={() =>
+                        this.props.createInviteCode(this.props.token, this.props.navigator)
+                    }>
                         生成邀请码
                     </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: ResetPassword,
-                                  props: {key: "resetPassword"}
-                              })}>
+                    <ListItem modifier='chevron' onClick={() =>
+                        this.props.navigator.pushPage({
+                            comp: ResetPassword,
+                            props: {key: "resetPassword"}
+                        })
+                    }>
                         重置密码
                     </ListItem>
                 </List>
                 <List modifier='inset marginT'>
-                    <ListItem modifier='chevron'
-                              onClick={() => this.props.navigator.pushPage({
-                                  comp: SellingCoupons,
-                                  props: {key: "SellingCoupons", data: {}}
-                              })}>
+                    <ListItem modifier='chevron' onClick={() =>
+                        this.props.navigator.pushPage({
+                            comp: SellingCoupons,
+                            props: {key: "SellingCoupons", data: {}}
+                        })
+                    }>
                         发布的优惠券
                     </ListItem>
-                    <ListItem modifier='chevron'
-                              onClick={() => {
-                                  this.props.getOrderList(
-                                      {
-                                          token: this.props.token,
-                                          ...this.props.page,
-                                          route: this.props.navigator,
-                                          com: OrderList,
-                                          from: "mine"
-                                      });
-                              }}>
+                    <ListItem modifier='chevron' onClick={() =>
+                        this.props.getOrderList({
+                            token: this.props.token,
+                            ...this.props.page,
+                            route: this.props.navigator,
+                            com: OrderList,
+                            from: "mine"
+                        })
+                    }>
                         购买的优惠券
                     </ListItem>
                 </List>
