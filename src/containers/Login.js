@@ -62,8 +62,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (param, navigator) => {
-        dispatch(loginRequest({param, navigator}))
+    login: (param, navigator, router) => {
+        dispatch(loginRequest({param, navigator, router}))
     },
     signUp: (param, navigator) => {
         dispatch(signUpRequest({param, navigator}))
