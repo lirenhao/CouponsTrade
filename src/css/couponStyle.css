@@ -229,10 +229,28 @@ input[name*="Password"] + .text-input--material__label--active {
     right: 0;
     top: 0;
 }
-
+.couponCodeBg{
+    padding: 3px 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8em;
+    width: 100%;
+    height: 100%;
+    color: #aaa;
+    background-color: #f2f2f2;
+    background: linear-gradient(135deg,
+    #f9f9f9 .12em,
+    #ddd 0, #ddd calc(50% - .125em),
+    #f9f9f9 0, #f9f9f9 calc(50% + .125em),
+    #ddd 0, #ddd calc(100% - .12em),
+    #f9f9f9 0
+    );
+    background-size: 1.5em 1.5em;
+}
 .inviteBg {
     width: 90%;
-    margin: 2em auto;
+    margin: 1.5em auto;
     display: flex;
     justify-content: center;
     align-items: center;

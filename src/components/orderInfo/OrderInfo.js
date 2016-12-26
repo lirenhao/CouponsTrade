@@ -55,10 +55,10 @@ const OrderInfo = (props) => {
                     <div className="right">{couponModality}</div>
                 </ListItem>
                 <ListItem>券码:
-                    <div className="right">{isOpen ? couponCode : <Button onClick={() => {
+                    <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
                             props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
                         }
-                        }>打开优惠券</Button>}</div>
+                        }>获取券码</span>}</div>
                 </ListItem>
                 <ListItem>卖价:
                     <div className="right">{sellingPrice}</div>
