@@ -325,7 +325,7 @@ let state = {
             isAutomaticRefund: "true",
             couponType: "1",
             couponModality: "1",
-            couponCode: "123456",
+            couponCode: "1234567",
             sellingPrice: "30",
             originalPrice: "20",
             ticketPrice: "50",
@@ -490,11 +490,10 @@ app.post(`/${ServerPath.OPEN_COUPON}`, (req, res) => {
 
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
-    console.log(res);
     const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
     const isHave = (arr) => {
         for (let i = 0; i < arr.length; i++) {
-            if (arr[i].name === "1") {
+            if (arr[i].couponCode === couponCode) {
                 return true;
             }
         }

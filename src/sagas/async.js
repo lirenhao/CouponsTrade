@@ -284,8 +284,18 @@ export function *queryCouponsAsync(req) {
  */
 export function *publishCouponAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, req.payload);
+    const {param,navigator,routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, param);
     yield put(showDialog(res.msg));
+    if(res.code == ResponseCode.SUCCESS) {
+        if(navigator.pages.length>1){
+            navigator.popPage()
+        }else{
+            navigator.replacePage(
+                routeData
+            )
+        }
+    }
     yield put(unload())
 }
 

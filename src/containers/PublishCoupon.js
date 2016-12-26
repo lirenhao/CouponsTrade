@@ -8,26 +8,32 @@
 
 import React from 'react'
 import PublishCoupon from '../components/sellCoupon/PublishCoupon'
-import SellingCoupons from './SellCoupons'
+import Tabs from './Tabs'
 import ons from 'onsenui'
+import {connect} from 'react-redux'
+import {publishCouponRequest} from '../action'
 
-const PublishCoupons = (props)=> {
-    const {navigator} = props;
-    const handleClick = () => {
-        ons.notification.confirm("是否确认发布", {title: "说明", buttonLabels: ["否", "是"]}).then(
+
+class PublishCoupons extends React.Component{
+    render(){
+        return(<PublishCoupon onSubmit={(value)=>this.props.handleClick({... value,token:this.props.token},this.props.navigator,{comp: Tabs, props: {key: "Tabs"}})}/>)
+    }
+}
+
+const mapStateToProps = (state) => ({
+    token: state.token
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    handleClick: (param,navigator,routeData) => {
+        ons.notification.confirm("是否确认发布", {title: "注意", buttonLabels: ["否", "是"]}).then(
             res => {
                 if (res === 1) {
-                    navigator.pushPage({
-                        comp: SellingCoupons, props: {key: "SellingCoupons"}
-                    })
+                    dispatch(publishCouponRequest({param,navigator,routeData}))
                 }
             }
         )
     }
+})
 
-    return (
-        <PublishCoupon onSubmit={handleClick}/>
-    )
-}
-
-export default PublishCoupons
+export default connect(mapStateToProps,mapDispatchToProps) (PublishCoupons)
