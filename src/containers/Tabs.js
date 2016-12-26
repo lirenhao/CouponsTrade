@@ -1,4 +1,5 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import {
     Page,
     Tab,
@@ -8,6 +9,7 @@ import {
 import Home from './Home'
 import Post from './Post'
 import Mine from './Mine'
+import Login from './Login'
 
 class Tabs extends React.Component {
     renderTabs() {
@@ -32,10 +34,23 @@ class Tabs extends React.Component {
             <Page>
                 <Tabbar index={this.props.newIndex || 0}
                         renderTabs={this.renderTabs.bind(this)}
+                        onPreChange={(event) => {
+                            if (this.props.token == "" && event.index != 0) {
+                                this.props.navigator.pushPage({
+                                    comp: Login, props: {key: "Login"}
+                                })
+                                {/* TODO 解决错误Uncaught Canceled*/}
+                                event.cancel()
+                            }
+                        }}
                 />
             </Page>
         )
     }
 }
 
-export default Tabs
+const mapStateToProps = (state) => ({
+    token: state.token
+})
+
+export default connect(mapStateToProps)(Tabs)
