@@ -5,9 +5,9 @@ import {
     Tabbar,
     Toolbar
 } from 'react-onsenui'
-import Home from '../containers/Home'
-import Mine from '../containers/Mine'
-import PublishCoupon from './PublishCoupon'
+import Home from './Home'
+import Post from './Post'
+import Mine from './Mine'
 
 class Tabs extends React.Component {
     renderTabs() {
@@ -17,13 +17,7 @@ class Tabs extends React.Component {
                 tab: <Tab key="home" label="首页" icon="ion-home"/>
             },
             {
-                content: <Page key="post" renderToolbar={() => (
-                    <Toolbar>
-                        <div className='center'>发布</div>
-                    </Toolbar>
-                )}>
-                    <PublishCoupon navigator={this.props.navigator }/>
-                </Page>,
+                content: <Post key="post" navigator={this.props.navigator }/>,
                 tab: <Tab key="post" label="发布" icon="ion-plus"/>
             },
             {
