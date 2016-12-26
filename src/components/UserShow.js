@@ -6,23 +6,11 @@
  * 用户信息展示组件
  */
 import React from 'react'
-import {SpeedDial, SpeedDialItem, Fab, Icon, List, ListItem, ListHeader} from 'react-onsenui'
+import {List, ListItem, ListHeader} from 'react-onsenui'
 
 const UserShow = (props) => {
-    const {share, edit, user} = props
+    const {user} = props
     return (
-        <div>
-            <SpeedDial position='bottom right'>
-                <Fab>
-                    <Icon icon='md-menu'/>
-                </Fab>
-                <SpeedDialItem onClick={share}>
-                    <Icon icon='md-share'/>
-                </SpeedDialItem>
-                <SpeedDialItem onClick={edit}>
-                    <Icon icon='md-edit'/>
-                </SpeedDialItem>
-            </SpeedDial>
             <List modifier='inset marginT mine'>
                 <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
                 <ListItem>
@@ -38,20 +26,15 @@ const UserShow = (props) => {
                     <div className="right">{user.inviteCode}</div>
                 </ListItem>
             </List>
-        </div>
     )
 }
 
 /**
  * UserShow所需的参数
- * @param share 跳转生成邀请码组件的函数
- * @param edit 跳转编辑个人信息组件的函数
  * @param user 用户的基本信息
- * @type {{share: *, edit: *, user: *}}
+ * @type {{user: *}}
  */
 UserShow.propTypes = {
-    share: React.PropTypes.func.isRequired,
-    edit: React.PropTypes.func.isRequired,
     user: React.PropTypes.shape({
         nickname: React.PropTypes.string.isRequired,
         phoneNo: React.PropTypes.string.isRequired,
