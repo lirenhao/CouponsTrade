@@ -7,18 +7,11 @@
  */
 import React from 'react'
 
-const styles = {
-    content: {
-        textAlign: 'center',
-        margin: '40px',
-        opacity: 0.8
-    }
-}
 
 const InviteCode = (props) => {
     return (
-        <div style={styles.content}>
-                {props.inviteCode}
+        <div className="inviteBg">
+            {props.inviteCode}
         </div>
     )
 }

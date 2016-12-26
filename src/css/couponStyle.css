@@ -1,62 +1,75 @@
 
-.list--marginT{
+.list--marginT {
     margin-top: 1em;
 }
-.list--marginB{
+
+.list--marginB {
     margin-bottom: 1em;
 }
-.list--marginB .list__item:last-child{
+
+.list--marginB .list__item:last-child {
     min-height: 2.85em;
 }
 
-.button--marginTLR{
+.button--marginTLR {
     width: calc(100% - 16px) !important;
     margin-left: 8px;
     margin-right: 8px;
     margin-top: 1em;
 }
-section .search-input,section .search-input:focus{
-    margin:8px;
+
+section .search-input, section .search-input:focus {
+    margin: 8px;
     width: calc(100% - 16px);
     background-color: #fff;
     border: none;
 }
+
 .text-input.text-input--material {
     position: relative;
-    top:0;
+    top: 0;
 }
-label.text-input__container{
+
+label.text-input__container {
     position: relative;
-    top:15px;
+    top: 15px;
 }
-ons-input{
+
+ons-input {
     width: 100%;
 }
-.page__background{
+
+.page__background {
     background-color: #f5f5f5;
 }
-ons-list[modifier="noborder"]{
+
+ons-list[modifier="noborder"] {
     border-bottom: 1px solid #ccc;
 }
-ons-list[modifier="noborder"] ons-col{
+
+ons-list[modifier="noborder"] ons-col {
     font-size: 0.8em;
     color: #aaa;
     text-align: center;
     border-left: 1px #ccc solid;
 }
-ons-list[modifier="noborder"] ons-col:nth-child(1){
+
+ons-list[modifier="noborder"] ons-col:nth-child(1) {
     border-left: none;
 }
-ons-icon[icon="ion-arrow-down-b"]{
+
+ons-icon[icon="ion-arrow-down-b"] {
     position: relative;
-    top:-3px;
+    top: -3px;
     left: 4px;
 }
-.price{
+
+.price {
     color: #EE3B3B;
     font-size: 1.25em;
 }
-.list--mine img{
+
+.list--mine img {
     width: fit-content;
     margin: 0 auto 1em;
     display: block;
@@ -64,26 +77,32 @@ ons-icon[icon="ion-arrow-down-b"]{
     height: 100px;
     border-radius: 100%;
 }
-ons-list-header{
+
+ons-list-header {
     background-color: #fff;
 }
-.list__header--material img{
+
+.list__header--material img {
     margin: 1em auto;
 }
-.list--title .right .list__item__subtitle{
+
+.list--title .right .list__item__subtitle {
     font-size: 0.8em;
     color: #aaa;
     text-decoration: line-through;
 }
-.list--title .right .list__item__title{
+
+.list--title .right .list__item__title {
     font-size: 1.25em;
     color: #EE3B3B;
 }
-.list--title .center .list__item__subtitle{
+
+.list--title .center .list__item__subtitle {
     font-size: 0.8em;
     color: #aaa;
 }
-.list--limit .center b{
+
+.list--limit .center b {
     display: block;
     font-style: normal;
     margin: 2px;
@@ -97,7 +116,8 @@ ons-list-header{
     line-height: 14px;
     font-weight: 100;
 }
-.list--limit .center i{
+
+.list--limit .center i {
     display: block;
     font-style: normal;
     margin: 2px;
@@ -110,7 +130,8 @@ ons-list-header{
     text-align: center;
     line-height: 14px;
 }
-.list--limit .center em{
+
+.list--limit .center em {
     display: block;
     font-style: normal;
     margin: 2px;
@@ -123,7 +144,8 @@ ons-list-header{
     text-align: center;
     line-height: 14px;
 }
-.list--signIn a{
+
+.list--signIn a {
     font-size: 0.8em;
     color: #aaa;
     text-decoration: none;
@@ -131,58 +153,72 @@ ons-list-header{
     margin-top: 1em;
     margin-bottom: .5em;
 }
-input[name*="Password"]{
+
+input[name*="Password"] {
     width: calc(100% - 16px);
     display: block;
     margin: 1em 8px;
 }
+
 input[name*="Password"] + .text-input--material__label,
-input[name*="Password"] + .text-input--material__label--active{
+input[name*="Password"] + .text-input--material__label--active {
     margin-top: 1em;
     margin-left: 8px;
 }
-.right .button--material{
+
+.right .button--material {
     color: #fff;
 }
-.list--marginB .list__item:last-child{
+
+.list--marginB .list__item:last-child {
     height: 2em;
 }
-.list__item--material__center{
+
+.list__item--material__center {
     padding-right: 0;
 }
-.list--order .left img{
+
+.list--order .left img {
     width: 70px;
     height: 70px;
 }
-.list--order .center{
+
+.list--order .center {
     padding-left: 1em;
 }
-.modal--load circle:nth-child(2){
+
+.modal--load circle:nth-child(2) {
     stroke: #aaa;
 }
-.button--noRadius{
+
+.button--noRadius {
     border-radius: 0;
 }
-.list--pay .list__header{
+
+.list--pay .list__header {
     background-color: #f2f2f2;
     color: #aaa;
 }
-.list--pay textarea{
+
+.list--pay textarea {
     background-color: #fff;
     border: none;
     padding: 4px 14px;
     min-height: 64px;
 }
-.button--result{
+
+.button--result {
     color: #fff;
     text-decoration: underline;
 }
-.myDialog{
+
+.myDialog {
     padding: 1.5em 0 1em;
     text-align: center;
     position: relative;
 }
-.myDialog span{
+
+.myDialog span {
     width: 1.75em;
     height: 1.75em;
     background-color: #aaa;
@@ -192,4 +228,25 @@ input[name*="Password"] + .text-input--material__label--active{
     box-shadow: #000 0 0 4px;
     right: 0;
     top: 0;
+}
+
+.inviteBg {
+    width: 90%;
+    margin: 2em auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000;
+    font-weight: 500;
+    text-shadow: #aaa 0px 1px 1px;
+    height: 6em;
+    background-color: #f2f2f2;
+    background: linear-gradient(135deg,
+    #fff .12em,
+    #f2f2f2 0, #f2f2f2 calc(50% - .125em),
+    #fff 0, #fff calc(50% + .125em),
+    #f2f2f2 0, #f2f2f2 calc(100% - .12em),
+    #fff 0
+    );
+    background-size: 1.5em 1.5em;
 }
