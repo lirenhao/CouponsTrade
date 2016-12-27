@@ -11,7 +11,7 @@ import {ResponseCode} from './constants'
 export default (path, param = {}) => {
     const content = Object.keys(param)
         .map((key) => key + '=' + param[key])
-        .reduce((pre, cur) => pre + '&' + cur)
+        .reduce((pre, cur) => pre + '&' + cur, "")
     const options = {
         method: 'post',
         body: content,
