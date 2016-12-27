@@ -52,11 +52,11 @@ export function* signUpAsync(req) {
  */
 export function* loginAsync(req) {
     yield put(onload());
-    const {param, navigator} = req.payload;
+    const {param, navigator, router} = req.payload;
     const res = yield call(fetch, ServerPath.LOGIN, param);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(login(res.token));
-        navigator.popPage()
+        yield call([navigator, navigator.resetPage], router)
     } else {
         yield put(showDialog(res.msg))
     }
@@ -284,8 +284,18 @@ export function *queryCouponsAsync(req) {
  */
 export function *publishCouponAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, req.payload);
+    const {param,navigator,routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, param);
     yield put(showDialog(res.msg));
+    if(res.code == ResponseCode.SUCCESS) {
+        if(navigator.pages.length>1){
+            navigator.popPage()
+        }else{
+            navigator.replacePage(
+                routeData
+            )
+        }
+    }
     yield put(unload())
 }
 

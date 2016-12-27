@@ -11,6 +11,7 @@ import {loginRequest, signUpRequest} from "../action";
 import {Page, Toolbar, Button, BackButton} from "react-onsenui";
 import SignUp from "../components/SignUp";
 import SignIn from "../components/SignIn";
+import Tabs from './Tabs'
 
 const Enroll = (props) => {
     return (
@@ -47,7 +48,10 @@ class Login extends React.Component {
     render() {
         return (
             <Page renderToolbar={this.loginToolbar.bind(this)}>
-                <SignIn onSubmit={(param) => this.props.login(param, this.props.navigator)}/>
+                <SignIn onSubmit={(param) => this.props.login(param, this.props.navigator, {
+                    comp: Tabs,
+                    props: {index: this.props.index}
+                })}/>
             </Page>
         )
     }
@@ -58,8 +62,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    login: (param, navigator) => {
-        dispatch(loginRequest({param, navigator}))
+    login: (param, navigator, router) => {
+        dispatch(loginRequest({param, navigator, router}))
     },
     signUp: (param, navigator) => {
         dispatch(signUpRequest({param, navigator}))
