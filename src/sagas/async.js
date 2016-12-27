@@ -66,10 +66,12 @@ export function* loginAsync(req) {
 /**
  * 注销的异步处理
  */
-export function* logoutAsync() {
-    yield put(onload());
-    yield call(fetch, ServerPath.LOGOUT);
-    yield put(logout());
+export function* logoutAsync(req) {
+    yield put(onload())
+    yield call(fetch, ServerPath.LOGOUT)
+    yield put(logout())
+    const {navigator, router} = req.payload
+    yield call([navigator, navigator.pushPage], router)
     yield put(unload())
 }
 

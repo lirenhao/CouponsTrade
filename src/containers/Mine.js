@@ -12,14 +12,16 @@ import {
     Toolbar,
     List,
     ListItem,
-    ListHeader
+    ListHeader,
+    Button
 } from 'react-onsenui'
+import Login from './Login'
 import User from './User'
 import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
 import OrderList from './OrderList'
-import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest} from '../action'
+import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest} from '../action'
 
 class Mine extends React.Component {
     render() {
@@ -75,6 +77,11 @@ class Mine extends React.Component {
                         购买的优惠券
                     </ListItem>
                 </List>
+                <Button modifier="large quiet" onClick={() => {
+                    this.props.logout(this.props.navigator, {comp: Login, props: {key: "login", index: 2}})
+                }}>
+                    {this.props.token == "" ? "登录" : "注销"}
+                </ Button >
             </Page>
         )
     }
@@ -94,6 +101,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     getOrderList: (action) => {
         dispatch(getOrderListRequest(action))
+    },
+    logout: (navigator, router) => {
+        dispatch(logoutRequest({navigator, router}))
     }
 });
 
