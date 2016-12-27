@@ -12,7 +12,7 @@ const Dialog = (props) => {
     return (
         <OnsDialog isOpen={props.show} isCancelable={false}>
             <div className="myDialog">
-                <span onClick={props.hideDialog} className="ion-close-round"></span>
+                <span onClick={props.hideDialog} className="ion-close-round" />
                 <p>
                     {props.msg}
                 </p>
