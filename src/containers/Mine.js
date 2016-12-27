@@ -77,7 +77,7 @@ class Mine extends React.Component {
                         购买的优惠券
                     </ListItem>
                 </List>
-                <Button modifier="large quiet" onClick={() => {
+                <Button modifier="large marginTLR" onClick={() => {
                     this.props.logout(this.props.navigator, {comp: Login, props: {key: "login", index: 2}})
                 }}>
                     {this.props.token == "" ? "登录" : "注销"}
