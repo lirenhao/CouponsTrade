@@ -531,9 +531,15 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
     const getCouponList = (arr)=>{
         let couponList =[]
+        let i =0
         for(var coupon of arr){
-            if(coupon.couponName.match(couponName.replace(/\s/g,""))){
+            if(couponName==="ALL"&&i<10){
                 couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+                i++
+            }else{
+                if(coupon.couponName.match(couponName.replace(/\s/g,""))){
+                    couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+                }
             }
         }
         return couponList
