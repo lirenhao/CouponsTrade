@@ -13,14 +13,14 @@
 
 ### 2 redux-saga-20161226
 - 从过程来讲是做action的迭代
-- redux-sage解决了哪些问题
+- redux-saga解决了哪些问题
   - 长事务
   - 剥离职责
     - 将reducer中的任务编排部分放在了redux-saga中来处理
   - 提取负作用
 
-## 3 Generter-20161226
-- Generter不是一次性执行完的。
+## 3 Generator-20161226
+- Generator不是一次性执行完的。
 
 ## 文档
 ## 1 项目交付物-20161221
