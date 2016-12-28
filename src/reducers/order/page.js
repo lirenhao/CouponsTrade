@@ -15,4 +15,4 @@ export default createReducer({
     [setOrderPage]: (state, payload) => {
         return {...state, number: payload}
     }
-}, {total: 0, number: 0, size: 5})
+}, {total: 0, number: 0, size: 8})

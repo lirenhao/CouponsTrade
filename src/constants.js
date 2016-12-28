@@ -25,6 +25,7 @@ export const ServerPath = {
     GET_ORDER_INFO: "getOrderInfo",
     PAY: "pay",
     OPEN_COUPON: "openCoupon",
+    CANCEL_ORDER: "cancelOrder",
     QUERY_COUPONS: "queryCoupons",
     SOLD_OUT_COUPON: "soldOutCoupon",
 };
