@@ -35,10 +35,4 @@ const mapStateToProps = (state) => ({
     loading: state.loading
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    hideDialog: () => {
-        dispatch(hideDialog())
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, {hideDialog})(App)
