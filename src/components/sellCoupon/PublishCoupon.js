@@ -6,21 +6,53 @@
  * 发布商品组建
  */
 import React from 'react'
-import { reduxForm} from 'redux-form'
-import { Button} from 'react-onsenui'
+import {reduxForm, Field} from 'redux-form'
+import {Button} from 'react-onsenui'
 import CouponFields from  './CouponFields'
+import SideSelect from './SideSelect'
 
-const PublishCoupon = (props)=> {
-    const {handleSubmit, onSubmit, invalid, submitting } = props;
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <section>
-                <CouponFields/>
-                <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确认发布</Button>
-            </section>
-        </form>
-    )
-};
+class PublishCoupon extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {isOpen: false, radio: ""}
+        this.handleClick = this.handleClick.bind(this)
+        this.handleHide = this.handleHide.bind(this)
+        this.handleShow = this.handleShow.bind(this)
+    }
+
+    handleClick(radio) {
+        this.setState({radio})
+    }
+
+    handleHide() {
+        this.setState({isOpen: false})
+    }
+
+    handleShow() {
+        this.setState({isOpen: true})
+    }
+
+    render() {
+        const {handleSubmit, onSubmit, invalid, submitting} = this.props;
+        return (
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <Field name="test" component={SideSelect}
+                       props={{
+                           isOpen: this.state.isOpen,
+                           listItem: [{title: "item-1", value: "1"}, {title: "item-2", value: "2"}],
+                           handleClick: this.handleClick, handleHide: this.handleHide
+                       }}>
+                    <section>
+                        <Button onClick={this.handleShow}>test-{this.state.radio}</Button>
+                        <CouponFields/>
+                        <Button modifier="large marginTLR" disabled={invalid || submitting}
+                                onClick={this.props.submit}>确认发布</Button>
+                    </section>
+                </Field>
+            </form>
+        )
+    }
+}
 
 PublishCoupon.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
@@ -48,4 +80,4 @@ const validate = (value) => {
 
 export default reduxForm({
     form: "PublishCoupon", validate
-}) (PublishCoupon)
+})(PublishCoupon)
