@@ -22,14 +22,14 @@ export const signUpRequest = createAction("SIGN_UP_REQUEST");
 
 // 登录的请求action
 export const loginRequest = createAction("LOGIN_REQUEST");
-// 注销请求的action
+// 退出当前用户请求的action
 export const logoutRequest = createAction("LOGOUT_REQUEST");
 // 登录的action
 export const login = createAction("LOGIN");
-// 注销的action
+// 退出当前用户的action
 export const logout = createAction("LOGOUT");
 
-// 用户信息的请求action
+// 获取用户信息的请求action
 export const getUserInfoRequest = createAction("GET_USER_INFO_REQUEST");
 // 更新用户信息的请求action
 export const updateUserInfoRequest = createAction("UPDATE_USER_INFO_REQUEST");
@@ -49,7 +49,7 @@ export const updatePasswordRequest = createAction("UPDATE_PASSWORD_REQUEST");
 // 发布优惠券请求action
 export const publishCouponRequest = createAction("PUBLISH_COUPON_REQUEST");
 
-// 搜索优惠券请求action
+// 查询优惠券请求action
 export const queryCouponsRequest = createAction("QUERY_COUPONS_REQUEST");
 
 // 更新优惠券列表的分页信息action

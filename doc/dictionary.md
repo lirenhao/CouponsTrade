@@ -89,10 +89,10 @@
 - 隐藏消息框:hideDialog
 - 注册的请求:signUpRequest
 - 登录的请求:loginRequest
-- 注销的请求:logoutRequest
 - 登录:login
+- 退出当前用户的请求:logoutRequest
 - **退出当前用户：logout**
-- 用户信息的请求：getUserInfoRequest
+- 获取用户信息的请求：getUserInfoRequest
 - 更新用户信息的请求：updateUserInfoRequest
 - 更新用户信息：updateUserInfo
 - 生成邀请码的请求：createInviteCodeRequest
@@ -100,7 +100,7 @@
 - 验证密码的请求：verifyPasswordRequest
 - 更改密码的请求：updatePasswordRequest
 - 发布优惠券请求：publishCouponRequest
-- 搜索优惠券请求：queryCouponsRequest
+- 查询优惠券请求：queryCouponsRequest
 - 更新优惠券列表的分页信息：setCouponPage
 - 更新优惠券列表：setCoupons
 - 插入优惠卷列表：insertCoupons

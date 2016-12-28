@@ -13,28 +13,31 @@
 - 结束watch
 
 ### 1.2 分析action
-- Loading： 共用
-- success： 发起action有结果的数据，单独写，按照用户、发布优惠券、订单三大类进行如下分析action描述
+- Loading： 共用开始等待action
+- success： 发起action有结果的数据，单独写。按照用户、发布优惠券、订单三大类进行如下分析action描述
 - field：   共用（暂定）
-- unload： 共用
+- unload： 共用取消等待action
 
 **注：共用action**  
-共用消息提示action:提示用户结果
+- 共用消息提示action:提示用户结果
+  - 显示消息提示action
+  - 隐藏消息提示action
 
 #### 1.2.1 用户
 ##### 1.2.1.1 注册
-- 注册action
-- 共用消息提示action
-- 请求
+- 注册请求
   - 参数：昵称、手机号、验证码（只录入模拟验证码）、密码、邀请码
-  - 响应回：注册结果（成功、失败）
+  - 响应回数据：注册结果（成功、失败）
 
 ##### 1.2.1.2 登陆
-- 登陆action
-- 更新token的action
-- 更新token的请求
+- 登陆action：更新token的action
+- 登录的请求：更新token的请求
   - 参数：用户名、密码
   - 响应回数据：token
+
+##### 1.2.1.3 退出当前用户
+- 退出当前用户action
+- 退出当前用户action请求
 
 ##### 1.2.1.3 获取用户信息
 - 获取用户信息action
@@ -61,7 +64,6 @@
 - 验证原密码的action
 - 验证原密码返回结果action(待定TODO)
 - 更新新密码的action
-- 共用消息提示action
 - 验证密码请求
   - 参数：token、原密码
   - 返回：验证结果（成功、失败）
@@ -71,8 +73,8 @@
 
 #### 1.2.2 发布
 ##### 1.2.2.1 发布优惠券
-- 发布action
-- 请求
+- 发布优惠券action
+- 发布优惠券请求
   - 参数（token、优惠券的信息）
     - 优惠券的信息如下：
       - 优惠券唯一标识：state.publish.orderInfo.couponId
@@ -104,18 +106,18 @@
 - 请求
   - 参数：优惠券ID
   - 响应：优惠券详细信息
-      - 优惠券唯一标识：state.publish.orderInfo.couponId
-      - 优惠券名称:state.publish.orderInfo.couponName
-      - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
-      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.couponType
-      - 券码形式选项（图片或文本）:state.publish.orderInfo.couponModality
-      - 券码（图片或文本）：state.publish.orderInfo.couponCode
-      - 卖价：state.publish.orderInfo.sellingPrice
-      - 原价：state.publish.orderInfo.originalPrice
-      - 券面值：state.publish.orderInfo.ticketPrice
-      - 截止日期：state.publish.orderInfo.endDate
-      - 图片（与商户相关）：state.publish.orderInfo.picture
-      - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：state.publish.orderInfo.describe
+      - 优惠券唯一标识：couponId
+      - 优惠券名称:couponName
+      - 是否支持优惠券未开启时自动退货:isAutomaticRefund
+      - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:couponType
+      - 券码形式选项（图片或文本）:couponModality
+      - 券码（图片或文本）：couponCode
+      - 卖价：sellingPrice
+      - 原价：originalPrice
+      - 券面值：ticketPrice
+      - 截止日期：endDate
+      - 图片（与商户相关）：picture
+      - 优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）：describe
       - 卖家昵称：sellerNickName
       - 优惠券状态：couponState
 
@@ -177,14 +179,14 @@
 ##### 1.2.3.5 查看订单详情
 - 查看订单详情的action
 - 更新订单详情的action
-- 请求
+- 更新订单详情请求
   - 参数：用户token，订单ID
   - 响应：卖家昵称、买家昵称、商品图片、优惠券名称、售卖价、生成订单日期、订单编号
   
 ##### 1.2.3.6 开启券码  
 - 开启优惠券action
 - 更新开启优惠券action
-- 请求
+- 更新开启优惠券请求
   - 参数：用户token、订单ID
   - 响应：优惠券是否开启标识、优惠券券码(真实)
  
