@@ -40,19 +40,19 @@
 - 优惠券是否支持自动退货：isAutomaticRefund
 - 优惠券类别：couponType
   - 包括：西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他
-- 券码形式选项：couponModality
+- 券码形式：couponModality
   - 包括：图片或文本
 - 优惠券描述：describe
   - 包括：可消费日期、可消费的时间、商户的信息暂放在此地方
 - 优惠券图片（与商户相关）：picture
 - 优惠券是否开启：isOpen
-- 后台存储-优惠券状态：couponState
-  - 未发布
-  - 发布
-  - 付款中
-  - 过期
-  - 已售卖（未开启）
-  - 已售（已开启）
+- 优惠券状态：couponState
+  - 未发布：unpublished
+  - 发布:publishing
+  - 付款中:Paying
+  - 过期: overdue
+  - 已售（未开启）:SoldUnOpen
+  - 已售（已开启）:SoldOpened
 
 ### 3 订单：order
 - 付款方式：paymentMethod
