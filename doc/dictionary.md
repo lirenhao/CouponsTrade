@@ -47,12 +47,12 @@
 - 优惠券图片（与商户相关）：picture
 - 优惠券是否开启：isOpen
 - 后台存储-优惠券状态：couponState
-  - 包括：未发布、发布、付款中、过期、已售卖（未开启）、已售（已开启）
-- 前台展示-优惠券分类：
-  - 已售：包括后台存储-优惠券状态中的已售卖（未开启）、已售卖（已开启）
-  - 下架：包括后台存储-优惠券状态中的未发布、过期
-  - 发布：指后台存储-优惠券状态中的发布
-
+  - 未发布
+  - 发布
+  - 付款中
+  - 过期
+  - 已售卖（未开启）
+  - 已售（已开启）
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -68,6 +68,17 @@
 - 卖家订单详情：sellerOrderInfo
 - 买家订单列表：buyerOrderList
 - 买家订单详情：buyerOrderInfo
-- 订单状态（待支付、已支付、订单取消、订单超时、已完成、已退货、已退款）：orderState
+- 订单状态：orderState
+  - 待支付:waitPay
+  - 订单取消:cancel
+  - 订单超时:overtime
+  - 已支付:payComplete
+  - 已确认:Confirmed
+  - 已退货:backGoodsComplete
+  - 已退款:moneyBackComplete
+  - 申请退货:applicationBackGoods
+  - 拒绝退货:rejectBackGoods
+  - 仲裁开启:arbitrationOpen
+  - 仲裁结束:arbitrationEnd
 
 ***
