@@ -124,6 +124,7 @@ export default function* sagas(getState) {
         watchGetCouponDetailsRequest(),
         watchGetUserCouponsRequest(),
         watchSoldOutCouponRequest(),
-        watchEditUserCouponRequest()
+        watchEditUserCouponRequest(),
+        queryCouponsAsync({payload: "ALL"})
     ]
 }

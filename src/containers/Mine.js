@@ -77,10 +77,13 @@ class Mine extends React.Component {
                         购买的优惠券
                     </ListItem>
                 </List>
-                <Button modifier="large marginTLR" onClick={() => {
-                    this.props.logout(this.props.navigator, {comp: Login, props: {key: "login", index: 2}})
+                <Button modifier="large outline marginTLR" onClick={() => {
+                    if (this.props.token == "")
+                        this.props.navigator.pushPage({comp: Login, props: {key: "login", index: 2}})
+                    else
+                        this.props.logout(this.props.navigator, {comp: Login, props: {key: "login", index: 2}})
                 }}>
-                    {this.props.token == "" ? "登录" : "注销"}
+                    {this.props.token == "" ? "重新登录" : "退出当前账号"}
                 </ Button >
             </Page>
         )
