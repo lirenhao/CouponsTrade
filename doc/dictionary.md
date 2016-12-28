@@ -4,13 +4,14 @@
     - [1 登陆signIn、注册signUp](#1-登陆signin注册signup)
     - [2 优惠券：couponsTrade](#2-优惠券couponstrade)
     - [3 订单：order](#3-订单order)
+    - [4 Action](#4-action)
 
 ## 字典
 
 注：该文档需要实时维护
 
 ### 1 登陆signIn、注册signUp
-- **用户名：phoneNo**
+- **用户名：phoneNo**：将userName改为phoneNo
 - 密码：password
 - 昵称：nickName
 - 手机号：phoneNo
@@ -57,7 +58,7 @@
 ### 3 订单：order
 - 付款方式：paymentMethod
 - 微信：weChat
-- 支付宝：alipay
+- 支付宝：aliPay
 - 账号：accountNumber
 - 订单编号：orderNo
 - 订单支付日期：orderDate
@@ -81,4 +82,48 @@
   - 仲裁开启:arbitrationOpen
   - 仲裁结束:arbitrationEnd
 
-***
+### 4 Action
+- **开始等待：onLoad**
+- **取消等待：unLoad**
+- 显示消息框:showDialog
+- 隐藏消息框:hideDialog
+- 注册的请求:signUpRequest
+- 登录的请求:loginRequest
+- 注销的请求:logoutRequest
+- 登录:login
+- **退出当前用户：logout**
+- 用户信息的请求：getUserInfoRequest
+- 更新用户信息的请求：updateUserInfoRequest
+- 更新用户信息：updateUserInfo
+- 生成邀请码的请求：createInviteCodeRequest
+- 更新邀请码：updateInviteCode
+- 验证密码的请求：verifyPasswordRequest
+- 更改密码的请求：updatePasswordRequest
+- 发布优惠券请求：publishCouponRequest
+- 搜索优惠券请求：queryCouponsRequest
+- 更新优惠券列表的分页信息：setCouponPage
+- 更新优惠券列表：setCoupons
+- 插入优惠卷列表：insertCoupons
+- 查看优惠券明细请求：getCouponDetailsRequest
+- 更新优惠券明细：insertCouponDetails
+- 查看用户已发布过的优惠券列表请求：getUserCouponsRequest
+- 更新用户已发布过优惠券列表的分页信息：setUserCouponPage
+- 更新用户优惠券列表：setUserCoupons
+- 插入用户优惠卷列表：insertUserCoupons
+- 更新用户发布的优惠券明细：insertUserCouponDetails
+- 下架优惠券请求：soldOutCouponRequest
+- 更新下架优惠券状态：updateSoldOutCoupon
+- 编辑优惠券请求：editUserCouponRequest
+- 更新编辑优惠券信息：updateUserCoupon
+- 支付订单请求：payRequest
+- 取消订单请求：cancelOrderRequest
+- 查看订单列表请求：getOrderListRequest
+- 更新订单列表请求：insertOrderListRequest
+- 初始化分页信息（订单列表）：initialPage
+- 更新分页信息（订单列表）：setOrderPage
+- 更新订单列表：setOrderList
+- 插入订单列表：insertOrderList
+- 查看订单详情请求：getOrderInfoRequest
+- 更新订单详情：setOrderInfo
+- 开启优惠券请求：openCouponRequest
+- 更新优惠券开启信息：openCoupon

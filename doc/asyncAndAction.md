@@ -32,28 +32,28 @@
 ##### 1.2.1.2 登陆
 - 登陆action
 - 更新token的action
-- 请求
+- 更新token的请求
   - 参数：用户名、密码
   - 响应回数据：token
 
 ##### 1.2.1.3 获取用户信息
 - 获取用户信息action
 - 更新用户信息action
-- 请求
+- 更新用户信息请求
   - 参数：token
   - 返回：昵称、手机号、邀请码（该用户使用的）、可邀请的数量
 
 ##### 1.2.1.4 编辑用户信息
 - 编辑用户信息action
 - 更新用户信息action(同获取用户信息中的更新用户信息action)
-- 请求
+- 更新用户信息请求
   - 参数：token、昵称、手机号、邀请码
   - 返回：更新结果（成功、失败）
   
 ##### 1.2.1.5 生成邀请码
 - 生成邀请码的action
 - 更新邀请码的action
-- 请求
+- 更新邀请码的请求
   - 参数：token
   - 返回：邀请码
   
@@ -62,10 +62,10 @@
 - 验证原密码返回结果action(待定TODO)
 - 更新新密码的action
 - 共用消息提示action
-- 请求
+- 验证密码请求
   - 参数：token、原密码
   - 返回：验证结果（成功、失败）
-- 请求
+- 更改密码请求
   - 参数：token、新密码
   - 返回：重置密码结果（成功、失败）
 
@@ -106,7 +106,6 @@
   - 响应：优惠券详细信息
       - 优惠券唯一标识：state.publish.orderInfo.couponId
       - 优惠券名称:state.publish.orderInfo.couponName
-      - 区域信息:state.publish.orderInfo.areaInfo
       - 是否支持优惠券未开启时自动退货:state.publish.orderInfo.isAutomaticRefund
       - 优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）:state.publish.orderInfo.couponType
       - 券码形式选项（图片或文本）:state.publish.orderInfo.couponModality

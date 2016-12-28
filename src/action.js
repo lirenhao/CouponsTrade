@@ -46,86 +46,86 @@ export const verifyPasswordRequest = createAction("VERIFY_PASSWORD_REQUEST");
 // 更改密码的请求action
 export const updatePasswordRequest = createAction("UPDATE_PASSWORD_REQUEST");
 
-// 发布优惠券action
+// 发布优惠券请求action
 export const publishCouponRequest = createAction("PUBLISH_COUPON_REQUEST");
 
-// 搜索优惠券action
+// 搜索优惠券请求action
 export const queryCouponsRequest = createAction("QUERY_COUPONS_REQUEST");
 
-// 更新优惠券列表的分页信息
+// 更新优惠券列表的分页信息action
 export const setCouponPage = createAction("SET_COUPON_PAGE");
 
-// 更新优惠券列表
+// 更新优惠券列表action
 export const setCoupons = createAction("SET_COUPONS");
 
-// 插入优惠卷列表
+// 插入优惠卷列表action
 export const insertCoupons = createAction("INSERT_COUPONS");
 
-// 查看优惠券明细action
+// 查看优惠券明细请求action
 export const getCouponDetailsRequest = createAction("GET_COUPON_DETAILS_REQUEST");
 
 // 更新优惠券明细action
 export const insertCouponDetails = createAction("INSERT_COUPON_DETAILS");
 
-//查看用户已发布过的优惠券列表
+//查看用户已发布过的优惠券列表请求action
 export const getUserCouponsRequest = createAction("GET_USER_COUPONS_REQUEST");
 
-// 更新用户已发布过优惠券列表的分页信息
+// 更新用户已发布过优惠券列表的分页信息action
 export const setUserCouponPage = createAction("SET_USER_COUPON_PAGE");
 
-// 更新用户优惠券列表
+// 更新用户优惠券列表action
 export const setUserCoupons = createAction("SET_USER_COUPONS");
 
-// 插入用户优惠卷列表
+// 插入用户优惠卷列表action
 export const insertUserCoupons = createAction("INSERT_USER_COUPONS");
 
-// 更新用户发布的优惠券明细
+// 更新用户发布的优惠券明细action
 export const insertUserCouponDetails = createAction("INSERT_USER_COUPON_DETAILS");
 
-// 下架优惠券
+// 下架优惠券请求action
 export const soldOutCouponRequest = createAction("SOLD_OUT_COUPON_REQUEST");
 
-// 更新下架优惠券状态
+// 更新下架优惠券状态action
 export const updateSoldOutCoupon = createAction("UPDATE_SOLD_OUT_COUPON");
 
-//编辑优惠券
+//编辑优惠券请求action
 export const editUserCouponRequest = createAction("EDIT_USER_COUPON_REQUEST");
 
-//更新编辑优惠券信息
+//更新编辑优惠券信息action
 export const updateUserCoupon = createAction("UPDATE_USER_COUPON");
 
-//支付订单请求
+//支付订单请求action
 export const payRequest = createAction("PAY_REQUEST");
 
-//取消订单请求
+//取消订单请求action
 export const cancelOrderRequest = createAction("CANCEL_ORDER_REQUEST");
 
-//查看订单列表请求
+//查看订单列表请求action
 export const getOrderListRequest = createAction("GET_ORDER_LIST_REQUEST");
 
 //更新订单列表请求
 export const insertOrderListRequest = createAction("INSERT_ORDER_LIST_REQUEST");
 
-//初始化分页信息（订单列表）
+//初始化分页信息（订单列表）action
 export const initialPage = createAction("INITIAL_PAGE");
 
-//更新分页信息（订单列表）
+//更新分页信息（订单列表）action
 export const setOrderPage = createAction("SET_ORDER_PAGE");
 
-//更新订单列表
+//更新订单列表action
 export const setOrderList = createAction("SET_ORDER_LIST");
 
-//插入订单列表
+//插入订单列表action
 export const insertOrderList = createAction("INSERT_ORDER_LIST");
 
-//查看订单详情请求
+//查看订单详情请求action
 export const getOrderInfoRequest = createAction("GET_ORDER_INFO_REQUEST");
 
-//更新订单详情
+//更新订单详情action
 export const setOrderInfo = createAction("SET_ORDER_INFO");
 
-//开启优惠券请求
+//开启优惠券请求action
 export const openCouponRequest = createAction("OPEN_COUPON_REQUEST");
 
-//更新优惠券开启信息
+//更新优惠券开启信息action
 export const openCoupon = createAction("OPEN_COUPON");
