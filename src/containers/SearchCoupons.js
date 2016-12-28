@@ -10,19 +10,36 @@
 import React from 'react'
 import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import ons from 'onsenui'
+import {queryCouponsRequest} from '../action'
+import {connect} from 'react-redux'
 
-const SearchCoupons = (props)=> {
-    const {navigator} = props
-    return (
-            <SearchCouponList data={[
-                {couponName: "星巴克", sellingPrice: 20, description: "北京所有分店"},
-                {couponName: "肯德基", sellingPrice: 20, description: "北京所有分店"},
-                {couponName: "火锅", sellingPrice: 20, description: "北京所有分店"}
-            ]} onClickPushPage={() => navigator.pushPage({
-                comp: ViewCouponsDetail, props: {key: "ViewCouponsDetail"}
-            })} onSearch={(value)=>{ ons.notification.alert(value)}}/>
-    )
-};
 
-export default SearchCoupons
+class SearchCoupons extends React.Component {
+    render() {
+        return (
+            <SearchCouponList data={this.props.couponList}
+                              onClickPushPage={() =>this.props.onPushPage(this.props.navigator)}
+                              onSearch={(value)=> {
+                                  this.props.onSearch(value)
+                              }}/>
+        )
+    }
+}
+
+const mapStateToProps = (state)=>({
+    couponList: state.couponList
+}
+)
+
+const mapDispatchToProps = (dispatch)=>({
+    onSearch: (param)=> {
+        if (param.replace(/\s/g, "") !== "") {
+            dispatch(queryCouponsRequest(param))
+        }
+    },
+    onPushPage: (navigator)=>navigator.pushPage({
+        comp: ViewCouponsDetail, props: {key: "ViewCouponsDetail"}
+    })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchCoupons)

@@ -13,7 +13,7 @@ const SellingCouponList = ({data, onClickPushPage})=> {
 
     const renderRow = (row)=> {
         return (
-            <CouponInfo key={row.couponName} {...row} onClick={onClickPushPage}/>
+            <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}description={row.description} onClick={onClickPushPage}/>
         )
     };
 

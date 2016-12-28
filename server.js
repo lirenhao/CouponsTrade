@@ -311,9 +311,9 @@ let state = {
             couponType: "1",
             couponModality: "1",
             couponCode: "123456",
-            sellingPrice: "30",
-            originalPrice: "20",
-            ticketPrice: "50",
+            sellingPrice: 30,
+            originalPrice: 20,
+            ticketPrice: 50,
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
@@ -326,9 +326,9 @@ let state = {
             couponType: "1",
             couponModality: "1",
             couponCode: "1234567",
-            sellingPrice: "30",
-            originalPrice: "20",
-            ticketPrice: "50",
+            sellingPrice: 30,
+            originalPrice: 20,
+            ticketPrice: 50,
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
@@ -529,10 +529,16 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
-    const couponList = state.publishCouponList.filter((r) => {
-        return r.couponName.match(couponName)
-    });
-    res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+    const getCouponList = (arr)=>{
+        let couponList =[]
+        for(var coupon of arr){
+            if(coupon.couponName.match(couponName.replace(/\s/g,""))){
+                couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+            }
+        }
+        return couponList
+    }
+    res.json({code: ResponseCode.SUCCESS, couponList: getCouponList(state.publishCouponList)})
 });
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {

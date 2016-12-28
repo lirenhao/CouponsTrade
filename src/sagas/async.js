@@ -271,7 +271,8 @@ export function* fetchOPenCoupon(action) {
  */
 export function *queryCouponsAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.QUERY_COUPONS, req.payload);
+    const {param} = req.payload;
+    const res = yield call(fetch, ServerPath.QUERY_COUPONS, {couponName:req.payload});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCoupons(res.couponList))
     } else {
