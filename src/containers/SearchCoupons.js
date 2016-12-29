@@ -10,7 +10,7 @@
 import React from 'react'
 import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import {queryCouponsRequest} from '../action'
+import {queryCouponsRequest, getCouponDetailsRequest} from '../action'
 import {connect} from 'react-redux'
 
 
@@ -18,10 +18,12 @@ class SearchCoupons extends React.Component {
     render() {
         return (
             <SearchCouponList data={this.props.couponList}
-                              onClickPushPage={() =>this.props.onPushPage(this.props.navigator)}
+                              onClickPushPage={this.props.onPushPage}
                               onSearch={(value)=> {
                                   this.props.onSearch(value)
-                              }}/>
+                              }}
+                              navigator ={this.props.navigator}
+            />
         )
     }
 }
@@ -37,9 +39,14 @@ const mapDispatchToProps = (dispatch)=>({
             dispatch(queryCouponsRequest(param))
         }
     },
-    onPushPage: (navigator)=>navigator.pushPage({
-        comp: ViewCouponsDetail, props: {key: "ViewCouponsDetail"}
-    })
+    onPushPage: (id, navigator)=> {
+        dispatch(getCouponDetailsRequest({id, navigator,
+            routeData: {
+                comp: ViewCouponsDetail,
+                props: {key: "ViewCouponsDetail"}
+            }
+        }))
+    }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchCoupons)

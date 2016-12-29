@@ -9,11 +9,11 @@ import React from 'react'
 import {List, ListHeader} from 'react-onsenui'
 import CouponInfo from './CouponInfo'
 
-const SellingCouponList = ({data, onClickPushPage})=> {
+const SellingCouponList = ({data, onClickPushPage,navigator})=> {
 
     const renderRow = (row)=> {
         return (
-            <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}description={row.description} onClick={onClickPushPage}/>
+            <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}description={row.description} onClick={()=>onClickPushPage(row.id,navigator)}/>
         )
     };
 
@@ -44,11 +44,13 @@ const SellingCouponList = ({data, onClickPushPage})=> {
 SellingCouponList.propTypes = {
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
+            id:React.PropTypes.string.isRequired,
             couponName: React.PropTypes.string.isRequired,
             sellingPrice: React.PropTypes.number.isRequired,
             description: React.PropTypes.string.isRequired
         })).isRequired,
-    onClickPushPage: React.PropTypes.func.isRequired
+    onClickPushPage: React.PropTypes.func.isRequired,
+    navigator:React.PropTypes.object.isRequired
 };
 
 export default SellingCouponList

@@ -7,8 +7,9 @@ import userInfo from './userInfo'
 import dialog from './dialog'
 import order from './order'
 import couponList from './couponList'
+import couponInfo from './couponInfo'
 
 export default combineReducers({
     form, token, loading, inviteCode, userInfo,
-    order, dialog,couponList
+    order, dialog,couponList,couponInfo
 })
