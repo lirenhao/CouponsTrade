@@ -1,12 +1,47 @@
 [TOC]:#
 # Table of Contents
-- 
+- [定义](#定义)
+    - [用户名](#用户名)
+    - [发布过的优惠券](#发布过的优惠券)
+    - [开启](#开启)
+    - [优惠券状态](#优惠券状态)
+    - [邀请人数](#邀请人数)
+    - [下架优惠券](#下架优惠券)
 - [字典](#字典)
     - [1 登陆signIn、注册signUp](#1-登陆signin注册signup)
     - [2 优惠券：couponsTrade](#2-优惠券couponstrade)
     - [3 订单：order](#3-订单order)
     - [4 Action](#4-action)
-##
+
+
+## 定义
+
+### 用户名
+- 在本项目中用户名是指用户的手机号
+
+### 发布过的优惠券
+- 是指优惠券状态为未发布、发布、过期、已售（开启）、已售（未开启）的优惠券
+
+### 开启
+- 是指解密,在本项目中是指优惠券是否解密
+
+### 优惠券状态
+- 未发布：优惠券在进行编辑时，优惠券的状态会从发布变为未发布
+- 发布：是指正在发布中的优惠券
+- 过期：优惠券超过优惠券的截止日期
+- 已售（开启）：
+- 已售（未开启）
+
+### 邀请人数
+- 是指邀请人已经邀请用户的个数
+
+
+### 下架优惠券
+- 是指将优惠券暂停或停止售卖
+
+
+
+
 
 
 ## 字典
@@ -14,7 +49,7 @@
 注：该文档需要实时维护
 
 ### 1 登陆signIn、注册signUp
-- **用户名：phoneNo**：将userName改为phoneNo
+- **`用户名`：phoneNo**：将userName改为phoneNo
 - 密码：password
 - 昵称：nickName
 - 手机号：phoneNo
@@ -26,11 +61,11 @@
 - 再次输入新密码：reNewPassword
 
 ### 2 优惠券：couponsTrade
-- 发布过的优惠券：publishedCoupons
+- `发布过的优惠券`：publishedCoupons
 - 查询优惠券：queryCoupons
 - 优惠券列表：CouponList
 - 优惠券详情：CouponInfo
-- 下架优惠券:soldOut
+- `下架优惠券`:soldOut
 - 编辑优惠券：edit
 - **优惠券唯一标识：id**
 - 优惠券名称：couponName
@@ -56,9 +91,9 @@
 - 优惠券描述：describe
   - 包括：可消费日期、可消费的时间等信息，商户的信息暂放在此
 - 优惠券图片（与商户相关）：picture
-- 优惠券是否开启：isOpen
+- `优惠券是否开启`：isOpen
 - 优惠券状态：couponState
-  - 未发布：0
+  - `未发布`：0
   - 发布:1
   - 付款中:2
   - 过期: 3
@@ -69,16 +104,13 @@
 - 付款方式：paymentMethod
 - 微信：weChat
 - 支付宝：aliPay
-- 账号：accountNumber
 - 订单编号：orderNo
 - 订单支付日期：orderDate
 - 订单支付时间：orderTime
 - 卖家昵称：sellerNickName
 - 买家昵称：buyerNickName
-- 卖家订单列表：sellerOrderList
-- 卖家订单详情：sellerOrderInfo
-- 买家订单列表：buyerOrderList
-- 买家订单详情：buyerOrderInfo
+- 订单列表：orderList
+- 订单详情：orderInfo
 - 订单状态：orderState
   - 待支付:0
   - 订单取消:1
@@ -100,7 +132,7 @@
 - 注册的请求:signUpRequest
 - 登录的请求:loginRequest
 - 登录:login
-- 退出当前用户的请求:logoutRequest
+- 退出当前账户的请求:logoutRequest
 - **退出当前账户：logout**
 - 获取用户信息的请求：getUserInfoRequest
 - 更新用户信息的请求：updateUserInfoRequest
@@ -121,8 +153,8 @@
 - 更新用户优惠券列表：setUserCoupons
 - 插入用户优惠卷列表：insertUserCoupons
 - 更新用户发布的优惠券明细：insertUserCouponDetails
-- 下架优惠券请求：soldOutCouponRequest
-- 更新下架优惠券状态：updateSoldOutCoupon
+- `下架优惠券`请求：soldOutCouponRequest
+- 更新`下架优惠券`状态：updateSoldOutCoupon
 - 编辑优惠券请求：editUserCouponRequest
 - 更新编辑优惠券信息：updateUserCoupon
 - 支付订单请求：payRequest
@@ -135,5 +167,5 @@
 - 插入订单列表：insertOrderList
 - 查看订单详情请求：getOrderInfoRequest
 - 更新订单详情：setOrderInfo
-- 开启优惠券请求：openCouponRequest
-- 更新优惠券开启信息：openCoupon
+- `开启优惠券`请求：openCouponRequest
+- 更新`开启优惠券`信息：openCoupon
