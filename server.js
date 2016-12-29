@@ -318,7 +318,7 @@ let state = {
         {
             id: "1",
             couponName: "星巴克",
-            isAutomaticRefund: "true",
+            isAutomaticRefund: true,
             couponType: "1",
             couponModality: "1",
             couponCode: "123456",
@@ -333,7 +333,7 @@ let state = {
         {
             id: "2",
             couponName: "星巴克",
-            isAutomaticRefund: "true",
+            isAutomaticRefund: true,
             couponType: "1",
             couponModality: "1",
             couponCode: "1234567",
@@ -584,16 +584,16 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, username} = req.body;
-    console.log(username)
     const couponList = state.publishCouponList.filter((r) => {
         return r.id === id
     });
     if (couponList.length !== 0) {
         const couponInfo = couponList[0];
+        const newCouponInfo = {...couponInfo,nickname:state.userInfo.nickname}
         if (couponInfo.username === username && username !== undefined) {
-            res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: couponInfo})
+            res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
         } else {
-            res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: couponInfo})
+            res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: newCouponInfo})
         }
     } else {
         res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})

@@ -10,11 +10,11 @@ import React from 'react'
 import {Page, Toolbar, BackButton, BottomToolbar, Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import PayOrder from './PayOrder'
+import {connect} from 'react-redux'
 
 class ViewCouponsDetail extends React.Component {
 
     render() {
-        // const {navigator} = props;
         return (
             <Page renderToolbar={() => (
                 <Toolbar>
@@ -31,22 +31,19 @@ class ViewCouponsDetail extends React.Component {
                 </BottomToolbar>
             )}>
                 <CouponDetail
-                    DetailInformation={{
-                        nickname: "small_cat",
-                        originalPrice: "￥50",
-                        sellingPrice: "￥70",
-                        couponName: "西提厚牛排优惠券",
-                        isAutomaticRefund: "是",
-                        couponType: "西餐",
-                        ticketPrice: "￥100",
-                        effectiveDate: "至2016年12月28日",
-                        //picture: "无",
-                        describe: "请各位小主们尽快下单吧~~"
-                    }}>
+                    DetailInformation={this.props.DetailInformation}>
                 </CouponDetail>
             </Page>
         )
     }
 }
 
-export default  ViewCouponsDetail
+
+const mapStateToProps = (state)=>(
+{
+    DetailInformation: state.couponInfo
+}
+)
+
+
+export default connect(mapStateToProps)(ViewCouponsDetail) 
