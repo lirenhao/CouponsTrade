@@ -46,12 +46,12 @@ const CouponFields = () => {
             <List modifier="inset marginT">
                 <ListItem>
                     <div className="center">
-                        <Field type="text" name="couponName" component={InputComponent} placeholder="商品名称"/>
+                        <Field type="text" name="couponName" component={InputComponent} placeholder="优惠券名称"/>
                     </div>
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <Field type="text" name="couponCode" component={InputComponent} placeholder="商品码"/>
+                        <Field type="text" name="couponCode" component={InputComponent} placeholder="优惠券码"/>
                     </div>
                 </ListItem>
                 <ListItem>
