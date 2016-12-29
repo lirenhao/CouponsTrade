@@ -110,14 +110,14 @@ var state = {
             number: "",
             size: ""
         },
-        **sellCouponList**:[{
+        **queryCouponList**:[{
             couponId:"",
             couponName: "",
             describe: "",
             sellingPrice: "",
             **picture: ""**(项目state中没有该值)
             },{}],
-        **sellCouponInfo**: {
+        **queryCouponInfo**: {
             **couponId**: "",
             couponName: "",
             isAutomaticRefund: "",
@@ -142,7 +142,7 @@ var state = {
 
 ```
 var state={                                                                                   
-     登录用户Token(token):"111",                                                                  
+     登录用户Token(token):"",                                                                  
      登录用户基本信息(userInfo)：{
        电话号码(phoneNo)，                                                                     
        邀请人个数(inviteCount)，                                                              
@@ -189,7 +189,7 @@ var state={
              优惠券是否开启（isOpen），
              卖家昵称（sellerNickName），
              订单状态（orderState）
-           }                                                                                   
+          }                                                                                   
        },                                                                                     
                                                                                               
       用户已发布过的优惠券信息(publishCoupon)：                                                     
@@ -228,8 +228,8 @@ var state={
              优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
              优惠券是否开启（isOpen）,
              优惠券状态（couponState）
-     }                                                                                     
- },                                                                                        
+          }                                                                                     
+      },                                                                                        
                                                                                               
       查询优惠券（queryCoupon）:                                                                       
       {                                                                                            
@@ -243,7 +243,7 @@ var state={
                 当前加载第几页(number),                                                          
                 每次加载多少条(size),                                                            
             },                                                                                  
-            优惠券列表的信息(sellCouponList):是一个数组                                              
+            优惠券列表的信息(queryCouponList):是一个数组                                              
             [{                                                                                  
                 优惠券唯一标识（couponId）,                                                                             
                 名称(couponName),                                                                     
@@ -251,7 +251,7 @@ var state={
                 卖价(sellingPrice),                                                             
                 商家图片(picture)                                                               
             },{},{}],                                                                           
-            优惠券详细的信息(sellCouponInfo)                                                         
+            优惠券详细的信息(queryCouponInfo)                                                         
             {                                                                                   
                优惠券唯一标识（couponId），                                                                             
                优惠券名称(couponName)，                                                               
