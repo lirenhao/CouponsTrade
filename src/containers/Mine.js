@@ -21,7 +21,7 @@ import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
 import OrderList from './OrderList'
-import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest} from '../action'
+import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest,getUserCouponsRequest} from '../action'
 
 class Mine extends React.Component {
     render() {
@@ -58,9 +58,9 @@ class Mine extends React.Component {
                 </List>
                 <List modifier='inset marginT'>
                     <ListItem modifier='chevron' onClick={() =>
-                        this.props.navigator.pushPage({
+                        this.props.onGetCoupons(this.props.token,this.props.navigator,{
                             comp: SellingCoupons,
-                            props: {key: "SellingCoupons", data: {}}
+                            props: {key: "SellingCoupons"}
                         })
                     }>
                         发布的优惠券
@@ -107,6 +107,9 @@ const mapDispatchToProps = (dispatch) => ({
     },
     logout: (navigator, router) => {
         dispatch(logoutRequest({navigator, router}))
+    },
+    onGetCoupons: (token, navigator, routeData)=> {
+        dispatch(getUserCouponsRequest({token, navigator, routeData}))
     }
 });
 

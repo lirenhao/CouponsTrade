@@ -342,6 +342,21 @@ let state = {
             ticketPrice: 50,
             endDate: "2016-12-31",
             describe: "所有地区通用券",
+            userName: "2",
+            couponState: "1"
+        },
+        {
+            id: "3",
+            couponName: "黑松白鹿",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
             userName: "1",
             couponState: "1"
         }
@@ -601,18 +616,46 @@ app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
-    const {userName, couponName, couponState} = req.body;
-    const couponList = state.publishCouponList.filter((r) => {
-        return r.userName === userName && r.couponName.match(couponName)
-    });
-    if (!couponState && typeof(couponState) != "undefined") {
-        const newCouponList = couponList.filter((r) => {
-            return r.couponState === couponState
-        });
-        res.json({code: ResponseCode.SUCCESS, couponList: newCouponList})
+    const {token, couponName, couponState} = req.body;
+    const userName = state.login.username
+    const getCouponList = (arr)=> {
+        let couponList = []
+        let i = 0
+        for (var coupon of arr) {
+            if (coupon.userName === userName) {
+                couponList.push({
+                    id: coupon.id,
+                    couponName: coupon.couponName,
+                    sellingPrice: coupon.sellingPrice,
+                    description: coupon.describe,
+                    couponState: coupon.couponState
+                })
+            }
+        }
+        return couponList
     }
-    res.json({code: ResponseCode.SUCCESS, couponList: couponList})
-});
+    if (state.token === token) {
+        var couponList = getCouponList(state.publishCouponList)
+        if (!couponName && typeof(couponName) != "undefined") {
+            var newNameCouponList = couponList.filter((r) => {
+                return r.couponName.match(couponName)
+            })
+            if (!couponState && typeof(couponState) != "undefined") {
+                const newStateCouponList = newNameCouponList.filter((r) => {
+                    return r.couponState === couponState
+                })
+                res.json({code: ResponseCode.SUCCESS, couponList: newStateCouponList})
+            } else {
+                res.json({code: ResponseCode.SUCCESS, couponList: newNameCouponList})
+            }
+        } else {
+            res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+        }
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户没有登录，请重新登录"})
+    }
+})
+
 
 app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
     const {id, token} = req.body;

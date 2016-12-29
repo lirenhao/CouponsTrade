@@ -348,9 +348,14 @@ export function *getCouponDetailsAsync(req) {
  */
 export function *getUserCouponsAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, req.payload);
+    const {token, navigator, routeData} = req.payload;
+    console.log(token)
+    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setUserCoupons(res.couponList))
+        navigator.pushPage(
+            routeData
+        )
     } else {
         yield put(showDialog(res.msg))
     }
