@@ -112,13 +112,21 @@ var state = {
             number: "",
             size: ""
         },
-        **sellCouponList:** [{
+        **sellCouponList:** [
+           0:{
             **couponId: ""**,
             couponName: "",
             describe: "",
             sellingPrice: "",
             **picture: ""**(项目state中没有该值)
-        }],
+        },
+          1:{
+                **couponId: ""**,
+                couponName: "",
+                describe: "",
+                sellingPrice: "",
+                **picture: ""**(项目state中没有该值)
+         }],
         **sellCouponInfo**: {
             **couponId: "",**
             couponName: "",
