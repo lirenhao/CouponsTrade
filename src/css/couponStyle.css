@@ -275,3 +275,12 @@ input[name*="Password"] + .text-input--material__label--active {
 .center_nickname{
     color: #aaa;
 }
+
+.pushRefresh{
+    text-align: center;
+    display: none;
+}
+
+.pushRefresh.in{
+    display: block;
+}

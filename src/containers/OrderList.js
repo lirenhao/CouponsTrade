@@ -6,25 +6,21 @@
  * 展示已生成订单列表信息的容器组件
  */
 import React from 'react'
-import {Toolbar, Page, BackButton, List, ListItem, ListHeader, Button} from 'react-onsenui'
-import WayPoint from 'react-waypoint'
-import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
+import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
+import OrderInfo from '../components/orderInfo/OrderInfo'
+import PushRefresh from '../components/PushRefresh'
 import {getOrderInfoRequest, insertOrderListRequest} from '../action'
 
 class OrderList extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'><BackButton>返回</BackButton></div>
+                <div className='left'><BackButton/></div>
                 <div className="center">我的优惠券</div>
             </Toolbar>
         )
-    };
+    }
 
     renderRow = (row, index) => {
         const x = 40 + index;
@@ -36,7 +32,7 @@ class OrderList extends React.Component {
                     id: row.id,
                     route: this.props.navigator,
                     com: OrderInfo
-                }));
+                }))
             }}>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
@@ -50,9 +46,10 @@ class OrderList extends React.Component {
                 </div>
             </ListItem>
         )
-    };
+    }
 
     render() {
+        const hasMore = this.props.orderList.length < this.props.total
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <List
@@ -60,17 +57,15 @@ class OrderList extends React.Component {
                     dataSource={this.props.orderList}
                     renderRow={this::this.renderRow}
                 />
-                <div>
-                    <WayPoint onEnter={() => {
+                <PushRefresh
+                    hasMore={this.props.orderList.length < this.props.total}
+                    onRefresh={() => {
                         this.props.dispatch(insertOrderListRequest({
                             token: 1234567890,
                             number: this.props.number,
                             size: this.props.size
                         }))
                     }}/>
-                    <div>loading</div>
-                    {/* TODO 稍后把下拉loading提取为组件 */}
-                </div>
             </Page>
         )
     }
@@ -81,7 +76,8 @@ const mapStateToProps = state => {
         orderList: state.order.orderList,
         orderInfo: state.order.orderInfo,
         number: state.order.page.number,
-        size: state.order.page.size
+        size: state.order.page.size,
+        total: state.order.page.total
     }
 };
 
