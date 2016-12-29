@@ -25,6 +25,7 @@ class SellingCoupons extends React.Component {
             )}>
                 <SellingCouponList data={this.props.data }
                                    navigator={this.props.navigator}
+                                   token={this.props.token}
                                    onClickPushPage={this.props.onClickPushPage}/>
             </Page>
         )
@@ -40,8 +41,8 @@ const mapStateToProps = (state)=>(
 
 const mapDispatchToProps = (dispatch)=>(
 {
-    onClickPushPage: (id, navigator)=> {
-        dispatch(getCouponDetailsRequest({id, navigator, routeData:{comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}}}))
+    onClickPushPage: (token,id, navigator)=> {
+        dispatch(getCouponDetailsRequest({token,id, navigator, routeData:{comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}}}))
     }
 }
 )

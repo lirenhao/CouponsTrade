@@ -39,8 +39,8 @@ const mapDispatchToProps = (dispatch)=>({
             dispatch(queryCouponsRequest(param))
         }
     },
-    onPushPage: (id, navigator)=> {
-        dispatch(getCouponDetailsRequest({id, navigator,
+    onPushPage: (token,id, navigator)=> {
+        dispatch(getCouponDetailsRequest({token,id, navigator,
             routeData: {
                 comp: ViewCouponsDetail,
                 props: {key: "ViewCouponsDetail"}

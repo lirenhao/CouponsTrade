@@ -9,6 +9,8 @@ import React from 'react'
 import {Page, Toolbar, BackButton, Button, BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
+import {connect}  from 'react-redux'
+import {soldOutCouponRequest,editUserCouponRequest} from  '../action'
 
 class PublishCouponsDetail extends React.Component {
     render() {
@@ -22,45 +24,45 @@ class PublishCouponsDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )} renderBottomToolbar={() => (
-                    <div className="tab-bar">
-                        <div className="tab-bar__item">
-                            <button className="tab-bar__button" type="submit"
-                                    onClick={() => this.props.navigator.replacePage({
-                                        comp: EditCoupons, props: {key: "EditCoupons"}
-                                    })}>编辑
-                            </button>
-                        </div>
-                        <div className="tab-bar__item">
-                            <button className="tab-bar__button" type="submit"
-                                    onClick={() => this.props.navigator.popPage()
-                                    }>下架
-                            </button>
-                        </div>
+                <div className="tab-bar">
+                    <div className="tab-bar__item">
+                        <button className="tab-bar__button" type="submit"
+                                onClick={() => this.props.navigator.replacePage({
+                                    comp: EditCoupons, props: {key: "EditCoupons"}
+                                })}>编辑
+                        </button>
                     </div>
+                    <div className="tab-bar__item">
+                        <button className="tab-bar__button" type="submit"
+                                onClick={() => this.props.navigator.popPage()
+                                }>下架
+                        </button>
+                    </div>
+                </div>
             )}>
                 <CouponDetail
-                    DetailInformation={{
-                        applyCity: "该券仅适用北京",
-                        nickname: "small_cat",
-                        originalPrice: "50",
-                        sellingPrice: "70",
-                        couponName: "西提厚牛排优惠券",
-                        isAutomaticRefund: "是",
-                        couponType: "西餐",
-                        ticketPrice: "100",
-                        effectiveDate: "至2016年12月28日",
-                        //merchantPicture: "无",
-                        describe: "请各位小主们尽快下单吧~~"
-                    }}>
+                    DetailInformation={this.props.couponInfo}>
                 </CouponDetail>
-                {/*<Button className="button--large" type="submit" onClick={() => this.props.navigator.pushPage({
-                 comp: EditCoupons, props: {key: "EditCoupons"}
-                 })}>编辑</Button>
-                 <Button className="button--large" type="submit"
-                 onClick={() => this.props.navigator.popPage()}>下架</Button>*/}
             </Page>
         )
     }
 }
 
-export default  PublishCouponsDetail
+const mapStateToProps = (state)=>(
+{couponInfo: state.publishedCoupons.couponInfo}
+)
+
+const mapDispatchToProps =(dispatch)=>(
+{
+    onEditCoupon:(id,navigator,routeData)=>{
+        dispatch(editUserCouponRequest({id,navigator,routeData:{
+            comp: EditCoupons, props: {key: "EditCoupons"}
+        }}))
+    },
+    onSoldOutCoupon:(id,navigator)=>{
+        dispatch(soldOutCouponRequest({id,navigator}))
+    }
+}
+)
+
+export default connect(mapStateToProps,mapDispatchToProps)(PublishCouponsDetail)

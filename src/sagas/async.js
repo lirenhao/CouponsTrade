@@ -324,10 +324,9 @@ export function *publishCouponAsync(req) {
  */
 export function *getCouponDetailsAsync(req) {
     yield put(onload());
-    const {id, navigator, routeData} = req.payload;
-    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id});
+    const {token,id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id,token:token});
     if (res.code == ResponseCode.SUCCESS) {
-        console.log(res.flag)
         if (res.flag === "1") {
             yield put(insertUserCouponDetails(res.couponInfo))
         } else {
@@ -349,7 +348,7 @@ export function *getCouponDetailsAsync(req) {
 export function *getUserCouponsAsync(req) {
     yield put(onload());
     const {token, navigator, routeData} = req.payload;
-    console.log(token)
+    //console.log(token)
     const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setUserCoupons(res.couponList))

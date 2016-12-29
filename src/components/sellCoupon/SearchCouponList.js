@@ -8,11 +8,10 @@
 
 
 import React from 'react'
-import {Field, reduxForm} from 'redux-form'
-import {Button} from 'react-onsenui'
+import { reduxForm} from 'redux-form'
 import SellingCouponList from './SellingCouponList'
 
-const SearchGoodsList = (props)=> {
+const SearchCouponList = (props)=> {
     const {onSearch, onClickPushPage, data, navigator} = props;
     return (
         <div>
@@ -25,7 +24,7 @@ const SearchGoodsList = (props)=> {
     )
 };
 
-SearchGoodsList.propTypes = {
+SearchCouponList.propTypes = {
     onSearch: React.PropTypes.func.isRequired,
     data: React.PropTypes.arrayOf(
         React.PropTypes.shape({
@@ -39,6 +38,6 @@ SearchGoodsList.propTypes = {
 };
 
 export default reduxForm({
-    form: "SearchGoodsList"
-})(SearchGoodsList)
+    form: "SearchCouponList"
+})(SearchCouponList)
 

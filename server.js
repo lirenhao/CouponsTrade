@@ -332,7 +332,7 @@ let state = {
         },
         {
             id: "2",
-            couponName: "星巴克",
+            couponName: "瞎谱",
             isAutomaticRefund: true,
             couponType: "1",
             couponModality: "1",
@@ -598,14 +598,18 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
-    const {id, username} = req.body;
+    const {id, token} = req.body;
+    let username =""
+    if(token!==undefined){
+         username = state.login.username
+    }
     const couponList = state.publishCouponList.filter((r) => {
         return r.id === id
     });
     if (couponList.length !== 0) {
         const couponInfo = couponList[0];
         const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname}
-        if (couponInfo.username === username && username !== undefined) {
+        if (couponInfo.userName === username) {
             res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
         } else {
             res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: newCouponInfo})
