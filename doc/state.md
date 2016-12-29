@@ -103,7 +103,7 @@ var state = {
             }
         }
     },
-    queryCoupon: {
+    **queryCoupon: **{
         query: {
             couponName: ""
         },
