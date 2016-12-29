@@ -18,7 +18,7 @@ const CouponDetail = (props) => {
             <List modifier="inset marginT title">
                 <ListItem>
                     <div className="left">
-                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
+                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="用户头像"/>
                     </div>
                     <div className="center">卖家昵称</div>
                     <div className="center">{DetailInformation.nickname}</div>
