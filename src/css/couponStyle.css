@@ -272,3 +272,6 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
+.center_nickname{
+    color: #aaa;
+}
