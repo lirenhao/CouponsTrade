@@ -23,7 +23,7 @@ const CouponInfo = (props)=> {
                 <div className="list__item__subtitle">{description}</div>
             </div>
             <div className='right'>
-                <PriceComponent {...{text: "价格", price: sellingPrice}}/>
+                <PriceComponent price={sellingPrice}/>
             </div>
         </ListItem>
     )

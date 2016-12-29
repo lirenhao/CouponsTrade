@@ -9,7 +9,7 @@
 
 import React from 'react'
 
-const PriceComponent = ({text, price})=> {
+const PriceComponent = ({price})=> {
     return (
         <div className="price">￥{price}</div>
     )

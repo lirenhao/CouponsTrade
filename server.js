@@ -550,16 +550,30 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
-    const getCouponList = (arr)=>{
-        let couponList =[]
-        let i =0
-        for(var coupon of arr){
-            if(couponName==="ALL"&&i<10){
-                couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
-                i++
-            }else{
-                if(coupon.couponName.match(couponName.replace(/\s/g,""))){
-                    couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+    const getCouponList = (arr)=> {
+        let couponList = []
+        let i = 0
+        for (var coupon of arr) {
+            if (couponName !== "ALL") {
+                if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
+                    couponList.push({
+                        id: coupon.id,
+                        couponName: coupon.couponName,
+                        sellingPrice: coupon.sellingPrice,
+                        description: coupon.describe
+                    })
+                }
+            } else {
+                if (i < 10) {
+                    couponList.push({
+                        id: coupon.id,
+                        couponName: coupon.couponName,
+                        sellingPrice: coupon.sellingPrice,
+                        description: coupon.describe
+                    })
+                    i++
+                } else {
+                    return couponList
                 }
             }
         }
@@ -570,18 +584,20 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, username} = req.body;
+    console.log(username)
     const couponList = state.publishCouponList.filter((r) => {
         return r.id === id
     });
     if (couponList.length !== 0) {
         const couponInfo = couponList[0];
-        if (couponInfo.username === username) {
+        if (couponInfo.username === username && username !== undefined) {
             res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: couponInfo})
         } else {
             res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: couponInfo})
         }
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
     }
-    res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
 });
 
 app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
