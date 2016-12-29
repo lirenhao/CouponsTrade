@@ -13,98 +13,24 @@
 
 ## 1、state结构的定义--20161216  
 
-- 介绍：state对象包括以下两个对象 
-   - 用户信息(包括用户Token、用户基本信息、订单信息（买家）、用户已发布过的优惠券信息)
-   - 查询优惠券信息
+- 介绍：state对象包括以下5个对象 
+- 包括:用户Token、用户基本信息（userInfo）、订单信息（order）、用户已发布过的优惠券信息（publishCoupon）、查询优惠券信息（queryCoupon）
 
 ### 1.1 state结构--20161216
 - 优惠券state的结构定义如下
 
 ```
 var state = {
-    user: {
-        token: "111",
-        userInfo: {
-            nickname: ""
-            phoneNo: "",
-            inviteCode: "",
-            inviteCount: ""
-        },
-        order: {
-            query: {
-                orderState: "",
-                couponName: ""
-            },
-            page: {
-                total: "",
-                number: "",
-                size: ""
-            },
-            orderList: [{
-                couponId: "",
-                couponName: "",
-                describe: "",
-                sellingPrice: "",
-                picture: ""
-            }],
-            orderInfo: {
-                orderNo,
-                orderDate,
-                orderTime,
-                couponId: "",
-                couponName: "",
-                isAutomaticRefund: "",
-                couponType: "",
-                couponModality: "",
-                couponCode: "",
-                sellingPrice: "",
-                originalPrice: "",
-                ticketPrice: "",
-                endDate: "",
-                picture: "",
-                describe: "",
-                isOpen:""，
-                sellerNickName,
-                orderState
-            }
-        },
-        publishCoupon: {
-            query: {
-                orderState: "",
-                couponName: ""
-            },
-            page: {
-                total: "",
-                number: "",
-                size: ""
-            },
-            publishCouponList: [{
-                couponId: "1212232321",
-                couponName: "呷哺呷哺",
-                describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
-                sellingPrice: "70",
-                picture: ""
-            }],
-            publishCouponInfo: {
-                couponId: "",
-                couponName: "呷哺呷哺",
-                isAutomaticRefund: "是",
-                couponType: "西餐",
-                couponModality: "文本",
-                couponCode: "1234567890",
-                sellingPrice: "70",
-                originalPrice: "50",
-                ticketPrice: "100",
-                endDate: "20161215",
-                picture: "",
-                describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
-                isOpen:"",
-                couponState:"已下架"
-            }
-        }
+    token: "111",
+    userInfo: {
+        nickname: "",
+        phoneNo: "",
+        inviteCode: "",
+        inviteCount: ""
     },
-    **queryCoupon: **{
+    order: {
         query: {
+            orderState: "",
             couponName: ""
         },
         page: {
@@ -112,22 +38,18 @@ var state = {
             number: "",
             size: ""
         },
-        **sellCouponList:** [
-           0:{
-            **couponId: ""**,
+        orderList: [{
+            **couponId: "",**
             couponName: "",
             describe: "",
             sellingPrice: "",
-            **picture: ""**(项目state中没有该值)
-        },
-          1:{
-                **couponId: ""**,
-                couponName: "",
-                describe: "",
-                sellingPrice: "",
-                **picture: ""**(项目state中没有该值)
-         }],
-        **sellCouponInfo**: {
+            picture: "",
+            orderState:""
+        }],
+        orderInfo: {
+            orderNo:"",
+            orderDate:"",
+            orderTime:"",
             **couponId: "",**
             couponName: "",
             isAutomaticRefund: "",
@@ -138,11 +60,79 @@ var state = {
             originalPrice: "",
             ticketPrice: "",
             endDate: "",
-            **picture: "",**(项目state中没有该值)
+            picture: "",
             describe: "",
-            **sellerUserName:"",**
+            isOpen:"",
+            sellerNickName:"",
+            orderState:""
+        }
+    },
+    publishCoupon: {
+        query: {
+                orderState: "",
+                couponName: ""
+        },
+        page: {
+                total: "",
+                number: "",
+                size: ""
+        },
+        publishCouponList: [{
+            couponId: "1212232321",
+            couponName: "呷哺呷哺",
+            describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
+            sellingPrice: "70",
+            picture: ""
+        }],
+        publishCouponInfo: {
+            couponId: "",
+            couponName: "呷哺呷哺",
+            isAutomaticRefund: "是",
+            couponType: "西餐",
+            couponModality: "文本",
+            couponCode: "1234567890",
+            sellingPrice: "70",
+            originalPrice: "50",
+            ticketPrice: "100",
+            endDate: "20161215",
+            picture: "",
+            describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
+            isOpen:"",
+            couponState:"已下架"
+        }
+    },
+    **queryCoupon**: {
+        query: {
+            couponName: ""
+        },
+        page: {
+            total: "",
+            number: "",
+            size: ""
+        },
+        **sellCouponList**:[{
+            couponId:"",
+            couponName: "",
+            describe: "",
+            sellingPrice: "",
+            **picture: ""**(项目state中没有该值)
+            },{}],
+        **sellCouponInfo**: {
+            **couponId**: "",
+            couponName: "",
+            isAutomaticRefund: "",
+            couponType: "",
+            couponModality: "",
+            couponCode: "",
+            sellingPrice: "",
+            originalPrice: "",
+            ticketPrice: "",
+            endDate: "",
+            **picture**: "",
+            describe: "",
+            **sellerUserName**:"",
             couponState:"",
-            **sellerNickName:""**
+            **sellerNickName**:""
         }
     }
 }
@@ -152,7 +142,6 @@ var state = {
 
 ```
 var state={                                                                                   
- 登录用户信息(user){                                                                              
      登录用户Token(token):"111",                                                                  
      登录用户基本信息(userInfo)：{
        电话号码(phoneNo)，                                                                     
@@ -177,7 +166,8 @@ var state={
               名称(name),                                                                     
               描述(describe),                                                                     
               卖价(sellingPrice),                                                             
-              商家图片(picture)                                                               
+              商家图片(picture)，
+              订单状态(orderState)
           },{},{}],                                                                           
           订单详情(orderInfo)                                                         
           {          
@@ -220,7 +210,7 @@ var state={
              名称(couponName),                                                                     
              描述(describe),                                                                     
              卖价(sellingPrice),                                                             
-             商家图片(picture)                                                               
+             商家图片(picture),                                                               
          },{},{}],                                                                           
          优惠券详细的信息(publishCouponInfo)                                                         
          {                                                                                   
@@ -238,49 +228,48 @@ var state={
              优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
              优惠券是否开启（isOpen）,
              优惠券状态（couponState）
-        }                                                                                   
      }                                                                                     
  },                                                                                        
                                                                                               
- 查询优惠券（queryCoupon）:                                                                       
- {                                                                                            
-    查询条件(query):                                                                    
-    {                                                                                   
-       优惠券名称(couponName)                                          
-    }                                                                                   
-    分页信息(page):                                                                     
-    {                                                                                   
-       总数据条数(total),                                                               
-       当前加载第几页(number),                                                          
-       每次加载多少条(size),                                                            
-    },                                                                                  
-    优惠券列表的信息(sellCouponList):是一个数组                                              
-    [{                                                                                  
-        优惠券唯一标识（couponId）,                                                                             
-        名称(couponName),                                                                     
-        描述(describe),                                                                     
-        卖价(sellingPrice),                                                             
-        商家图片(picture)                                                               
-    },{},{}],                                                                           
-    优惠券详细的信息(sellCouponInfo)                                                         
-    {                                                                                   
-       优惠券唯一标识（couponId），                                                                             
-       优惠券名称(couponName)，                                                               
-       是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
-       优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               
-       券码形式选项（图片或文本）(couponModality)，                                           
-       券码（图片或文本）（couponCode），                                               
-       卖价(sellingPrice)，                                                             
-       原价(originalPrice)，                                                            
-       券面值(ticketPrice)，                                                            
-       截止日期(endDate)，                                                              
-       图片（与商户相关）(picture)，                                                    
-       优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
-       卖家用户名称：sellerUserName，
-       卖家昵称：sellerNickName,
-       优惠券状态：couponState,
-  }                                                                                   
-}                                                                                        
+      查询优惠券（queryCoupon）:                                                                       
+      {                                                                                            
+             查询条件(query): 
+             {                                                                                   
+                 优惠券名称(couponName)                                          
+             }                                                                                   
+            分页信息(page):                                                                     
+            {                                                                                   
+                总数据条数(total),                                                               
+                当前加载第几页(number),                                                          
+                每次加载多少条(size),                                                            
+            },                                                                                  
+            优惠券列表的信息(sellCouponList):是一个数组                                              
+            [{                                                                                  
+                优惠券唯一标识（couponId）,                                                                             
+                名称(couponName),                                                                     
+                描述(describe),                                                                     
+                卖价(sellingPrice),                                                             
+                商家图片(picture)                                                               
+            },{},{}],                                                                           
+            优惠券详细的信息(sellCouponInfo)                                                         
+            {                                                                                   
+               优惠券唯一标识（couponId），                                                                             
+               优惠券名称(couponName)，                                                               
+               是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
+               优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               
+               券码形式选项（图片或文本）(couponModality)，                                           
+               券码（图片或文本）（couponCode），                                               
+               卖价(sellingPrice)，                                                             
+               原价(originalPrice)，                                                            
+               券面值(ticketPrice)，                                                            
+               截止日期(endDate)，                                                              
+               图片（与商户相关）(picture)，                                                    
+               优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
+               卖家用户名称：sellerUserName，
+               卖家昵称：sellerNickName,
+               优惠券状态：couponState,
+            }                                                                                   
+      }                                                                                        
 }                                                                                             
 ```
 
