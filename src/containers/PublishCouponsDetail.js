@@ -42,12 +42,12 @@ class PublishCouponsDetail extends React.Component {
                     DetailInformation={{
                         applyCity: "该券仅适用北京",
                         nickname: "small_cat",
-                        originalPrice: "￥50",
-                        sellingPrice: "￥70",
+                        originalPrice: "50",
+                        sellingPrice: "70",
                         couponName: "西提厚牛排优惠券",
                         isAutomaticRefund: "是",
                         couponType: "西餐",
-                        ticketPrice: "￥100",
+                        ticketPrice: "100",
                         effectiveDate: "至2016年12月28日",
                         //merchantPicture: "无",
                         describe: "请各位小主们尽快下单吧~~"
