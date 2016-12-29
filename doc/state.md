@@ -112,15 +112,15 @@ var state = {
             number: "",
             size: ""
         },
-        sellCouponList: [{
-            couponId: "",
+        **sellCouponList:** [{
+            **couponId: ""**,
             couponName: "",
             describe: "",
             sellingPrice: "",
-            picture: ""
+            **picture: ""**(项目state中没有该值)
         }],
-        sellCouponInfo: {
-            couponId: "",
+        **sellCouponInfo**: {
+            **couponId: "",**
             couponName: "",
             isAutomaticRefund: "",
             couponType: "",
@@ -130,8 +130,11 @@ var state = {
             originalPrice: "",
             ticketPrice: "",
             endDate: "",
-            picture: "",
-            describe: ""
+            **picture: "",**(项目state中没有该值)
+            describe: "",
+            **sellerUserName:"",**
+            couponState:"",
+            **sellerNickName:""**
         }
     }
 }
@@ -141,9 +144,9 @@ var state = {
 
 ```
 var state={                                                                                   
- 用户信息(user){                                                                              
-     用户Token(token):"111",                                                                  
-     用户基本信息(userInfo)：{
+ 登录用户信息(user){                                                                              
+     登录用户Token(token):"111",                                                                  
+     登录用户基本信息(userInfo)：{
        电话号码(phoneNo)，                                                                     
        邀请人个数(inviteCount)，                                                              
        昵称(nickName)                                                                         
@@ -264,8 +267,10 @@ var state={
        券面值(ticketPrice)，                                                            
        截止日期(endDate)，                                                              
        图片（与商户相关）(picture)，                                                    
-       优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）
-       卖家昵称（sellerNickName）
+       优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
+       卖家用户名称：sellerUserName，
+       卖家昵称：sellerNickName,
+       优惠券状态：couponState,
   }                                                                                   
 }                                                                                        
 }                                                                                             

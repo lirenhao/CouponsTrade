@@ -48,12 +48,12 @@
 - 优惠券图片（与商户相关）：picture
 - 优惠券是否开启：isOpen
 - 优惠券状态：couponState
-  - 未发布：unpublished
-  - 发布:publishing
-  - 付款中:Paying
-  - 过期: overdue
-  - 已售（未开启）:SoldUnOpen
-  - 已售（已开启）:SoldOpened
+  - 未发布：0
+  - 发布:1
+  - 付款中:2
+  - 过期: 3
+  - 已售（未开启）:4
+  - 已售（已开启）:5
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -70,17 +70,17 @@
 - 买家订单列表：buyerOrderList
 - 买家订单详情：buyerOrderInfo
 - 订单状态：orderState
-  - 待支付:waitPay
-  - 订单取消:cancel
-  - 订单超时:overtime
-  - 已支付:payComplete
-  - 已确认:Confirmed
-  - 已退货:backGoodsComplete
-  - 已退款:moneyBackComplete
-  - 申请退货:applicationBackGoods
-  - 拒绝退货:rejectBackGoods
-  - 仲裁开启:arbitrationOpen
-  - 仲裁结束:arbitrationEnd
+  - 待支付:0
+  - 订单取消:1
+  - 订单超时:2
+  - 已支付:3
+  - 已确认:4
+  - 已退货:5
+  - 已退款:6
+  - 申请退货:7
+  - 拒绝退货:8
+  - 仲裁开启:9
+  - 仲裁结束:10
 
 ### 4 Action
 - **开始等待：onLoad**
