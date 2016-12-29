@@ -11,6 +11,7 @@ import {Page, Toolbar, BackButton, BottomToolbar, Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import PayOrder from './PayOrder'
 import {connect} from 'react-redux'
+import {createOrderRequest} from '../action'
 
 class ViewCouponsDetail extends React.Component {
 
@@ -25,9 +26,9 @@ class ViewCouponsDetail extends React.Component {
                 </Toolbar>
             )} renderBottomToolbar={() => (
                 <BottomToolbar>
-                    <Button modifier="large noRadius" type="submit" onClick={() => this.props.navigator.pushPage({
-                        comp: PayOrder, props: {key: "PayOrder"}
-                    })}>我要买</Button>
+                    <Button modifier="large noRadius" type="submit"
+                            onClick={() => this.props.onClickBuy(this.props.token,this.props.DetailInformation.id, this.props.navigator,
+                                {comp: PayOrder, props: {key: "PayOrder"}})}>我要买</Button>
                 </BottomToolbar>
             )}>
                 <CouponDetail
@@ -41,9 +42,18 @@ class ViewCouponsDetail extends React.Component {
 
 const mapStateToProps = (state)=>(
 {
-    DetailInformation: state.couponInfo
+    DetailInformation: state.couponInfo,
+    token:"1234567890"
+}
+)
+
+const mapDispatchToProps = (dispatch)=>(
+{
+    onClickBuy: (token,id, navigator, routeData)=> {
+        dispatch(createOrderRequest({token,id, navigator, routeData}))
+    }
 }
 )
 
 
-export default connect(mapStateToProps)(ViewCouponsDetail) 
+export default connect(mapStateToProps,mapDispatchToProps)(ViewCouponsDetail)

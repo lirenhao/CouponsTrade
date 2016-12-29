@@ -94,6 +94,9 @@ export const editUserCouponRequest = createAction("EDIT_USER_COUPON_REQUEST");
 //更新编辑优惠券信息action
 export const updateUserCoupon = createAction("UPDATE_USER_COUPON");
 
+//创建订单请求
+export const createOrderRequest =createAction("CREATE_ORDER_REQUEST");
+
 //支付订单请求action
 export const payRequest = createAction("PAY_REQUEST");
 

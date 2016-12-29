@@ -287,8 +287,8 @@ export function* fetchCancelOrder(action) {
  */
 export function *queryCouponsAsync(req) {
     yield put(onload());
-    const couponName =req.payload
-    const res = yield call(fetch, ServerPath.QUERY_COUPONS, {couponName:req.payload});
+    const couponName = req.payload
+    const res = yield call(fetch, ServerPath.QUERY_COUPONS, {couponName: req.payload});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCoupons(res.couponList))
     } else {
@@ -303,13 +303,13 @@ export function *queryCouponsAsync(req) {
  */
 export function *publishCouponAsync(req) {
     yield put(onload());
-    const {param,navigator,routeData} = req.payload;
+    const {param, navigator, routeData} = req.payload;
     const res = yield call(fetch, ServerPath.PUBLISH_COUPON, param);
     yield put(showDialog(res.msg));
-    if(res.code == ResponseCode.SUCCESS) {
-        if(navigator.pages.length>1){
+    if (res.code == ResponseCode.SUCCESS) {
+        if (navigator.pages.length > 1) {
             navigator.popPage()
-        }else{
+        } else {
             navigator.replacePage(
                 routeData
             )
@@ -324,8 +324,8 @@ export function *publishCouponAsync(req) {
  */
 export function *getCouponDetailsAsync(req) {
     yield put(onload());
-    const {id,navigator,routeData} = req.payload;
-    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS,{id:id});
+    const {id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id});
     if (res.code == ResponseCode.SUCCESS) {
         console.log(res.flag)
         if (res.flag === "1") {
@@ -381,6 +381,25 @@ export function *editUserCouponAsync(req) {
     const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, req.payload);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(updateUserCoupon(res.couponState))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
+}
+
+/**
+ * 创建订单请求
+ * @param req
+ */
+export function *createOrderAsync(req) {
+    yield put(onload());
+    const {token, id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.CREATE_ORDER, {token: token, id: id});
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setOrderInfo(res.orderInfo))
+        navigator.pushPage(
+            routeData
+        )
     } else {
         yield put(showDialog(res.msg))
     }

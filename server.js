@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
-
+let orderNoIndex = 0
 let state = {
     token: "1234567890",
     login: {
@@ -589,7 +589,7 @@ app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     });
     if (couponList.length !== 0) {
         const couponInfo = couponList[0];
-        const newCouponInfo = {...couponInfo,nickname:state.userInfo.nickname}
+        const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname}
         if (couponInfo.username === username && username !== undefined) {
             res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
         } else {
@@ -653,6 +653,49 @@ app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
         res.json({code: ResponseCode.FAIL, msg: "用户不能编辑，请重新登录"})
     }
 });
+
+app.post(`/${ServerPath.CREATE_ORDER}`, function (req, res) {
+    const {token, id} = req.body;
+    const getNowDateFormatData = ()=> {
+        var date = new Date();
+        var separatorDate = "-";
+        var separatorTime = ":";
+        var month = date.getMonth() + 1;
+        var strDate = date.getDate();
+        if (month >= 1 && month <= 9) {
+            month = "0" + month;
+        }
+        if (strDate >= 0 && strDate <= 9) {
+            strDate = "0" + strDate;
+        }
+        return {
+            date: date.getFullYear() + separatorDate + month + separatorDate + strDate,
+            time: date.getHours() + separatorTime + date.getMinutes() + separatorTime + date.getSeconds(),
+            orderNo: date.getFullYear().toString() + month + strDate + date.getHours().toString() + date.getMinutes().toString() + date.getSeconds().toString() + orderNoIndex
+        }
+    }
+    if (state.token == token) {
+        const couponList = state.publishCouponList.filter((r) => {
+            return r.id === id
+        });
+        orderNoIndex++
+        const data = getNowDateFormatData()
+        const orderInfoData = {
+            ...couponList[0],
+            orderNo: data.orderNo,
+            orderDate: data.date,
+            orderTime: data.time,
+            isOpen: false,
+            sellerNickName: state.userInfo.nickname,
+            orderState: "待付款"
+        }
+        state.order.orderInfo[data.orderNo] = orderInfoData
+        res.json({code: ResponseCode.SUCCESS, orderInfo: orderInfoData})
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
+    }
+});
+
 
 // TODO 添加后台服务
 

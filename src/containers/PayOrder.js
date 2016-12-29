@@ -13,15 +13,15 @@ import {connect} from 'react-redux'
 import {payRequest} from '../action'
 import OrderResult from '../components/orderInfo/OrderResult'
 
-const data = {
-    name: "李四",
-    tel: "18688886666"
-};
-
-const itemData = {
-    item: "黑松白鹿",
-    price: 400
-};
+// const data = {
+//     name: "李四",
+//     tel: "18688886666"
+// };
+//
+// const itemData = {
+//     item: "黑松白鹿",
+//     price: 400
+// };
 
 
 const renderToolbar = () => {
@@ -33,19 +33,50 @@ const renderToolbar = () => {
     )
 };
 
-const Payment = ({navigator, dispatch}) => {
-    const handleSubmit = (value) => {
+// const Payment = ({navigator, dispatch}) => {
+//     const handleSubmit = (value) => {
+//         dispatch(payRequest({
+//             token: "1234567890", ...value,
+//             route: navigator, com: OrderResult
+//         }));
+//     };
+//     return (
+//         <Page renderToolbar={renderToolbar}>
+//             <Address {...data}/>
+//             <PaymentForm {...itemData} navigator={navigator} onSubmit={value => handleSubmit(value)}/>
+//         </Page>
+//     )
+// };
+
+class Payment extends React.Component {
+    render() {
+        return (
+            <Page renderToolbar={renderToolbar}>
+                <Address {...this.props.data}/>
+                <PaymentForm {...this.props.itemData} navigator={navigator} onSubmit={value => this.props.handleSubmit(value,this.props.navigator)}/>
+            </Page>
+        )
+    }
+}
+
+const mapStateToProps = (state)=>(
+{
+    token: state.token,
+    data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
+    itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
+}
+)
+
+const mapDispatchToProps = (dispatch)=>(
+{
+    handleSubmit: (value, navigator) => {
+        console.log(value)
         dispatch(payRequest({
             token: "1234567890", ...value,
             route: navigator, com: OrderResult
         }));
-    };
-    return (
-        <Page renderToolbar={renderToolbar}>
-            <Address {...data}/>
-            <PaymentForm {...itemData} navigator={navigator} onSubmit={value => handleSubmit(value)}/>
-        </Page>
-    )
-};
+    }
+}
+)
 
-export default connect()(Payment)
+export default connect(mapStateToProps,mapDispatchToProps)(Payment)
