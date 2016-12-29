@@ -23,14 +23,12 @@
 - 再次输入新密码：reNewPassword
 
 ### 2 优惠券：couponsTrade
-- 发布优惠券：publishCoupon
-- 发布优惠券列表：publishCouponList
-- 发布优惠券详情：publishCouponInfo
-- 售卖优惠券列表：sellCouponList
-- 售卖优惠券详情：sellCouponInfo
+- 发布过的优惠券：publishedCoupons
+- 查询优惠券：queryCoupons
+- 优惠券列表：CouponList
+- 优惠券详情：CouponInfo
 - 下架优惠券:soldOut
 - 编辑优惠券：edit
-- 查询优惠券：query
 - **优惠券唯一标识：id**
 - 优惠券名称：couponName
 - 优惠券码：couponCode
