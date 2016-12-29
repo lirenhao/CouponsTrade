@@ -7,6 +7,7 @@
  */
 import React from 'react'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader, Button} from 'react-onsenui'
+import WayPoint from 'react-waypoint'
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import {connect} from 'react-redux'
 import {getOrderInfoRequest, insertOrderListRequest} from '../action'
@@ -59,13 +60,17 @@ class OrderList extends React.Component {
                     dataSource={this.props.orderList}
                     renderRow={this::this.renderRow}
                 />
-                <Button onClick={() => {
-                    this.props.dispatch(insertOrderListRequest({
-                        token: 1234567890,
-                        number: this.props.number,
-                        size: this.props.size
-                    }))
-                }}>测试翻页按钮</Button>
+                <div>
+                    <WayPoint onEnter={() => {
+                        this.props.dispatch(insertOrderListRequest({
+                            token: 1234567890,
+                            number: this.props.number,
+                            size: this.props.size
+                        }))
+                    }}/>
+                    <div>loading</div>
+                    {/* TODO 稍后把下拉loading提取为组件 */}
+                </div>
             </Page>
         )
     }

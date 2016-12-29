@@ -13,6 +13,7 @@
     "react-dom": "^15.4.1",
     "react-onsenui": "^1.0.4",
     "react-redux": "^4.4.6",
+    "react-waypoint": "^4.1.0",
     "redux": "^3.6.0",
     "redux-act": "^1.1.0",
     "redux-form": "^6.2.1",
