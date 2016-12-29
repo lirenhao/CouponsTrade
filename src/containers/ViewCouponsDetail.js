@@ -32,7 +32,6 @@ class ViewCouponsDetail extends React.Component {
             )}>
                 <CouponDetail
                     DetailInformation={{
-                        applyCity: "该券仅适用北京",
                         nickname: "small_cat",
                         originalPrice: "￥50",
                         sellingPrice: "￥70",
@@ -41,7 +40,7 @@ class ViewCouponsDetail extends React.Component {
                         couponType: "西餐",
                         ticketPrice: "￥100",
                         effectiveDate: "至2016年12月28日",
-                        //merchantPicture: "无",
+                        //picture: "无",
                         describe: "请各位小主们尽快下单吧~~"
                     }}>
                 </CouponDetail>

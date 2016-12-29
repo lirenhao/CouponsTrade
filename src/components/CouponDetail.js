@@ -22,7 +22,6 @@ const CouponDetail = (props) => {
                     </div>
                     <div className="center">
                         <div className="list__item__title">{DetailInformation.nickname}</div>
-                        <div className="list__item__subtitle">{DetailInformation.applyCity}</div>
                     </div>
                     <div className="right">
                         <div className="list__item__title">{DetailInformation.originalPrice}</div>
@@ -71,7 +70,6 @@ const CouponDetail = (props) => {
 
 CouponDetail.propTypes = {
     DetailInformation: React.PropTypes.shape({
-        applyCity: React.PropTypes.string.isRequired,
         nickname: React.PropTypes.string.isRequired,
         originalPrice: React.PropTypes.string.isRequired,
         sellingPrice: React.PropTypes.string.isRequired,
@@ -80,7 +78,7 @@ CouponDetail.propTypes = {
         couponType: React.PropTypes.string.isRequired,
         ticketPrice: React.PropTypes.string.isRequired,
         effectiveDate: React.PropTypes.string.isRequired,
-        //merchantPicture:React.PropTypes.string.isRequired,
+        //picture:React.PropTypes.string.isRequired,
         describe: React.PropTypes.string.isRequired
     }).isRequired
 };
