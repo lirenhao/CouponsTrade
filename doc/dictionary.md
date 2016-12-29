@@ -1,10 +1,13 @@
 [TOC]:#
 # Table of Contents
+- 
 - [字典](#字典)
     - [1 登陆signIn、注册signUp](#1-登陆signin注册signup)
     - [2 优惠券：couponsTrade](#2-优惠券couponstrade)
     - [3 订单：order](#3-订单order)
     - [4 Action](#4-action)
+##
+
 
 ## 字典
 
@@ -38,11 +41,20 @@
 - 优惠券截止日期：endDate
 - 优惠券是否支持自动退货：isAutomaticRefund
 - 优惠券类别：couponType
-  - 包括：西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他
+  - 西餐
+  - 海鲜
+  - 咖啡
+  - 面包糕点
+  - 火锅
+  - 烧烤
+  - 冰激凌
+  - 快餐
+  - 自助餐
+  - 其他
 - 券码形式：couponModality
   - 包括：图片或文本
 - 优惠券描述：describe
-  - 包括：可消费日期、可消费的时间、商户的信息暂放在此地方
+  - 包括：可消费日期、可消费的时间等信息，商户的信息暂放在此
 - 优惠券图片（与商户相关）：picture
 - 优惠券是否开启：isOpen
 - 优惠券状态：couponState
@@ -89,7 +101,7 @@
 - 登录的请求:loginRequest
 - 登录:login
 - 退出当前用户的请求:logoutRequest
-- **退出当前用户：logout**
+- **退出当前账户：logout**
 - 获取用户信息的请求：getUserInfoRequest
 - 更新用户信息的请求：updateUserInfoRequest
 - 更新用户信息：updateUserInfo

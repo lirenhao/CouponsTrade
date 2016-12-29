@@ -111,14 +111,14 @@ var state = {
             size: ""
         },
         **queryCouponList**:[{
-            couponId:"",
+            id:"",
             couponName: "",
             describe: "",
             sellingPrice: "",
             **picture: ""**(项目state中没有该值)
             },{}],
         **queryCouponInfo**: {
-            **couponId**: "",
+            **id**: "",
             couponName: "",
             isAutomaticRefund: "",
             couponType: "",
