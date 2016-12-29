@@ -171,7 +171,7 @@ export function* fetchOrderList(action) {
         if (data.from === "order") {
             route.resetPageStack([
                 {
-                    comp: com.Tabs, props: {key: "tabs" + Math.random(), newIndex: 2}
+                    comp: com.Tabs, props: {key: "tabs" + Math.random(), index: 2}
                 },
                 {
                     comp: com.OrderList, props: {key: "OrderList"}
@@ -264,6 +264,22 @@ export function* fetchOPenCoupon(action) {
     yield put(unload())
 }
 
+/**
+ * 取消订单的异步处理
+ * @param action
+ */
+
+export function* fetchCancelOrder(action) {
+    yield put(onload());
+    const res = yield call(fetch, ServerPath.CANCEL_ORDER, action.payload);
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(openCoupon(res.couponCode))
+    } else {
+        yield put(showDialog(res.msg));
+    }
+    yield put(unload())
+}
+
 
 /**
  * 搜索优惠券请求
@@ -271,7 +287,8 @@ export function* fetchOPenCoupon(action) {
  */
 export function *queryCouponsAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.QUERY_COUPONS, req.payload);
+    const {param} = req.payload;
+    const res = yield call(fetch, ServerPath.QUERY_COUPONS, {couponName: req.payload});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCoupons(res.couponList))
     } else {
@@ -286,13 +303,13 @@ export function *queryCouponsAsync(req) {
  */
 export function *publishCouponAsync(req) {
     yield put(onload());
-    const {param,navigator,routeData} = req.payload;
+    const {param, navigator, routeData} = req.payload;
     const res = yield call(fetch, ServerPath.PUBLISH_COUPON, param);
     yield put(showDialog(res.msg));
-    if(res.code == ResponseCode.SUCCESS) {
-        if(navigator.pages.length>1){
+    if (res.code == ResponseCode.SUCCESS) {
+        if (navigator.pages.length > 1) {
             navigator.popPage()
-        }else{
+        } else {
             navigator.replacePage(
                 routeData
             )

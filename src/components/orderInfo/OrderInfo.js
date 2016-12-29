@@ -6,9 +6,9 @@
  * 展示已生成订单详细信息的组件
  */
 import React, {PropTypes} from 'react'
-import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest} from '../../action'
+import {openCouponRequest, cancelOrderRequest} from '../../action'
 
 const renderToolbar = () => {
     return (
@@ -25,10 +25,38 @@ const OrderInfo = (props) => {
     const {
         orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
-        ticketPrice, endDate, describe, isOpen, sellerNickName
+        ticketPrice, endDate, describe, isOpen, sellerNickName, orderState
     }=props.orderInfo;
+
+    const returnCouponModality = () => {
+        if (orderState === "已支付" || orderState === "已完成") {
+            return (
+                <ListItem>券码
+                    <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
+                            props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
+                        }
+                        }>获取券码</span>}</div>
+                </ListItem>
+            )
+        }
+    };
+
+    const renderBottomToolbar = () => {
+        if (orderState !== "已支付" && orderState !== "已完成") {
+            return (
+                <BottomToolbar>
+                    <Button modifier="large noRadius" onClick={() => {
+                        cancelOrderRequest()
+                    }}
+                    >取消订单</Button>
+                </BottomToolbar>
+            )
+        }
+    };
+
     return (
-        <Page renderToolbar={renderToolbar}>
+        <Page renderToolbar={renderToolbar}
+              renderBottomToolbar={renderBottomToolbar}>
             <List modifier="inset marginT">
                 <ListItem>
                     <div className="left">
@@ -54,12 +82,7 @@ const OrderInfo = (props) => {
                 <ListItem>券码形式
                     <div className="right">{couponModality}</div>
                 </ListItem>
-                <ListItem>券码
-                    <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
-                            props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
-                        }
-                        }>获取券码</span>}</div>
-                </ListItem>
+                {returnCouponModality()}
                 <ListItem>卖价
                     <div className="right">{sellingPrice}</div>
                 </ListItem>

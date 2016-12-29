@@ -36,7 +36,9 @@ class SideSelect extends React.Component {
                     </Page>
                 </SplitterSide>
                 <SplitterContent>
-                    {this.props.children}
+                    <Page>
+                        {this.props.children}
+                    </Page>
                 </SplitterContent>
             </Splitter>
         )

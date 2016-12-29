@@ -38,7 +38,7 @@ let state = {
             couponName: "黑松白鹿五折券",
             describe: "298自助餐二人同行一人免单",
             sellingPrice: "400",
-            picture: ""
+            picture: "",
         }, {
             id: "100100002",
             couponName: "必胜客100元代金券",
@@ -118,7 +118,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "待支付"
             }, "100100002": {
                 orderNo: "100100002",
                 orderDate: "2016-12-22",
@@ -136,7 +137,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "待支付"
             }, "100100003": {
                 orderNo: "100100003",
                 orderDate: "2016-12-22",
@@ -154,7 +156,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "待支付"
             }, "100100004": {
                 orderNo: "100100004",
                 orderDate: "2016-12-22",
@@ -172,7 +175,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "待支付"
             }, "100100005": {
                 orderNo: "100100005",
                 orderDate: "2016-12-22",
@@ -190,7 +194,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已支付"
             }, "100100006": {
                 orderNo: "100100006",
                 orderDate: "2016-12-22",
@@ -208,7 +213,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已支付"
             }, "100100007": {
                 orderNo: "100100007",
                 orderDate: "2016-12-22",
@@ -226,7 +232,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已支付"
             }, "100100008": {
                 orderNo: "100100008",
                 orderDate: "2016-12-22",
@@ -244,7 +251,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已支付"
             }, "100100009": {
                 orderNo: "100100009",
                 orderDate: "2016-12-22",
@@ -262,7 +270,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已完成"
             }, "100100010": {
                 orderNo: "100100010",
                 orderDate: "2016-12-22",
@@ -280,7 +289,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已完成"
             },
             "100100011": {
                 orderNo: "100100011",
@@ -299,7 +309,8 @@ let state = {
                 picture: "",
                 describe: "无",
                 isOpen: false,
-                sellerNickName: "李四"
+                sellerNickName: "李四",
+                orderState: "已完成"
             },
         },
     },
@@ -311,9 +322,9 @@ let state = {
             couponType: "1",
             couponModality: "1",
             couponCode: "123456",
-            sellingPrice: "30",
-            originalPrice: "20",
-            ticketPrice: "50",
+            sellingPrice: 30,
+            originalPrice: 20,
+            ticketPrice: 50,
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
@@ -326,9 +337,9 @@ let state = {
             couponType: "1",
             couponModality: "1",
             couponCode: "1234567",
-            sellingPrice: "30",
-            originalPrice: "20",
-            ticketPrice: "50",
+            sellingPrice: 30,
+            originalPrice: 20,
+            ticketPrice: 50,
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
@@ -409,7 +420,12 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     const total = state.order.orderList.length;
     let result = [];
     for (let i = 0; i < size; i++) {
-        result.push(state.order.orderList[i])
+        let orderList = state.order.orderList[i];
+        let orderInfo = state.order.orderInfo[orderList.id];
+        result.push({
+            ...orderList,
+            orderState: orderInfo.orderState
+        })
     }
     if (state.token == token) {
         res.json({
@@ -435,7 +451,12 @@ app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
     let max = newNumber * size;
     max = max <= total ? max : total;
     for (let i = number * size; i < max; i++) {
-        result.push(state.order.orderList[i])
+        let orderList = state.order.orderList[i];
+        let orderInfo = state.order.orderInfo[orderList.id];
+        result.push({
+            ...orderList,
+            orderState: orderInfo.orderState
+        })
     }
     if (state.token == token) {
         res.json({
@@ -529,10 +550,22 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
-    const couponList = state.publishCouponList.filter((r) => {
-        return r.couponName.match(couponName)
-    });
-    res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+    const getCouponList = (arr)=>{
+        let couponList =[]
+        let i =0
+        for(var coupon of arr){
+            if(couponName==="ALL"&&i<10){
+                couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+                i++
+            }else{
+                if(coupon.couponName.match(couponName.replace(/\s/g,""))){
+                    couponList.push({id:coupon.id,couponName:coupon.couponName,sellingPrice:coupon.sellingPrice,description:coupon.describe})
+                }
+            }
+        }
+        return couponList
+    }
+    res.json({code: ResponseCode.SUCCESS, couponList: getCouponList(state.publishCouponList)})
 });
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
