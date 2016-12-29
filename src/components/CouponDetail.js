@@ -20,9 +20,7 @@ const CouponDetail = (props) => {
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
                     </div>
-                    <div className="center">
-                        <div className="list__item__title">{DetailInformation.nickname}</div>
-                    </div>
+                    <div className="center">{DetailInformation.nickname}</div>
                     <div className="right">
                         <div className="list__item__title">{DetailInformation.originalPrice}</div>
                         <div className="list__item__subtitle">{DetailInformation.sellingPrice}</div>
