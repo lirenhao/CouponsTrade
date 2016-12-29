@@ -39,7 +39,7 @@ var state = {
             size: ""
         },
         orderList: [{
-            **couponId: "",**
+            **id: "",**
             couponName: "",
             describe: "",
             sellingPrice: "",
@@ -50,7 +50,7 @@ var state = {
             orderNo:"",
             orderDate:"",
             orderTime:"",
-            **couponId: "",**
+            **id: "",**
             couponName: "",
             isAutomaticRefund: "",
             couponType: "",
@@ -69,23 +69,23 @@ var state = {
     },
     publishCoupon: {
         query: {
-                orderState: "",
-                couponName: ""
+             orderState: "",
+             couponName: ""
         },
         page: {
-                total: "",
-                number: "",
-                size: ""
+             total: "",
+             number: "",
+             size: ""
         },
         publishCouponList: [{
-            couponId: "1212232321",
+            id: "1212232321",
             couponName: "呷哺呷哺",
             describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
             sellingPrice: "70",
             picture: ""
         }],
         publishCouponInfo: {
-            couponId: "",
+            id: "",
             couponName: "呷哺呷哺",
             isAutomaticRefund: "是",
             couponType: "西餐",
@@ -162,7 +162,7 @@ var state={
           },                                                                                  
           订单列表(orderList):是一个数组                                              
           [{                                                                                  
-              优惠券唯一标识（couponId）,                                                                             
+              优惠券唯一标识（id）,                                                                             
               名称(name),                                                                     
               描述(describe),                                                                     
               卖价(sellingPrice),                                                             
@@ -192,7 +192,7 @@ var state={
           }                                                                                   
        },                                                                                     
                                                                                               
-      用户已发布过的优惠券信息(publishCoupon)：                                                     
+      用户已发布过的优惠券信息(publishedCoupons)：                                                     
       {                                                                                       
           查询条件(query):                                                                    
           {                                                                                   
@@ -204,17 +204,17 @@ var state={
             当前加载第几页(number),                                                          
             每次加载多少条(size),                                                            
          },                                                                                  
-         优惠券列表的信息(publishCouponList):是一个数组                                              
+         优惠券列表的信息(CouponList):是一个数组                                              
          [{                                                                                  
-             优惠券唯一标识（couponId）,                                                                             
+             优惠券唯一标识（id）,                                                                             
              名称(couponName),                                                                     
              描述(describe),                                                                     
              卖价(sellingPrice),                                                             
              商家图片(picture),                                                               
          },{},{}],                                                                           
-         优惠券详细的信息(publishCouponInfo)                                                         
+         优惠券详细的信息(CouponInfo)                                                         
          {                                                                                   
-             优惠券唯一标识（couponId），                                                                             
+             优惠券唯一标识（id），                                                                             
              优惠券名称(couponName)，                                                               
              是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
              优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               
@@ -231,7 +231,7 @@ var state={
           }                                                                                     
       },                                                                                        
                                                                                               
-      查询优惠券（queryCoupon）:                                                                       
+      查询优惠券信息（queryCoupons）:                                                                       
       {                                                                                            
              查询条件(query): 
              {                                                                                   
@@ -243,17 +243,17 @@ var state={
                 当前加载第几页(number),                                                          
                 每次加载多少条(size),                                                            
             },                                                                                  
-            优惠券列表的信息(queryCouponList):是一个数组                                              
+            优惠券列表的信息(CouponList):是一个数组                                              
             [{                                                                                  
-                优惠券唯一标识（couponId）,                                                                             
+                优惠券唯一标识（id）,                                                                             
                 名称(couponName),                                                                     
                 描述(describe),                                                                     
                 卖价(sellingPrice),                                                             
                 商家图片(picture)                                                               
             },{},{}],                                                                           
-            优惠券详细的信息(queryCouponInfo)                                                         
+            优惠券详细的信息(CouponInfo)                                                         
             {                                                                                   
-               优惠券唯一标识（couponId），                                                                             
+               优惠券唯一标识（id），                                                                             
                优惠券名称(couponName)，                                                               
                是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
                优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               

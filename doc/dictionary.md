@@ -31,7 +31,7 @@
 - 下架优惠券:soldOut
 - 编辑优惠券：edit
 - 查询优惠券：query
-- **优惠券唯一标识：couponId**
+- **优惠券唯一标识：id**
 - 优惠券名称：couponName
 - 优惠券码：couponCode
 - 优惠券原价：originalPrice
