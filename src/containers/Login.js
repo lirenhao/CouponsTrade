@@ -7,7 +7,7 @@
  */
 import React from "react";
 import {connect} from "react-redux";
-import {loginRequest, signUpRequest} from "../action";
+import {loginRequest, signUpRequest} from "../actions";
 import {Page, Toolbar, Button, BackButton} from "react-onsenui";
 import SignUp from "../components/SignUp";
 import SignIn from "../components/SignIn";

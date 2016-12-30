@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {login, logout} from "../action"
+import {login, logout} from "../actions"
 
 export default createReducer({
     [login]: (state, token) => token,

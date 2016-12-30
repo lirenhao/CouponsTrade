@@ -11,7 +11,7 @@ import PublishCoupon from '../components/sellCoupon/PublishCoupon'
 import Tabs from './Tabs'
 import ons from 'onsenui'
 import {connect} from 'react-redux'
-import {publishCouponRequest} from '../action'
+import {publishCouponRequest} from '../actions'
 
 
 class PublishCoupons extends React.Component{

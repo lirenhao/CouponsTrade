@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {initialPage, setOrderPage} from '../../action'
+import {initialPage, setOrderPage} from '../../actions'
 
 export default createReducer({
     [initialPage]: (state, payload) => {

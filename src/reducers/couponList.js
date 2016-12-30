@@ -7,7 +7,7 @@
  */
 
 
-import {setCoupons, insertCoupons} from '../action'
+import {setCoupons, insertCoupons} from '../actions'
 import {createReducer} from 'redux-act'
 
 

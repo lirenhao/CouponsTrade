@@ -10,7 +10,7 @@
 import React from 'react'
 import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import {queryCouponsRequest, getCouponDetailsRequest} from '../action'
+import {queryCouponsRequest, getCouponDetailsRequest} from '../actions'
 import {connect} from 'react-redux'
 
 

@@ -11,7 +11,7 @@ import EditCoupon from '../components/sellCoupon/EditCoupon'
 import SellingCoupons from './SellCoupons'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import ons from 'onsenui'
-import {editUserCouponRequest} from '../action'
+import {editUserCouponRequest} from '../actions'
 import {connect} from 'react-redux'
 
 class EditCoupons extends React.Component {

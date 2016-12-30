@@ -21,7 +21,7 @@ import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
 import OrderList from './OrderList'
-import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest,getUserCouponsRequest} from '../action'
+import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest,getUserCouponsRequest} from '../actions'
 
 class Mine extends React.Component {
     render() {

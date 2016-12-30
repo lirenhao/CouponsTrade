@@ -11,7 +11,7 @@ import {Page, Toolbar, BackButton, BottomToolbar, Button} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import PayOrder from './PayOrder'
 import {connect} from 'react-redux'
-import {createOrderRequest} from '../action'
+import {createOrderRequest} from '../actions'
 
 class ViewCouponsDetail extends React.Component {
 

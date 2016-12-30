@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {updateUserInfo} from "../action"
+import {updateUserInfo} from "../actions"
 
 export default createReducer({
     [updateUserInfo]: (state, userInfo) => {

@@ -5,7 +5,7 @@ import Tabs from "./Tabs";
 import DevTools from "./DevTools";
 import Dialog from "../components/Dialog";
 import Loading from "../components/Loading";
-import {hideDialog} from "../action";
+import {hideDialog} from "../actions";
 import uuid from "uuid";
 
 const renderPage = (route, navigator) => {

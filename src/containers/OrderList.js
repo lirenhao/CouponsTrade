@@ -11,7 +11,7 @@ import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsen
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import PullRefresh from '../components/PullRefresh'
 import PushRefresh from '../components/PushRefresh'
-import {getOrderInfoRequest, insertOrderListRequest} from '../action'
+import {getOrderInfoRequest, insertOrderListRequest} from '../actions'
 
 class OrderList extends React.Component {
     renderToolbar = () => {

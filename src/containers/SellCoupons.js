@@ -9,7 +9,7 @@ import React from 'react'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import SellingCouponList from '../components/sellCoupon/SellingCouponList'
 import PublishCouponsDetail from './PublishCouponsDetail'
-import {getCouponDetailsRequest} from '../action'
+import {getCouponDetailsRequest} from '../actions'
 import {connect} from 'react-redux'
 
 class SellingCoupons extends React.Component {

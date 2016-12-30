@@ -6,7 +6,7 @@
  * <文件描述>
  */
 
-import {setUserCoupons, insertUserCoupons} from '../../action'
+import {setUserCoupons, insertUserCoupons} from '../../actions'
 import {createReducer} from 'redux-act'
 
 

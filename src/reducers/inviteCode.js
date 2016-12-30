@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {updateInviteCode} from "../action"
+import {updateInviteCode} from "../actions"
 
 export default createReducer({
     [updateInviteCode]: (state, inviteCode) => inviteCode

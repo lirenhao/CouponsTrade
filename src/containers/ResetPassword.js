@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton} from "react-onsenui";
-import {verifyPasswordRequest, updatePasswordRequest} from "../action";
+import {verifyPasswordRequest, updatePasswordRequest} from "../actions";
 import OldPassword from "../components/OldPassword";
 import NewPassword from "../components/NewPassword";
 

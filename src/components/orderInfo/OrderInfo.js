@@ -8,7 +8,7 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest} from '../../action'
+import {openCouponRequest, cancelOrderRequest} from '../../actions'
 
 const renderToolbar = () => {
     return (

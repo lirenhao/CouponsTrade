@@ -10,7 +10,7 @@ import {Page, Toolbar, BackButton, Button, BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
 import {connect}  from 'react-redux'
-import {soldOutCouponRequest} from  '../action'
+import {soldOutCouponRequest} from  '../actions'
 
 class PublishCouponsDetail extends React.Component {
     render() {

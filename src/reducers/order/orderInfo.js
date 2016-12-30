@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {setOrderInfo, openCoupon} from '../../action'
+import {setOrderInfo, openCoupon} from '../../actions'
 
 export default createReducer({
     [setOrderInfo]: (state, payload) => payload,

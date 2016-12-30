@@ -10,7 +10,7 @@ import{Page, Toolbar, BackButton} from 'react-onsenui'
 import Address from '../components/orderInfo/Address'
 import PaymentForm from '../components/orderInfo/PaymentForm'
 import {connect} from 'react-redux'
-import {payRequest} from '../action'
+import {payRequest} from '../actions'
 import OrderResult from '../components/orderInfo/OrderResult'
 
 // const data = {

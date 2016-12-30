@@ -27,7 +27,7 @@ import {
     insertUserCouponDetails,
     updateSoldOutCoupon,
     updateUserCoupon
-} from "../action";
+} from "../actions";
 
 /**
  * 注册的异步处理

@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton, Button} from "react-onsenui";
-import {updateUserInfoRequest} from "../action";
+import {updateUserInfoRequest} from "../actions";
 import UserShow from "../components/UserShow";
 import UserEdit from "../components/UserEdit";
 
