@@ -9,6 +9,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
 import OrderInfo from '../components/orderInfo/OrderInfo'
+import PullRefresh from '../components/PullRefresh'
 import PushRefresh from '../components/PushRefresh'
 import {getOrderInfoRequest, insertOrderListRequest} from '../action'
 
@@ -49,9 +50,15 @@ class OrderList extends React.Component {
     }
 
     render() {
-        const hasMore = this.props.orderList.length < this.props.total
         return (
             <Page renderToolbar={this.renderToolbar}>
+                <PullRefresh onRefresh={(done) => {
+                    console.log("Pull to refresh")
+                    {/* TODO 刷新完成之后在调用done()*/}
+                    setTimeout(() => {
+                        done()
+                    }, 500)
+                }}/>
                 <List
                     modifier="order"
                     dataSource={this.props.orderList}
