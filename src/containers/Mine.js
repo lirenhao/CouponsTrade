@@ -21,7 +21,13 @@ import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
 import SellingCoupons from './SellCoupons'
 import OrderList from './OrderList'
-import {createInviteCodeRequest, getUserInfoRequest, getOrderListRequest, logoutRequest,getUserCouponsRequest} from '../actions'
+import {
+    createInviteCodeRequest,
+    getUserInfoRequest,
+    getOrderListRequest,
+    logoutRequest,
+    getUserCouponsRequest
+} from '../actions'
 
 class Mine extends React.Component {
     render() {
@@ -58,7 +64,7 @@ class Mine extends React.Component {
                 </List>
                 <List modifier='inset marginT'>
                     <ListItem modifier='chevron' onClick={() =>
-                        this.props.onGetCoupons(this.props.token,this.props.navigator,{
+                        this.props.onGetCoupons(this.props.token, this.props.navigator, {
                             comp: SellingCoupons,
                             props: {key: "SellingCoupons"}
                         })
@@ -78,12 +84,12 @@ class Mine extends React.Component {
                     </ListItem>
                 </List>
                 <Button modifier="large outline marginTLR" onClick={() => {
-                    if (this.props.token == "")
-                        this.props.navigator.pushPage({comp: Login, props: {key: "login", index: 2}})
-                    else
-                        this.props.logout(this.props.navigator, {comp: Login, props: {key: "login", index: 2}})
+                    this.props.logout(
+                        this.props.navigator,
+                        {comp: Login, props: {key: "login", index: 2}}
+                    )
                 }}>
-                    {this.props.token == "" ? "重新登录" : "退出当前账号"}
+                    退出当前账号
                 </ Button >
             </Page>
         )
@@ -93,7 +99,7 @@ class Mine extends React.Component {
 const mapStateToProps = (state) => ({
     token: state.token,
     page: state.order.page
-});
+})
 
 const mapDispatchToProps = (dispatch) => ({
     getUserInfo: (token, navigator) => {
@@ -108,9 +114,9 @@ const mapDispatchToProps = (dispatch) => ({
     logout: (navigator, router) => {
         dispatch(logoutRequest({navigator, router}))
     },
-    onGetCoupons: (token, navigator, routeData)=> {
+    onGetCoupons: (token, navigator, routeData) => {
         dispatch(getUserCouponsRequest({token, navigator, routeData}))
     }
-});
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Mine)

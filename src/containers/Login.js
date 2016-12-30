@@ -32,7 +32,6 @@ class Login extends React.Component {
     loginToolbar() {
         return (
             <Toolbar>
-                <div className='left'><BackButton/></div>
                 <div className='center'>登录</div>
                 <div className='right'>
                     <Button modifier='quiet signUp' onClick={() =>
