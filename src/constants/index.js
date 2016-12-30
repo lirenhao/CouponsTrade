@@ -1,0 +1,77 @@
+export const ONLOAD = 'ONLOAD'
+export const UNLOAD = 'UNLOAD'
+export const SHOW_DIALOG = 'SHOW_DIALOG'
+export const HIDE_DIALOG = 'HIDE_DIALOG'
+export const SIGN_UP_REQUEST = 'SIGN_UP_REQUEST'
+export const LOGIN_REQUEST = 'LOGIN_REQUEST'
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST'
+export const LOGIN = 'LOGIN'
+export const LOGOUT = 'LOGOUT'
+export const GET_USER_INFO_REQUEST = 'GET_USER_INFO_REQUEST'
+export const UPDATE_USER_INFO_REQUEST = 'UPDATE_USER_INFO_REQUEST'
+export const UPDATE_USER_INFO = 'UPDATE_USER_INFO'
+export const CREATE_INVITE_CODE_REQUEST = 'CREATE_INVITE_CODE_REQUEST'
+export const UPDATE_INVITE_CODE = 'UPDATE_INVITE_CODE'
+export const VERIFY_PASSWORD_REQUEST = 'VERIFY_PASSWORD_REQUEST'
+export const UPDATE_PASSWORD_REQUEST = 'UPDATE_PASSWORD_REQUEST'
+export const PUBLISH_COUPON_REQUEST = 'PUBLISH_COUPON_REQUEST'
+export const QUERY_COUPONS_REQUEST = 'QUERY_COUPONS_REQUEST'
+export const SET_COUPON_PAGE = 'SET_COUPON_PAGE'
+export const SET_COUPONS = 'SET_COUPONS'
+export const INSERT_COUPONS = 'INSERT_COUPONS'
+export const GET_COUPON_DETAILS_REQUEST = 'GET_COUPON_DETAILS_REQUEST'
+export const INSERT_COUPON_DETAILS = 'INSERT_COUPON_DETAILS'
+export const GET_USER_COUPONS_REQUEST = 'GET_USER_COUPONS_REQUEST'
+export const SET_USER_COUPON_PAGE = 'SET_USER_COUPON_PAGE'
+export const SET_USER_COUPONS = 'SET_USER_COUPONS'
+export const INSERT_USER_COUPONS = 'INSERT_USER_COUPONS'
+export const INSERT_USER_COUPON_DETAILS = 'INSERT_USER_COUPON_DETAILS'
+export const SOLD_OUT_COUPON_REQUEST = 'SOLD_OUT_COUPON_REQUEST'
+export const UPDATE_SOLD_OUT_COUPON = 'UPDATE_SOLD_OUT_COUPON'
+export const EDIT_USER_COUPON_REQUEST = 'EDIT_USER_COUPON_REQUEST'
+export const UPDATE_USER_COUPON = 'UPDATE_USER_COUPON'
+export const CREATE_ORDER_REQUEST = 'CREATE_ORDER_REQUEST'
+export const PAY_REQUEST = 'PAY_REQUEST'
+export const CANCEL_ORDER_REQUEST = 'CANCEL_ORDER_REQUEST'
+export const GET_ORDER_LIST_REQUEST = 'GET_ORDER_LIST_REQUEST'
+export const INSERT_ORDER_LIST_REQUEST = 'INSERT_ORDER_LIST_REQUEST'
+export const INITIAL_PAGE = 'INITIAL_PAGE'
+export const SET_ORDER_PAGE = 'SET_ORDER_PAGE'
+export const SET_ORDER_LIST = 'SET_ORDER_LIST'
+export const INSERT_ORDER_LIST = 'INSERT_ORDER_LIST'
+export const GET_ORDER_INFO_REQUEST = 'GET_ORDER_INFO_REQUEST'
+export const SET_ORDER_INFO = 'SET_ORDER_INFO'
+export const OPEN_COUPON_REQUEST = 'OPEN_COUPON_REQUEST'
+export const OPEN_COUPON = 'OPEN_COUPON'
+
+// 服务器地址
+export const ServerPath = {
+    LOGIN: 'login',
+    LOGOUT: 'logout',
+    SIGN_UP: 'signUp',
+    GET_USER_INFO: 'getUserInfo',
+    UPDATE_USER_INFO: 'updateUserInfo',
+    CREATE_INVITE_CODE: 'createInviteCode',
+    VERIFY_PASSWORD: 'verifyPassword',
+    UPDATE_PASSWORD: 'updatePassword',
+    PUBLISH_COUPON: 'publishCoupon',
+    GET_COUPON_DETAILS: 'getCouponDetails',
+    GET_USER_COUPONS: 'getUserCoupons',
+    EDIT_USER_COUPON: 'editUserCoupon',
+    CREATE_ORDER: 'createOrder',
+    GET_ORDER_LIST: 'getOrderList',
+    INSET_ORDER_LIST: 'insertOrderList',
+    GET_ORDER_INFO: 'getOrderInfo',
+    PAY: 'pay',
+    OPEN_COUPON: 'openCoupon',
+    CANCEL_ORDER: 'cancelOrder',
+    QUERY_COUPONS: 'queryCoupons',
+    SOLD_OUT_COUPON: 'soldOutCoupon',
+};
+
+// 响应码
+export const ResponseCode = {
+    SUCCESS: 'success',
+    FAIL: 'fail',
+    TIMEOUT: 'timeout'
+};
