@@ -324,8 +324,8 @@ export function *publishCouponAsync(req) {
  */
 export function *getCouponDetailsAsync(req) {
     yield put(onload());
-    const {token,id, navigator, routeData} = req.payload;
-    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id,token:token});
+    const {token, id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token});
     if (res.code == ResponseCode.SUCCESS) {
         if (res.flag === "1") {
             yield put(insertUserCouponDetails(res.couponInfo))
@@ -367,9 +367,15 @@ export function *getUserCouponsAsync(req) {
  */
 export function *soldOutCouponAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.SOLD_OUT_COUPON, req.payload);
+    const {token, id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.SOLD_OUT_COUPON, {token: token, id: id});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(updateSoldOutCoupon(res.couponState))
+        if ( typeof routeData !== "undefined") {
+            navigator.replacePage(routeData)
+        } else {
+            navigator.popPage()
+        }
     } else {
         yield put(showDialog(res.msg))
     }
@@ -382,9 +388,11 @@ export function *soldOutCouponAsync(req) {
  */
 export function *editUserCouponAsync(req) {
     yield put(onload());
-    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, req.payload);
+    const {token, id, navigator, routeData} = req.payload;
+    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, {token: token, id: id});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(updateUserCoupon(res.couponState))
+        navigator.replacePage(routeData)
     } else {
         yield put(showDialog(res.msg))
     }

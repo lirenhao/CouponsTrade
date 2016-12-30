@@ -23,10 +23,10 @@ const CouponDetail = (props) => {
                     <div className="center_nickname">{DetailInformation.nickname}</div>
                     <div className="right">
                         <div className="list__item__title">
-                            <PriceComponent price={DetailInformation.originalPrice}/>
+                            <PriceComponent price={DetailInformation.sellingPrice}/>
                         </div>
                         <div className="list__item__subtitle">
-                            <PriceComponent price={DetailInformation.sellingPrice}/>
+                            <PriceComponent price={DetailInformation.ticketPrice}/>
                         </div>
                     </div>
                 </ListItem>
@@ -44,12 +44,12 @@ const CouponDetail = (props) => {
                     <div className="center">优惠券类别</div>
                     <div className="right">{DetailInformation.couponType==="1"?"餐饮":"其他"}</div>
                 </ListItem>
-                <ListItem>
-                    <div className="center">优惠券面值</div>
-                    <div className="right">
-                        <PriceComponent price={DetailInformation.ticketPrice}/>
-                    </div>
-                </ListItem>
+                {/*<ListItem>*/}
+                    {/*<div className="center">优惠券面值</div>*/}
+                    {/*<div className="right">*/}
+                        {/*<PriceComponent price={DetailInformation.originalPrice}/>*/}
+                    {/*</div>*/}
+                {/*</ListItem>*/}
                 <ListItem>
                     <div className="center">截止日期</div>
                     <div className="right">{DetailInformation.endDate}</div>

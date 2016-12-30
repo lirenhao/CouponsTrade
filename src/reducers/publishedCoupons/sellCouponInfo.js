@@ -14,7 +14,7 @@ import {createReducer} from 'redux-act'
 export default createReducer({
     [insertUserCouponDetails]: (state, couponInfo)=> couponInfo,
     [updateUserCoupon]: (state, couponState)=> {
-        return {state, couponState}
+        return {...state, couponState}
     },
     [updateSoldOutCoupon]:(state,couponState) =>{
         return{...state,couponState}

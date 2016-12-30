@@ -10,7 +10,7 @@ import {Page, Toolbar, BackButton, Button, BottomToolbar} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
 import {connect}  from 'react-redux'
-import {soldOutCouponRequest,editUserCouponRequest} from  '../action'
+import {soldOutCouponRequest, editUserCouponRequest} from  '../action'
 
 class PublishCouponsDetail extends React.Component {
     render() {
@@ -27,14 +27,13 @@ class PublishCouponsDetail extends React.Component {
                 <div className="tab-bar">
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
-                                onClick={() => this.props.navigator.replacePage({
-                                    comp: EditCoupons, props: {key: "EditCoupons"}
-                                })}>编辑
+                                onClick={() => this.props.onEditCoupon(this.props.token,this.props.couponInfo.id, this.props.navigator)
+                                }>编辑
                         </button>
                     </div>
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
-                                onClick={() => this.props.navigator.popPage()
+                                onClick={() => this.props.onSoldOutCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
                                 }>下架
                         </button>
                     </div>
@@ -49,20 +48,25 @@ class PublishCouponsDetail extends React.Component {
 }
 
 const mapStateToProps = (state)=>(
-{couponInfo: state.publishedCoupons.couponInfo}
+{
+    couponInfo: state.publishedCoupons.couponInfo,
+    token: state.token
+}
 )
 
-const mapDispatchToProps =(dispatch)=>(
+const mapDispatchToProps = (dispatch)=>(
 {
-    onEditCoupon:(id,navigator,routeData)=>{
-        dispatch(editUserCouponRequest({id,navigator,routeData:{
-            comp: EditCoupons, props: {key: "EditCoupons"}
-        }}))
+    onEditCoupon: (token, id, navigator)=> {
+        dispatch(soldOutCouponRequest({
+            token, id, navigator, routeData: {
+                comp: EditCoupons, props: {key: "EditCoupons"}
+            }
+        }))
     },
-    onSoldOutCoupon:(id,navigator)=>{
-        dispatch(soldOutCouponRequest({id,navigator}))
+    onSoldOutCoupon: (token, id, navigator)=> {
+        dispatch(soldOutCouponRequest({token, id, navigator}))
     }
 }
 )
 
-export default connect(mapStateToProps,mapDispatchToProps)(PublishCouponsDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(PublishCouponsDetail)
