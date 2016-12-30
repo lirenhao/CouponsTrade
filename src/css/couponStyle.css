@@ -104,7 +104,12 @@ label.text-input__container {
     font-size: 0.8em;
     color: #aaa;
 }
-
+.list--limit .center .list__item__subtitle {
+    width: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 .list--limit .center b {
     display: block;
     font-style: normal;
