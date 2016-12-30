@@ -526,7 +526,7 @@ app.post(`/${ServerPath.OPEN_COUPON}`, (req, res) => {
 
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
-    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
+    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body
     const isHave = (arr) => {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i].couponCode === couponCode) {
@@ -539,23 +539,24 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
         if (isHave(state.publishCouponList)) {
             res.json({code: ResponseCode.FAIL, msg: "该优惠券码已发布过"})
         } else {
-            const len = state.publishCouponList.length;
+            const len = state.publishCouponList.length + 1;
             const userName = state.login.username;
             state.publishCouponList.push({
-                id: len,
+                id: len.toString(),
                 couponName,
-                isAutomaticRefund,
-                couponType,
-                couponModality,
+                isAutomaticRefund: isAutomaticRefund === "true",
+                couponType: typeof couponType === "undefined" ? "0" : couponType,
+                couponModality: typeof couponModality === "undefined" ? "0" : couponModality,
                 couponCode,
-                sellingPrice,
-                originalPrice,
-                ticketPrice,
+                sellingPrice: Number(sellingPrice),
+                originalPrice: Number(originalPrice),
+                ticketPrice: Number(ticketPrice),
                 endDate,
                 describe,
                 userName,
                 couponState: "1"
             });
+            console.log(state.publishCouponList)
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
@@ -599,9 +600,9 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, token} = req.body;
-    let username =""
-    if(token!==undefined){
-         username = state.login.username
+    let username = ""
+    if (token !== undefined) {
+        username = state.login.username
     }
     const couponList = state.publishCouponList.filter((r) => {
         return r.id === id
@@ -674,28 +675,27 @@ app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
-    const {id, token, couponName, isAutomaticRefund, couponType, couponCode, couponModality, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
-    if (state.token == token) {
+    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName, couponState} = req.body
+    if (state.token === token) {
         const couponInfo = {
             id,
             couponName,
-            isAutomaticRefund,
-            couponType,
-            couponModality,
+            isAutomaticRefund: isAutomaticRefund === "true",
+            couponType: typeof couponType === "undefined" ? "0" : couponType,
+            couponModality: typeof couponModality === "undefined" ? "0" : couponModality,
             couponCode,
-            sellingPrice,
-            originalPrice,
-            ticketPrice,
+            sellingPrice: Number(sellingPrice),
+            originalPrice: Number(originalPrice),
+            ticketPrice: Number(ticketPrice),
             endDate,
             describe,
-            userName: state.login.username,
+            userName,
             couponState: "1"
         };
-        const publishCouponList = state.publishCouponList.map((r) => {
+        state.publishCouponList = state.publishCouponList.map((r) => {
             return r.id === id ? r = couponInfo : r
         });
-        state = [...state, publishCouponList];
-        res.json({code: ResponseCode.SUCCESS, couponState: "2"})
+        res.json({code: ResponseCode.SUCCESS, couponInfo: couponInfo})
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户不能编辑，请重新登录"})
     }

@@ -348,7 +348,6 @@ export function *getCouponDetailsAsync(req) {
 export function *getUserCouponsAsync(req) {
     yield put(onload());
     const {token, navigator, routeData} = req.payload;
-    //console.log(token)
     const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token});
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setUserCoupons(res.couponList))
@@ -388,11 +387,11 @@ export function *soldOutCouponAsync(req) {
  */
 export function *editUserCouponAsync(req) {
     yield put(onload());
-    const {token, id, navigator, routeData} = req.payload;
-    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, {token: token, id: id});
+    const {param, token, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, {token: token, ... param})
     if (res.code == ResponseCode.SUCCESS) {
         yield put(updateUserCoupon(res.couponState))
-        navigator.replacePage(routeData)
+        navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
     }

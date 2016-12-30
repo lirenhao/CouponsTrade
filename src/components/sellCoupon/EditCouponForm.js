@@ -42,8 +42,8 @@ const validate = (value) => {
     if (!value.sellingPrice) {
         errors.sellingPrice = 'Required'
     }
-    if (!value.effectiveDate) {
-        errors.effectiveDate = 'Required'
+    if (!value.endDate) {
+        errors.endDate = 'Required'
     }
     return errors
 }

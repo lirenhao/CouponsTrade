@@ -66,12 +66,12 @@ const CouponFields = () => {
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <Field type="number" name="TicketPrice" component={InputComponent} placeholder="券面价"/>
+                        <Field type="number" name="ticketPrice" component={InputComponent} placeholder="券面价"/>
                     </div>
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <Field type="date" name="effectiveDate" component={InputComponent} placeholder=""/>
+                        <Field type="date" name="endDate" component={InputComponent} placeholder=""/>
                     </div>
                 </ListItem>
                 <ListItem>
@@ -83,7 +83,7 @@ const CouponFields = () => {
                     </div>
                 </ListItem>
                 <ListItem>
-                    <Field name="description" component={TextAreaComponent} placeholder="描述"/>
+                    <Field name="describe" component={TextAreaComponent} placeholder="描述"/>
                 </ListItem>
             </List>
         </div>

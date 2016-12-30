@@ -23,12 +23,12 @@ EditCoupon.propTypes = {
     couponInfo: React.PropTypes.shape({
         couponName: React.PropTypes.string.isRequired,
         couponCode:React.PropTypes.string.isRequired,
-        originalPrice:React.PropTypes.string.isRequired,
-        sellingPrice: React.PropTypes.string.isRequired,
-        TicketPrice:React.PropTypes.string.isRequired,
-        effectiveDate:React.PropTypes.string.isRequired,
+        originalPrice:React.PropTypes.number.isRequired,
+        sellingPrice: React.PropTypes.number.isRequired,
+        ticketPrice:React.PropTypes.number.isRequired,
+        endDate:React.PropTypes.string.isRequired,
         isAutomaticRefund:React.PropTypes.bool.isRequired,
-        description: React.PropTypes.string.isRequired
+        describe: React.PropTypes.string.isRequired
     }).isRequired,
     onSubmit: React.PropTypes.func.isRequired
 };
