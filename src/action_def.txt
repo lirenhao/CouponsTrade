@@ -43,3 +43,4 @@ getOrderInfoRequest
 setOrderInfo
 openCouponRequest
 openCoupon
+refreshOrderListRequest
