@@ -307,7 +307,6 @@ export function* fetchCancelOrder(action) {
  */
 export function *queryCouponsAsync(req) {
 	yield put(onload());
-	const couponName = req.payload
 	const res = yield call(fetch, ServerPath.QUERY_COUPONS, {couponName: req.payload});
 	if (res.code == ResponseCode.SUCCESS) {
 		yield put(setCoupons(res.couponList))
@@ -348,14 +347,8 @@ export function *getCouponDetailsAsync(req) {
 	const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token,dataFlag:dataFlag});
 	if (res.code == ResponseCode.SUCCESS) {
 		if (res.flag === "1") {
-			console.log(res.flag)
-			console.log(res.couponInfo)
-			console.log("------------------")
 			yield put(insertUserCouponDetails(res.couponInfo))
 		} else {
-			console.log(res.flag)
-			console.log(res.couponInfo)
-			console.log("------------------")
 			yield put(insertCouponDetails(res.couponInfo))
 		}
 		navigator.pushPage(
