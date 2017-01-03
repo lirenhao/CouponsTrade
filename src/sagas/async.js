@@ -171,10 +171,10 @@ export function* fetchOrderList(action) {
         if (data.from === "order") {
             route.resetPageStack([
                 {
-                    comp: com.Tabs, props: {key: "tabs" + Math.random(), index: 2}
+                    comp: com.Tabs, props: {key: "tabs", index: 2}
                 },
                 {
-                    comp: com.OrderList, props: {key: "OrderList"}
+                    comp: com.OrderList, props: {key: "OrderList" + Math.random()}
                 },
             ])
         } else {
