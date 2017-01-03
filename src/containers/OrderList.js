@@ -17,7 +17,7 @@ class OrderList extends React.Component {
     renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'><BackButton/></div>
+                <div className='left'><BackButton>返回</BackButton></div>
                 <div className="center">我的优惠券</div>
             </Toolbar>
         )
@@ -54,7 +54,8 @@ class OrderList extends React.Component {
             <Page renderToolbar={this.renderToolbar}>
                 <PullRefresh onRefresh={(done) => {
                     console.log("Pull to refresh")
-                    {/* TODO 刷新完成之后在调用done()*/}
+                    {/* TODO 刷新完成之后在调用done()*/
+                    }
                     setTimeout(() => {
                         done()
                     }, 500)
