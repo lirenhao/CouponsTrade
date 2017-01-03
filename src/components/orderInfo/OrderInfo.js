@@ -8,7 +8,7 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest} from '../../actions'
+import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest, receiptOrderRequest} from '../../actions'
 import PayOrder from '../../containers/PayOrder'
 
 const renderToolbar = () => {
@@ -74,7 +74,17 @@ const OrderInfo = (props) => {
         } else if (orderState === "已支付") {
             return (
                 <BottomToolbar modifier="material">
-                    <Button modifier="large noRadius">确认收货</Button>
+                    <Button modifier="large noRadius"
+                            onClick={e => {
+                                props.dispatch(receiptOrderRequest({
+                                    token: props.token,
+                                    id: orderNo,
+                                    route: props.navigator,
+                                    dispatch: props.dispatch,
+                                    refreshOrderListRequest
+                                }));
+                            }}
+                    >确认收货</Button>
                 </BottomToolbar>
             )
         }
