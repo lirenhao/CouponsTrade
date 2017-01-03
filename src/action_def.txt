@@ -47,3 +47,5 @@ refreshOrderListRequest
 refreshCouponListRequest
 refreshUserCouponListRequest
 receiptOrderRequest
+setCouponsQuery
+setUserCouponsQuery

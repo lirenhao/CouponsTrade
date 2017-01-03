@@ -50,3 +50,5 @@ export const refreshOrderListRequest = createAction(Const.REFRESH_ORDER_LIST_REQ
 export const refreshCouponListRequest = createAction(Const.REFRESH_COUPON_LIST_REQUEST)
 export const refreshUserCouponListRequest = createAction(Const.REFRESH_USER_COUPON_LIST_REQUEST)
 export const receiptOrderRequest = createAction(Const.RECEIPT_ORDER_REQUEST)
+export const setCouponsQuery = createAction(Const.SET_COUPONS_QUERY)
+export const setUserCouponsQuery = createAction(Const.SET_USER_COUPONS_QUERY)
