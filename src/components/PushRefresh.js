@@ -12,12 +12,7 @@ import {Icon} from 'react-onsenui'
 class PushRefresh extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {
-            boxShow: false,
-            refreshShow: false,
-            upShow: false,
-            downShow: false
-        }
+        this.state = {refreshShow: false}
     }
 
     render() {
@@ -34,6 +29,7 @@ class PushRefresh extends React.Component {
                     />
                     <div className={this.state.refreshShow ? "pushRefresh in" : "pushRefresh"}>
                         <Icon icon="ion-refresh"/>
+                        加载中…
                     </div>
                     <WayPoint onEnter={this.props.onRefresh}/>
                     <div>
@@ -43,7 +39,9 @@ class PushRefresh extends React.Component {
             )
         else
             return (
-                <div className="pushRefresh in">没有更多数据</div>
+                <div className="pushRefresh in">
+                    没有更多数据
+                </div>
             )
     }
 }
