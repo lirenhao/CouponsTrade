@@ -29,6 +29,8 @@ export const ServerPath = {
     CANCEL_ORDER: 'cancelOrder',
     QUERY_COUPONS: 'queryCoupons',
     SOLD_OUT_COUPON: 'soldOutCoupon',
+    REFRESH_COUPON_LIST:'refreshCouponList',
+    REFRESH_USER_COUPON_LIST:'refreshUserCouponList'
 }
 
 // 响应码

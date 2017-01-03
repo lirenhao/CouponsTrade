@@ -46,3 +46,4 @@ openCoupon
 refreshOrderListRequest
 refreshCouponListRequest
 refreshUserCouponListRequest
+receiptOrderRequest
