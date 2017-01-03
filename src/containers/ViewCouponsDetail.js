@@ -32,7 +32,7 @@ class ViewCouponsDetail extends React.Component {
                 </BottomToolbar>
             )}>
                 <CouponDetail
-                    DetailInformation={this.props.DetailInformation}>
+                    DetailInformation={this.props.couponInfo}>
                 </CouponDetail>
             </Page>
         )
@@ -42,8 +42,8 @@ class ViewCouponsDetail extends React.Component {
 
 const mapStateToProps = (state)=>(
 {
-    DetailInformation: state.couponInfo,
-    token:"1234567890"
+    couponInfo: state.queryCoupons.couponInfo,
+    token:state.token
 }
 )
 

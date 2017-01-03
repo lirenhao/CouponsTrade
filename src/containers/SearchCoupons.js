@@ -30,7 +30,7 @@ class SearchCoupons extends React.Component {
 }
 
 const mapStateToProps = (state)=>({
-    couponList: state.couponList,
+    couponList: state.queryCoupons.couponList,
     token:state.token
 }
 )
