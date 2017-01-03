@@ -22,6 +22,7 @@ class SearchCoupons extends React.Component {
                               onSearch={(value)=> {
                                   this.props.onSearch(value)
                               }}
+                              token={this.props.token}
                               navigator ={this.props.navigator}
             />
         )
@@ -29,7 +30,8 @@ class SearchCoupons extends React.Component {
 }
 
 const mapStateToProps = (state)=>({
-    couponList: state.couponList
+    couponList: state.couponList,
+    token:state.token
 }
 )
 
@@ -44,8 +46,8 @@ const mapDispatchToProps = (dispatch)=>({
             routeData: {
                 comp: ViewCouponsDetail,
                 props: {key: "ViewCouponsDetail"}
-            }
-        }))
+            },
+        dataFlag:"0"}))
     }
 })
 

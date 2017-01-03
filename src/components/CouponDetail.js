@@ -44,12 +44,6 @@ const CouponDetail = (props) => {
                     <div className="center">优惠券类别</div>
                     <div className="right">{DetailInformation.couponType==="1"?"餐饮":"其他"}</div>
                 </ListItem>
-                {/*<ListItem>*/}
-                    {/*<div className="center">优惠券面值</div>*/}
-                    {/*<div className="right">*/}
-                        {/*<PriceComponent price={DetailInformation.originalPrice}/>*/}
-                    {/*</div>*/}
-                {/*</ListItem>*/}
                 <ListItem>
                     <div className="center">截止日期</div>
                     <div className="right">{DetailInformation.endDate}</div>

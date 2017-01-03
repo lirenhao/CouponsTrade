@@ -344,12 +344,18 @@ export function *publishCouponAsync(req) {
  */
 export function *getCouponDetailsAsync(req) {
 	yield put(onload());
-	const {token, id, navigator, routeData} = req.payload;
-	const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token});
+	const {token, id, navigator, routeData,dataFlag} = req.payload;
+	const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token,dataFlag:dataFlag});
 	if (res.code == ResponseCode.SUCCESS) {
 		if (res.flag === "1") {
+			console.log(res.flag)
+			console.log(res.couponInfo)
+			console.log("------------------")
 			yield put(insertUserCouponDetails(res.couponInfo))
 		} else {
+			console.log(res.flag)
+			console.log(res.couponInfo)
+			console.log("------------------")
 			yield put(insertCouponDetails(res.couponInfo))
 		}
 		navigator.pushPage(
