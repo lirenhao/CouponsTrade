@@ -1,5 +1,5 @@
 /**
- * Created by cuitao on 2016/12/28.
+ * 根据action_def创建actions
  */
 
 import fs from 'fs'
