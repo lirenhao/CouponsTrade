@@ -10,28 +10,33 @@ import EditCouponForm from  './EditCouponForm'
 
 
 const EditCoupon = (props)=> {
-    const {onSubmit, couponInfo } = props;
+    const {onSubmit, couponInfo} = props
     return (
         <div>
             <EditCouponForm onSubmit={onSubmit}
-                            initialValues={couponInfo}/>
+                            initialValues={{
+                                ...couponInfo,
+                                originalPrice: couponInfo.originalPrice.toString(),
+                                sellingPrice: couponInfo.sellingPrice.toString(),
+                                ticketPrice: couponInfo.ticketPrice.toString()
+                            }}/>
         </div>
     )
-};
+}
 
 EditCoupon.propTypes = {
     couponInfo: React.PropTypes.shape({
         couponName: React.PropTypes.string.isRequired,
-        couponCode:React.PropTypes.string.isRequired,
-        originalPrice:React.PropTypes.number.isRequired,
+        couponCode: React.PropTypes.string.isRequired,
+        originalPrice: React.PropTypes.number.isRequired,
         sellingPrice: React.PropTypes.number.isRequired,
-        ticketPrice:React.PropTypes.number.isRequired,
-        endDate:React.PropTypes.string.isRequired,
-        isAutomaticRefund:React.PropTypes.bool.isRequired,
+        ticketPrice: React.PropTypes.number.isRequired,
+        endDate: React.PropTypes.string.isRequired,
+        isAutomaticRefund: React.PropTypes.bool.isRequired,
         describe: React.PropTypes.string.isRequired
     }).isRequired,
     onSubmit: React.PropTypes.func.isRequired
-};
+}
 
 
 export default EditCoupon

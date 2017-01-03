@@ -26,7 +26,7 @@ class EditCoupons extends React.Component {
                 </Toolbar>
             )}>
                 <EditCoupon couponInfo={this.props.couponInfo}
-                            onSubmit={(value)=>this.props.onEditClick(value,this.props.token,this.props.navigator)}/>
+                            onSubmit={(value)=>this.props.onEditClick(value, this.props.token, this.props.navigator)}/>
             </Page>
         )
     }
@@ -35,17 +35,17 @@ class EditCoupons extends React.Component {
 const mapStateToProps = (state)=>(
 {
     couponInfo: state.publishedCoupons.couponInfo,
-    token:state.token
+    token: state.token
 }
 )
 
 const mapDispatchToProps = (dispatch)=>(
 {
-    onEditClick: (param, token,navigator)=> {
+    onEditClick: (param, token, navigator)=> {
         ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
             res => {
                 if (res === 1) {
-                    dispatch(editUserCouponRequest({param,token, navigator}))
+                    dispatch(editUserCouponRequest({param, token, navigator}))
                 }
             }
         )
@@ -54,4 +54,4 @@ const mapDispatchToProps = (dispatch)=>(
 }
 )
 
-export default connect(mapStateToProps,mapDispatchToProps)(EditCoupons)
+export default connect(mapStateToProps, mapDispatchToProps)(EditCoupons)

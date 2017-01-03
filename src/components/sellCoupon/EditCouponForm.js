@@ -8,12 +8,12 @@
 
 
 import React from 'react'
-import { reduxForm} from 'redux-form'
-import { Button} from 'react-onsenui'
+import {reduxForm} from 'redux-form'
+import {Button} from 'react-onsenui'
 import CouponFields from  './CouponFields'
 
 const EditCouponForm = (props)=> {
-    const {handleSubmit, onSubmit, invalid, submitting } = props;
+    const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
@@ -29,6 +29,7 @@ EditCouponForm.propTypes = {
 };
 
 const validate = (value) => {
+    console.log(value)
     const errors = {}
     if (!value.couponName) {
         errors.couponName = 'Required'
@@ -50,4 +51,4 @@ const validate = (value) => {
 
 export default reduxForm({
     form: "EditCouponForm", validate
-}) (EditCouponForm)
+})(EditCouponForm)
