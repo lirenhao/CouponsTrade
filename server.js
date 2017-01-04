@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
-let orderNoIndex = 0
+let orderNoIndex = 0;
 let state = {
     token: "1234567890",
     login: {
@@ -33,73 +33,7 @@ let state = {
     },
     inviteCode: "InviteCodeB",
     order: {
-        orderList: [{
-            id: "100100001",
-            couponName: "黑松白鹿五折券",
-            describe: "298自助餐二人同行一人免单",
-            sellingPrice: "400",
-            picture: "",
-        }, {
-            id: "100100002",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100003",
-            couponName: "星巴克五折券",
-            describe: "最高价值58元套餐一份",
-            sellingPrice: "35",
-            picture: ""
-        }, {
-            id: "100100004",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100005",
-            couponName: "呷哺呷哺100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100006",
-            couponName: "黑松白鹿五折券",
-            describe: "298自助餐二人同行一人免单",
-            sellingPrice: "400",
-            picture: ""
-        }, {
-            id: "100100007",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100008",
-            couponName: "星巴克五折券",
-            describe: "最高价值58元套餐一份",
-            sellingPrice: "35",
-            picture: ""
-        }, {
-            id: "100100009",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100010",
-            couponName: "呷哺呷哺100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100011",
-            couponName: "最后一条",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }],
+        orderList: [],
         orderInfo: {
             "100100001": {
                 orderNo: "100100001",
@@ -431,6 +365,17 @@ app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
     console.log("收到获取订单列表请求");
+    const orderInfo = state.order.orderInfo;
+    const list = Object.keys(orderInfo);
+    state.order.orderList = list.map(i => {
+        return {
+            id: orderInfo[i].orderNo,
+            couponName: orderInfo[i].couponName,
+            describe: orderInfo[i].describe,
+            sellingPrice: orderInfo[i].sellingPrice,
+            picture: orderInfo[i].picture
+        }
+    });
     let {token, size}=req.body;
     const total = state.order.orderList.length;
     size = size < total ? size : total;
@@ -557,7 +502,7 @@ app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
 
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
-    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body
+    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
     const isHave = (arr) => {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i].couponCode === couponCode) {
@@ -587,7 +532,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
                 userName,
                 couponState: "1"
             });
-            console.log(state.publishCouponList)
+            console.log(state.publishCouponList);
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
@@ -598,8 +543,8 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
     const {couponName} = req.body;
     const getCouponList = (arr) => {
-        let couponList = []
-        let i = 0
+        let couponList = [];
+        let i = 0;
         for (var coupon of arr) {
             if (couponName !== "ALL") {
                 if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
@@ -617,7 +562,7 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
                         couponName: coupon.couponName,
                         sellingPrice: coupon.sellingPrice,
                         description: coupon.describe
-                    })
+                    });
                     i++
                 } else {
                     return couponList
@@ -625,21 +570,21 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
             }
         }
         return couponList
-    }
+    };
     res.json({code: ResponseCode.SUCCESS, couponList: getCouponList(state.publishCouponList)})
 });
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, token, dataFlag} = req.body;
-    console.log(id)
-    console.log(token)
+    console.log(id);
+    console.log(token);
     if (token === state.token) {
         const couponList = state.publishCouponList.filter((r) => {
             return r.id === id
         });
         if (couponList.length !== 0) {
             const couponInfo = couponList[0];
-            const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname}
+            const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname};
             if (dataFlag !== "0") {
                 res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
             } else {
@@ -655,10 +600,10 @@ app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
     const {token, couponName, couponState} = req.body;
-    const userName = state.login.username
+    const userName = state.login.username;
     const getCouponList = (arr) => {
-        let couponList = []
-        let i = 0
+        let couponList = [];
+        let i = 0;
         for (var coupon of arr) {
             if (coupon.userName === userName) {
                 couponList.push({
@@ -671,17 +616,17 @@ app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
             }
         }
         return couponList
-    }
+    };
     if (state.token === token) {
-        var couponList = getCouponList(state.publishCouponList)
+        var couponList = getCouponList(state.publishCouponList);
         if (!couponName && typeof(couponName) != "undefined") {
             var newNameCouponList = couponList.filter((r) => {
                 return r.couponName.match(couponName)
-            })
+            });
             if (!couponState && typeof(couponState) != "undefined") {
                 const newStateCouponList = newNameCouponList.filter((r) => {
                     return r.couponState === couponState
-                })
+                });
                 res.json({code: ResponseCode.SUCCESS, couponList: newStateCouponList})
             } else {
                 res.json({code: ResponseCode.SUCCESS, couponList: newNameCouponList})
@@ -692,7 +637,7 @@ app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户没有登录，请重新登录"})
     }
-})
+});
 
 
 app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
@@ -708,7 +653,7 @@ app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
-    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName, couponState} = req.body
+    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName, couponState} = req.body;
     if (state.token === token) {
         const couponInfo = {
             id,
@@ -753,13 +698,13 @@ app.post(`/${ServerPath.CREATE_ORDER}`, function (req, res) {
             time: date.getHours() + separatorTime + date.getMinutes() + separatorTime + date.getSeconds(),
             orderNo: date.getFullYear().toString() + month + strDate + date.getHours().toString() + date.getMinutes().toString() + date.getSeconds().toString() + orderNoIndex
         }
-    }
+    };
     if (state.token == token) {
         const couponList = state.publishCouponList.filter((r) => {
             return r.id === id
         });
-        orderNoIndex++
-        const data = getNowDateFormatData()
+        orderNoIndex++;
+        const data = getNowDateFormatData();
         const orderInfoData = {
             ...couponList[0],
             orderNo: data.orderNo,
@@ -768,8 +713,8 @@ app.post(`/${ServerPath.CREATE_ORDER}`, function (req, res) {
             isOpen: false,
             sellerNickName: state.userInfo.nickname,
             orderState: "待付款"
-        }
-        state.order.orderInfo[data.orderNo] = orderInfoData
+        };
+        state.order.orderInfo[data.orderNo] = orderInfoData;
         res.json({code: ResponseCode.SUCCESS, orderInfo: orderInfoData})
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
