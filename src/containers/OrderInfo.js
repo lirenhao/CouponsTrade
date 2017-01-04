@@ -8,8 +8,8 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest, receiptOrderRequest} from '../../actions'
-import PayOrder from '../../containers/PayOrder'
+import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest, receiptOrderRequest} from '../actions'
+import PayOrder from './PayOrder'
 
 const renderToolbar = () => {
     return (

@@ -8,7 +8,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsenui'
-import OrderInfo from '../components/orderInfo/OrderInfo'
+import OrderInfo from './OrderInfo'
 import PullRefresh from '../components/PullRefresh'
 import PushRefresh from '../components/PushRefresh'
 import {getOrderInfoRequest, insertOrderListRequest, refreshOrderListRequest} from '../actions'
@@ -21,7 +21,7 @@ class OrderList extends React.Component {
                 <div className="center">我的优惠券</div>
             </Toolbar>
         )
-    }
+    };
 
     renderRow = (row, index) => {
         const x = 40 + index;
@@ -47,7 +47,7 @@ class OrderList extends React.Component {
                 </div>
             </ListItem>
         )
-    }
+    };
 
     render() {
         return (
@@ -86,7 +86,6 @@ const mapStateToProps = state => {
     return {
         token: state.token,
         orderList: state.order.orderList,
-        orderInfo: state.order.orderInfo,
         number: state.order.page.number,
         size: state.order.page.size,
         total: state.order.page.total
