@@ -5,9 +5,9 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-import {call, put} from "redux-saga/effects";
-import fetch from "../fetch";
-import {ServerPath, ResponseCode} from "../constants";
+import {call, put} from "redux-saga/effects"
+import fetch from "../fetch"
+import {ServerPath, ResponseCode} from "../constants"
 import {
     onload,
     unload,
@@ -27,21 +27,21 @@ import {
     insertUserCouponDetails,
     updateSoldOutCoupon,
     updateUserCoupon,
-	setCouponPage,
-	insertCoupons,
+    setCouponPage,
+    insertCoupons,
     setCouponsQuery
-} from "../actions";
+} from "../actions"
 
 /**
  * 注册的异步处理
  * @param req 注册发起signUpRequest的action
  */
 export function* signUpAsync(req) {
-    yield put(onload());
-    const {param, navigator} = req.payload;
-    const res = yield call(fetch, ServerPath.SIGN_UP, param);
+    yield put(onload())
+    const {param, navigator} = req.payload
+    const res = yield call(fetch, ServerPath.SIGN_UP, param)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(showDialog("注册成功"));
+        yield put(showDialog("注册成功"))
         navigator.popPage()
     } else {
         yield put(showDialog(res.msg))
@@ -54,11 +54,11 @@ export function* signUpAsync(req) {
  * @param req 登录发起loginRequest的action
  */
 export function* loginAsync(req) {
-    yield put(onload());
-    const {param, navigator, router} = req.payload;
-    const res = yield call(fetch, ServerPath.LOGIN, param);
+    yield put(onload())
+    const {param, navigator, router} = req.payload
+    const res = yield call(fetch, ServerPath.LOGIN, param)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(login(res.token));
+        yield put(login(res.token))
         yield call([navigator, navigator.resetPage], router)
     } else {
         yield put(showDialog(res.msg))
@@ -83,11 +83,11 @@ export function* logoutAsync(req) {
  * @param req
  */
 export function* getUserInfoAsync(req) {
-    yield put(onload());
-    const {token, navigator, router} = req.payload;
-    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token});
+    yield put(onload())
+    const {token, navigator, router} = req.payload
+    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token})
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserInfo(res.userInfo));
+        yield put(updateUserInfo(res.userInfo))
         navigator.pushPage(router)
     } else {
         yield put(showDialog(res.msg))
@@ -100,8 +100,8 @@ export function* getUserInfoAsync(req) {
  * @param req
  */
 export function* updateUserInfoAsync(req) {
-    yield put(onload());
-    const {param, navigator} = req.payload;
+    yield put(onload())
+    const {param, navigator} = req.payload
     const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, param)
     if (res.code == ResponseCode.SUCCESS) {
         yield put(updateUserInfo(param))
@@ -117,7 +117,7 @@ export function* updateUserInfoAsync(req) {
  */
 export function* createInviteCodeAsync(req) {
     yield put(onload())
-    const {token, navigator, comp} = req.payload;
+    const {token, navigator, comp} = req.payload
     const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE, {token})
     if (res.code == ResponseCode.SUCCESS) {
         navigator.pushPage({comp, props: {key: "userShare", inviteCode: res.inviteCode}})
@@ -165,12 +165,12 @@ export function* updatePasswordAsync(req) {
  */
 
 export function* fetchOrderList(action) {
-    const {route, com, ...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data);
+    const {route, com, ...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(initialPage(res.page));
-        yield put(setOrderList(res.orderList));
+        yield put(initialPage(res.page))
+        yield put(setOrderList(res.orderList))
         if (data.from === "order") {
             route.resetPageStack([
                 {
@@ -186,7 +186,7 @@ export function* fetchOrderList(action) {
             })
         }
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -197,14 +197,14 @@ export function* fetchOrderList(action) {
  */
 
 export function* fetchInsetOrderList(action) {
-    const {...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.INSET_ORDER_LIST, data);
+    const {...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.INSET_ORDER_LIST, data)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderPage(res.page.number));
-        yield put(insertOrderList(res.orderList));
+        yield put(setOrderPage(res.page.number))
+        yield put(insertOrderList(res.orderList))
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -215,14 +215,14 @@ export function* fetchInsetOrderList(action) {
  */
 
 export function* fetchRefreshOrderList(action) {
-    const {...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data);
+    const {...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(initialPage(res.page));
-        yield put(setOrderList(res.orderList));
+        yield put(initialPage(res.page))
+        yield put(setOrderList(res.orderList))
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -233,11 +233,11 @@ export function* fetchRefreshOrderList(action) {
  */
 
 export function* fetchOrderInfo(action) {
-    yield put(onload());
-    const {route, com, ...data}=action.payload;
-    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, data);
+    yield put(onload())
+    const {route, com, ...data}=action.payload
+    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, data)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderInfo(res.orderInfo));
+        yield put(setOrderInfo(res.orderInfo))
         route.pushPage({
             comp: com,
             props: {key: "orderInfo"}
@@ -254,9 +254,9 @@ export function* fetchOrderInfo(action) {
  */
 
 export function* fetchPay(action) {
-    const {route, com, ...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.PAY, data);
+    const {route, com, ...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.PAY, data)
     if (res.code == ResponseCode.SUCCESS) {
         yield route.replacePage({
             comp: com, props: {key: "OrderResultSuccess", res: 1}
@@ -275,12 +275,12 @@ export function* fetchPay(action) {
  */
 
 export function* fetchOPenCoupon(action) {
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.OPEN_COUPON, action.payload);
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.OPEN_COUPON, action.payload)
     if (res.code == ResponseCode.SUCCESS) {
         yield put(openCoupon(res.couponCode))
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -291,14 +291,14 @@ export function* fetchOPenCoupon(action) {
  */
 
 export function* fetchCancelOrder(action) {
-    const {route, dispatch, refreshOrderListRequest, ...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.CANCEL_ORDER, data);
+    const {route, dispatch, refreshOrderListRequest, ...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.CANCEL_ORDER, data)
     if (res.code == ResponseCode.SUCCESS) {
-        dispatch(refreshOrderListRequest({token: data.token, size: 8}));
+        dispatch(refreshOrderListRequest({token: data.token, size: 8}))
         route.popPage()
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -309,13 +309,13 @@ export function* fetchCancelOrder(action) {
  */
 
 export function* fetchReceiptOrder(action) {
-    const {dispatch, refreshOrderListRequest, ...data}=action.payload;
-    yield put(onload());
-    const res = yield call(fetch, ServerPath.RECEIPT_ORDER, data);
+    const {...data}=action.payload
+    yield put(onload())
+    const res = yield call(fetch, ServerPath.RECEIPT_ORDER, data)
     if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderInfo(res.orderInfo));
+        yield put(setOrderInfo(res.orderInfo))
     } else {
-        yield put(showDialog(res.msg));
+        yield put(showDialog(res.msg))
     }
     yield put(unload())
 }
@@ -327,11 +327,11 @@ export function* fetchReceiptOrder(action) {
  */
 export function *queryCouponsAsync(req) {
     yield put(onload())
-    const queryData ={couponName: req.payload}
+    const queryData = {couponName: req.payload}
     const res = yield call(fetch, ServerPath.QUERY_COUPONS, queryData)
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCouponsQuery(queryData))
-		yield put(setCouponPage(res.page))
+        yield put(setCouponPage(res.page))
         yield put(setCoupons(res.couponList))
     } else {
         yield put(showDialog(res.msg))
@@ -340,16 +340,16 @@ export function *queryCouponsAsync(req) {
 }
 
 export function *refreshCouponListAsync(req) {
-	yield put(onload())
-	const {token,query,total,number,size} = req.payload
-	const res = yield call(fetch, ServerPath.REFRESH_COUPON_LIST, {token,query,total,number,size})
-	if (res.code == ResponseCode.SUCCESS) {
-		yield put(setCouponPage(res.page))
-		yield put(insertCoupons(res.couponList))
-	} else {
-		yield put(showDialog(res.msg))
-	}
-	yield put(unload())
+    yield put(onload())
+    const {token, query, total, number, size} = req.payload
+    const res = yield call(fetch, ServerPath.REFRESH_COUPON_LIST, {token, query, total, number, size})
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setCouponPage(res.page))
+        yield put(insertCoupons(res.couponList))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
 
 }
 
@@ -379,7 +379,7 @@ export function *publishCouponAsync(req) {
  * @param req
  */
 export function *getCouponDetailsAsync(req) {
-    yield put(onload());
+    yield put(onload())
     const {token, id, navigator, routeData, dataFlag} = req.payload
     const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token, dataFlag: dataFlag})
     if (res.code == ResponseCode.SUCCESS) {
@@ -402,7 +402,7 @@ export function *getCouponDetailsAsync(req) {
  * @param req
  */
 export function *getUserCouponsAsync(req) {
-    yield put(onload());
+    yield put(onload())
     const {token, navigator, routeData} = req.payload
     const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token})
     if (res.code == ResponseCode.SUCCESS) {
@@ -421,7 +421,7 @@ export function *getUserCouponsAsync(req) {
  * @param req
  */
 export function *soldOutCouponAsync(req) {
-    yield put(onload());
+    yield put(onload())
     const {token, id, navigator, routeData} = req.payload
     const res = yield call(fetch, ServerPath.SOLD_OUT_COUPON, {token: token, id: id})
     if (res.code == ResponseCode.SUCCESS) {
@@ -442,7 +442,7 @@ export function *soldOutCouponAsync(req) {
  * @param req
  */
 export function *editUserCouponAsync(req) {
-    yield put(onload());
+    yield put(onload())
     const {param, token, navigator} = req.payload
     const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, {token: token, ... param})
     if (res.code == ResponseCode.SUCCESS) {
