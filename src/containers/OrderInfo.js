@@ -10,6 +10,7 @@ import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToo
 import {connect} from 'react-redux'
 import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest, receiptOrderRequest} from '../actions'
 import PayOrder from './PayOrder'
+import ons from 'onsenui'
 
 const renderToolbar = () => {
     return (
@@ -34,9 +35,9 @@ const OrderInfo = (props) => {
             return (
                 <ListItem>券码
                     <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
-                        props.dispatch(openCouponRequest({token: props.token, id: orderNo}))
-                    }
-                    }>获取券码</span>}</div>
+                            props.dispatch(openCouponRequest({token: props.token, id: orderNo}))
+                        }
+                        }>获取券码</span>}</div>
                 </ListItem>
             )
         }
@@ -62,13 +63,21 @@ const OrderInfo = (props) => {
                         <div className="tab-bar__item">
                             <button className="tab-bar__button"
                                     onClick={() => {
-                                        props.dispatch(cancelOrderRequest({
-                                            token: props.token,
-                                            id: orderNo,
-                                            route: props.navigator,
-                                            dispatch: props.dispatch,
-                                            refreshOrderListRequest
-                                        }));
+                                        ons.notification.confirm({
+                                            title: "",
+                                            messageHTML: "确定要删除订单吗？",
+                                            buttonLabels: ["确认", "取消"]
+                                        }).then(res => {
+                                            if (res === 0) {
+                                                props.dispatch(cancelOrderRequest({
+                                                    token: props.token,
+                                                    id: orderNo,
+                                                    route: props.navigator,
+                                                    dispatch: props.dispatch,
+                                                    refreshOrderListRequest
+                                                }))
+                                            }
+                                        })
                                     }}>
                                 <ons-icon icon="ion-android-close"> 删除</ons-icon>
                             </button>
@@ -81,13 +90,22 @@ const OrderInfo = (props) => {
                 <BottomToolbar modifier="material">
                     <Button modifier="large noRadius"
                             onClick={() => {
-                                props.dispatch(receiptOrderRequest({
-                                    token: props.token,
-                                    id: orderNo,
-                                    route: props.navigator,
-                                    dispatch: props.dispatch,
-                                    refreshOrderListRequest
-                                }))
+                                ons.notification.confirm({
+                                    title: "",
+                                    messageHTML: "在优惠券使用前确认收货有风险，货款将直接打给卖家," +
+                                    "确定要收货吗？",
+                                    buttonLabels: ["确认", "取消"]
+                                }).then(res => {
+                                    if (res === 0) {
+                                        props.dispatch(receiptOrderRequest({
+                                            token: props.token,
+                                            id: orderNo,
+                                            route: props.navigator,
+                                            dispatch: props.dispatch,
+                                            refreshOrderListRequest
+                                        }))
+                                    }
+                                })
                             }}
                     >确认收货</Button>
                 </BottomToolbar>
