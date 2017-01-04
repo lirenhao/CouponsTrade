@@ -46,7 +46,5 @@ SearchCouponList.propTypes = {
     onRefresh: React.PropTypes.func.isRequired
 };
 
-export default reduxForm({
-    form: "SearchCouponList"
-})(SearchCouponList)
+export default SearchCouponList
 
