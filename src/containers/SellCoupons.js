@@ -30,7 +30,6 @@ class SellingCoupons extends React.Component {
                                    onClickPushPage={this.props.onClickPushPage}/>
                 <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
                              onRefresh={()=> {
-                                 console.log(this.props.page)
                                  this.props.onRefresh(this.props.token, this.props.page)
                              }}/>
             </Page>
