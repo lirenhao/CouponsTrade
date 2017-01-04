@@ -125,7 +125,7 @@ const OrderInfo = (props) => {
                     <div className="right">{sellingPrice}</div>
                 </ListItem>
             </List>
-            <List modifier="inset marginT marginB">
+            <List modifier="inset marginT margin4B">
                 <ListItem>原价
                     <div className="right">{originalPrice}</div>
                 </ListItem>
