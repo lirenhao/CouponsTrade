@@ -101,6 +101,10 @@ export function* watchCreateOrderRequest() {
     yield takeEvery(Const.CREATE_ORDER_REQUEST, Async.createOrderAsync)
 }
 
+export function* watchRefreshCouponListRequest(){
+    yield takeEvery(Const.REFRESH_COUPON_LIST_REQUEST,Async.refreshCouponListAsync)
+}
+
 
 export default function* sagas(getState) {
     yield [
@@ -127,6 +131,7 @@ export default function* sagas(getState) {
         watchSoldOutCouponRequest(),
         watchEditUserCouponRequest(),
         watchCreateOrderRequest(),
+        watchRefreshCouponListRequest(),
         Async.queryCouponsAsync({payload: "ALL"})
     ]
 }

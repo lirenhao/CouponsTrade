@@ -9,7 +9,9 @@
 
 import couponInfo from './couponInfo'
 import couponList from './couponList'
+import page from './page'
+import query from './query'
 import {combineReducers} from 'redux'
 
 
-export default combineReducers({couponList,couponInfo})
+export default combineReducers({couponList,couponInfo,page,query})

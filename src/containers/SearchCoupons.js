@@ -10,20 +10,22 @@
 import React from 'react'
 import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import {queryCouponsRequest, getCouponDetailsRequest} from '../actions'
+import {queryCouponsRequest, getCouponDetailsRequest,refreshCouponListRequest} from '../actions'
 import {connect} from 'react-redux'
 
 
 class SearchCoupons extends React.Component {
     render() {
         return (
-            <SearchCouponList data={this.props.couponList}
+            <SearchCouponList couponList={this.props.couponList}
                               onClickPushPage={this.props.onPushPage}
                               onSearch={(value)=> {
                                   this.props.onSearch(value)
                               }}
                               token={this.props.token}
                               navigator ={this.props.navigator}
+                              page={this.props.page}
+                              onRefresh={()=>this.props.onRefresh(this.props.token,this.props.query,this.props.page.total,this.props.page.number,this.props.page.size)}
             />
         )
     }
@@ -31,7 +33,9 @@ class SearchCoupons extends React.Component {
 
 const mapStateToProps = (state)=>({
     couponList: state.queryCoupons.couponList,
-    token:state.token
+    page:state.queryCoupons.page,
+    token:state.token,
+    query:state.queryCoupons.query.couponName
 }
 )
 
@@ -48,6 +52,9 @@ const mapDispatchToProps = (dispatch)=>({
                 props: {key: "ViewCouponsDetail"}
             },
         dataFlag:"0"}))
+    },
+    onRefresh:(token,query,total,number,size)=>{
+        dispatch(refreshCouponListRequest({token,query,total,number,size}))
     }
 })
 

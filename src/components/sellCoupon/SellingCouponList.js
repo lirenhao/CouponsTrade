@@ -9,7 +9,7 @@ import React from 'react'
 import {List, ListHeader} from 'react-onsenui'
 import CouponInfo from './CouponInfo'
 
-const SellingCouponList = ({data, onClickPushPage, navigator, token})=> {
+const SellingCouponList = ({couponList, onClickPushPage, navigator, token})=> {
 
     const renderRow = (row)=> {
         return (
@@ -19,7 +19,7 @@ const SellingCouponList = ({data, onClickPushPage, navigator, token})=> {
     };
 
     return (
-        <List dataSource={data}
+        <List dataSource={couponList}
               modifier=" limit"
               renderHeader={() =><ons-list modifier="noborder">
                   <ons-list-item>
@@ -46,7 +46,7 @@ const SellingCouponList = ({data, onClickPushPage, navigator, token})=> {
 };
 
 SellingCouponList.propTypes = {
-    data: React.PropTypes.arrayOf(
+    couponList: React.PropTypes.arrayOf(
         React.PropTypes.shape({
             id: React.PropTypes.string.isRequired,
             couponName: React.PropTypes.string.isRequired,
