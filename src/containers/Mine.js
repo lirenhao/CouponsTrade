@@ -67,7 +67,7 @@ class Mine extends React.Component {
                         this.props.onGetCoupons(this.props.token, this.props.navigator, {
                             comp: SellingCoupons,
                             props: {key: "SellingCoupons"}
-                        })
+                        }, this.props.publishedCouponsPage)
                     }>
                         发布的优惠券
                     </ListItem>
@@ -98,7 +98,8 @@ class Mine extends React.Component {
 
 const mapStateToProps = (state) => ({
     token: state.token,
-    page: state.order.page
+    page: state.order.page,
+    publishedCouponsPage: state.publishedCoupons.page
 })
 
 const mapDispatchToProps = (dispatch) => ({
@@ -114,8 +115,8 @@ const mapDispatchToProps = (dispatch) => ({
     logout: (navigator, router) => {
         dispatch(logoutRequest({navigator, router}))
     },
-    onGetCoupons: (token, navigator, routeData) => {
-        dispatch(getUserCouponsRequest({token, navigator, routeData}))
+    onGetCoupons: (token, navigator, routeData, page) => {
+        dispatch(getUserCouponsRequest({token, navigator, routeData, page}))
     }
 })
 

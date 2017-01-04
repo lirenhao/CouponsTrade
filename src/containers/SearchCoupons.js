@@ -10,7 +10,7 @@
 import React from 'react'
 import SearchCouponList from '../components/sellCoupon/SearchCouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import {queryCouponsRequest, getCouponDetailsRequest,refreshCouponListRequest} from '../actions'
+import {queryCouponsRequest, getCouponDetailsRequest, refreshCouponListRequest} from '../actions'
 import {connect} from 'react-redux'
 
 
@@ -23,9 +23,9 @@ class SearchCoupons extends React.Component {
                                   this.props.onSearch(value)
                               }}
                               token={this.props.token}
-                              navigator ={this.props.navigator}
+                              navigator={this.props.navigator}
                               page={this.props.page}
-                              onRefresh={()=>this.props.onRefresh(this.props.token,this.props.query,this.props.page.total,this.props.page.number,this.props.page.size)}
+                              onRefresh={()=>this.props.onRefresh(this.props.token, this.props.query, this.props.page.total, this.props.page.number, this.props.page.size)}
             />
         )
     }
@@ -33,9 +33,9 @@ class SearchCoupons extends React.Component {
 
 const mapStateToProps = (state)=>({
     couponList: state.queryCoupons.couponList,
-    page:state.queryCoupons.page,
-    token:state.token,
-    query:state.queryCoupons.query.couponName
+    page: state.queryCoupons.page,
+    token: state.token,
+    query: state.queryCoupons.query.couponName
 }
 )
 
@@ -45,16 +45,18 @@ const mapDispatchToProps = (dispatch)=>({
             dispatch(queryCouponsRequest(param))
         }
     },
-    onPushPage: (token,id, navigator)=> {
-        dispatch(getCouponDetailsRequest({token,id, navigator,
+    onPushPage: (token, id, navigator)=> {
+        dispatch(getCouponDetailsRequest({
+            token, id, navigator,
             routeData: {
                 comp: ViewCouponsDetail,
                 props: {key: "ViewCouponsDetail"}
             },
-        dataFlag:"0"}))
+            dataFlag: "0"
+        }))
     },
-    onRefresh:(token,query,total,number,size)=>{
-        dispatch(refreshCouponListRequest({token,query,total,number,size}))
+    onRefresh: (token, query, total, number, size)=> {
+        dispatch(refreshCouponListRequest({token, query, total, number, size}))
     }
 })
 

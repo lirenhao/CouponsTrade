@@ -29,7 +29,9 @@ import {
     updateUserCoupon,
     setCouponPage,
     insertCoupons,
-    setCouponsQuery
+    setCouponsQuery,
+    setUserCouponPage,
+    insertUserCoupons
 } from "../actions"
 
 /**
@@ -339,6 +341,10 @@ export function *queryCouponsAsync(req) {
     yield put(unload())
 }
 
+/**
+ * 刷新查询到的优惠券列表请求
+ * @param req
+ */
 export function *refreshCouponListAsync(req) {
     yield put(onload())
     const {token, query, total, number, size} = req.payload
@@ -350,7 +356,24 @@ export function *refreshCouponListAsync(req) {
         yield put(showDialog(res.msg))
     }
     yield put(unload())
+}
 
+/**
+ * 刷新发布的优惠券列表请求
+ * @param req
+ */
+export function *refreshUserCouponListAsync(req) {
+    yield put(onload())
+    const {token, query, page} = req.payload
+    console.log({token, query, page})
+    const res = yield call(fetch, ServerPath.REFRESH_USER_COUPON_LIST, {token, ...page})
+    if (res.code == ResponseCode.SUCCESS) {
+        yield put(setUserCouponPage(res.page))
+        yield put(insertUserCoupons(res.couponList))
+    } else {
+        yield put(showDialog(res.msg))
+    }
+    yield put(unload())
 }
 
 /**
@@ -402,10 +425,11 @@ export function *getCouponDetailsAsync(req) {
  * @param req
  */
 export function *getUserCouponsAsync(req) {
-    yield put(onload())
-    const {token, navigator, routeData} = req.payload
-    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token})
+    yield put(onload());
+    const {token, navigator, routeData, page} = req.payload
+    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token, ...page})
     if (res.code == ResponseCode.SUCCESS) {
+        yield put(setUserCouponPage(res.page))
         yield put(setUserCoupons(res.couponList))
         navigator.pushPage(
             routeData
