@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import{Page, Toolbar, BackButton} from 'react-onsenui'
-import Address from '../components/orderInfo/SellerInfo'
+import SellerInfo from '../components/orderInfo/SellerInfo'
 import PaymentForm from '../components/orderInfo/PaymentForm'
 import {connect} from 'react-redux'
 import {payRequest} from '../actions'
@@ -22,8 +22,8 @@ const renderToolbar = () => {
     )
 }
 
-const Payment = (props) => {
-    const handleSubmit = (value) => {
+const PayOrder = props => {
+    const handleSubmit = value => {
         props.dispatch(payRequest({
             token: props.token,
             orderNo: props.orderInfo.orderNo,
@@ -33,7 +33,7 @@ const Payment = (props) => {
     }
     return (
         <Page renderToolbar={renderToolbar}>
-            <Address {...props.data}/>
+            <SellerInfo {...props.data}/>
             <PaymentForm {...props.itemData} navigator={props.navigator}
                          onSubmit={value => handleSubmit(value)}/>
         </Page>
@@ -47,4 +47,4 @@ const mapStateToProps = state => ({
     itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
 })
 
-export default connect(mapStateToProps)(Payment)
+export default connect(mapStateToProps)(PayOrder)
