@@ -294,7 +294,6 @@ export function* fetchOPenCoupon(action) {
 
 export function* fetchCancelOrder(action) {
     const {route, dispatch, refreshOrderListRequest, ...data}=action.payload
-    yield put(onload())
     const res = yield call(fetch, ServerPath.CANCEL_ORDER, data)
     if (res.code == ResponseCode.SUCCESS) {
         dispatch(refreshOrderListRequest({token: data.token, size: 8}))
@@ -302,7 +301,6 @@ export function* fetchCancelOrder(action) {
     } else {
         yield put(showDialog(res.msg))
     }
-    yield put(unload())
 }
 
 /**
