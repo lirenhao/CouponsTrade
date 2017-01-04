@@ -7,10 +7,10 @@
  */
 import React from 'react'
 import {Page, Toolbar, BackButton, Button, Modal} from 'react-onsenui'
-import OrderList from '../../containers/OrderList'
-import Tabs from '../../containers/Tabs'
+import OrderList from './OrderList'
+import Tabs from './Tabs'
 import {connect} from 'react-redux'
-import {getOrderListRequest} from '../../actions'
+import {getOrderListRequest} from '../actions'
 
 const OrderResult = ({res, navigator, dispatch, page}) => {
     const handleClick = () => {

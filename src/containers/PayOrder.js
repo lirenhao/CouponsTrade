@@ -11,7 +11,7 @@ import SellerInfo from '../components/orderInfo/SellerInfo'
 import PaymentForm from '../components/orderInfo/PaymentForm'
 import {connect} from 'react-redux'
 import {payRequest} from '../actions'
-import OrderResult from '../components/orderInfo/OrderResult'
+import OrderResult from './OrderResult'
 
 const renderToolbar = () => {
     return (
