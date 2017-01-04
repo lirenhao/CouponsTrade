@@ -413,6 +413,36 @@ let state = {
             describe: "所有地区通用券（海淀区西二旗店、上地店）",
             userName: "1",
             couponState: "1"
+        },
+        {
+            id: "12",
+            couponName: "黑松白鹿10",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "13",
+            couponName: "黑松白鹿11",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
         }
     ]
 };
@@ -721,7 +751,7 @@ app.post(`/${ServerPath.REFRESH_USER_COUPON_LIST}`, function (req, res) {
         res.json({
             code: ResponseCode.SUCCESS,
             couponList: userCouponListObj.couponList,
-            page: {total: userCouponListObj.total, number: userCouponListObj.number, size: size}
+            page: {total: userCouponListObj.total, number: userCouponListObj.number, size: Number(size)}
         })
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
