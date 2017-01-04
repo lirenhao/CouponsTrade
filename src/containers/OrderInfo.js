@@ -20,7 +20,7 @@ const renderToolbar = () => {
             <div className="center">订单信息</div>
         </Toolbar>
     )
-};
+}
 
 const OrderInfo = (props) => {
     const {
@@ -67,7 +67,7 @@ const OrderInfo = (props) => {
                                         route: props.navigator,
                                         dispatch: props.dispatch,
                                         refreshOrderListRequest
-                                    }));
+                                    }))
                                 }}><ons-icon icon="ion-android-close"> 删除</ons-icon>
                         </button>
                     </div>
