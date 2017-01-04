@@ -27,7 +27,7 @@ class ViewCouponsDetail extends React.Component {
             )} renderBottomToolbar={() => (
                 <BottomToolbar>
                     <Button modifier="large noRadius" type="submit"
-                            onClick={() => this.props.onClickBuy(this.props.token,this.props.DetailInformation.id, this.props.navigator,
+                            onClick={() => this.props.onClickBuy(this.props.token,this.props.couponInfo.id, this.props.navigator,
                                 {comp: PayOrder, props: {key: "PayOrder"}})}>我要买</Button>
                 </BottomToolbar>
             )}>

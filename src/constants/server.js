@@ -27,10 +27,11 @@ export const ServerPath = {
     PAY: 'pay',
     OPEN_COUPON: 'openCoupon',
     CANCEL_ORDER: 'cancelOrder',
+    RECEIPT_ORDER: 'receiptOrder',
     QUERY_COUPONS: 'queryCoupons',
     SOLD_OUT_COUPON: 'soldOutCoupon',
-    REFRESH_COUPON_LIST:'refreshCouponList',
-    REFRESH_USER_COUPON_LIST:'refreshUserCouponList'
+    REFRESH_COUPON_LIST: 'refreshCouponList',
+    REFRESH_USER_COUPON_LIST: 'refreshUserCouponList'
 }
 
 // 响应码
