@@ -6,9 +6,6 @@
 .list--marginB {
     margin-bottom: 1em;
 }
-.list--margin4B {
-    margin-bottom: 4em;
-}
 
 .list--marginB .list__item:last-child {
     min-height: 2.85em;
@@ -115,7 +112,7 @@ label.text-input__container {
 .list--limit .center b {
     display: block;
     font-style: normal;
-    margin: 2px;
+    margin: 1px 2px 1px 1px;
     width: 14px;
     height: 14px;
     background-color: #00a9f3;
@@ -130,7 +127,7 @@ label.text-input__container {
 .list--limit .center i {
     display: block;
     font-style: normal;
-    margin: 2px;
+    margin: 1px 2px 1px 1px;
     width: 14px;
     height: 14px;
     background-color: #ffb359;
@@ -144,7 +141,7 @@ label.text-input__container {
 .list--limit .center em {
     display: block;
     font-style: normal;
-    margin: 2px;
+    margin: 1px 2px 1px 1px;
     width: 14px;
     height: 14px;
     background-color: #eb5757;

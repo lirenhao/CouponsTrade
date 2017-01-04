@@ -45,33 +45,36 @@ const OrderInfo = (props) => {
     const renderBottomToolbar = () => {
         if (orderState !== "已支付" && orderState !== "已完成") {
             return (
-                <div className="tab-bar">
-                    <label className="tab-bar__item">
-                        <button className="tab-bar__button"
-                                onClick={() => {
-                                    props.navigator.pushPage({
-                                        comp: PayOrder,
-                                        props: {key: "PayOrder"}
-                                    })
-                                }}
-                        >
-                            <ons-icon icon="ion-android-done"> 支付</ons-icon>
-                        </button>
-                    </label>
-                    <div className="tab-bar__item">
-                        <button className="tab-bar__button"
-                                onClick={() => {
-                                    props.dispatch(cancelOrderRequest({
-                                        token: props.token,
-                                        id: orderNo,
-                                        route: props.navigator,
-                                        dispatch: props.dispatch,
-                                        refreshOrderListRequest
-                                    }))
-                                }}><ons-icon icon="ion-android-close"> 删除</ons-icon>
-                        </button>
+                <BottomToolbar modifier="material">
+                    <div className="tab-bar">
+                        <label className="tab-bar__item">
+                            <button className="tab-bar__button"
+                                    onClick={() => {
+                                        props.navigator.pushPage({
+                                            comp: PayOrder,
+                                            props: {key: "PayOrder"}
+                                        })
+                                    }}
+                            >
+                                <ons-icon icon="ion-android-done"> 支付</ons-icon>
+                            </button>
+                        </label>
+                        <div className="tab-bar__item">
+                            <button className="tab-bar__button"
+                                    onClick={() => {
+                                        props.dispatch(cancelOrderRequest({
+                                            token: props.token,
+                                            id: orderNo,
+                                            route: props.navigator,
+                                            dispatch: props.dispatch,
+                                            refreshOrderListRequest
+                                        }));
+                                    }}>
+                                <ons-icon icon="ion-android-close"> 删除</ons-icon>
+                            </button>
+                        </div>
                     </div>
-                </div>
+                </BottomToolbar>
             )
         } else if (orderState === "已支付") {
             return (
@@ -125,7 +128,7 @@ const OrderInfo = (props) => {
                     <div className="right">{sellingPrice}</div>
                 </ListItem>
             </List>
-            <List modifier="inset marginT margin4B">
+            <List modifier="inset marginT">
                 <ListItem>原价
                     <div className="right">{originalPrice}</div>
                 </ListItem>
