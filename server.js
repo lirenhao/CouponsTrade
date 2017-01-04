@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
-let orderNoIndex = 0
+let orderNoIndex = 0;
 let state = {
     token: "1234567890",
     login: {
@@ -484,31 +484,24 @@ app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
-    console.log("收到获取订单列表请求");
-    const orderInfo = state.order.orderInfo;
-    const list = Object.keys(orderInfo);
+    console.log("收到获取订单列表请求")
+    const orderInfo = state.order.orderInfo
+    const list = Object.keys(orderInfo)
     state.order.orderList = list.map(i => {
         return {
             id: orderInfo[i].orderNo,
             couponName: orderInfo[i].couponName,
             describe: orderInfo[i].describe,
             sellingPrice: orderInfo[i].sellingPrice,
-            picture: orderInfo[i].picture
+            picture: orderInfo[i].picture,
+            orderState: orderInfo[i].orderState
         }
-    });
-    let {token, size}=req.body;
-    const total = state.order.orderList.length;
-    size = size < total ? size : total;
-    let result = [];
-    for (let i = 0; i < size; i++) {
-        let orderList = state.order.orderList[i];
-        let orderInfo = state.order.orderInfo[orderList.id];
-        result.push({
-            ...orderList,
-            orderState: orderInfo.orderState
-        })
-    }
+    })
+    let {token, size}=req.body
+    const total = state.order.orderList.length
+    size = size < total ? size : total
     if (state.token == token) {
+        const result = state.order.orderList.slice(0, size)
         res.json({
             code: ResponseCode.SUCCESS,
             orderList: result,
@@ -516,30 +509,22 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
-});
+})
 
 app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
-    console.log("收到更新订单列表请求");
-    const {token, number, size}=req.body;
-    const total = state.order.orderList.length;
-    let result = [];
-    let newNumber = 1;
+    console.log("收到更新订单列表请求")
+    const {token, number, size}=req.body
+    const total = state.order.orderList.length
+    let newNumber = 1
     if (number * size < total) {
         newNumber = number * 1 + 1
     } else {
         newNumber = number * 1
     }
-    let max = newNumber * size;
-    max = max <= total ? max : total;
-    for (let i = number * size; i < max; i++) {
-        let orderList = state.order.orderList[i];
-        let orderInfo = state.order.orderInfo[orderList.id];
-        result.push({
-            ...orderList,
-            orderState: orderInfo.orderState
-        })
-    }
+    let max = newNumber * size
+    max = max <= total ? max : total
     if (state.token == token) {
+        const result = state.order.orderList.slice(number * size, max)
         res.json({
             code: ResponseCode.SUCCESS,
             orderList: result,
@@ -550,13 +535,13 @@ app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "更新列表失败"})
-});
+})
 
 app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
-    console.log("收到获取订单详情请求");
-    const {token, id}=req.body;
+    console.log("收到获取订单详情请求")
+    const {token, id}=req.body
     if (state.token == token) {
-        const result = state.order.orderInfo[id];
+        const result = state.order.orderInfo[id]
         res.json({
             code: ResponseCode.SUCCESS,
             orderInfo: {
@@ -566,49 +551,47 @@ app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
-});
+})
 
 app.post(`/${ServerPath.PAY}`, (req, res) => {
-    console.log("收到支付请求");
-    const {token, payment, content, orderNo} = req.body;
+    console.log("收到支付请求")
+    const {token, payment, content, orderNo} = req.body
     if (state.token == token && payment === "支付宝") {
-        state.order.orderInfo[orderNo].orderState = "已支付";
+        state.order.orderInfo[orderNo].orderState = "已支付"
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "支付失败"})
-});
+})
 
 app.post(`/${ServerPath.OPEN_COUPON}`, (req, res) => {
-    console.log("收到打开优惠券请求");
-    const {token, id} = req.body;
+    console.log("收到打开优惠券请求")
+    const {token, id} = req.body
     if (state.token == token) {
-        state.order.orderInfo[id].isOpen = true;
+        state.order.orderInfo[id].isOpen = true
         res.json({
             code: ResponseCode.SUCCESS, isOpen: true,
             couponCode: state.order.orderInfo[id].couponCode
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
-});
+})
 
 app.post(`/${ServerPath.CANCEL_ORDER}`, (req, res) => {
-    console.log("收到取消订单请求");
-    const {token, id} = req.body;
+    console.log("收到取消订单请求")
+    const {token, id} = req.body
     if (state.token == token) {
-        const index = state.order.orderList.findIndex(e => e.id === id);
-        state.order.orderList.splice(index, 1);
-        delete state.order.orderInfo[id];
+        delete state.order.orderInfo[id]
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
-});
+})
 
 app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
-    console.log("收到确认订单请求");
-    const {token, id} = req.body;
+    console.log("收到确认订单请求")
+    const {token, id} = req.body
     if (state.token == token) {
-        const result = state.order.orderInfo[id];
-        state.order.orderInfo[id].orderState = "已完成";
+        state.order.orderInfo[id].orderState = "已完成"
+        const result = state.order.orderInfo[id]
         res.json({
             code: ResponseCode.SUCCESS,
             orderInfo: {
@@ -618,11 +601,10 @@ app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
-});
-
+})
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
-    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body
+    const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
     const isHave = (arr) => {
         for (let i = 0; i < arr.length; i++) {
             if (arr[i].couponCode === couponCode) {
