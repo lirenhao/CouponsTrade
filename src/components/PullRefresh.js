@@ -30,23 +30,20 @@ class PullRefresh extends React.Component {
         switch (this.state.state) {
             case 'initial':
                 return (
-                    <div>
-                        <Icon icon="ion-ios-arrow-thin-down"/>
-                        下拉刷新
+                    <div className="up">
+                        <Icon icon="ion-arrow-down-c"/> 下拉刷新
                     </div>
-                )
+                );
             case 'preaction':
                 return (
-                <div>
-                    <Icon icon="ion-ios-arrow-thin-up"/>
-                    释放刷新
+                <div className="up">
+                    <Icon icon="ion-arrow-up-c"/> 释放刷新
                 </div>
-                )
+                );
             case 'action':
                 return (
-                <div>
-                    <Icon icon="ion-refresh"/>
-                    加载中…
+                <div className="up">
+                    <Icon icon="ion-refresh"/> 加载中…
                 </div>
                 )
         }

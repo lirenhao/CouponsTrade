@@ -17,6 +17,11 @@
     margin-right: 8px;
     margin-top: 1em;
 }
+.button--white{
+    background-color: #fff;
+    border: 1px #ccc solid;
+    color: #000;
+}
 
 section .search-input, section .search-input:focus {
     margin: 8px;
@@ -279,8 +284,18 @@ input[name*="Password"] + .text-input--material__label--active {
 .pushRefresh{
     text-align: center;
     display: none;
+    padding-top: .5em;
+    padding-bottom: .5em;
 }
 
 .pushRefresh.in{
     display: block;
+}
+.up,.pushRefresh{
+    color: #ccc;
+    font-size: 0.8em;
+}
+.up ons-icon,.pushRefresh ons-icon{
+    position: relative;
+    top: -2px;
 }

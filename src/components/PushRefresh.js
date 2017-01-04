@@ -28,19 +28,18 @@ class PushRefresh extends React.Component {
                         }}
                     />
                     <div className={this.state.refreshShow ? "pushRefresh in" : "pushRefresh"}>
-                        <Icon icon="ion-refresh"/>
-                        加载中…
+                        <Icon icon="ion-refresh"/> 加载中…
                     </div>
                     <WayPoint onEnter={this.props.onRefresh}/>
                     <div>
                         <br/>
                     </div>
                 </div>
-            )
+            );
         else
             return (
                 <div className="pushRefresh in">
-                    没有更多数据
+                    <Icon icon="ion-ios-minus-empty"/>&nbsp;没有更多数据&nbsp;<Icon icon="ion-ios-minus-empty"/>
                 </div>
             )
     }
