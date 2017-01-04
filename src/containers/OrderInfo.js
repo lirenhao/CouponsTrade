@@ -20,14 +20,14 @@ const renderToolbar = () => {
             <div className="center">订单信息</div>
         </Toolbar>
     )
-};
+}
 
 const OrderInfo = (props) => {
     const {
         orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
         ticketPrice, endDate, describe, isOpen, sellerNickName, orderState
-    }=props.orderInfo;
+    }=props.orderInfo
 
     const returnCouponModality = () => {
         if (orderState === "已支付" || orderState === "已完成") {
@@ -40,7 +40,7 @@ const OrderInfo = (props) => {
                 </ListItem>
             )
         }
-    };
+    }
 
     const renderBottomToolbar = () => {
         if (orderState !== "已支付" && orderState !== "已完成") {
@@ -49,7 +49,7 @@ const OrderInfo = (props) => {
                     <Button modifier="noRadius" style={{
                         width: "50%", height: "100%", textAlign: "center"
                     }}
-                            onClick={e => {
+                            onClick={() => {
                                 props.navigator.pushPage({
                                     comp: PayOrder,
                                     props: {key: "PayOrder"}
@@ -60,14 +60,14 @@ const OrderInfo = (props) => {
                         backgroundColor: "#d9534f",
                         width: "50%", height: "100%", textAlign: "center"
                     }}
-                            onClick={e => {
+                            onClick={() => {
                                 props.dispatch(cancelOrderRequest({
                                     token: props.token,
                                     id: orderNo,
                                     route: props.navigator,
                                     dispatch: props.dispatch,
                                     refreshOrderListRequest
-                                }));
+                                }))
                             }}>取消订单</Button>
                 </BottomToolbar>
             )
@@ -75,20 +75,20 @@ const OrderInfo = (props) => {
             return (
                 <BottomToolbar modifier="material">
                     <Button modifier="large noRadius"
-                            onClick={e => {
+                            onClick={() => {
                                 props.dispatch(receiptOrderRequest({
                                     token: props.token,
                                     id: orderNo,
                                     route: props.navigator,
                                     dispatch: props.dispatch,
                                     refreshOrderListRequest
-                                }));
+                                }))
                             }}
                     >确认收货</Button>
                 </BottomToolbar>
             )
         }
-    };
+    }
 
     return (
         <Page renderToolbar={renderToolbar}
@@ -148,15 +148,15 @@ const OrderInfo = (props) => {
             </List>
         </Page>
     )
-};
+}
 
-OrderInfo.propTypes = {};
+OrderInfo.propTypes = {}
 
 const mapStateToProps = state => {
     return {
         token: state.token,
         orderInfo: state.order.orderInfo
     }
-};
+}
 
 export default connect(mapStateToProps)(OrderInfo)

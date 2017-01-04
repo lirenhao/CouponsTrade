@@ -21,11 +21,11 @@ class OrderList extends React.Component {
                 <div className="center">我的优惠券</div>
             </Toolbar>
         )
-    };
+    }
 
     renderRow = (row, index) => {
-        const x = 40 + index;
-        const y = 40 + index;
+        const x = 40 + index
+        const y = 40 + index
         return (
             <ListItem key={index} onClick={() => {
                 this.props.dispatch(getOrderInfoRequest({
@@ -47,7 +47,7 @@ class OrderList extends React.Component {
                 </div>
             </ListItem>
         )
-    };
+    }
 
     render() {
         return (
@@ -56,7 +56,7 @@ class OrderList extends React.Component {
                     this.props.dispatch(refreshOrderListRequest({
                         token: this.props.token,
                         size: this.props.size
-                    }));
+                    }))
                     {/* TODO 刷新完成之后在调用done()*/
                     }
                     setTimeout(() => {
@@ -90,6 +90,6 @@ const mapStateToProps = state => {
         size: state.order.page.size,
         total: state.order.page.total
     }
-};
+}
 
 export default connect(mapStateToProps)(OrderList)

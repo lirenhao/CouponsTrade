@@ -20,7 +20,7 @@ const renderToolbar = () => {
             <div className="center">确认订单</div>
         </Toolbar>
     )
-};
+}
 
 const Payment = (props) => {
     const handleSubmit = (value) => {
@@ -29,8 +29,8 @@ const Payment = (props) => {
             orderNo: props.orderInfo.orderNo,
             ...value,
             route: props.navigator, com: OrderResult
-        }));
-    };
+        }))
+    }
     return (
         <Page renderToolbar={renderToolbar}>
             <Address {...props.data}/>
@@ -38,44 +38,13 @@ const Payment = (props) => {
                          onSubmit={value => handleSubmit(value)}/>
         </Page>
     )
-};
+}
 
 const mapStateToProps = state => ({
     token: state.token,
     orderInfo: state.order.orderInfo,
     data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
     itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
-});
-
-// class Payment extends React.Component {
-//     render() {
-//         return (
-//             <Page renderToolbar={renderToolbar}>
-//                 <Address {...this.props.data}/>
-//                 <PaymentForm {...this.props.itemData} navigator={navigator} onSubmit={value => this.props.handleSubmit(value,this.props.navigator)}/>
-//             </Page>
-//         )
-//     }
-// }
-//
-// const mapStateToProps = (state)=>(
-// {
-//     token: state.token,
-//     data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
-//     itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
-// }
-// )
-//
-// const mapDispatchToProps = (dispatch)=>(
-// {
-//     handleSubmit: (value, navigator) => {
-//         console.log(value)
-//         dispatch(payRequest({
-//             token: "1234567890", ...value,
-//             route: navigator, com: OrderResult
-//         }));
-//     }
-// }
-// )
+})
 
 export default connect(mapStateToProps)(Payment)
