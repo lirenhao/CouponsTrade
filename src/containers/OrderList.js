@@ -40,9 +40,9 @@ class OrderList extends React.Component {
                 </div>
                 <div className='center'>
                     <div className="list__item__title">{row.couponName}</div>
-                    <div className="list__item__subtitle">￥{row.sellingPrice + "元"}</div>
+                    <div className="list__item__subtitle">{row.sellingPrice + "元"}</div>
                 </div>
-                <div className="right">
+                <div className="right grayColor">
                     {row.orderState}
                 </div>
             </ListItem>

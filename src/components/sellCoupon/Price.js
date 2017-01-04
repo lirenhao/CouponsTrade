@@ -11,7 +11,7 @@ import React from 'react'
 
 const PriceComponent = ({price})=> {
     return (
-        <div className="price">￥{price}</div>
+        <div>￥{price}</div>
     )
 }
 

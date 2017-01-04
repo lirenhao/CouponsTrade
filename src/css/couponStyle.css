@@ -6,6 +6,9 @@
 .list--marginB {
     margin-bottom: 1em;
 }
+.list--margin4B {
+    margin-bottom: 4em;
+}
 
 .list--marginB .list__item:last-child {
     min-height: 2.85em;
@@ -22,7 +25,6 @@
     border: 1px #ccc solid;
     color: #000;
 }
-
 section .search-input, section .search-input:focus {
     margin: 8px;
     width: calc(100% - 16px);
@@ -191,7 +193,7 @@ input[name*="Password"] + .text-input--material__label--active {
 }
 
 .list--order .center {
-    padding-left: 1em;
+    padding-left: .5em;
 }
 
 .modal--load circle:nth-child(2) {
@@ -236,6 +238,7 @@ input[name*="Password"] + .text-input--material__label--active {
     right: 0;
     top: 0;
 }
+/*开启券码*/
 .couponCodeBg{
     padding: 6px 1.8em;
     display: flex;
@@ -257,6 +260,7 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
+/*生成邀请码*/
 .inviteBg {
     width: 90%;
     margin: 1.5em auto;
@@ -277,17 +281,17 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
+/*优惠券信息中的昵称*/
 .center_nickname{
     color: #aaa;
 }
-
+/*已购买页面上下拉刷新*/
 .pushRefresh{
     text-align: center;
     display: none;
     padding-top: .5em;
     padding-bottom: .5em;
 }
-
 .pushRefresh.in{
     display: block;
 }
@@ -298,4 +302,22 @@ input[name*="Password"] + .text-input--material__label--active {
 .up ons-icon,.pushRefresh ons-icon{
     position: relative;
     top: -2px;
+}
+/*灰色字且缩小*/
+.grayColor{
+    color: #aaa;
+    font-size: 0.8em;
+}
+/*售卖列表商品描述*/
+.list__item--sell__subtitle{
+    font-size: .5em;
+    color: #aaa;
+    width: 0;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+.tab-bar{
+    background-image: none;
+    box-shadow: 0 0 1px #ccc;
 }

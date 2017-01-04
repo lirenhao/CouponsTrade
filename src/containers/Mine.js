@@ -83,7 +83,7 @@ class Mine extends React.Component {
                         购买的优惠券
                     </ListItem>
                 </List>
-                <Button modifier="large outline marginTLR" onClick={() => {
+                <Button modifier="large light marginTLR" onClick={() => {
                     this.props.logout(
                         this.props.navigator,
                         {comp: Login, props: {key: "login", index: 2}}

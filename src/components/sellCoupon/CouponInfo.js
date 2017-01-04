@@ -13,7 +13,7 @@ import PriceComponent from './Price'
 const CouponInfo = (props)=> {
     const {couponName, sellingPrice, description, onClick} = props;
     return (
-        <ListItem modifier='chevron' onClick={onClick}>
+        <ListItem modifier='chevron sell' onClick={onClick}>
             <div className='left'>
                 <img className="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"/>
             </div>
@@ -22,18 +22,18 @@ const CouponInfo = (props)=> {
                 <em>限</em><i>稀</i><b>退</b>
                 <div className="list__item__subtitle">{description}</div>
             </div>
-            <div className='right'>
+            <div className='right price'>
                 <PriceComponent price={sellingPrice}/>
             </div>
         </ListItem>
     )
-};
+}
 
 CouponInfo.propTypes = {
     couponName: React.PropTypes.string.isRequired,
     sellingPrice: React.PropTypes.number.isRequired,
     description: React.PropTypes.string.isRequired,
     onClick: React.PropTypes.func.isRequired
-};
+}
 
 export default CouponInfo
