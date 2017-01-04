@@ -54,7 +54,7 @@ const CouponDetail = (props) => {
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <div className="list__item__title">优惠券详情</div>
+                        <div className="list__item__title">使用规则</div>
                         <div className="list__item__subtitle grayColor">{DetailInformation.describe}</div>
                     </div>
                 </ListItem>
