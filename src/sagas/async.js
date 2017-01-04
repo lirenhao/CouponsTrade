@@ -311,7 +311,6 @@ export function* fetchReceiptOrder(action) {
     const res = yield call(fetch, ServerPath.RECEIPT_ORDER, data);
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setOrderInfo(res.orderInfo));
-        dispatch(refreshOrderListRequest({token: data.token, size: 8}));
     } else {
         yield put(showDialog(res.msg));
     }

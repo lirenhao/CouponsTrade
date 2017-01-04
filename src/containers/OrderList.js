@@ -11,7 +11,7 @@ import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsen
 import OrderInfo from '../components/orderInfo/OrderInfo'
 import PullRefresh from '../components/PullRefresh'
 import PushRefresh from '../components/PushRefresh'
-import {getOrderInfoRequest, insertOrderListRequest} from '../actions'
+import {getOrderInfoRequest, insertOrderListRequest, refreshOrderListRequest} from '../actions'
 
 class OrderList extends React.Component {
     renderToolbar = () => {
@@ -29,7 +29,7 @@ class OrderList extends React.Component {
         return (
             <ListItem key={index} onClick={() => {
                 this.props.dispatch(getOrderInfoRequest({
-                    token: 1234567890,
+                    token: this.props.token,
                     id: row.id,
                     route: this.props.navigator,
                     com: OrderInfo
@@ -53,7 +53,10 @@ class OrderList extends React.Component {
         return (
             <Page renderToolbar={this.renderToolbar}>
                 <PullRefresh onRefresh={(done) => {
-                    console.log("Pull to refresh")
+                    this.props.dispatch(refreshOrderListRequest({
+                        token: this.props.token,
+                        size: this.props.size
+                    }));
                     {/* TODO 刷新完成之后在调用done()*/
                     }
                     setTimeout(() => {
@@ -69,7 +72,7 @@ class OrderList extends React.Component {
                     hasMore={this.props.orderList.length < this.props.total}
                     onRefresh={() => {
                         this.props.dispatch(insertOrderListRequest({
-                            token: 1234567890,
+                            token: this.props.token,
                             number: this.props.number,
                             size: this.props.size
                         }))
@@ -81,6 +84,7 @@ class OrderList extends React.Component {
 
 const mapStateToProps = state => {
     return {
+        token: state.token,
         orderList: state.order.orderList,
         orderInfo: state.order.orderInfo,
         number: state.order.page.number,
