@@ -9,7 +9,7 @@ import React from 'react'
 import {List, ListHeader} from 'react-onsenui'
 import CouponInfo from './CouponInfo'
 
-const SellingCouponList = ({couponList, onClickPushPage, navigator, token})=> {
+const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
 
     const renderRow = (row)=> {
         return (
@@ -45,7 +45,7 @@ const SellingCouponList = ({couponList, onClickPushPage, navigator, token})=> {
     )
 };
 
-SellingCouponList.propTypes = {
+CouponList.propTypes = {
     couponList: React.PropTypes.arrayOf(
         React.PropTypes.shape({
             id: React.PropTypes.string.isRequired,
@@ -58,5 +58,5 @@ SellingCouponList.propTypes = {
     token: React.PropTypes.string
 };
 
-export default SellingCouponList
+export default CouponList
 

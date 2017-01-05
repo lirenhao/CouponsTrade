@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
-import SellingCouponList from '../components/sellCoupon/SellingCouponList'
+import CouponList from '../components/sellCoupon/CouponList'
 import PublishCouponsDetail from './PublishCouponsDetail'
 import PushRefresh from '../components/PushRefresh'
 import {getCouponDetailsRequest, refreshUserCouponListRequest} from '../actions'
@@ -24,7 +24,7 @@ class SellingCoupons extends React.Component {
                     <div className='center'>发布的优惠券</div>
                 </Toolbar>
             )}>
-                <SellingCouponList couponList={this.props.couponList }
+                <CouponList couponList={this.props.couponList }
                                    navigator={this.props.navigator}
                                    token={this.props.token}
                                    onClickPushPage={this.props.onClickPushPage}/>
