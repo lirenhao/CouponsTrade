@@ -278,10 +278,6 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
-/*优惠券信息中的昵称*/
-.center_nickname{
-    color: #aaa;
-}
 /*已购买页面上下拉刷新*/
 .pushRefresh{
     text-align: center;

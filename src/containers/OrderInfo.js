@@ -48,7 +48,7 @@ const OrderInfo = (props) => {
             return (
                 <BottomToolbar modifier="material">
                     <div className="tab-bar">
-                        <label className="tab-bar__item">
+                        <div className="tab-bar__item">
                             <button className="tab-bar__button"
                                     onClick={() => {
                                         props.navigator.pushPage({
@@ -59,7 +59,7 @@ const OrderInfo = (props) => {
                             >
                                 <ons-icon icon="ion-android-done"> 支付</ons-icon>
                             </button>
-                        </label>
+                        </div>
                         <div className="tab-bar__item">
                             <button className="tab-bar__button"
                                     onClick={() => {
