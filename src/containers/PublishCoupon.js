@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import PublishCoupon from '../components/sellCoupon/PublishCoupon'
+import PublishCouponForm from '../components/sellCoupon/PublishCouponForm'
 import Tabs from './Tabs'
 import ons from 'onsenui'
 import {connect} from 'react-redux'
@@ -16,7 +16,7 @@ import {publishCouponRequest} from '../actions'
 
 class PublishCoupons extends React.Component {
     render() {
-        return (<PublishCoupon onSubmit={(value)=>this.props.handleClick({
+        return (<PublishCouponForm onSubmit={(value)=>this.props.handleClick({
             ... value,
             token: this.props.token
         }, this.props.navigator, {comp: Tabs, props: {key: "Tabs"}})}/>)
@@ -32,6 +32,7 @@ const mapDispatchToProps = (dispatch) => ({
         ons.notification.confirm("是否确认发布", {title: "注意", buttonLabels: ["否", "是"]}).then(
             res => {
                 if (res === 1) {
+                    console.log(param)
                     dispatch(publishCouponRequest({param, navigator, routeData}))
                 }
             }

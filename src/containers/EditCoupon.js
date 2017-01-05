@@ -7,8 +7,7 @@
  */
 
 import React from 'react'
-import EditCoupon from '../components/sellCoupon/EditCoupon'
-import SellingCoupons from './SellCoupons'
+import EditCouponForm from '../components/sellCoupon/EditCouponForm'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import ons from 'onsenui'
 import {editUserCouponRequest} from '../actions'
@@ -25,8 +24,14 @@ class EditCoupons extends React.Component {
                     <div className='center'>发布的优惠券</div>
                 </Toolbar>
             )}>
-                <EditCoupon couponInfo={this.props.couponInfo}
-                            onSubmit={(value)=>this.props.onEditClick(value, this.props.token, this.props.navigator)}/>
+                <EditCouponForm
+                    onSubmit={(value)=>this.props.onEditClick(value, this.props.token, this.props.navigator)}
+                    initialValues={{
+                        ...this.props.couponInfo,
+                        originalPrice: this.props.couponInfo.originalPrice.toString(),
+                        sellingPrice: this.props.couponInfo.sellingPrice.toString(),
+                        ticketPrice: this.props.couponInfo.ticketPrice.toString()
+                    }}/>
             </Page>
         )
     }
