@@ -15,5 +15,5 @@ export default createReducer(
         [setUserCouponPage]:(state,payload)=>{
             return {...state,...payload}
         }
-    },{total: 0, number: 0, size: 7}
+    },{total: 0, number: 0, size: 8}
 )
