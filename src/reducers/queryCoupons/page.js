@@ -11,8 +11,8 @@ import {setCouponPage} from '../../actions/index'
 
 export default createReducer(
     {
-        [setCouponPage]:(state,payload)=>{
-            return {...state,...payload}
+        [setCouponPage]: (state, payload)=> {
+            return {...state, ...payload}
         }
-    },{total: 0, number: 0, size: 8}
+    }, {total: 0, number: 0, size: 8}
 )

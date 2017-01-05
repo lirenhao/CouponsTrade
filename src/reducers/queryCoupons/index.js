@@ -14,4 +14,4 @@ import query from './query'
 import {combineReducers} from 'redux'
 
 
-export default combineReducers({couponList,couponInfo,page,query})
+export default combineReducers({couponList, couponInfo, page, query})

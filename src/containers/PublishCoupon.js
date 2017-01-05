@@ -14,9 +14,12 @@ import {connect} from 'react-redux'
 import {publishCouponRequest} from '../actions'
 
 
-class PublishCoupons extends React.Component{
-    render(){
-        return(<PublishCoupon onSubmit={(value)=>this.props.handleClick({... value,token:this.props.token},this.props.navigator,{comp: Tabs, props: {key: "Tabs"}})}/>)
+class PublishCoupons extends React.Component {
+    render() {
+        return (<PublishCoupon onSubmit={(value)=>this.props.handleClick({
+            ... value,
+            token: this.props.token
+        }, this.props.navigator, {comp: Tabs, props: {key: "Tabs"}})}/>)
     }
 }
 
@@ -25,15 +28,15 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-    handleClick: (param,navigator,routeData) => {
+    handleClick: (param, navigator, routeData) => {
         ons.notification.confirm("是否确认发布", {title: "注意", buttonLabels: ["否", "是"]}).then(
             res => {
                 if (res === 1) {
-                    dispatch(publishCouponRequest({param,navigator,routeData}))
+                    dispatch(publishCouponRequest({param, navigator, routeData}))
                 }
             }
         )
     }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps) (PublishCoupons)
+export default connect(mapStateToProps, mapDispatchToProps)(PublishCoupons)

@@ -27,14 +27,16 @@ class PublishCouponsDetail extends React.Component {
                 <div className="tab-bar">
                     <label className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
-                                onClick={() => this.props.onEditCoupon(this.props.token,this.props.couponInfo.id, this.props.navigator)
-                                }><ons-icon icon="ion-ios-compose-outline"> 编辑</ons-icon>
+                                onClick={() => this.props.onEditCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
+                                }>
+                            <ons-icon icon="ion-ios-compose-outline"> 编辑</ons-icon>
                         </button>
                     </label>
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
                                 onClick={() => this.props.onSoldOutCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
-                                }><ons-icon icon="ion-ios-trash-outline"> 下架</ons-icon>
+                                }>
+                            <ons-icon icon="ion-ios-trash-outline"> 下架</ons-icon>
                         </button>
                     </div>
                 </div>

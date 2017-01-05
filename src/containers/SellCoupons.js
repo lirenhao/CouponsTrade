@@ -25,9 +25,9 @@ class SellingCoupons extends React.Component {
                 </Toolbar>
             )}>
                 <CouponList couponList={this.props.couponList }
-                                   navigator={this.props.navigator}
-                                   token={this.props.token}
-                                   onClickPushPage={this.props.onClickPushPage}/>
+                            navigator={this.props.navigator}
+                            token={this.props.token}
+                            onClickPushPage={this.props.onClickPushPage}/>
                 <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
                              onRefresh={()=> {
                                  this.props.onRefresh(this.props.token, this.props.page)

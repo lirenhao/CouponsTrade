@@ -12,4 +12,4 @@ import page from './page'
 import {combineReducers} from 'redux'
 
 
-export default combineReducers({couponList,couponInfo,page})
+export default combineReducers({couponList, couponInfo, page})

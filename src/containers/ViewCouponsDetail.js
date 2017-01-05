@@ -27,7 +27,7 @@ class ViewCouponsDetail extends React.Component {
             )} renderBottomToolbar={() => (
                 <BottomToolbar>
                     <Button modifier="large noRadius" type="submit"
-                            onClick={() => this.props.onClickBuy(this.props.token,this.props.couponInfo.id, this.props.navigator,
+                            onClick={() => this.props.onClickBuy(this.props.token, this.props.couponInfo.id, this.props.navigator,
                                 {comp: PayOrder, props: {key: "PayOrder"}})}>我要买</Button>
                 </BottomToolbar>
             )}>
@@ -43,17 +43,17 @@ class ViewCouponsDetail extends React.Component {
 const mapStateToProps = (state)=>(
 {
     couponInfo: state.queryCoupons.couponInfo,
-    token:state.token
+    token: state.token
 }
 )
 
 const mapDispatchToProps = (dispatch)=>(
 {
-    onClickBuy: (token,id, navigator, routeData)=> {
-        dispatch(createOrderRequest({token,id, navigator, routeData}))
+    onClickBuy: (token, id, navigator, routeData)=> {
+        dispatch(createOrderRequest({token, id, navigator, routeData}))
     }
 }
 )
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(ViewCouponsDetail)
+export default connect(mapStateToProps, mapDispatchToProps)(ViewCouponsDetail)

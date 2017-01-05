@@ -7,7 +7,7 @@
  */
 
 
-import {insertUserCouponDetails, updateUserCoupon,updateSoldOutCoupon} from '../../actions'
+import {insertUserCouponDetails, updateUserCoupon, updateSoldOutCoupon} from '../../actions'
 import {createReducer} from 'redux-act'
 
 
@@ -16,7 +16,7 @@ export default createReducer({
     [updateUserCoupon]: (state, couponInfo)=> {
         return {...state, couponInfo}
     },
-    [updateSoldOutCoupon]:(state,couponState) =>{
-        return{...state,couponState}
+    [updateSoldOutCoupon]: (state, couponState) => {
+        return {...state, couponState}
     }
 }, {})

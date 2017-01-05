@@ -15,16 +15,18 @@ import {queryCouponsRequest, getCouponDetailsRequest, refreshCouponListRequest} 
 import {connect} from 'react-redux'
 
 
-class SearchCoupons extends React.Component{
-    render(){
+class SearchCoupons extends React.Component {
+    render() {
         return (
             <div>
                 <section>
                     <input type="search" placeholder="商品名称" className="search-input"
                            onBlur={(e)=>this.props.onSearch(e.target.value) }/>
                 </section>
-                <CouponList couponList={this.props.couponList} navigator={this.props.navigator} token={this.props.token} onClickPushPage={this.props.onPushPage}/>
-                <PushRefresh hasMore={this.props.couponList.length < this.props.page.total} onRefresh={()=>this.props.onRefresh(this.props.token,this.props.query,this.props.page)}/>
+                <CouponList couponList={this.props.couponList} navigator={this.props.navigator} token={this.props.token}
+                            onClickPushPage={this.props.onPushPage}/>
+                <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
+                             onRefresh={()=>this.props.onRefresh(this.props.token, this.props.query, this.props.page)}/>
             </div>
         )
     }
