@@ -345,8 +345,8 @@ export function *queryCouponsAsync(req) {
  */
 export function *refreshCouponListAsync(req) {
     yield put(onload())
-    const {token, query, total, number, size} = req.payload
-    const res = yield call(fetch, ServerPath.REFRESH_COUPON_LIST, {token, query, total, number, size})
+    const {token, query, page} = req.payload
+    const res = yield call(fetch, ServerPath.REFRESH_COUPON_LIST, {token, query, ...page})
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setCouponPage(res.page))
         yield put(insertCoupons(res.couponList))

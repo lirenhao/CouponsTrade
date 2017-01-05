@@ -8,7 +8,7 @@
 
 import React from 'react'
 import {ListItem} from 'react-onsenui'
-import PriceComponent from './Price'
+import PriceComponent from '../Price'
 
 const CouponInfo = (props)=> {
     const {couponName, sellingPrice, description, onClick} = props;

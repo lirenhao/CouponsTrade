@@ -8,25 +8,24 @@
 
 
 import React from 'react'
-import SearchCouponList from '../components/sellCoupon/SearchCouponList'
+import CouponList from '../components/sellCoupon/CouponList'
+import PushRefresh from '../components/PushRefresh'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
 import {queryCouponsRequest, getCouponDetailsRequest, refreshCouponListRequest} from '../actions'
 import {connect} from 'react-redux'
 
 
-class SearchCoupons extends React.Component {
-    render() {
+class SearchCoupons extends React.Component{
+    render(){
         return (
-            <SearchCouponList couponList={this.props.couponList}
-                              onClickPushPage={this.props.onPushPage}
-                              onSearch={(value)=> {
-                                  this.props.onSearch(value)
-                              }}
-                              token={this.props.token}
-                              navigator={this.props.navigator}
-                              page={this.props.page}
-                              onRefresh={()=>this.props.onRefresh(this.props.token, this.props.query, this.props.page.total, this.props.page.number, this.props.page.size)}
-            />
+            <div>
+                <section>
+                    <input type="search" placeholder="商品名称" className="search-input"
+                           onBlur={(e)=>this.props.onSearch(e.target.value) }/>
+                </section>
+                <CouponList couponList={this.props.couponList} navigator={this.props.navigator} token={this.props.token} onClickPushPage={this.props.onPushPage}/>
+                <PushRefresh hasMore={this.props.couponList.length < this.props.page.total} onRefresh={()=>this.props.onRefresh(this.props.token,this.props.query,this.props.page)}/>
+            </div>
         )
     }
 }
@@ -55,8 +54,8 @@ const mapDispatchToProps = (dispatch)=>({
             dataFlag: "0"
         }))
     },
-    onRefresh: (token, query, total, number, size)=> {
-        dispatch(refreshCouponListRequest({token, query, total, number, size}))
+    onRefresh: (token, query, page)=> {
+        dispatch(refreshCouponListRequest({token, query, page}))
     }
 })
 
