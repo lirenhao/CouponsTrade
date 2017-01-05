@@ -34,7 +34,7 @@ export function* request() {
                     yield put(handleSuccess(res))
                 }
                 if (router) {
-                    yield call(router)
+                    yield call(router, res)
                 }
             } else {
                 // 失败后的处理
