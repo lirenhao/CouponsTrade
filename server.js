@@ -856,7 +856,7 @@ const getCouponListItem = (coupon)=> {
         id: coupon.id,
         couponName: coupon.couponName,
         sellingPrice: coupon.sellingPrice,
-        description: coupon.describe
+        describe: coupon.describe
     }
 }
 

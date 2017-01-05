@@ -6,7 +6,7 @@
  * 发售中的商品列表
  */
 import React from 'react'
-import {List, ListHeader} from 'react-onsenui'
+import {List} from 'react-onsenui'
 import CouponInfo from './CouponInfo'
 
 const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
@@ -14,7 +14,7 @@ const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
     const renderRow = (row)=> {
         return (
             <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}
-                        description={row.description} onClick={()=>onClickPushPage(token, row.id, navigator)}/>
+                        describe={row.describe} onClick={()=>onClickPushPage(token, row.id, navigator)}/>
         )
     };
 
@@ -51,7 +51,7 @@ CouponList.propTypes = {
             id: React.PropTypes.string.isRequired,
             couponName: React.PropTypes.string.isRequired,
             sellingPrice: React.PropTypes.number.isRequired,
-            description: React.PropTypes.string.isRequired
+            describe: React.PropTypes.string.isRequired
         })).isRequired,
     onClickPushPage: React.PropTypes.func.isRequired,
     navigator: React.PropTypes.object.isRequired,
