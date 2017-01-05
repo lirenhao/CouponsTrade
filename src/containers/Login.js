@@ -49,7 +49,7 @@ class Login extends React.Component {
             <Page renderToolbar={this.loginToolbar.bind(this)}>
                 <SignIn onSubmit={(param) => this.props.login(param, this.props.navigator, {
                     comp: Tabs,
-                    props: {index: this.props.index}
+                    props: {index: this.props.index || 0}
                 })}/>
             </Page>
         )

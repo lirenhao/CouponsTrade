@@ -31,7 +31,7 @@ class Tabs extends React.Component {
         return (
             <Page>
                 <Tabbar
-                    index={this.props.index || 0}
+                    index={this.props.index}
                     renderTabs={this.renderTabs.bind(this)}
                 />
             </Page>
