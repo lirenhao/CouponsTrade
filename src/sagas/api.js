@@ -13,20 +13,41 @@ import {ResponseCode} from "../constants"
 export function* request() {
     while (true) {
         let req = yield take((action) => /.*REQUEST/.test(action.type))
-        let {apiType, param, router, handle = {after: Act.onload, before: Act.unload}} = req.payload
-        yield put(handle.after())
+        let {
+            apiType, param, router, handle = {
+            before: [Act.onload],
+            success: [],
+            fail: [],
+            after: [Act.unload]
+        }
+        } = req.payload
+        for (let handleBefore of handle.before) {
+            yield put(handleBefore())
+        }
         try {
             let res = yield call(fetch, apiType, param)
             if (res.code == ResponseCode.SUCCESS) {
                 yield put({type: req.type, payload: res})
+                for (let handleSuccess of handle.success) {
+                    yield put(handleSuccess(res))
+                }
                 if (router) {
                     yield call(router)
                 }
-            } else
+            } else {
                 yield put(Act.showDialog(res.msg))
+                for (let handleFail of handle.fail) {
+                    yield put(handleFail(res))
+                }
+            }
         } catch (e) {
             yield put(Act.showDialog(e.message))
+            for (let handleFail of handle.fail) {
+                yield put(handleFail(e))
+            }
         }
-        yield put(handle.before())
+        for (let handleAfter of handle.after) {
+            yield put(handleAfter())
+        }
     }
 }
