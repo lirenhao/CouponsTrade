@@ -22,18 +22,36 @@ class SearchCoupons extends React.Component {
                         apiType: 'queryCoupons',
                         param: {
                             ...this.props.page,
-                            token: this.props.token,
-                            couponName: this.props.query
+                            ...this.props.query,
+                            token: this.props.token
                         },
                         callback: {after: [done]}
                     })
                 }/>
                 <section>
                     <input type="search" placeholder="商品名称" className="search-input"
-                           onBlur={(e) => this.props.onSearch(e.target.value) }/>
+                           onBlur={(event) =>
+                               this.props.getCouponsListRequest({
+                                   apiType: 'queryCoupons',
+                                   param: {
+                                       ...this.props.page,
+                                       token: this.props.token,
+                                       couponName: event.target.value
+                                   }
+                               })
+                           }/>
                 </section>
-                <CouponList couponList={this.props.couponList} navigator={this.props.navigator} token={this.props.token}
-                            onClickPushPage={this.props.onPushPage}/>
+                <CouponList couponList={this.props.couponList} navigator={this.props.navigator}
+                            token={this.props.token} onClickPushPage={(id) =>
+                    this.props.getCouponsInfoRequest({
+                        apiType: 'getCouponDetails',
+                        param: {id, token: this.props.token},
+                        router: () => this.props.navigator.pushPage({
+                            comp: ViewCouponsDetail,
+                            props: {key: "viewCouponsDetail"}
+                        })
+                    })
+                }/>
                 <PushRefresh
                     hasMore={this.props.couponList.length < this.props.page.total}
                     onRefresh={() =>
@@ -41,8 +59,8 @@ class SearchCoupons extends React.Component {
                             apiType: 'refreshCouponList',
                             param: {
                                 ...this.props.page,
-                                token: this.props.token,
-                                couponName: this.props.query
+                                ...this.props.query,
+                                token: this.props.token
                             }
                         })
                     }/>
@@ -52,19 +70,14 @@ class SearchCoupons extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
+        token: state.token,
         couponList: state.queryCoupons.couponList,
         page: state.queryCoupons.page,
-        token: state.token,
-        query: state.queryCoupons.query.couponName
+        query: state.queryCoupons.query
     }
 )
 
 const mapDispatchToProps = (dispatch) => ({
-    onSearch: (param) => {
-        if (param.replace(/\s/g, "") !== "") {
-            dispatch(queryCouponsRequest(param))
-        }
-    },
     onPushPage: (token, id, navigator) => {
         dispatch(getCouponDetailsRequest({
             token, id, navigator,
@@ -74,9 +87,6 @@ const mapDispatchToProps = (dispatch) => ({
             },
             dataFlag: "0"
         }))
-    },
-    onRefresh: (token, query, page) => {
-        dispatch(refreshCouponListRequest({token, query, page}))
     }
 })
 

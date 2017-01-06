@@ -7,12 +7,8 @@
  */
 
 import {createReducer} from 'redux-act'
-import {setCouponPage} from '../../actions/index'
+import {getCouponsListSuccess} from '../../actions/index'
 
-export default createReducer(
-    {
-        [setCouponPage]: (state, payload)=> {
-            return {...state, ...payload}
-        }
-    }, {total: 0, number: 0, size: 8}
-)
+export default createReducer({
+    [getCouponsListSuccess]: (state, payload) => ({...state, ...payload.page})
+}, {total: 0, number: 0, size: 8})

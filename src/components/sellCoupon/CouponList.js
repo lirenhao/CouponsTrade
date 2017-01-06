@@ -14,7 +14,7 @@ const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
     const renderRow = (row)=> {
         return (
             <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}
-                        describe={row.describe} onClick={()=>onClickPushPage(token, row.id, navigator)}/>
+                        describe={row.describe} onClick={()=> onClickPushPage(row.id)}/>
         )
     };
 
@@ -58,4 +58,3 @@ CouponList.propTypes = {
 };
 
 export default CouponList
-
