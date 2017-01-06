@@ -25,13 +25,13 @@ class PublishCouponsDetail extends React.Component {
                 </Toolbar>
             )} renderBottomToolbar={() => (
                 <div className="tab-bar">
-                    <label className="tab-bar__item">
+                    <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
                                 onClick={() => this.props.onEditCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
                                 }>
                             <ons-icon icon="ion-ios-compose-outline"> 编辑</ons-icon>
                         </button>
-                    </label>
+                    </div>
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
                                 onClick={() => this.props.onSoldOutCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)

@@ -3,7 +3,7 @@
     margin-top: 1em;
 }
 
-.list--marginB {
+.list--marginB,.button--marginB {
     margin-bottom: 1em;
 }
 
@@ -313,4 +313,6 @@ input[name*="Password"] + .text-input--material__label--active {
 .tab-bar{
     background-image: none;
     box-shadow: 0 0 1px #ccc;
+}
+.tab-bar ons-icon:nth-child(1){
 }

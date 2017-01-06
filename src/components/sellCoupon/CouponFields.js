@@ -120,7 +120,7 @@ class CouponFields extends React.Component {
                             <Field name="describe" component={TextAreaComponent} placeholder="描述"/>
                         </ListItem>
                     </List>
-                    <Button modifier="large marginTLR" disabled={this.props.invalid || this.props.submitting}
+                    <Button modifier="large marginTLR marginB" disabled={this.props.invalid || this.props.submitting}
                             onClick={this.props.onSubmit}>{this.props.buttonName}</Button>
                 </Field>
             </div>
