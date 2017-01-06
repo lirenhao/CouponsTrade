@@ -663,8 +663,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
                 describe,
                 userName,
                 couponState: "1"
-            });
-            console.log(state.publishCouponList)
+            })
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
@@ -730,7 +729,6 @@ app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
     const userName = state.login.username
     if (state.token === token) {
         const userCouponListObj = getUserCouponList(state.publishCouponList, userName, couponName, couponState, total, number, size)
-        console.log(userCouponListObj.couponList)
         res.json({
             code: ResponseCode.SUCCESS,
             couponList: userCouponListObj.couponList,
@@ -743,11 +741,9 @@ app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
 
 app.post(`/${ServerPath.REFRESH_USER_COUPON_LIST}`, function (req, res) {
     const {token, couponName, couponState, total, number, size} = req.body
-    console.log({token, couponName, couponState, total, number, size})
     const userName = state.login.username
     if (token === state.token) {
         const userCouponListObj = getUserCouponList(state.publishCouponList, userName, couponName, couponState, total, number, size)
-        console.log(userCouponListObj.couponList)
         res.json({
             code: ResponseCode.SUCCESS,
             couponList: userCouponListObj.couponList,
@@ -911,7 +907,6 @@ const getCouponList = (coupons, couponName, total, number, size) => {
  */
 const getUserCouponList = (coupons, userName, couponName, couponState, total, number, size) => {
     let couponList = []
-    console.log({total, number, size})
     for (var coupon of coupons) {
         if (coupon.userName === userName) {
             couponList.push(getCouponListItem(coupon))

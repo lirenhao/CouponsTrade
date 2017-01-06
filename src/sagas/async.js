@@ -363,7 +363,6 @@ export function *refreshCouponListAsync(req) {
 export function *refreshUserCouponListAsync(req) {
     yield put(onload())
     const {token, query, page} = req.payload
-    console.log({token, query, page})
     const res = yield call(fetch, ServerPath.REFRESH_USER_COUPON_LIST, {token, ...page})
     if (res.code == ResponseCode.SUCCESS) {
         yield put(setUserCouponPage(res.page))
