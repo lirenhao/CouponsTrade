@@ -20,7 +20,6 @@ const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
 
     return (
         <List dataSource={couponList}
-              modifier=" limit"
               renderHeader={() =><ons-list modifier="noborder">
                   <ons-list-item>
                       <ons-row>

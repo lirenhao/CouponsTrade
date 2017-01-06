@@ -3,7 +3,7 @@
     margin-top: 1em;
 }
 
-.list--marginB,.button--marginB {
+.list--marginB, .button--marginB {
     margin-bottom: 1em;
 }
 
@@ -17,11 +17,13 @@
     margin-right: 8px;
     margin-top: 1em;
 }
-.button--white{
+
+.button--white {
     background-color: #fff;
     border: 1px #ccc solid;
     color: #000;
 }
+
 section .search-input, section .search-input:focus {
     margin: 8px;
     width: calc(100% - 16px);
@@ -39,7 +41,7 @@ label.text-input__container {
     top: 15px;
 }
 
-*[placeholder]{
+*[placeholder] {
     width: 100%;
 }
 
@@ -51,7 +53,8 @@ label.text-input__container {
     border-bottom: 1px solid #ccc;
     margin-bottom: -1px;
 }
-.list[modifier="noborder"] .list__item{
+
+.list[modifier="noborder"] .list__item {
     padding-left: 0;
 }
 
@@ -85,7 +88,7 @@ label.text-input__container {
     border-radius: 100%;
 }
 
-.list--mine .list__header{
+.list--mine .list__header {
     background-color: #fff;
 }
 
@@ -109,7 +112,7 @@ label.text-input__container {
     color: #aaa;
 }
 
-.list--limit .center b {
+.list__item--sell b {
     display: block;
     font-style: normal;
     margin: 1px 2px 1px 1px;
@@ -124,7 +127,7 @@ label.text-input__container {
     font-weight: 100;
 }
 
-.list--limit .center i {
+.list__item--sell i {
     display: block;
     font-style: normal;
     margin: 1px 2px 1px 1px;
@@ -138,7 +141,7 @@ label.text-input__container {
     line-height: 14px;
 }
 
-.list--limit .center em {
+.list__item--sell em {
     display: block;
     font-style: normal;
     margin: 1px 2px 1px 1px;
@@ -172,6 +175,7 @@ input[name*="Password"] + .text-input--material__label--active {
     margin-top: 1em;
     margin-left: 8px;
 }
+
 .right .button--material {
     color: #fff;
 }
@@ -235,8 +239,9 @@ input[name*="Password"] + .text-input--material__label--active {
     right: 0;
     top: 0;
 }
+
 /*开启券码*/
-.couponCodeBg{
+.couponCodeBg {
     padding: 6px 1.8em;
     display: flex;
     align-items: center;
@@ -257,6 +262,7 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
+
 /*生成邀请码*/
 .inviteBg {
     width: 90%;
@@ -278,41 +284,90 @@ input[name*="Password"] + .text-input--material__label--active {
     );
     background-size: 1.5em 1.5em;
 }
+
 /*已购买页面上下拉刷新*/
-.pushRefresh{
+.pushRefresh {
     text-align: center;
     display: none;
     padding-top: .5em;
     padding-bottom: .5em;
 }
-.pushRefresh.in{
+
+.pushRefresh.in {
     display: block;
 }
-.up,.pushRefresh{
+
+.up, .pushRefresh {
     color: #ccc;
     font-size: 0.8em;
 }
-.up ons-icon,.pushRefresh ons-icon{
+
+.up ons-icon, .pushRefresh ons-icon {
     position: relative;
     top: -2px;
 }
+
 /*灰色字且缩小*/
-.grayColor{
+.grayColor {
     color: #aaa;
     font-size: 0.8em;
 }
+
 /*售卖列表商品描述*/
-.list__item--sell__subtitle{
+.list__item--sell__subtitle {
     font-size: .5em;
     color: #aaa;
     width: 0;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
-.tab-bar{
+
+/*编辑删除优惠券页面，固定在底部的俩按钮*/
+.tab-bar {
     background-image: none;
     box-shadow: 0 0 1px #ccc;
 }
-.tab-bar ons-icon:nth-child(1){
+/*发布选择类型按钮*/
+.handleShow {
+    background: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    font-size: 1em;
+    outline: none;
+}
+
+.list__item--handleShow .center:hover {
+    outline: #aaa;
+    animation: zigzag 1s linear infinite;
+    -webkit-animation: zigzag 2s linear infinite;
+    background: linear-gradient(135deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) -0.5em 0,
+    linear-gradient(225deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) -0.5em 0,
+    linear-gradient(315deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) 0 0,
+    linear-gradient(45deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) 0 0;
+    background: -webkit-linear-gradient(315deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) -0.5em 0,
+    -webkit-linear-gradient(225deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) -0.5em 0,
+    -webkit-linear-gradient(135deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) 0 0,
+    -webkit-linear-gradient(45deg, rgba(230, 230, 230, .5) 0.25em, transparent 0.25em) 0 0;
+    background-size: 0.75em 0.75em;
+}
+
+@keyframes zigzag {
+    100% {
+        background-position: 1em 0, 1em 0, -0.75em 0, -0.75em 0;
+    }
+}
+
+@-webkit-keyframes zigzag {
+    100% {
+        background-position: 1em 0, 1em 0, -0.75em 0, -0.75em 0;
+    }
+}
+.list__item--handleShow{
+    padding-top: 0;
+    padding-bottom: 0;
+}
+.list__item--handleShow .center{
+    border-bottom: 1px #bbb solid;
 }
