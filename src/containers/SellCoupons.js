@@ -25,11 +25,27 @@ class SellingCoupons extends React.Component {
                 <CouponList couponList={this.props.couponList }
                             navigator={this.props.navigator}
                             token={this.props.token}
-                            onClickPushPage={this.props.onClickPushPage}/>
+                            onClickPushPage={(id) =>
+                                this.props.getUserCouponInfoRequest({
+                                    apiType: 'getCouponDetails',
+                                    param: {id, token: this.props.token},
+                                    router: () => this.props.navigator.pushPage({
+                                        comp: PublishCouponsDetail,
+                                        props: {key: "publishCouponsDetail"}
+                                    })
+                                })}
+                />
                 <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
-                             onRefresh={() => {
-                                 this.props.onRefresh(this.props.token, this.props.page)
-                             }}/>
+                             onRefresh={() =>
+                                 this.props.getUserCouponListRequest({
+                                     apiType: 'refreshCouponList',
+                                     param: {
+                                         ...this.props.page,
+                                         token: this.props.token
+                                     }
+                                 })
+                             }
+                />
             </Page>
         )
     }

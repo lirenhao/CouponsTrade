@@ -5,18 +5,9 @@
  * Why & What is modified  <修改原因描述>
  * 对查询自己发布的优惠券明细信息操作的reducer
  */
-
-
-import {insertUserCouponDetails, updateUserCoupon, updateSoldOutCoupon} from '../../actions'
 import {createReducer} from 'redux-act'
-
+import {getUserCouponInfoRequest} from '../../actions'
 
 export default createReducer({
-    [insertUserCouponDetails]: (state, couponInfo)=> couponInfo,
-    [updateUserCoupon]: (state, couponInfo)=> {
-        return {...state, couponInfo}
-    },
-    [updateSoldOutCoupon]: (state, couponState) => {
-        return {...state, couponState}
-    }
+    [getUserCouponInfoRequest]: (state, payload)=> ({...payload.couponInfo})
 }, {})

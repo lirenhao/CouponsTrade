@@ -5,15 +5,9 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-
-
 import {createReducer} from 'redux-act'
-import {setUserCouponPage} from '../../actions/index'
+import {getUserCouponListRequest} from '../../actions/index'
 
-export default createReducer(
-    {
-        [setUserCouponPage]: (state, payload)=> {
-            return {...state, ...payload}
-        }
-    }, {total: 0, number: 0, size: 8}
-)
+export default createReducer({
+    [getUserCouponListRequest]: (state, payload) => ({...state, ...payload.page})
+}, {total: 0, number: 0, size: 8})
