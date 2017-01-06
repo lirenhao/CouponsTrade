@@ -673,6 +673,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
         const {couponName, token, total, number, size} = req.body
+        console.log(req.body)
         if (token === state.token) {
             let newNumber = typeof number === "undefined" ? 0 : number
             let newSize = typeof size === "undefined" ? 5 : size
@@ -689,9 +690,10 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
 )
 
 app.post(`/${ServerPath.REFRESH_COUPON_LIST}`, function (req, res) {
-    const {token, total, number, size, query} = req.body
+    const {token, total, number, size, couponName} = req.body
+    console.log(req.body)
     if (token === state.token) {
-        const couponListObj = getCouponList(state.publishCouponList, query, total, number, size)
+        const couponListObj = getCouponList(state.publishCouponList, couponName, total, number, size)
         res.json({
             code: ResponseCode.SUCCESS,
             couponList: couponListObj.couponList,
@@ -868,6 +870,7 @@ const getCouponListItem = (coupon)=> {
 const getCouponList = (coupons, couponName, total, number, size) => {
     let couponList = []
     let newNumber = 0
+    console.log(couponName);
     if (couponName !== "ALL") {
         for (let coupon of coupons) {
             if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {

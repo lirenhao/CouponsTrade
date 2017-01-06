@@ -77,17 +77,4 @@ const mapStateToProps = (state) => ({
     }
 )
 
-const mapDispatchToProps = (dispatch) => ({
-    onPushPage: (token, id, navigator) => {
-        dispatch(getCouponDetailsRequest({
-            token, id, navigator,
-            routeData: {
-                comp: ViewCouponsDetail,
-                props: {key: "ViewCouponsDetail"}
-            },
-            dataFlag: "0"
-        }))
-    }
-})
-
 export default connect(mapStateToProps, {getCouponsListRequest, getCouponsInfoRequest})(SearchCoupons)
