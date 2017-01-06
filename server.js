@@ -673,7 +673,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
         const {couponName, token, total, number, size} = req.body
-        if (token !== state.token) {
+        if (token === state.token) {
             let newNumber = typeof number === "undefined" ? 0 : number
             let newSize = typeof size === "undefined" ? 5 : size
             const couponListObj = getCouponList(state.publishCouponList, couponName, total, newNumber, newSize)
