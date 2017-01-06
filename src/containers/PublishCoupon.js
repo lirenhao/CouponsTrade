@@ -5,39 +5,34 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-
 import React from 'react'
-import PublishCouponForm from '../components/sellCoupon/PublishCouponForm'
-import Tabs from './Tabs'
-import ons from 'onsenui'
 import {connect} from 'react-redux'
-import {publishCouponRequest} from '../actions'
+import ons from 'onsenui'
+import PublishCouponForm from '../components/sellCoupon/PublishCouponForm'
+import {publishCouponRequest, showDialog} from '../actions'
 
-
-class PublishCoupons extends React.Component {
-    render() {
-        return (<PublishCouponForm onSubmit={(value)=>this.props.handleClick({
-            ... value,
-            token: this.props.token
-        }, this.props.navigator, {comp: Tabs, props: {key: "Tabs"}})}/>)
-    }
+const PublishCoupons = (props) => {
+    return (
+        <PublishCouponForm onSubmit={(value) =>
+            ons.notification.confirm("是否确认发布", {title: "注意", buttonLabels: ["否", "是"]}).then(
+                res => {
+                    if (res === 1) {
+                        props.publishCouponRequest({
+                            apiType: 'publishCoupon',
+                            param: {...value, token: props.token},
+                            handle: {
+                                success: [() => showDialog("发布成功")]
+                            }
+                        })
+                    }
+                }
+            )
+        }/>
+    )
 }
 
 const mapStateToProps = (state) => ({
     token: state.token
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    handleClick: (param, navigator, routeData) => {
-        ons.notification.confirm("是否确认发布", {title: "注意", buttonLabels: ["否", "是"]}).then(
-            res => {
-                if (res === 1) {
-                    console.log(param)
-                    dispatch(publishCouponRequest({param, navigator, routeData}))
-                }
-            }
-        )
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublishCoupons)
+export default connect(mapStateToProps, {publishCouponRequest})(PublishCoupons)
