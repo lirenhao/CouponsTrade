@@ -6,9 +6,9 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {login, logout} from "../actions"
+import {loginSuccess, logoutSuccess} from "../actions"
 
 export default createReducer({
-    [login]: (state, token) => token,
-    [logout]: (state) => ""
+    [loginSuccess]: (state, payload) => payload.token + "",
+    [logoutSuccess]: (state) => ""
 }, "")

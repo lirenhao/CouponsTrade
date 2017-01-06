@@ -15,9 +15,7 @@ import ons from 'onsenui'
 const renderToolbar = () => {
     return (
         <Toolbar>
-            <div className='left'>
-                <BackButton>返回</BackButton>
-            </div>
+            <div className='left'><BackButton/></div>
             <div className="center">订单信息</div>
         </Toolbar>
     )
@@ -28,7 +26,7 @@ const OrderInfo = (props) => {
         orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
         ticketPrice, endDate, describe, isOpen, sellerNickName, orderState
-    }=props.orderInfo
+    } = props.orderInfo
 
     const returnCouponModality = () => {
         if (orderState === "已支付" || orderState === "已完成") {
@@ -49,14 +47,12 @@ const OrderInfo = (props) => {
                 <BottomToolbar modifier="material">
                     <div className="tab-bar">
                         <div className="tab-bar__item">
-                            <button className="tab-bar__button"
-                                    onClick={() => {
-                                        props.navigator.pushPage({
-                                            comp: PayOrder,
-                                            props: {key: "PayOrder"}
-                                        })
-                                    }}
-                            >
+                            <button
+                                className="tab-bar__button"
+                                onClick={() => props.navigator.pushPage({
+                                    comp: PayOrder,
+                                    props: {key: "payOrder"}
+                                })}>
                                 <ons-icon icon="ion-android-done"> 支付</ons-icon>
                             </button>
                         </div>

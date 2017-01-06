@@ -24,9 +24,9 @@ import OrderList from './OrderList'
 import {
     createInviteCodeRequest,
     getUserInfoRequest,
+    getUserCouponListRequest,
     getOrderListRequest,
-    logoutRequest,
-    getUserCouponsRequest
+    logoutRequest
 } from '../actions'
 
 class Mine extends React.Component {
@@ -38,18 +38,36 @@ class Mine extends React.Component {
                 </Toolbar>
             )}>
                 <List modifier='inset marginT mine'>
-                    <ListHeader onClick={() => {
-                        this.props.getUserInfo(this.props.token, this.props.navigator)
-                    }}>
+                    <ListHeader onClick={() =>
+                        this.props.getUserInfoRequest({
+                            apiType: 'getUserInfo', param: {token: this.props.token},
+                            router: () => this.props.navigator.pushPage({
+                                comp: User,
+                                props: {key: "user"}
+                            })
+                        })
+                    }>
                         <img src={`http://placekitten.com/g/40/40`} alt=""/>
                     </ListHeader>
-                    <ListItem modifier='chevron' onClick={() => {
-                        this.props.getUserInfo(this.props.token, this.props.navigator)
-                    }}>
+                    <ListItem modifier='chevron' onClick={() =>
+                        this.props.getUserInfoRequest({
+                            apiType: 'getUserInfo', param: {token: this.props.token},
+                            router: () => this.props.navigator.pushPage({
+                                comp: User,
+                                props: {key: "user"}
+                            })
+                        })
+                    }>
                         查看用户信息
                     </ListItem>
                     <ListItem modifier='chevron' onClick={() =>
-                        this.props.createInviteCode(this.props.token, this.props.navigator)
+                        this.props.createInviteCodeRequest({
+                            apiType: 'createInviteCode', param: {token: this.props.token},
+                            router: (res) => this.props.navigator.pushPage({
+                                comp: CreateInviteCode,
+                                props: {key: "createInviteCode", inviteCode: res.inviteCode}
+                            })
+                        })
                     }>
                         生成邀请码
                     </ListItem>
@@ -64,31 +82,40 @@ class Mine extends React.Component {
                 </List>
                 <List modifier='inset marginT'>
                     <ListItem modifier='chevron' onClick={() =>
-                        this.props.onGetCoupons(this.props.token, this.props.navigator, {
-                            comp: SellingCoupons,
-                            props: {key: "SellingCoupons"}
-                        }, this.props.publishedCouponsPage)
+                        this.props.getUserCouponListRequest({
+                            apiType: 'getUserCoupons',
+                            param: {...this.props.publishedCouponsPage, token: this.props.token},
+                            router: () => this.props.navigator.pushPage({
+                                comp: SellingCoupons,
+                                props: {key: "sellingCoupons"}
+                            })
+                        })
                     }>
                         发布的优惠券
                     </ListItem>
                     <ListItem modifier='chevron' onClick={() =>
-                        this.props.getOrderList({
-                            token: this.props.token,
-                            ...this.props.page,
-                            route: this.props.navigator,
-                            com: OrderList,
-                            from: "mine"
+                        this.props.getOrderListRequest({
+                            apiType: 'getOrderList',
+                            param: {...this.props.orderPage, token: this.props.token},
+                            router: () => this.props.navigator.pushPage({
+                                comp: OrderList,
+                                props: {key: "orderList"}
+                            })
                         })
                     }>
                         购买的优惠券
                     </ListItem>
                 </List>
-                <Button modifier="large light marginTLR" onClick={() => {
-                    this.props.logout(
-                        this.props.navigator,
-                        {comp: Login, props: {key: "login", index: 2}}
-                    )
-                }}>
+                <Button modifier="large light marginTLR" onClick={() =>
+                    this.props.logoutRequest({
+                        apiType: 'logout',
+                        param: {token: this.props.token},
+                        router: (res) => this.props.navigator.resetPage({
+                            comp: Login,
+                            props: {key: "login", index: 2}
+                        })
+                    })
+                }>
                     退出当前账号
                 </ Button >
             </Page>
@@ -98,26 +125,14 @@ class Mine extends React.Component {
 
 const mapStateToProps = (state) => ({
     token: state.token,
-    page: state.order.page,
+    orderPage: state.order.page,
     publishedCouponsPage: state.publishedCoupons.page
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    getUserInfo: (token, navigator) => {
-        dispatch(getUserInfoRequest({token, navigator, router: {comp: User, props: {key: "User"}}}))
-    },
-    createInviteCode: (token, navigator) => {
-        dispatch(createInviteCodeRequest({token, navigator, comp: CreateInviteCode}))
-    },
-    getOrderList: (action) => {
-        dispatch(getOrderListRequest(action))
-    },
-    logout: (navigator, router) => {
-        dispatch(logoutRequest({navigator, router}))
-    },
-    onGetCoupons: (token, navigator, routeData, page) => {
-        dispatch(getUserCouponsRequest({token, navigator, routeData, page}))
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Mine)
+export default connect(mapStateToProps, {
+    getUserInfoRequest,
+    createInviteCodeRequest,
+    getUserCouponListRequest,
+    getOrderListRequest,
+    logoutRequest
+})(Mine)

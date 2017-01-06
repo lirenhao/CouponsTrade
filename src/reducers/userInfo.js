@@ -6,10 +6,13 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {updateUserInfo} from "../actions"
+import {getUserInfoSuccess, updatePasswordSuccess} from "../actions"
 
 export default createReducer({
-    [updateUserInfo]: (state, userInfo) => {
-        return {...state, ...userInfo}
+    [getUserInfoSuccess]: (state, res) => {
+        return {...state, ...res.userInfo}
+    },
+    [updatePasswordSuccess]: (state, res) => {
+        return {...state, ...res.userInfo}
     }
 }, {})

@@ -1,495 +1,64 @@
 /**
  * Author：liRenhao
- * Create Date：2016/12/20
+ * Create Date：2017/1/3
  * Modified By：liRenhao
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-import {call, put} from "redux-saga/effects"
-import fetch from "../fetch"
-import {ServerPath, ResponseCode} from "../constants"
-import {
-    onload,
-    unload,
-    login,
-    logout,
-    updateUserInfo,
-    showDialog,
-    setOrderList,
-    setOrderInfo,
-    insertOrderList,
-    setOrderPage,
-    openCoupon,
-    initialPage,
-    setCoupons,
-    insertCouponDetails,
-    setUserCoupons,
-    insertUserCouponDetails,
-    updateSoldOutCoupon,
-    updateUserCoupon,
-    setCouponPage,
-    insertCoupons,
-    setCouponsQuery,
-    setUserCouponPage,
-    insertUserCoupons
-} from "../actions"
+import {put, call, take} from 'redux-saga/effects'
+import * as Act from '../actions'
+import fetch from '../fetch'
+import {ResponseCode} from '../constants'
 
-/**
- * 注册的异步处理
- * @param req 注册发起signUpRequest的action
- */
-export function* signUpAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.SIGN_UP, param)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(showDialog("注册成功"))
-        navigator.popPage()
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 登录的异步处理
- * @param req 登录发起loginRequest的action
- */
-export function* loginAsync(req) {
-    yield put(onload())
-    const {param, navigator, router} = req.payload
-    const res = yield call(fetch, ServerPath.LOGIN, param)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(login(res.token))
-        yield call([navigator, navigator.resetPage], router)
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 注销的异步处理
- */
-export function* logoutAsync(req) {
-    yield put(onload())
-    yield call(fetch, ServerPath.LOGOUT)
-    yield put(logout())
-    const {navigator, router} = req.payload
-    yield call([navigator, navigator.pushPage], router)
-    yield put(unload())
-}
-
-/**
- * 获取用户信息的异步处理
- * @param req
- */
-export function* getUserInfoAsync(req) {
-    yield put(onload())
-    const {token, navigator, router} = req.payload
-    const res = yield call(fetch, ServerPath.GET_USER_INFO, {token})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserInfo(res.userInfo))
-        navigator.pushPage(router)
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 更新用户信息的异步处理
- * @param req
- */
-export function* updateUserInfoAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.UPDATE_USER_INFO, param)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserInfo(param))
-        navigator.popPage()
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- *生成邀请码的异步处理
- */
-export function* createInviteCodeAsync(req) {
-    yield put(onload())
-    const {token, navigator, comp} = req.payload
-    const res = yield call(fetch, ServerPath.CREATE_INVITE_CODE, {token})
-    if (res.code == ResponseCode.SUCCESS) {
-        navigator.pushPage({comp, props: {key: "userShare", inviteCode: res.inviteCode}})
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 验证密码的异步处理
- * @param req
- */
-export function* verifyPasswordAsync(req) {
-    yield put(onload())
-    const {param, navigator, comp, props} = req.payload
-    const res = yield call(fetch, ServerPath.VERIFY_PASSWORD, param)
-    if (res.code == ResponseCode.SUCCESS) {
-        navigator.replacePage({comp, props})
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 更改密码的异步处理
- * @param req
- */
-export function* updatePasswordAsync(req) {
-    yield put(onload())
-    const {param, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.UPDATE_PASSWORD, param)
-    if (res.code == ResponseCode.SUCCESS) {
-        navigator.popPage()
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 初始化列表的异步处理
- * @param action
- */
-
-export function* fetchOrderList(action) {
-    const {route, com, ...data}=action.payload
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(initialPage(res.page))
-        yield put(setOrderList(res.orderList))
-        if (data.from === "order") {
-            route.resetPageStack([
-                {
-                    comp: com.Tabs, props: {key: "tabs", index: 2}
-                },
-                {
-                    comp: com.OrderList, props: {key: "OrderList" + Math.random()}
-                },
-            ])
-        } else {
-            route.pushPage({
-                comp: com, props: {key: "OrderList"}
-            })
+export function* request() {
+    while (true) {
+        let action = yield take((action) => /.*REQUEST/.test(action.type))
+        let {apiType, param, router, handle, callback} = action.payload
+        handle = {
+            before: [Act.onload],
+            success: [(res) => ({type: action.type.replace(/REQUEST/, 'SUCCESS'), payload: res})],
+            fail: [Act.showDialog],
+            exception: [Act.showDialog],
+            after: [Act.unload],
+            ...handle
         }
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 更新订单列表的异步处理
- * @param action
- */
-
-export function* fetchInsetOrderList(action) {
-    const {...data}=action.payload
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.INSET_ORDER_LIST, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderPage(res.page.number))
-        yield put(insertOrderList(res.orderList))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 刷新订单列表的异步处理
- * @param action
- */
-
-export function* fetchRefreshOrderList(action) {
-    const {...data}=action.payload
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.GET_ORDER_LIST, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(initialPage(res.page))
-        yield put(setOrderList(res.orderList))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 获取订单详情的异步处理
- * @param action
- */
-
-export function* fetchOrderInfo(action) {
-    yield put(onload())
-    const {route, com, ...data}=action.payload
-    const res = yield call(fetch, ServerPath.GET_ORDER_INFO, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderInfo(res.orderInfo))
-        route.pushPage({
-            comp: com,
-            props: {key: "orderInfo"}
-        })
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 支付的异步处理
- * @param action
- */
-
-export function* fetchPay(action) {
-    const {route, com, ...data}=action.payload
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.PAY, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield route.replacePage({
-            comp: com, props: {key: "OrderResultSuccess", res: 1}
-        })
-    } else {
-        yield route.pushPage({
-            comp: com, props: {key: "OrderResult", res: 0}
-        })
-    }
-    yield put(unload())
-}
-
-/**
- * 打开优惠券的异步处理
- * @param action
- */
-
-export function* fetchOPenCoupon(action) {
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.OPEN_COUPON, action.payload)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(openCoupon(res.couponCode))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 取消订单的异步处理
- * @param action
- */
-
-export function* fetchCancelOrder(action) {
-    const {route, dispatch, refreshOrderListRequest, ...data}=action.payload
-    const res = yield call(fetch, ServerPath.CANCEL_ORDER, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        dispatch(refreshOrderListRequest({token: data.token, size: 8}))
-        route.popPage()
-    } else {
-        yield put(showDialog(res.msg))
-    }
-}
-
-/**
- * 确认订单的异步处理
- * @param action
- */
-
-export function* fetchReceiptOrder(action) {
-    const {...data}=action.payload
-    yield put(onload())
-    const res = yield call(fetch, ServerPath.RECEIPT_ORDER, data)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderInfo(res.orderInfo))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-
-/**
- * 搜索优惠券请求
- * @param req
- */
-export function *queryCouponsAsync(req) {
-    yield put(onload())
-    const queryData = {couponName: req.payload}
-    const res = yield call(fetch, ServerPath.QUERY_COUPONS, queryData)
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setCouponsQuery(queryData))
-        yield put(setCouponPage(res.page))
-        yield put(setCoupons(res.couponList))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 刷新查询到的优惠券列表请求
- * @param req
- */
-export function *refreshCouponListAsync(req) {
-    yield put(onload())
-    const {token, query, page} = req.payload
-    const res = yield call(fetch, ServerPath.REFRESH_COUPON_LIST, {token, query, ...page})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setCouponPage(res.page))
-        yield put(insertCoupons(res.couponList))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 刷新发布的优惠券列表请求
- * @param req
- */
-export function *refreshUserCouponListAsync(req) {
-    yield put(onload())
-    const {token, query, page} = req.payload
-    const res = yield call(fetch, ServerPath.REFRESH_USER_COUPON_LIST, {token, ...page})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setUserCouponPage(res.page))
-        yield put(insertUserCoupons(res.couponList))
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 发布优惠券请求
- * @param req
- */
-export function *publishCouponAsync(req) {
-    yield put(onload())
-    const {param, navigator, routeData} = req.payload
-    const res = yield call(fetch, ServerPath.PUBLISH_COUPON, param)
-    yield put(showDialog(res.msg))
-    if (res.code == ResponseCode.SUCCESS) {
-        if (navigator.pages.length > 1) {
-            navigator.popPage()
-        } else {
-            navigator.replacePage(
-                routeData
-            )
+        callback = {
+            before: [],
+            success: [],
+            fail: [],
+            exception: [],
+            after: [],
+            ...callback
         }
-    }
-    yield put(unload())
-}
-
-/**
- * 请求优惠券详细信息
- * @param req
- */
-export function *getCouponDetailsAsync(req) {
-    yield put(onload())
-    const {token, id, navigator, routeData, dataFlag} = req.payload
-    const res = yield call(fetch, ServerPath.GET_COUPON_DETAILS, {id: id, token: token, dataFlag: dataFlag})
-    if (res.code == ResponseCode.SUCCESS) {
-        if (res.flag === "1") {
-            yield put(insertUserCouponDetails(res.couponInfo))
-        } else {
-            yield put(insertCouponDetails(res.couponInfo))
+        // 请求之前的处理
+        yield [callbackHandle(handle.before, callback.before)]
+        try {
+            let res = yield call(fetch, apiType, param)
+            console.log(res)
+            if (res.code == ResponseCode.SUCCESS) {
+                // 成功后的处理
+                yield [callbackHandle(handle.success, callback.success, res)]
+                if (router) {
+                    yield call(router, res)
+                }
+            } else {
+                // 失败后的处理
+                yield [callbackHandle(handle.fail, callback.fail, res.msg)]
+            }
+        } catch (e) {
+            // 异常的处理
+            yield [callbackHandle(handle.exception, callback.exception, e.message)]
         }
-        navigator.pushPage(
-            routeData
-        )
-    } else {
-        yield put(showDialog(res.msg))
+        // 请求之后的处理
+        yield [callbackHandle(handle.after, callback.after)]
     }
-    yield put(unload())
 }
 
-/**
- * 获取用户自己发布的优惠券信息请求
- * @param req
- */
-export function *getUserCouponsAsync(req) {
-    yield put(onload());
-    const {token, navigator, routeData, page} = req.payload
-    const res = yield call(fetch, ServerPath.GET_USER_COUPONS, {token, ...page})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setUserCouponPage(res.page))
-        yield put(setUserCoupons(res.couponList))
-        navigator.pushPage(
-            routeData
-        )
-    } else {
-        yield put(showDialog(res.msg))
+function* callbackHandle(actCreates, funcs, payload) {
+    for (let func of funcs) {
+        yield call(func, payload)
     }
-    yield put(unload())
-}
-
-/**
- * 用户下架优惠券请求
- * @param req
- */
-export function *soldOutCouponAsync(req) {
-    yield put(onload())
-    const {token, id, navigator, routeData} = req.payload
-    const res = yield call(fetch, ServerPath.SOLD_OUT_COUPON, {token: token, id: id})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateSoldOutCoupon(res.couponState))
-        if (typeof routeData !== "undefined") {
-            navigator.replacePage(routeData)
-        } else {
-            navigator.popPage()
-        }
-    } else {
-        yield put(showDialog(res.msg))
+    for (let actCreate of actCreates) {
+        yield put(actCreate(payload))
     }
-    yield put(unload())
-}
-
-/**
- * 用户编辑优惠券请求
- * @param req
- */
-export function *editUserCouponAsync(req) {
-    yield put(onload())
-    const {param, token, navigator} = req.payload
-    const res = yield call(fetch, ServerPath.EDIT_USER_COUPON, {token: token, ... param})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(updateUserCoupon(res.couponState))
-        navigator.popPage()
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
-}
-
-/**
- * 创建订单请求
- * @param req
- */
-export function *createOrderAsync(req) {
-    yield put(onload())
-    const {token, id, navigator, routeData} = req.payload
-    const res = yield call(fetch, ServerPath.CREATE_ORDER, {token: token, id: id})
-    if (res.code == ResponseCode.SUCCESS) {
-        yield put(setOrderInfo(res.orderInfo))
-        navigator.pushPage(
-            routeData
-        )
-    } else {
-        yield put(showDialog(res.msg))
-    }
-    yield put(unload())
 }

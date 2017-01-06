@@ -11,13 +11,13 @@ import {Toolbar, Page, BackButton, List, ListItem, ListHeader} from 'react-onsen
 import OrderInfo from './OrderInfo'
 import PullRefresh from '../components/PullRefresh'
 import PushRefresh from '../components/PushRefresh'
-import {getOrderInfoRequest, insertOrderListRequest, refreshOrderListRequest} from '../actions'
+import {getOrderInfoRequest, getOrderListRequest} from '../actions'
 
 class OrderList extends React.Component {
     renderToolbar = () => {
         return (
             <Toolbar>
-                <div className='left'><BackButton>返回</BackButton></div>
+                <div className='left'><BackButton/></div>
                 <div className="center">我的优惠券</div>
             </Toolbar>
         )
@@ -27,14 +27,16 @@ class OrderList extends React.Component {
         const x = 40 + index
         const y = 40 + index
         return (
-            <ListItem key={index} onClick={() => {
-                this.props.dispatch(getOrderInfoRequest({
-                    token: this.props.token,
-                    id: row.id,
-                    route: this.props.navigator,
-                    com: OrderInfo
-                }))
-            }}>
+            <ListItem key={index} onClick={() =>
+                this.props.getOrderInfoRequest({
+                    apiType: 'getOrderInfo',
+                    param: {id: row.id, token: this.props.token},
+                    router: () => this.props.navigator.pushPage({
+                        comp: OrderInfo,
+                        props: {key: "orderInfo"}
+                    })
+                })
+            }>
                 <div className='left'>
                     <img src={`http://placekitten.com/g/${x}/${y}`} alt="图片" className='list__item__thumbnail'/>
                 </div>
@@ -52,31 +54,29 @@ class OrderList extends React.Component {
     render() {
         return (
             <Page renderToolbar={this.renderToolbar}>
-                <PullRefresh onRefresh={(done) => {
-                    this.props.dispatch(refreshOrderListRequest({
-                        token: this.props.token,
-                        size: this.props.size
-                    }))
-                    {/* TODO 刷新完成之后在调用done()*/
-                    }
-                    setTimeout(() => {
-                        done()
-                    }, 500)
-                }}/>
+                <PullRefresh onRefresh={(done) =>
+                    this.props.getOrderListRequest({
+                        apiType: 'getOrderList',
+                        param: {...this.props.orderPage, token: this.props.token},
+                        callback: {after: [done]}
+                    })
+                }/>
                 <List
                     modifier="order"
                     dataSource={this.props.orderList}
                     renderRow={this::this.renderRow}
                 />
                 <PushRefresh
-                    hasMore={this.props.orderList.length < this.props.total}
-                    onRefresh={() => {
-                        this.props.dispatch(insertOrderListRequest({
-                            token: this.props.token,
-                            number: this.props.number,
-                            size: this.props.size
-                        }))
-                    }}/>
+                    hasMore={this.props.orderList.length < this.props.orderPage.total}
+                    onRefresh={() =>
+                        this.props.getOrderListRequest({
+                            apiType: 'insertOrderList',
+                            param: {
+                                ...this.props.orderPage,
+                                token: this.props.token
+                            }
+                        })
+                    }/>
             </Page>
         )
     }
@@ -86,10 +86,8 @@ const mapStateToProps = state => {
     return {
         token: state.token,
         orderList: state.order.orderList,
-        number: state.order.page.number,
-        size: state.order.page.size,
-        total: state.order.page.total
+        orderPage: state.order.page
     }
 }
 
-export default connect(mapStateToProps)(OrderList)
+export default connect(mapStateToProps, {getOrderInfoRequest, getOrderListRequest})(OrderList)

@@ -1,54 +1,74 @@
 import {createAction} from 'redux-act'
-import * as Const from '../constants'
+import * as Const from './constants'
 
-export const onload = createAction(Const.ONLOAD)
-export const unload = createAction(Const.UNLOAD)
-export const showDialog = createAction(Const.SHOW_DIALOG)
-export const hideDialog = createAction(Const.HIDE_DIALOG)
-export const signUpRequest = createAction(Const.SIGN_UP_REQUEST)
-export const loginRequest = createAction(Const.LOGIN_REQUEST)
-export const logoutRequest = createAction(Const.LOGOUT_REQUEST)
-export const login = createAction(Const.LOGIN)
-export const logout = createAction(Const.LOGOUT)
-export const getUserInfoRequest = createAction(Const.GET_USER_INFO_REQUEST)
-export const updateUserInfoRequest = createAction(Const.UPDATE_USER_INFO_REQUEST)
-export const updateUserInfo = createAction(Const.UPDATE_USER_INFO)
-export const createInviteCodeRequest = createAction(Const.CREATE_INVITE_CODE_REQUEST)
-export const updateInviteCode = createAction(Const.UPDATE_INVITE_CODE)
-export const verifyPasswordRequest = createAction(Const.VERIFY_PASSWORD_REQUEST)
-export const updatePasswordRequest = createAction(Const.UPDATE_PASSWORD_REQUEST)
-export const publishCouponRequest = createAction(Const.PUBLISH_COUPON_REQUEST)
-export const queryCouponsRequest = createAction(Const.QUERY_COUPONS_REQUEST)
-export const setCouponPage = createAction(Const.SET_COUPON_PAGE)
-export const setCoupons = createAction(Const.SET_COUPONS)
-export const insertCoupons = createAction(Const.INSERT_COUPONS)
-export const getCouponDetailsRequest = createAction(Const.GET_COUPON_DETAILS_REQUEST)
-export const insertCouponDetails = createAction(Const.INSERT_COUPON_DETAILS)
-export const getUserCouponsRequest = createAction(Const.GET_USER_COUPONS_REQUEST)
-export const setUserCouponPage = createAction(Const.SET_USER_COUPON_PAGE)
-export const setUserCoupons = createAction(Const.SET_USER_COUPONS)
-export const insertUserCoupons = createAction(Const.INSERT_USER_COUPONS)
-export const insertUserCouponDetails = createAction(Const.INSERT_USER_COUPON_DETAILS)
-export const soldOutCouponRequest = createAction(Const.SOLD_OUT_COUPON_REQUEST)
-export const updateSoldOutCoupon = createAction(Const.UPDATE_SOLD_OUT_COUPON)
-export const editUserCouponRequest = createAction(Const.EDIT_USER_COUPON_REQUEST)
-export const updateUserCoupon = createAction(Const.UPDATE_USER_COUPON)
-export const createOrderRequest = createAction(Const.CREATE_ORDER_REQUEST)
-export const payRequest = createAction(Const.PAY_REQUEST)
-export const cancelOrderRequest = createAction(Const.CANCEL_ORDER_REQUEST)
-export const getOrderListRequest = createAction(Const.GET_ORDER_LIST_REQUEST)
-export const insertOrderListRequest = createAction(Const.INSERT_ORDER_LIST_REQUEST)
-export const initialPage = createAction(Const.INITIAL_PAGE)
-export const setOrderPage = createAction(Const.SET_ORDER_PAGE)
-export const setOrderList = createAction(Const.SET_ORDER_LIST)
-export const insertOrderList = createAction(Const.INSERT_ORDER_LIST)
-export const getOrderInfoRequest = createAction(Const.GET_ORDER_INFO_REQUEST)
-export const setOrderInfo = createAction(Const.SET_ORDER_INFO)
+export const onload = createAction(Const.ONLOAD)
+
+export const unload = createAction(Const.UNLOAD)
+
+export const showDialog = createAction(Const.SHOW_DIALOG)
+
+export const hideDialog = createAction(Const.HIDE_DIALOG)
+
+export const signUpRequest = createAction(Const.SIGN_UP_REQUEST)
+export const signUpSuccess = createAction(Const.SIGN_UP_SUCCESS)
+
+export const loginRequest = createAction(Const.LOGIN_REQUEST)
+export const loginSuccess = createAction(Const.LOGIN_SUCCESS)
+
+export const logoutRequest = createAction(Const.LOGOUT_REQUEST)
+export const logoutSuccess = createAction(Const.LOGOUT_SUCCESS)
+
+export const getUserInfoRequest = createAction(Const.GET_USER_INFO_REQUEST)
+export const getUserInfoSuccess = createAction(Const.GET_USER_INFO_SUCCESS)
+
+export const updateUserInfoRequest = createAction(Const.UPDATE_USER_INFO_REQUEST)
+export const updateUserInfoSuccess = createAction(Const.UPDATE_USER_INFO_SUCCESS)
+
+export const createInviteCodeRequest = createAction(Const.CREATE_INVITE_CODE_REQUEST)
+export const createInviteCodeSuccess = createAction(Const.CREATE_INVITE_CODE_SUCCESS)
+
+export const verifyPasswordRequest = createAction(Const.VERIFY_PASSWORD_REQUEST)
+export const verifyPasswordSuccess = createAction(Const.VERIFY_PASSWORD_SUCCESS)
+
+export const updatePasswordRequest = createAction(Const.UPDATE_PASSWORD_REQUEST)
+export const updatePasswordSuccess = createAction(Const.UPDATE_PASSWORD_SUCCESS)
+
+export const getCouponsListRequest = createAction(Const.GET_COUPONS_LIST_REQUEST)
+export const getCouponsListSuccess = createAction(Const.GET_COUPONS_LIST_SUCCESS)
+
+export const getCouponsInfoRequest = createAction(Const.GET_COUPONS_INFO_REQUEST)
+export const getCouponsInfoSuccess = createAction(Const.GET_COUPONS_INFO_SUCCESS)
+
+export const publishCouponRequest = createAction(Const.PUBLISH_COUPON_REQUEST)
+export const publishCouponSuccess = createAction(Const.PUBLISH_COUPON_SUCCESS)
+
+export const getUserCouponListRequest = createAction(Const.GET_USER_COUPON_LIST_REQUEST)
+export const getUserCouponListSuccess = createAction(Const.GET_USER_COUPON_LIST_SUCCESS)
+
+export const getUserCouponInfoRequest = createAction(Const.GET_USER_COUPON_INFO_REQUEST)
+export const getUserCouponInfoSuccess = createAction(Const.GET_USER_COUPON_INFO_SUCCESS)
+
+export const updateUserCouponRequest = createAction(Const.UPDATE_USER_COUPON_REQUEST)
+export const updateUserCouponSuccess = createAction(Const.UPDATE_USER_COUPON_SUCCESS)
+
+export const soldOutCouponRequest = createAction(Const.SOLD_OUT_COUPON_REQUEST)
+export const soldOutCouponSuccess = createAction(Const.SOLD_OUT_COUPON_SUCCESS)
+
+export const createOrderRequest = createAction(Const.CREATE_ORDER_REQUEST)
+export const createOrderSuccess = createAction(Const.CREATE_ORDER_SUCCESS)
+
+export const payOrderRequest = createAction(Const.PAY_ORDER_REQUEST)
+export const payOrderSuccess = createAction(Const.PAY_ORDER_SUCCESS)
+
+export const cancelOrderRequest = createAction(Const.CANCEL_ORDER_REQUEST)
+export const cancelOrderSuccess = createAction(Const.CANCEL_ORDER_SUCCESS)
+
+export const getOrderListRequest = createAction(Const.GET_ORDER_LIST_REQUEST)
+export const getOrderListSuccess = createAction(Const.GET_ORDER_LIST_SUCCESS)
+
+export const getOrderInfoRequest = createAction(Const.GET_ORDER_INFO_REQUEST)
+export const getOrderInfoSuccess = createAction(Const.GET_ORDER_INFO_SUCCESS)
+
 export const openCouponRequest = createAction(Const.OPEN_COUPON_REQUEST)
-export const openCoupon = createAction(Const.OPEN_COUPON)
-export const refreshOrderListRequest = createAction(Const.REFRESH_ORDER_LIST_REQUEST)
-export const refreshCouponListRequest = createAction(Const.REFRESH_COUPON_LIST_REQUEST)
-export const refreshUserCouponListRequest = createAction(Const.REFRESH_USER_COUPON_LIST_REQUEST)
-export const receiptOrderRequest = createAction(Const.RECEIPT_ORDER_REQUEST)
-export const setCouponsQuery = createAction(Const.SET_COUPONS_QUERY)
-export const setUserCouponsQuery = createAction(Const.SET_USER_COUPONS_QUERY)
+export const openCouponSuccess = createAction(Const.OPEN_COUPON_SUCCESS)
+

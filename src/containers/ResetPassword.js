@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton} from "react-onsenui";
-import {verifyPasswordRequest, updatePasswordRequest} from "../actions";
+import {verifyPasswordRequest, updatePasswordRequest, showDialog} from "../actions";
 import OldPassword from "../components/OldPassword";
 import NewPassword from "../components/NewPassword";
 
@@ -20,9 +20,14 @@ const UpdatePassword = (props) => {
                 <div className='center'>新密码</div>
             </Toolbar>
         )}>
-            <NewPassword onSubmit={(value) => {
-                props.updatePassword({...value, token: props.token}, props.navigator)
-            }}/>
+            <NewPassword onSubmit={(value) =>
+                props.updatePasswordRequest({
+                    apiType: 'updatePassword',
+                    param: {...value, token: props.token},
+                    router: () => props.navigator.popPage(),
+                    handle: {success: [() => showDialog("密码重置成功")]}
+                })
+            }/>
         </Page>
     )
 }
@@ -36,13 +41,19 @@ const VerifyPassword = (props) => {
                     <div className='center'>原密码</div>
                 </Toolbar>
             )}>
-                <OldPassword onSubmit={(value) => {
-                    props.verifyPassword({...value, token: props.token}, props.navigator, {
-                        key: "updatePassword",
-                        token: props.token,
-                        updatePassword: props.updatePassword
+                <OldPassword onSubmit={(value) =>
+                    props.verifyPasswordRequest({
+                        apiType: 'verifyPassword', param: {...value, token: props.token},
+                        router: () => props.navigator.replacePage({
+                            comp: UpdatePassword,
+                            props: {
+                                key: 'updatePassword',
+                                token: props.token,
+                                updatePasswordRequest: props.updatePasswordRequest
+                            }
+                        })
                     })
-                }}/>
+                }/>
             </Page>
         </Page>
     )
@@ -52,13 +63,4 @@ const mapStateToProps = (state) => ({
     token: state.token
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    verifyPassword: (param, navigator, props) => {
-        dispatch(verifyPasswordRequest({param, navigator, comp: UpdatePassword, props}))
-    },
-    updatePassword: (param, navigator) => {
-        dispatch(updatePasswordRequest({param, navigator}))
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(VerifyPassword)
+export default connect(mapStateToProps, {verifyPasswordRequest, updatePasswordRequest})(VerifyPassword)

@@ -8,7 +8,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton, Button} from "react-onsenui";
-import {updateUserInfoRequest} from "../actions";
+import {updateUserInfoRequest, showDialog} from "../actions";
 import UserShow from "../components/UserShow";
 import UserEdit from "../components/UserEdit";
 
@@ -35,20 +35,27 @@ class User extends React.Component {
                 </Toolbar>
             )}>
                 <UserShow user={this.props.userInfo}/>
-                <Button modifier="large marginTLR" onClick={() =>
-                    this.props.navigator.pushPage({
-                        comp: Edit,
-                        props: {
-                            key: 'userEdit',
-                            user: this.props.userInfo,
-                            userEdit: (param) => {
-                                this.props.updateUserInfo(
-                                    {...param, token: this.props.token},
-                                    this.props.navigator
-                                )
+                <Button modifier="large marginTLR"
+                        onClick={() => this.props.navigator.pushPage({
+                                comp: Edit,
+                                props: {
+                                    key: 'userEdit',
+                                    user: this.props.userInfo,
+                                    userEdit: (value) => this.props.updateUserInfoRequest({
+                                            apiType: 'updateUserInfo',
+                                            param: {...value, token: this.props.token},
+                                            router: () => this.props.navigator.popPage(),
+                                            handle: {
+                                                success: [
+                                                    () => updateUserInfoRequest(value),
+                                                    () => showDialog("信息编辑成功")
+                                                ]
+                                            }
+                                        }
+                                    )
+                                }
                             }
-                        }
-                    })}>
+                        )}>
                     编辑信息
                 </ Button >
             </ Page >
@@ -61,11 +68,5 @@ const mapStateToProps = (state) => ({
     userInfo: state.userInfo
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    updateUserInfo: (param, navigator) => {
-        dispatch(updateUserInfoRequest({param, navigator}))
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(User)
+export default connect(mapStateToProps, {updateUserInfoRequest})(User)
 

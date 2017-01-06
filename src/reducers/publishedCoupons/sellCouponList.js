@@ -5,14 +5,15 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-
-import {setUserCoupons, insertUserCoupons} from '../../actions'
 import {createReducer} from 'redux-act'
-
+import {getUserCouponListSuccess} from '../../actions'
 
 export default createReducer({
-    [setUserCoupons]: (state, couponList)=> couponList,
-    [insertUserCoupons]: (state, couponList)=> {
-        return [...state, ...couponList]
+    [getUserCouponListSuccess]: (state, payload) => {
+        console.log(payload)
+        if(payload.page.number > 1)
+            return [...state, ...payload.couponList]
+        else
+            return [...payload.couponList]
     }
 }, [])
