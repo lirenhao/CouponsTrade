@@ -9,40 +9,17 @@ import React from 'react'
 import {List} from 'react-onsenui'
 import CouponInfo from './CouponInfo'
 
-const CouponList = ({couponList, onClickPushPage, navigator, token})=> {
+const CouponList = ({couponList, onClickPushPage, navigator, token}) => {
 
-    const renderRow = (row)=> {
+    const renderRow = (row) => {
         return (
             <CouponInfo key={row.id} couponName={row.couponName} sellingPrice={row.sellingPrice}
-                        describe={row.describe} onClick={()=> onClickPushPage(row.id)}/>
+                        describe={row.describe} onClick={() => onClickPushPage(row.id)}/>
         )
-    };
+    }  
 
-    return (
-        <List dataSource={couponList}
-              renderHeader={() =><ons-list modifier="noborder">
-                  <ons-list-item>
-                      <ons-row>
-                          <ons-col>
-                              全部分类
-                              <ons-icon icon="ion-arrow-down-b"></ons-icon>
-                          </ons-col>
-                          <ons-col>
-                              全城
-                              <ons-icon icon="ion-arrow-down-b"></ons-icon>
-                          </ons-col>
-                          <ons-col>
-                              智能排序
-                              <ons-icon icon="ion-arrow-down-b"></ons-icon>
-                          </ons-col>
-                      </ons-row>
-                  </ons-list-item>
-              </ons-list>
-              }
-              renderRow={renderRow}
-        />
-    )
-};
+    return ( <List dataSource={couponList} renderRow={renderRow}/>    )
+}  
 
 CouponList.propTypes = {
     couponList: React.PropTypes.arrayOf(
@@ -55,6 +32,6 @@ CouponList.propTypes = {
     onClickPushPage: React.PropTypes.func.isRequired,
     navigator: React.PropTypes.object.isRequired,
     token: React.PropTypes.string
-};
+}  
 
 export default CouponList

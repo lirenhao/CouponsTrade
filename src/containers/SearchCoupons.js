@@ -8,6 +8,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import PullRefresh from '../components/PullRefresh'
+import TypeSelect from '../components/sellCoupon/TypeSelect'
 import CouponList from '../components/sellCoupon/CouponList'
 import ViewCouponsDetail from '../containers/ViewCouponsDetail'
 import PushRefresh from '../components/PushRefresh'
@@ -40,6 +41,7 @@ class SearchCoupons extends React.Component {
                                    }
                                })
                            }/>
+                    <TypeSelect/>
                 </section>
                 <CouponList couponList={this.props.couponList} navigator={this.props.navigator}
                             token={this.props.token} onClickPushPage={(id) =>
