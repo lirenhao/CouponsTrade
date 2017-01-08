@@ -20,6 +20,7 @@ soldOutCouponRequest
 createOrderRequest
 payOrderRequest
 cancelOrderRequest
+receiptOrderRequest
 getOrderListRequest
 getOrderInfoRequest
 openCouponRequest

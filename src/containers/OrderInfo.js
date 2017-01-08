@@ -8,7 +8,7 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest, refreshOrderListRequest, receiptOrderRequest} from '../actions'
+import {openCouponRequest, cancelOrderRequest, receiptOrderRequest} from '../actions'
 import PayOrder from './PayOrder'
 import ons from 'onsenui'
 
@@ -65,13 +65,11 @@ const OrderInfo = (props) => {
                                             buttonLabels: ["确认", "取消"]
                                         }).then(res => {
                                             if (res === 0) {
-                                                props.dispatch(cancelOrderRequest({
-                                                    token: props.token,
-                                                    id: orderNo,
-                                                    route: props.navigator,
-                                                    dispatch: props.dispatch,
-                                                    refreshOrderListRequest
-                                                }))
+                                                cancelOrderRequest({
+                                                    apiType: 'receiptOrder',
+                                                    param: {id: orderNo, token: props.token},
+                                                    router: () => this.props.navigator.popPage()
+                                                })
                                             }
                                         })
                                     }}>
@@ -93,13 +91,11 @@ const OrderInfo = (props) => {
                                     buttonLabels: ["确认", "取消"]
                                 }).then(res => {
                                     if (res === 0) {
-                                        props.dispatch(receiptOrderRequest({
-                                            token: props.token,
-                                            id: orderNo,
-                                            route: props.navigator,
-                                            dispatch: props.dispatch,
-                                            refreshOrderListRequest
-                                        }))
+                                       receiptOrderRequest({
+                                           apiType: 'receiptOrder',
+                                           param: {id: orderNo, token: props.token},
+                                           router: () => this.props.navigator.popPage()
+                                        })
                                     }
                                 })
                             }}
@@ -171,11 +167,9 @@ const OrderInfo = (props) => {
 
 OrderInfo.propTypes = {}
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
         token: state.token,
         orderInfo: state.order.orderInfo
-    }
-}
+})
 
-export default connect(mapStateToProps)(OrderInfo)
+export default connect(mapStateToProps, {openCouponRequest, cancelOrderRequest, receiptOrderRequest})(OrderInfo)
