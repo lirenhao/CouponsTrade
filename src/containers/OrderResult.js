@@ -12,27 +12,27 @@ import Tabs from './Tabs'
 import {connect} from 'react-redux'
 import {getOrderListRequest} from '../actions'
 
-const OrderResult = ({res, navigator, dispatch, page}) => {
+const OrderResult = (props) => {
+    const {res, navigator, getOrderListRequest, page} = props;
+
     const handleClick = () => {
-        dispatch(getOrderListRequest(
-            {
-                token: 1234567890,
-                ...page,
-                route: navigator,
-                com: {Tabs, OrderList},
-                from: "order"
-            }));
-    };
+        getOrderListRequest({
+            apiType: 'getOrderList',
+            param: {...page, token: props.token},
+            router: () => navigator.resetPageStack([
+                {comp: Tabs, props: {key: "Tabs", index: 2}},
+                {comp: OrderList, props: {key: "orderList"}}
+            ])
+        })
+    }
 
     const haveBack = () => {
         if (res === 0) {
             return (
-                <div className='left'>
-                    <BackButton>返回</BackButton>
-                </div>
+                <div className='left'><BackButton/></div>
             )
         }
-    };
+    }
 
     const renderToolbar = () => {
         return (
@@ -41,7 +41,7 @@ const OrderResult = ({res, navigator, dispatch, page}) => {
                 <div className="center">{res === 0 ? "支付失败" : "支付成功"}</div>
             </Toolbar>
         )
-    };
+    }
     if (res === 0) {
         return (
             <Page renderToolbar={renderToolbar}>
@@ -66,9 +66,11 @@ const OrderResult = ({res, navigator, dispatch, page}) => {
             </Page>
         )
     }
-};
-const mapStateToProps = state => {
-    return {page: state.order.page}
-};
+}
 
-export default connect(mapStateToProps)(OrderResult)
+const mapStateToProps = state => ({
+    token: state.token,
+    page: state.order.page
+})
+
+export default connect(mapStateToProps, {getOrderListRequest})(OrderResult)

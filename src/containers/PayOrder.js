@@ -10,32 +10,38 @@ import{Page, Toolbar, BackButton} from 'react-onsenui'
 import SellerInfo from '../components/orderInfo/SellerInfo'
 import PaymentForm from '../components/orderInfo/PaymentForm'
 import {connect} from 'react-redux'
-import {payRequest} from '../actions'
+import {payOrderRequest} from '../actions'
 import OrderResult from './OrderResult'
 
 const renderToolbar = () => {
     return (
         <Toolbar>
-            <div className='left'><BackButton>返回</BackButton></div>
+            <div className='left'><BackButton/></div>
             <div className="center">确认订单</div>
         </Toolbar>
     )
 }
 
 const PayOrder = props => {
-    const handleSubmit = value => {
-        props.dispatch(payRequest({
-            token: props.token,
-            orderNo: props.orderInfo.orderNo,
-            ...value,
-            route: props.navigator, com: OrderResult
-        }))
-    }
     return (
         <Page renderToolbar={renderToolbar}>
             <SellerInfo {...props.data}/>
-            <PaymentForm {...props.itemData} navigator={props.navigator}
-                         onSubmit={value => handleSubmit(value)}/>
+            <PaymentForm {...props.itemData}
+                         navigator={props.navigator}
+                         onSubmit={(value) =>
+                             props.payOrderRequest({
+                                 apiType: 'pay',
+                                 param: {
+                                     token: props.token,
+                                     orderNo: props.orderInfo.orderNo,
+                                     ...value,
+                                 },
+                                 router: () => props.navigator.pushPage({
+                                     comp: OrderResult,
+                                     props: {key: "orderResult"}
+                                 })
+                             })
+                         }/>
         </Page>
     )
 }
@@ -47,4 +53,4 @@ const mapStateToProps = state => ({
     itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
 })
 
-export default connect(mapStateToProps)(PayOrder)
+export default connect(mapStateToProps, {payOrderRequest})(PayOrder)

@@ -6,9 +6,10 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {getOrderInfoSuccess, openCouponSuccess} from '../../actions'
+import {getOrderInfoSuccess, createOrderSuccess, openCouponSuccess} from '../../actions'
 
 export default createReducer({
-    [getOrderInfoSuccess]: (state, payload) => payload.orderInfo,
+    [getOrderInfoSuccess]: (state, payload) => ({...payload.orderInfo}),
+    [createOrderSuccess]: (state, payload) => ({...payload.orderInfo}),
     [openCouponSuccess]: (state, payload) => ({...state, isOpen: true, couponCode: payload.couponCode})
 }, {})
