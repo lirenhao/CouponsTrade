@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import {createReducer} from "redux-act"
-import {showDialog, hideDialog} from "../action"
+import {showDialog, hideDialog} from "../actions"
 
 export default createReducer({
     [showDialog]: (state, msg) => {

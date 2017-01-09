@@ -7,7 +7,6 @@
     "server": "node_modules/.bin/babel-node server.js"
   },
   "dependencies": {
-    "node-fetch": "^1.6.3",
     "onsenui": "^2.0.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -18,7 +17,8 @@
     "redux-act": "^1.1.0",
     "redux-form": "^6.2.1",
     "redux-saga": "^0.13.0",
-    "uuid": "^3.0.1"
+    "uuid": "^3.0.1",
+    "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.18.0",

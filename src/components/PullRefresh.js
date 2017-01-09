@@ -29,11 +29,23 @@ class PullRefresh extends React.Component {
     getContent() {
         switch (this.state.state) {
             case 'initial':
-                return (<Icon icon="ion-ios-arrow-thin-down"/>)
+                return (
+                    <div className="up">
+                        <Icon icon="ion-arrow-down-c"/> 下拉刷新
+                    </div>
+                );
             case 'preaction':
-                return (<Icon icon="ion-ios-arrow-thin-up"/>)
+                return (
+                <div className="up">
+                    <Icon icon="ion-arrow-up-c"/> 释放刷新
+                </div>
+                );
             case 'action':
-                return (<Icon icon="ion-refresh"/>)
+                return (
+                <div className="up">
+                    <Icon icon="ion-refresh"/> 加载中…
+                </div>
+                )
         }
     }
 

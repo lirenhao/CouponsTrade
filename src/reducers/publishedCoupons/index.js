@@ -8,7 +8,8 @@
 
 import couponInfo from './sellCouponInfo'
 import couponList from './sellCouponList'
+import page from './page'
 import {combineReducers} from 'redux'
 
 
-export default combineReducers({couponList,couponInfo})
+export default combineReducers({couponList, couponInfo, page})

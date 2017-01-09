@@ -7,76 +7,50 @@
  */
 import React from 'react'
 import{Page, Toolbar, BackButton} from 'react-onsenui'
-import Address from '../components/orderInfo/Address'
+import SellerInfo from '../components/orderInfo/SellerInfo'
 import PaymentForm from '../components/orderInfo/PaymentForm'
 import {connect} from 'react-redux'
-import {payRequest} from '../action'
-import OrderResult from '../components/orderInfo/OrderResult'
-
-// const data = {
-//     name: "李四",
-//     tel: "18688886666"
-// };
-//
-// const itemData = {
-//     item: "黑松白鹿",
-//     price: 400
-// };
-
+import {payOrderRequest} from '../actions'
+import OrderResult from './OrderResult'
 
 const renderToolbar = () => {
     return (
         <Toolbar>
-            <div className='left'><BackButton>返回</BackButton></div>
+            <div className='left'><BackButton/></div>
             <div className="center">确认订单</div>
         </Toolbar>
     )
-};
-
-// const Payment = ({navigator, dispatch}) => {
-//     const handleSubmit = (value) => {
-//         dispatch(payRequest({
-//             token: "1234567890", ...value,
-//             route: navigator, com: OrderResult
-//         }));
-//     };
-//     return (
-//         <Page renderToolbar={renderToolbar}>
-//             <Address {...data}/>
-//             <PaymentForm {...itemData} navigator={navigator} onSubmit={value => handleSubmit(value)}/>
-//         </Page>
-//     )
-// };
-
-class Payment extends React.Component {
-    render() {
-        return (
-            <Page renderToolbar={renderToolbar}>
-                <Address {...this.props.data}/>
-                <PaymentForm {...this.props.itemData} navigator={navigator} onSubmit={value => this.props.handleSubmit(value,this.props.navigator)}/>
-            </Page>
-        )
-    }
 }
 
-const mapStateToProps = (state)=>(
-{
+const PayOrder = props => {
+    return (
+        <Page renderToolbar={renderToolbar}>
+            <SellerInfo {...props.data}/>
+            <PaymentForm {...props.itemData}
+                         navigator={props.navigator}
+                         onSubmit={(value) =>
+                             props.payOrderRequest({
+                                 apiType: 'pay',
+                                 param: {
+                                     token: props.token,
+                                     orderNo: props.orderInfo.orderNo,
+                                     ...value,
+                                 },
+                                 router: () => props.navigator.pushPage({
+                                     comp: OrderResult,
+                                     props: {key: "orderResult"}
+                                 })
+                             })
+                         }/>
+        </Page>
+    )
+}
+
+const mapStateToProps = state => ({
     token: state.token,
+    orderInfo: state.order.orderInfo,
     data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
     itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
-}
-)
+})
 
-const mapDispatchToProps = (dispatch)=>(
-{
-    handleSubmit: (value, navigator) => {
-        console.log(value)
-        dispatch(payRequest({
-            token: "1234567890", ...value,
-            route: navigator, com: OrderResult
-        }));
-    }
-}
-)
-
-export default connect(mapStateToProps,mapDispatchToProps)(Payment)
+export default connect(mapStateToProps, {payOrderRequest})(PayOrder)

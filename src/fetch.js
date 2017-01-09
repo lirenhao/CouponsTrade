@@ -5,7 +5,7 @@
  * Why & What is modified  <修改原因描述>
  * 向后台发送数据
  */
-import fetch from 'node-fetch'
+import 'whatwg-fetch'
 import {ResponseCode} from './constants'
 
 export default (path, param = {}) => {

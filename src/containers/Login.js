@@ -5,15 +5,16 @@
  * Why & What is modified  <修改原因描述>
  * 用户登录界面
  */
-import React from "react";
-import {connect} from "react-redux";
-import {loginRequest, signUpRequest} from "../action";
-import {Page, Toolbar, Button, BackButton} from "react-onsenui";
-import SignUp from "../components/SignUp";
-import SignIn from "../components/SignIn";
+import React from 'react'
+import {connect} from 'react-redux'
+import {loginRequest, signUpRequest} from '../actions'
+import {Page, Toolbar, Button, BackButton} from 'react-onsenui'
+import SignUp from '../components/SignUp'
+import SignIn from '../components/SignIn'
 import Tabs from './Tabs'
+import * as Act from '../actions'
 
-const Enroll = (props) => {
+const Register = (props) => {
     return (
         <Page renderToolbar={() => (
             <Toolbar>
@@ -22,7 +23,11 @@ const Enroll = (props) => {
             </Toolbar>
         )}>
             <SignUp onSubmit={(param) => {
-                props.signUp(param, props.navigator)
+                props.signUp({
+                    apiType: 'signUp', param,
+                    router: () => props.navigator.popPage(),
+                    handle: {success: [() => showDialog('注册成功')]}
+                })
             }}/>
         </Page>
     )
@@ -32,13 +37,12 @@ class Login extends React.Component {
     loginToolbar() {
         return (
             <Toolbar>
-                <div className='left'><BackButton/></div>
                 <div className='center'>登录</div>
                 <div className='right'>
                     <Button modifier='quiet signUp' onClick={() =>
                         this.props.navigator.pushPage({
-                            comp: Enroll,
-                            props: {key: "enroll", signUp: this.props.signUp}
+                            comp: Register,
+                            props: {key: 'register', signUp: this.props.signUpRequest}
                         })}>注册</Button>
                 </div>
             </Toolbar>
@@ -48,9 +52,11 @@ class Login extends React.Component {
     render() {
         return (
             <Page renderToolbar={this.loginToolbar.bind(this)}>
-                <SignIn onSubmit={(param) => this.props.login(param, this.props.navigator, {
-                    comp: Tabs,
-                    props: {index: this.props.index}
+                <SignIn onSubmit={(param) => this.props.loginRequest({
+                    apiType: 'login', param, router: () => this.props.navigator.resetPage({
+                        comp: Tabs,
+                        props: {key: 'tabs', index: this.props.index || 0}
+                    })
                 })}/>
             </Page>
         )
@@ -61,13 +67,4 @@ const mapStateToProps = (state) => ({
     token: state.token
 })
 
-const mapDispatchToProps = (dispatch) => ({
-    login: (param, navigator, router) => {
-        dispatch(loginRequest({param, navigator, router}))
-    },
-    signUp: (param, navigator) => {
-        dispatch(signUpRequest({param, navigator}))
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, {loginRequest, signUpRequest})(Login)

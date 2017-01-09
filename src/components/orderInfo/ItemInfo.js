@@ -25,8 +25,8 @@ const ItemInfo = ({item, price}) => {
 };
 
 ItemInfo.propTypes = {
-    item: PropTypes.string.isRequired,
-    price: PropTypes.number.isRequired,
+    // item: PropTypes.string.isRequired,
+    // price: PropTypes.string.isRequired,
 };
 
 export default ItemInfo

@@ -5,48 +5,78 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-
-
 import React from 'react'
-import SearchCouponList from '../components/sellCoupon/SearchCouponList'
-import ViewCouponsDetail from '../containers/ViewCouponsDetail'
-import {queryCouponsRequest, getCouponDetailsRequest} from '../action'
 import {connect} from 'react-redux'
-
+import PullRefresh from '../components/PullRefresh'
+import TypeSelect from '../components/sellCoupon/TypeSelect'
+import CouponList from '../components/sellCoupon/CouponList'
+import ViewCouponsDetail from '../containers/ViewCouponsDetail'
+import PushRefresh from '../components/PushRefresh'
+import {getCouponsListRequest, getCouponsInfoRequest} from '../actions'
 
 class SearchCoupons extends React.Component {
     render() {
         return (
-            <SearchCouponList data={this.props.couponList}
-                              onClickPushPage={this.props.onPushPage}
-                              onSearch={(value)=> {
-                                  this.props.onSearch(value)
-                              }}
-                              navigator ={this.props.navigator}
-            />
+            <div>
+                <PullRefresh onRefresh={(done) =>
+                    this.props.getCouponsListRequest({
+                        apiType: 'queryCoupons',
+                        param: {
+                            ...this.props.page,
+                            ...this.props.query,
+                            token: this.props.token
+                        },
+                        callback: {after: [done]}
+                    })
+                }/>
+                <section>
+                    <input type="search" placeholder="商品名称" className="search-input"
+                           onBlur={(event) =>
+                               this.props.getCouponsListRequest({
+                                   apiType: 'queryCoupons',
+                                   param: {
+                                       ...this.props.page,
+                                       token: this.props.token,
+                                       couponName: event.target.value
+                                   }
+                               })
+                           }/>
+                    <TypeSelect/>
+                </section>
+                <CouponList couponList={this.props.couponList} navigator={this.props.navigator}
+                            token={this.props.token} onClickPushPage={(id) =>
+                    this.props.getCouponsInfoRequest({
+                        apiType: 'getCouponDetails',
+                        param: {id, token: this.props.token},
+                        router: () => this.props.navigator.pushPage({
+                            comp: ViewCouponsDetail,
+                            props: {key: "viewCouponsDetail"}
+                        })
+                    })
+                }/>
+                <PushRefresh
+                    hasMore={this.props.couponList.length < this.props.page.total}
+                    onRefresh={() =>
+                        this.props.getCouponsListRequest({
+                            apiType: 'refreshCouponList',
+                            param: {
+                                ...this.props.page,
+                                ...this.props.query,
+                                token: this.props.token
+                            }
+                        })
+                    }/>
+            </div>
         )
     }
 }
 
-const mapStateToProps = (state)=>({
-    couponList: state.couponList
-}
+const mapStateToProps = (state) => ({
+        token: state.token,
+        couponList: state.queryCoupons.couponList,
+        page: state.queryCoupons.page,
+        query: state.queryCoupons.query
+    }
 )
 
-const mapDispatchToProps = (dispatch)=>({
-    onSearch: (param)=> {
-        if (param.replace(/\s/g, "") !== "") {
-            dispatch(queryCouponsRequest(param))
-        }
-    },
-    onPushPage: (token,id, navigator)=> {
-        dispatch(getCouponDetailsRequest({token,id, navigator,
-            routeData: {
-                comp: ViewCouponsDetail,
-                props: {key: "ViewCouponsDetail"}
-            }
-        }))
-    }
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(SearchCoupons)
+export default connect(mapStateToProps, {getCouponsListRequest, getCouponsInfoRequest})(SearchCoupons)

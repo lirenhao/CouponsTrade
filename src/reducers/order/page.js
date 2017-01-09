@@ -6,13 +6,8 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {initialPage, setOrderPage} from '../../action'
+import {getOrderListSuccess} from '../../actions'
 
 export default createReducer({
-    [initialPage]: (state, payload) => {
-        return {...state, ...payload}
-    },
-    [setOrderPage]: (state, payload) => {
-        return {...state, number: payload}
-    }
+    [getOrderListSuccess]: (state, payload) => ({...state, ...payload.page})
 }, {total: 0, number: 0, size: 8})

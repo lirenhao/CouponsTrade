@@ -6,11 +6,11 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {getUserCouponListSuccess} from '../../actions'
+import {getCouponsListSuccess} from '../../actions'
 
 export default createReducer({
-    [getUserCouponListSuccess]: (state, payload) => {
-        if (payload.page.number > 1)
+    [getCouponsListSuccess]: (state, payload) => {
+        if(payload.page.number > 1)
             return [...state, ...payload.couponList]
         else
             return [...payload.couponList]

@@ -6,11 +6,10 @@ import inviteCode from './inviteCode'
 import userInfo from './userInfo'
 import dialog from './dialog'
 import order from './order'
-import couponList from './couponList'
-import couponInfo from './couponInfo'
+import queryCoupons from './queryCoupons/index'
 import publishedCoupons from './publishedCoupons/index'
 
 export default combineReducers({
     form, token, loading, inviteCode, userInfo,
-    order, dialog,couponList,couponInfo,publishedCoupons
+    order, dialog,queryCoupons,publishedCoupons
 })

@@ -8,6 +8,12 @@
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
 import {Input, Button, List, ListItem} from 'react-onsenui'
+
+const defaultValue = {
+    username: "1",
+    password: "1"
+};
+
 const SignInField = ({input, type, placeholder}) => {
     return (
         <Input {...input}
@@ -60,5 +66,6 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "signIn", validate
+    form: "signIn", validate,
+    initialValues: defaultValue
 })(SignIn)

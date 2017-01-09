@@ -18,7 +18,7 @@ app.use(function (req, res, next) {
     res.header("Access-Control-Allow-Credentials", true);
     next();
 });
-let orderNoIndex = 0
+let orderNoIndex = 0;
 let state = {
     token: "1234567890",
     login: {
@@ -33,73 +33,7 @@ let state = {
     },
     inviteCode: "InviteCodeB",
     order: {
-        orderList: [{
-            id: "100100001",
-            couponName: "黑松白鹿五折券",
-            describe: "298自助餐二人同行一人免单",
-            sellingPrice: "400",
-            picture: "",
-        }, {
-            id: "100100002",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100003",
-            couponName: "星巴克五折券",
-            describe: "最高价值58元套餐一份",
-            sellingPrice: "35",
-            picture: ""
-        }, {
-            id: "100100004",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100005",
-            couponName: "呷哺呷哺100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100006",
-            couponName: "黑松白鹿五折券",
-            describe: "298自助餐二人同行一人免单",
-            sellingPrice: "400",
-            picture: ""
-        }, {
-            id: "100100007",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100008",
-            couponName: "星巴克五折券",
-            describe: "最高价值58元套餐一份",
-            sellingPrice: "35",
-            picture: ""
-        }, {
-            id: "100100009",
-            couponName: "必胜客100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100010",
-            couponName: "呷哺呷哺100元代金券",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }, {
-            id: "100100011",
-            couponName: "最后一条",
-            describe: "",
-            sellingPrice: "50",
-            picture: ""
-        }],
+        orderList: [],
         orderInfo: {
             "100100001": {
                 orderNo: "100100001",
@@ -357,6 +291,156 @@ let state = {
             ticketPrice: 300,
             endDate: "2016-12-31",
             describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "2",
+            couponState: "1"
+        },
+        {
+            id: "4",
+            couponName: "黑松白鹿2",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "5",
+            couponName: "黑松白鹿3",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "6",
+            couponName: "黑松白鹿4",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "7",
+            couponName: "黑松白鹿5",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "8",
+            couponName: "黑松白鹿6",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "9",
+            couponName: "黑松白鹿7",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "10",
+            couponName: "黑松白鹿8",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "11",
+            couponName: "黑松白鹿9",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "12",
+            couponName: "黑松白鹿10",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
+            userName: "1",
+            couponState: "1"
+        },
+        {
+            id: "13",
+            couponName: "黑松白鹿11",
+            isAutomaticRefund: true,
+            couponType: "1",
+            couponModality: "1",
+            couponCode: "1234568",
+            sellingPrice: 200,
+            originalPrice: 150,
+            ticketPrice: 300,
+            endDate: "2016-12-31",
+            describe: "所有地区通用券（海淀区西二旗店、上地店）",
             userName: "1",
             couponState: "1"
         }
@@ -430,19 +514,24 @@ app.post(`/${ServerPath.UPDATE_PASSWORD}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
-    console.log("收到获取订单列表请求");
-    const {token, size}=req.body;
-    const total = state.order.orderList.length;
-    let result = [];
-    for (let i = 0; i < size; i++) {
-        let orderList = state.order.orderList[i];
-        let orderInfo = state.order.orderInfo[orderList.id];
-        result.push({
-            ...orderList,
-            orderState: orderInfo.orderState
-        })
-    }
+    console.log("收到获取订单列表请求")
+    const orderInfo = state.order.orderInfo
+    const list = Object.keys(orderInfo)
+    state.order.orderList = list.map(i => {
+        return {
+            id: orderInfo[i].orderNo,
+            couponName: orderInfo[i].couponName,
+            describe: orderInfo[i].describe,
+            sellingPrice: orderInfo[i].sellingPrice,
+            picture: orderInfo[i].picture,
+            orderState: orderInfo[i].orderState
+        }
+    })
+    let {token, size}=req.body
+    const total = state.order.orderList.length
+    size = size < total ? size : total
     if (state.token == token) {
+        const result = state.order.orderList.slice(0, size)
         res.json({
             code: ResponseCode.SUCCESS,
             orderList: result,
@@ -450,30 +539,22 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单列表获取失败"})
-});
+})
 
 app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
-    console.log("收到更新订单列表请求");
-    const {token, number, size}=req.body;
-    const total = state.order.orderList.length;
-    let result = [];
-    let newNumber = 1;
+    console.log("收到更新订单列表请求")
+    const {token, number, size}=req.body
+    const total = state.order.orderList.length
+    let newNumber = 1
     if (number * size < total) {
         newNumber = number * 1 + 1
     } else {
         newNumber = number * 1
     }
-    let max = newNumber * size;
-    max = max <= total ? max : total;
-    for (let i = number * size; i < max; i++) {
-        let orderList = state.order.orderList[i];
-        let orderInfo = state.order.orderInfo[orderList.id];
-        result.push({
-            ...orderList,
-            orderState: orderInfo.orderState
-        })
-    }
+    let max = newNumber * size
+    max = max <= total ? max : total
     if (state.token == token) {
+        const result = state.order.orderList.slice(number * size, max)
         res.json({
             code: ResponseCode.SUCCESS,
             orderList: result,
@@ -484,13 +565,13 @@ app.post(`/${ServerPath.INSET_ORDER_LIST}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "更新列表失败"})
-});
+})
 
 app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
-    console.log("收到获取订单详情请求");
-    const {token, id}=req.body;
+    console.log("收到获取订单详情请求")
+    const {token, id}=req.body
     if (state.token == token) {
-        const result = state.order.orderInfo[id];
+        const result = state.order.orderInfo[id]
         res.json({
             code: ResponseCode.SUCCESS,
             orderInfo: {
@@ -500,30 +581,57 @@ app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "订单详情获取失败"})
-});
+})
 
 app.post(`/${ServerPath.PAY}`, (req, res) => {
-    console.log("收到支付请求");
-    const {token, payment, content} = req.body;
+    console.log("收到支付请求")
+    const {token, payment, content, orderNo} = req.body
     if (state.token == token && payment === "支付宝") {
+        state.order.orderInfo[orderNo].orderState = "已支付"
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "支付失败"})
-});
+})
 
 app.post(`/${ServerPath.OPEN_COUPON}`, (req, res) => {
-    console.log("收到打开优惠券请求");
-    const {token, id} = req.body;
+    console.log("收到打开优惠券请求")
+    const {token, id} = req.body
     if (state.token == token) {
-        state.order.orderInfo[id].isOpen = true;
+        state.order.orderInfo[id].isOpen = true
         res.json({
             code: ResponseCode.SUCCESS, isOpen: true,
             couponCode: state.order.orderInfo[id].couponCode
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
-});
+})
 
+app.post(`/${ServerPath.CANCEL_ORDER}`, (req, res) => {
+    console.log("收到取消订单请求")
+    const {token, id} = req.body
+    if (state.token == token) {
+        delete state.order.orderInfo[id]
+        res.json({code: ResponseCode.SUCCESS})
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "请求失败"})
+})
+
+app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
+    console.log("收到确认订单请求")
+    const {token, id} = req.body
+    if (state.token == token) {
+        state.order.orderInfo[id].orderState = "已完成"
+        const result = state.order.orderInfo[id]
+        res.json({
+            code: ResponseCode.SUCCESS,
+            orderInfo: {
+                ...result,
+                couponCode: result.isOpen ? result.couponCode : "******"
+            }
+        })
+    } else
+        res.json({code: ResponseCode.FAIL, msg: "请求失败"})
+})
 
 app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
     const {token, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
@@ -539,23 +647,23 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
         if (isHave(state.publishCouponList)) {
             res.json({code: ResponseCode.FAIL, msg: "该优惠券码已发布过"})
         } else {
-            const len = state.publishCouponList.length;
+            const len = state.publishCouponList.length + 1;
             const userName = state.login.username;
             state.publishCouponList.push({
-                id: len,
+                id: len.toString(),
                 couponName,
-                isAutomaticRefund,
-                couponType,
-                couponModality,
+                isAutomaticRefund: isAutomaticRefund === "true",
+                couponType: typeof couponType === "undefined" ? "0" : couponType,
+                couponModality: typeof couponModality === "undefined" ? "0" : couponModality,
                 couponCode,
-                sellingPrice,
-                originalPrice,
-                ticketPrice,
+                sellingPrice: Number(sellingPrice),
+                originalPrice: Number(originalPrice),
+                ticketPrice: Number(ticketPrice),
                 endDate,
                 describe,
                 userName,
                 couponState: "1"
-            });
+            })
             res.json({code: ResponseCode.SUCCESS, msg: "发布成功"})
         }
     } else
@@ -564,102 +672,83 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
 
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
-    const {couponName} = req.body;
-    const getCouponList = (arr)=> {
-        let couponList = []
-        let i = 0
-        for (var coupon of arr) {
-            if (couponName !== "ALL") {
-                if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
-                    couponList.push({
-                        id: coupon.id,
-                        couponName: coupon.couponName,
-                        sellingPrice: coupon.sellingPrice,
-                        description: coupon.describe
-                    })
-                }
-            } else {
-                if (i < 10) {
-                    couponList.push({
-                        id: coupon.id,
-                        couponName: coupon.couponName,
-                        sellingPrice: coupon.sellingPrice,
-                        description: coupon.describe
-                    })
-                    i++
-                } else {
-                    return couponList
-                }
-            }
+        const {couponName, token, total, number, size} = req.body
+        if (token === state.token) {
+            let newNumber = typeof number === "undefined" ? 0 : number
+            let newSize = typeof size === "undefined" ? 5 : size
+            const couponListObj = getCouponList(state.publishCouponList, couponName, total, newNumber, newSize)
+            res.json({
+                code: ResponseCode.SUCCESS,
+                couponList: couponListObj.couponList,
+                page: {total: couponListObj.total, number: 1, size: newSize}
+            })
+        } else {
+            res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
         }
-        return couponList
     }
-    res.json({code: ResponseCode.SUCCESS, couponList: getCouponList(state.publishCouponList)})
-});
+)
+
+app.post(`/${ServerPath.REFRESH_COUPON_LIST}`, function (req, res) {
+    const {token, total, number, size, couponName} = req.body
+    if (token === state.token) {
+        const couponListObj = getCouponList(state.publishCouponList, couponName, total, number, size)
+        res.json({
+            code: ResponseCode.SUCCESS,
+            couponList: couponListObj.couponList,
+            page: {total: couponListObj.total, number: couponListObj.number, size: Number(size)}
+        })
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
+    }
+})
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
-    const {id, token} = req.body;
-    let username =""
-    if(token!==undefined){
-         username = state.login.username
-    }
-    const couponList = state.publishCouponList.filter((r) => {
-        return r.id === id
-    });
-    if (couponList.length !== 0) {
-        const couponInfo = couponList[0];
-        const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname}
-        if (couponInfo.userName === username) {
-            res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
+    const {id, token, dataFlag} = req.body
+    console.log({id, token, dataFlag})
+    if (token === state.token) {
+        const couponList = state.publishCouponList.filter((r) => {
+            return r.id === id
+        })
+        if (couponList.length !== 0) {
+            const couponInfo = {...couponList[0], nickname: state.userInfo.nickname}
+            res.json({code: ResponseCode.SUCCESS, couponInfo: couponInfo})
         } else {
-            res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: newCouponInfo})
-        }
-    } else {
-        res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
-    }
-});
-
-app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
-    const {token, couponName, couponState} = req.body;
-    const userName = state.login.username
-    const getCouponList = (arr)=> {
-        let couponList = []
-        let i = 0
-        for (var coupon of arr) {
-            if (coupon.userName === userName) {
-                couponList.push({
-                    id: coupon.id,
-                    couponName: coupon.couponName,
-                    sellingPrice: coupon.sellingPrice,
-                    description: coupon.describe,
-                    couponState: coupon.couponState
-                })
-            }
-        }
-        return couponList
-    }
-    if (state.token === token) {
-        var couponList = getCouponList(state.publishCouponList)
-        if (!couponName && typeof(couponName) != "undefined") {
-            var newNameCouponList = couponList.filter((r) => {
-                return r.couponName.match(couponName)
-            })
-            if (!couponState && typeof(couponState) != "undefined") {
-                const newStateCouponList = newNameCouponList.filter((r) => {
-                    return r.couponState === couponState
-                })
-                res.json({code: ResponseCode.SUCCESS, couponList: newStateCouponList})
-            } else {
-                res.json({code: ResponseCode.SUCCESS, couponList: newNameCouponList})
-            }
-        } else {
-            res.json({code: ResponseCode.SUCCESS, couponList: couponList})
+            res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
         }
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户没有登录，请重新登录"})
     }
 })
 
+app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
+    const {token, couponName, couponState, total, number, size} = req.body
+    const userName = state.login.username
+    if (state.token === token) {
+        const userCouponListObj = getUserCouponList(state.publishCouponList, userName, couponName, couponState, total, number, size)
+        res.json({
+            code: ResponseCode.SUCCESS,
+            couponList: userCouponListObj.couponList,
+            page: {total: userCouponListObj.total, number: userCouponListObj.number, size: Number(size)}
+        })
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户没有登录，请重新登录"})
+    }
+})
+
+app.post(`/${ServerPath.REFRESH_USER_COUPON_LIST}`, function (req, res) {
+    const {token, couponName, couponState, total, number, size} = req.body
+    const userName = state.login.username
+    if (token === state.token) {
+        const userCouponListObj = getUserCouponList(state.publishCouponList, userName, couponName, couponState, total, number, size)
+        res.json({
+            code: ResponseCode.SUCCESS,
+            couponList: userCouponListObj.couponList,
+            page: {total: userCouponListObj.total, number: userCouponListObj.number, size: Number(size)}
+        })
+    } else {
+        res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
+    }
+})
 
 app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
     const {id, token} = req.body;
@@ -674,28 +763,27 @@ app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
-    const {id, token, couponName, isAutomaticRefund, couponType, couponCode, couponModality, sellingPrice, originalPrice, ticketPrice, endDate, describe} = req.body;
-    if (state.token == token) {
+    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName, couponState} = req.body
+    if (state.token === token) {
         const couponInfo = {
             id,
             couponName,
-            isAutomaticRefund,
-            couponType,
-            couponModality,
+            isAutomaticRefund: isAutomaticRefund === "true",
+            couponType: typeof couponType === "undefined" ? "0" : couponType,
+            couponModality: typeof couponModality === "undefined" ? "0" : couponModality,
             couponCode,
-            sellingPrice,
-            originalPrice,
-            ticketPrice,
+            sellingPrice: Number(sellingPrice),
+            originalPrice: Number(originalPrice),
+            ticketPrice: Number(ticketPrice),
             endDate,
             describe,
-            userName: state.login.username,
+            userName,
             couponState: "1"
         };
-        const publishCouponList = state.publishCouponList.map((r) => {
+        state.publishCouponList = state.publishCouponList.map((r) => {
             return r.id === id ? r = couponInfo : r
         });
-        state = [...state, publishCouponList];
-        res.json({code: ResponseCode.SUCCESS, couponState: "2"})
+        res.json({code: ResponseCode.SUCCESS, couponInfo: couponInfo})
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户不能编辑，请重新登录"})
     }
@@ -703,7 +791,7 @@ app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
 
 app.post(`/${ServerPath.CREATE_ORDER}`, function (req, res) {
     const {token, id} = req.body;
-    const getNowDateFormatData = ()=> {
+    const getNowDateFormatData = () => {
         var date = new Date();
         var separatorDate = "-";
         var separatorTime = ":";
@@ -749,3 +837,114 @@ app.post(`/${ServerPath.CREATE_ORDER}`, function (req, res) {
 app.listen(3000, function () {
     console.log('server start!')
 });
+
+/**
+ * 生成优惠券Item对象
+ * @param coupon 优惠券详细信息对象
+ * @returns {{id: *, couponName: *, sellingPrice: *, description: *}}
+ */
+const getCouponListItem = (coupon)=> {
+    return {
+        id: coupon.id,
+        couponName: coupon.couponName,
+        sellingPrice: coupon.sellingPrice,
+        describe: coupon.describe
+    }
+}
+
+/**
+ * 获取查询优惠券列表相关数据
+ * @param coupons 优惠券列表
+ * @param couponName 查询条件（优惠券名称）
+ * @param total 上次记录的总条数
+ * @param number 上次记录的页数
+ * @param size 每页条数
+ * @returns {*}
+ */
+const getCouponList = (coupons, couponName, total, number, size) => {
+    let couponList = []
+    let newNumber = 0
+    if (couponName !== "ALL") {
+        for (let coupon of coupons) {
+            if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
+                couponList.push(getCouponListItem(coupon))
+            }
+        }
+        return getResult(couponList, total, number, size)
+    } else {
+        if (number > 0) {
+            const newCoupons = coupons.slice(number * size, (Number(number) + 1) * size)
+            couponList = newCoupons.map((m)=> {
+                return getCouponListItem(m)
+            })
+            newNumber = Number(number) + 1
+        }
+        else {
+            const newCoupons = coupons.slice(0, size)
+            couponList = newCoupons.map((m)=> {
+                return getCouponListItem(m)
+            })
+            newNumber = 1
+        }
+        return {total: coupons.length, number: newNumber, couponList: couponList}
+    }
+}
+
+/**
+ * 获取发布优的惠券列表相关数据
+ * @param coupons 优惠券列表
+ * @param userName 用户ID
+ * @param couponName 查询条件（优惠券名称）
+ * @param couponState 查询条件（优惠券状态）
+ * @param total  上次记录的总条数
+ * @param number 上次记录的页数
+ * @param size 每页条数
+ * @returns {{total, number, couponList}}
+ */
+const getUserCouponList = (coupons, userName, couponName, couponState, total, number, size) => {
+    let couponList = []
+    for (var coupon of coupons) {
+        if (coupon.userName === userName) {
+            couponList.push(getCouponListItem(coupon))
+        }
+    }
+    if (!couponName && typeof(couponName) != "undefined") {
+        var newNameCouponList = couponList.filter((r) => {
+            return r.couponName.match(couponName)
+        })
+        if (!couponState && typeof(couponState) != "undefined") {
+            const newStateCouponList = newNameCouponList.filter((r) => {
+                return r.couponState === couponState
+            })
+            return getResult(newStateCouponList, total, number, size)
+        } else {
+            return getResult(newNameCouponList, total, number, size)
+        }
+    } else {
+        return getResult(couponList, total, number, size)
+    }
+}
+
+/**
+ * 获取要得到一页优惠券列表相关数据
+ * @param couponList 优惠券列表
+ * @param total 上次记录得总条数
+ * @param number 上次记录的页数
+ * @param size 每页条数
+ * @returns {{total: *, number: number, couponList: *}}
+ */
+const getResult = (couponList, total, number, size)=> {
+    let newNumber = 0
+    let startNumber = 0
+    let endNumber = 0
+    if (Number(total) === couponList.length && number * size < couponList.length) {
+        newNumber = Number(number) + 1
+        startNumber = number * size
+        endNumber = (Number(number) + 1) * size
+    } else {
+        newNumber = 1
+        startNumber = 0
+        endNumber = Number(size)
+    }
+    return {total: couponList.length, number: newNumber, couponList: couponList.slice(startNumber, endNumber)}
+}

@@ -1,33 +1,33 @@
-import React from "react";
-import {connect} from "react-redux";
-import {Navigator} from "react-onsenui";
-import Tabs from "./Tabs";
-import DevTools from "./DevTools";
-import Dialog from "../components/Dialog";
-import Loading from "../components/Loading";
-import {hideDialog} from "../action";
-import uuid from "uuid";
+import React from "react"
+import {connect} from "react-redux"
+import {Navigator} from "react-onsenui"
+import Login from "./Login"
+import Dialog from "../components/Dialog"
+import Loading from "../components/Loading"
+import DevTools from "./DevTools"
+import {hideDialog} from "../actions"
+import uuid from "uuid"
 
 const renderPage = (route, navigator) => {
-    route.props = route.props || {};
-    route.props.navigator = navigator;
-    route.props.key = route.props.key || uuid.v4();
+    route.props = route.props || {}
+    route.props.navigator = navigator
+    route.props.key = route.props.key || uuid.v4()
 
     return React.createElement(route.comp, route.props)
 }
 
 const App = (props) => {
-        return (
-            <div>
-                <Navigator
-                    initialRoute={{comp: Tabs, props: {key: "tabs"}}}
-                    renderPage={renderPage}
-                />
-                <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
-                <Loading loading={props.loading}/>
-                <DevTools/>
-            </div>
-        )
+    return (
+        <div>
+            <Navigator
+                initialRoute={{comp: Login, props: {key: "login"}}}
+                renderPage={renderPage}
+            />
+            <Dialog show={props.dialog.show} msg={props.dialog.msg} hideDialog={props.hideDialog}/>
+            <Loading loading={props.loading}/>
+            <DevTools/>
+        </div>
+    )
 }
 
 const mapStateToProps = (state) => ({

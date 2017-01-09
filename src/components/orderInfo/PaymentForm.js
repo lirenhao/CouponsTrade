@@ -19,14 +19,14 @@ const MyRadio = ({input, row}) => {
         <Input
             inputId={`radio-${row}`}
             checked={row === input.value}
-            onChange={(e) => {
+            onChange={e => {
                 input.onChange(e.target.value = row)
             }}
             type="radio"/>
     )
 };
 
-const renderRadioRow = (row) => {
+const renderRadioRow = row => {
     return (
         <ListItem key={row} tappable>
             <label className='right'>
@@ -39,7 +39,7 @@ const renderRadioRow = (row) => {
     )
 };
 
-const Payment_form = (props) => {
+const PaymentForm = props => {
     const {handleSubmit, submitting} = props;
     const handleClick = () => {
         props.submit();
@@ -69,4 +69,4 @@ const Payment_form = (props) => {
 export default reduxForm({
     form: 'payment',
     initialValues: defaultValue
-})(Payment_form)
+})(PaymentForm)

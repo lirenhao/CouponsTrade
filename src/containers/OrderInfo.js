@@ -8,51 +8,102 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest} from '../../action'
+import {openCouponRequest, cancelOrderRequest, receiptOrderRequest} from '../actions'
+import PayOrder from './PayOrder'
+import ons from 'onsenui'
 
 const renderToolbar = () => {
     return (
         <Toolbar>
-            <div className='left'>
-                <BackButton>返回</BackButton>
-            </div>
+            <div className='left'><BackButton/></div>
             <div className="center">订单信息</div>
         </Toolbar>
     )
-};
+}
 
 const OrderInfo = (props) => {
     const {
         orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
         couponType, couponModality, couponCode, sellingPrice, originalPrice,
         ticketPrice, endDate, describe, isOpen, sellerNickName, orderState
-    }=props.orderInfo;
+    } = props.orderInfo
 
     const returnCouponModality = () => {
         if (orderState === "已支付" || orderState === "已完成") {
             return (
                 <ListItem>券码
                     <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
-                            props.dispatch(openCouponRequest({token: 1234567890, id: orderNo}))
+                            props.dispatch(openCouponRequest({token: props.token, id: orderNo}))
                         }
                         }>获取券码</span>}</div>
                 </ListItem>
             )
         }
-    };
+    }
 
     const renderBottomToolbar = () => {
         if (orderState !== "已支付" && orderState !== "已完成") {
             return (
-                <BottomToolbar>
-                    <Button modifier="large noRadius" onClick={() => {
-                        cancelOrderRequest()
-                    }}
-                    >取消订单</Button>
+                <BottomToolbar modifier="material">
+                    <div className="tab-bar">
+                        <div className="tab-bar__item">
+                            <button
+                                className="tab-bar__button"
+                                onClick={() => props.navigator.pushPage({
+                                    comp: PayOrder,
+                                    props: {key: "payOrder"}
+                                })}>
+                                <ons-icon icon="ion-android-done"> 支付</ons-icon>
+                            </button>
+                        </div>
+                        <div className="tab-bar__item">
+                            <button className="tab-bar__button"
+                                    onClick={() => {
+                                        ons.notification.confirm({
+                                            title: "",
+                                            messageHTML: "确定要删除订单吗？",
+                                            buttonLabels: ["确认", "取消"]
+                                        }).then(res => {
+                                            if (res === 0) {
+                                                cancelOrderRequest({
+                                                    apiType: 'receiptOrder',
+                                                    param: {id: orderNo, token: props.token},
+                                                    router: () => this.props.navigator.popPage()
+                                                })
+                                            }
+                                        })
+                                    }}>
+                                <ons-icon icon="ion-android-close"> 删除</ons-icon>
+                            </button>
+                        </div>
+                    </div>
+                </BottomToolbar>
+            )
+        } else if (orderState === "已支付") {
+            return (
+                <BottomToolbar modifier="material">
+                    <Button modifier="large noRadius"
+                            onClick={() => {
+                                ons.notification.confirm({
+                                    title: "",
+                                    messageHTML: "在优惠券使用前确认收货有风险，货款将直接打给卖家," +
+                                    "确定要收货吗？",
+                                    buttonLabels: ["确认", "取消"]
+                                }).then(res => {
+                                    if (res === 0) {
+                                       receiptOrderRequest({
+                                           apiType: 'receiptOrder',
+                                           param: {id: orderNo, token: props.token},
+                                           router: () => this.props.navigator.popPage()
+                                        })
+                                    }
+                                })
+                            }}
+                    >确认收货</Button>
                 </BottomToolbar>
             )
         }
-    };
+    }
 
     return (
         <Page renderToolbar={renderToolbar}
@@ -112,14 +163,13 @@ const OrderInfo = (props) => {
             </List>
         </Page>
     )
-};
+}
 
-OrderInfo.propTypes = {};
+OrderInfo.propTypes = {}
 
-const mapStateToProps = state => {
-    return {
+const mapStateToProps = state => ({
+        token: state.token,
         orderInfo: state.order.orderInfo
-    }
-};
+})
 
-export default connect(mapStateToProps)(OrderInfo)
+export default connect(mapStateToProps, {openCouponRequest, cancelOrderRequest, receiptOrderRequest})(OrderInfo)

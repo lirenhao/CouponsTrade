@@ -6,45 +6,72 @@
  * <文件描述>
  */
 import React from 'react'
-import {Page, Toolbar, BackButton} from 'react-onsenui'
-import SellingCouponList from '../components/sellCoupon/SellingCouponList'
-import PublishCouponsDetail from './PublishCouponsDetail'
-import {getCouponDetailsRequest} from '../action'
 import {connect} from 'react-redux'
+import {Page, Toolbar, BackButton} from 'react-onsenui'
+import CouponList from '../components/sellCoupon/CouponList'
+import PushRefresh from '../components/PushRefresh'
+import PublishCouponsDetail from './PublishCouponsDetail'
+import {getUserCouponInfoRequest, getUserCouponListRequest} from '../actions'
 
 class SellingCoupons extends React.Component {
     render() {
         return (
             <Page renderToolbar={() => (
                 <Toolbar>
-                    <div className='left'>
-                        <BackButton/>
-                    </div>
+                    <div className='left'><BackButton/></div>
                     <div className='center'>发布的优惠券</div>
                 </Toolbar>
             )}>
-                <SellingCouponList data={this.props.data }
-                                   navigator={this.props.navigator}
-                                   token={this.props.token}
-                                   onClickPushPage={this.props.onClickPushPage}/>
+                <CouponList couponList={this.props.couponList }
+                            navigator={this.props.navigator}
+                            token={this.props.token}
+                            onClickPushPage={(id) =>
+                                this.props.getUserCouponInfoRequest({
+                                    apiType: 'getCouponDetails',
+                                    param: {id, token: this.props.token},
+                                    router: () => this.props.navigator.pushPage({
+                                        comp: PublishCouponsDetail,
+                                        props: {key: "publishCouponsDetail"}
+                                    })
+                                })}
+                />
+                <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
+                             onRefresh={() =>
+                                 this.props.getUserCouponListRequest({
+                                     apiType: 'refreshCouponList',
+                                     param: {
+                                         ...this.props.page,
+                                         token: this.props.token
+                                     }
+                                 })
+                             }
+                />
             </Page>
         )
     }
 }
 
-const mapStateToProps = (state)=>(
-{
-    data: state.publishedCoupons.couponList,
-    token: state.token
-}
-)
+const mapStateToProps = (state) => ({
+    couponList: state.publishedCoupons.couponList,
+    token: state.token,
+    page: state.publishedCoupons.page
+})
 
-const mapDispatchToProps = (dispatch)=>(
-{
-    onClickPushPage: (token,id, navigator)=> {
-        dispatch(getCouponDetailsRequest({token,id, navigator, routeData:{comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}}}))
+const mapDispatchToProps = (dispatch) => (
+    {
+        onClickPushPage: (token, id, navigator) => {
+            dispatch(getCouponDetailsRequest({
+                token,
+                id,
+                navigator,
+                routeData: {comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}}
+            }))
+        },
+        onRefresh: (token, page) => {
+            dispatch(refreshUserCouponListRequest({token, page}))
+        }
+
     }
-}
 )
 
-export default connect(mapStateToProps,mapDispatchToProps)(SellingCoupons)
+export default connect(mapStateToProps, {getUserCouponInfoRequest, getUserCouponListRequest})(SellingCoupons)

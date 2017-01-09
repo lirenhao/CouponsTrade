@@ -6,7 +6,7 @@
  * <文件描述>
  */
 import fetch from '../src/fetch'
-import {login} from '../src/action'
+import {login} from '../src/actions'
 
 fetch("login", {username: "lrh", password: "111"}).then(function (data) {
     console.log(data)

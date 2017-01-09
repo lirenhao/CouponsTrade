@@ -13,7 +13,7 @@ class SideSelect extends React.Component {
     render() {
         return (
             <Splitter>
-                <SplitterSide side='right' width={200} collapse={true}
+                <SplitterSide side='right' width={220} collapse={true}
                               isOpen={this.props.isOpen} onClose={this.props.handleHide}>
                     <Page>
                         <List>

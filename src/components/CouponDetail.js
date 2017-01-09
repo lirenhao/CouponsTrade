@@ -8,7 +8,7 @@
 
 import React from 'react'
 import {List, ListItem} from 'react-onsenui'
-import PriceComponent from './sellCoupon/Price'
+import PriceComponent from './Price'
 
 
 const CouponDetail = (props) => {
@@ -20,13 +20,13 @@ const CouponDetail = (props) => {
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="用户头像"/>
                     </div>
-                    <div className="center_nickname">{DetailInformation.nickname}</div>
+                    <div className="center">{DetailInformation.nickname}</div>
                     <div className="right">
                         <div className="list__item__title">
-                            <PriceComponent price={DetailInformation.originalPrice}/>
+                            <PriceComponent price={DetailInformation.sellingPrice}/>
                         </div>
                         <div className="list__item__subtitle">
-                            <PriceComponent price={DetailInformation.sellingPrice}/>
+                            <PriceComponent price={DetailInformation.ticketPrice}/>
                         </div>
                     </div>
                 </ListItem>
@@ -45,12 +45,6 @@ const CouponDetail = (props) => {
                     <div className="right">{DetailInformation.couponType==="1"?"餐饮":"其他"}</div>
                 </ListItem>
                 <ListItem>
-                    <div className="center">优惠券面值</div>
-                    <div className="right">
-                        <PriceComponent price={DetailInformation.ticketPrice}/>
-                    </div>
-                </ListItem>
-                <ListItem>
                     <div className="center">截止日期</div>
                     <div className="right">{DetailInformation.endDate}</div>
                 </ListItem>
@@ -60,8 +54,8 @@ const CouponDetail = (props) => {
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <div className="list__item__title">优惠券详情</div>
-                        <div className="list__item__subtitle">{DetailInformation.describe}</div>
+                        <div className="list__item__title">使用规则</div>
+                        <div className="list__item__subtitle grayColor">{DetailInformation.describe}</div>
                     </div>
                 </ListItem>
             </List>
