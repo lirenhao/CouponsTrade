@@ -89,10 +89,10 @@
 - `优惠券是否开启`：isOpen
 - 优惠券状态：couponState
   - `未发布`：0-unpublished
-  - 发布:     1-publishing
+  - 发布:     1-published
   - 付款中:   2-paying
   - 过期:     3-overdue
-  - 已售（未开启）:4-soldUnOpen
+  - 已售（未开启）:4-soldUnOpened
   - 已售（已开启）:5-soldOpened
 
 ### 3 订单：order
