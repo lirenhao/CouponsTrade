@@ -39,11 +39,6 @@
 ### 下架优惠券
 - 是指将优惠券暂停或停止售卖
 
-
-
-
-
-
 ## 字典
 
 注：该文档需要实时维护
@@ -76,16 +71,16 @@
 - 优惠券截止日期：endDate
 - 优惠券是否支持自动退货：isAutomaticRefund
 - 优惠券类别：couponType
-  - 西餐
-  - 海鲜
-  - 咖啡
-  - 面包糕点
-  - 火锅
-  - 烧烤
-  - 冰激凌
-  - 快餐
-  - 自助餐
-  - 其他
+  - 西餐 0-Western Food
+  - 海鲜 1-seafood
+  - 咖啡 2-coffee
+  - 面包糕点 3-breadCakes
+  - 火锅 4-hotPot
+  - 烧烤 5-barbecue
+  - 冰激凌 6-iceCream
+  - 快餐 7-fastFood
+  - 自助餐 8-buffet
+  - 其他 9-other
 - 券码形式：couponModality
   - 包括：图片或文本
 - 优惠券描述：describe
@@ -93,12 +88,12 @@
 - 优惠券图片（与商户相关）：picture
 - `优惠券是否开启`：isOpen
 - 优惠券状态：couponState
-  - `未发布`：0
-  - 发布:1
-  - 付款中:2
-  - 过期: 3
-  - 已售（未开启）:4
-  - 已售（已开启）:5
+  - `未发布`：0-unpublished
+  - 发布:     1-publishing
+  - 付款中:   2-paying
+  - 过期:     3-overdue
+  - 已售（未开启）:4-soldUnOpen
+  - 已售（已开启）:5-soldOpened
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -112,17 +107,17 @@
 - 订单列表：orderList
 - 订单详情：orderInfo
 - 订单状态：orderState
-  - 待支付:0
-  - 订单取消:1
-  - 订单超时:2
-  - 已支付:3
-  - 已确认:4
-  - 已退货:5
-  - 已退款:6
-  - 申请退货:7
-  - 拒绝退货:8
-  - 仲裁开启:9
-  - 仲裁结束:10
+  - 待支付:0-waitPay
+  - 订单取消:1-cancel
+  - 订单超时:2-overtime
+  - 已支付:3-payComplete
+  - 已确认:4-Confirmed
+  - 已退货:5-backGoodsComplete
+  - 已退款:6-moneyBackComplete
+  - 申请退货:7-applicationBackGoods
+  - 拒绝退货:8-rejectBackGoods
+  - 仲裁开启:9-arbitrationOpen
+  - 仲裁结束:10-arbitrationEnd
 
 ### 4 Action
 - **开始等待：onLoad**
