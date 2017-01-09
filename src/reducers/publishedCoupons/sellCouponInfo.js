@@ -6,8 +6,8 @@
  * 对查询自己发布的优惠券明细信息操作的reducer
  */
 import {createReducer} from 'redux-act'
-import {getUserCouponInfoRequest} from '../../actions'
+import {getUserCouponInfoSuccess} from '../../actions'
 
 export default createReducer({
-    [getUserCouponInfoRequest]: (state, payload)=> ({...payload.couponInfo})
+    [getUserCouponInfoSuccess]: (state, payload)=> ({...payload.couponInfo})
 }, {})

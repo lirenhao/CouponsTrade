@@ -10,8 +10,7 @@ import {getUserCouponListSuccess} from '../../actions'
 
 export default createReducer({
     [getUserCouponListSuccess]: (state, payload) => {
-        console.log(payload)
-        if(payload.page.number > 1)
+        if (payload.page.number > 1)
             return [...state, ...payload.couponList]
         else
             return [...payload.couponList]

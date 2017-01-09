@@ -6,8 +6,8 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {getUserCouponListRequest} from '../../actions/index'
+import {getUserCouponListSuccess} from '../../actions/index'
 
 export default createReducer({
-    [getUserCouponListRequest]: (state, payload) => ({...state, ...payload.page})
+    [getUserCouponListSuccess]: (state, payload) => ({...state, ...payload.page})
 }, {total: 0, number: 0, size: 8})
