@@ -19,7 +19,7 @@ import Login from './Login'
 import User from './User'
 import CreateInviteCode from './CreateInviteCode'
 import ResetPassword from './ResetPassword'
-import SellingCoupons from './SellCoupons'
+import PublishedCoupons from './PublishedCoupons'
 import OrderList from './OrderList'
 import {
     createInviteCodeRequest,
@@ -86,8 +86,8 @@ class Mine extends React.Component {
                             apiType: 'getUserCoupons',
                             param: {...this.props.publishedCouponsPage, token: this.props.token},
                             router: () => this.props.navigator.pushPage({
-                                comp: SellingCoupons,
-                                props: {key: "sellingCoupons"}
+                                comp: PublishedCoupons,
+                                props: {key: "PublishedCoupons"}
                             })
                         })
                     }>

@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponList from '../components/sellCoupon/CouponList'
 import PushRefresh from '../components/PushRefresh'
-import PublishCouponsDetail from './PublishCouponsDetail'
+import PublishedCouponDetail from './PublishedCouponDetail'
 import {getUserCouponInfoRequest, getUserCouponListRequest} from '../actions'
 
 class SellingCoupons extends React.Component {
@@ -30,8 +30,8 @@ class SellingCoupons extends React.Component {
                                     apiType: 'getCouponDetails',
                                     param: {id, token: this.props.token},
                                     router: () => this.props.navigator.pushPage({
-                                        comp: PublishCouponsDetail,
-                                        props: {key: "publishCouponsDetail"}
+                                        comp: PublishedCouponDetail,
+                                        props: {key: "PublishedCouponDetail"}
                                     })
                                 })}
                 />
