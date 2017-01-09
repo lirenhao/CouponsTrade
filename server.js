@@ -262,7 +262,7 @@ let state = {
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
-            couponState: "1"
+            couponState: "0"
         },
         {
             id: "2",
@@ -865,8 +865,11 @@ const getCouponListItem = (coupon) => {
 const getCouponList = (coupons, couponName, total, number, size) => {
     let couponList = []
     let newNumber = 0
+    let publishedCoupons =coupons.filter((c)=>{
+        return c.couponState ==="1"
+    })
     if (couponName !== "ALL") {
-        for (let coupon of coupons) {
+        for (let coupon of publishedCoupons) {
             if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
                 couponList.push(getCouponListItem(coupon))
             }
@@ -874,20 +877,20 @@ const getCouponList = (coupons, couponName, total, number, size) => {
         return getResult(couponList, total, number, size)
     } else {
         if (number > 0) {
-            const newCoupons = coupons.slice(number * size, (Number(number) + 1) * size)
+            const newCoupons = publishedCoupons.slice(number * size, (Number(number) + 1) * size)
             couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = Number(number) + 1
         }
         else {
-            const newCoupons = coupons.slice(0, size)
+            const newCoupons = publishedCoupons.slice(0, size)
             couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = 1
         }
-        return {total: coupons.length, number: newNumber, couponList: couponList}
+        return {total: publishedCoupons.length, number: newNumber, couponList: couponList}
     }
 }
 
