@@ -611,7 +611,7 @@ app.post(`/${ServerPath.CANCEL_ORDER}`, (req, res) => {
     const {token, id} = req.body
     if (state.token == token) {
         state.order.orderInfo[id].orderState = "已取消"
-        res.json({code: ResponseCode.SUCCESS})
+        res.json({code: ResponseCode.SUCCESS, cancelId: id})
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
 })
@@ -627,7 +627,8 @@ app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
             orderInfo: {
                 ...result,
                 couponCode: result.isOpen ? result.couponCode : "******"
-            }
+            },
+            receiptId: id
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
