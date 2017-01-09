@@ -704,25 +704,21 @@ app.post(`/${ServerPath.REFRESH_COUPON_LIST}`, function (req, res) {
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
     const {id, token, dataFlag} = req.body
+    console.log({id, token, dataFlag})
     if (token === state.token) {
         const couponList = state.publishCouponList.filter((r) => {
             return r.id === id
         })
         if (couponList.length !== 0) {
-            const couponInfo = couponList[0]
-            const newCouponInfo = {...couponInfo, nickname: state.userInfo.nickname}
-            if (dataFlag !== "0") {
-                res.json({code: ResponseCode.SUCCESS, flag: "1", couponInfo: newCouponInfo})
-            } else {
-                res.json({code: ResponseCode.SUCCESS, flag: "0", couponInfo: newCouponInfo})
-            }
+            const couponInfo = {...couponList[0], nickname: state.userInfo.nickname}
+            res.json({code: ResponseCode.SUCCESS, couponInfo: couponInfo})
         } else {
             res.json({code: ResponseCode.FAIL, msg: "未查到该优惠券信息"})
         }
     } else {
         res.json({code: ResponseCode.FAIL, msg: "用户没有登录，请重新登录"})
     }
-});
+})
 
 app.post(`/${ServerPath.GET_USER_COUPONS}`, function (req, res) {
     const {token, couponName, couponState, total, number, size} = req.body
