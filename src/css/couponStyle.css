@@ -327,7 +327,6 @@ input[name*="Password"] + .text-input--material__label--active {
 .btnTab.tab-bar {
     background-image: none;
     box-shadow: 0 0 1px #ccc;
-    min-height: 49px;
 }
 .btnTab.tab-bar button{
     background-color: hsla(214,80%,45%,0.8);
