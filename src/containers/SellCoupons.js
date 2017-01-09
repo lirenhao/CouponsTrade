@@ -38,7 +38,7 @@ class SellingCoupons extends React.Component {
                 <PushRefresh hasMore={this.props.couponList.length < this.props.page.total}
                              onRefresh={() =>
                                  this.props.getUserCouponListRequest({
-                                     apiType: 'refreshCouponList',
+                                     apiType: 'refreshUserCouponList',
                                      param: {
                                          ...this.props.page,
                                          token: this.props.token
@@ -56,22 +56,5 @@ const mapStateToProps = (state) => ({
     token: state.token,
     page: state.publishedCoupons.page
 })
-
-const mapDispatchToProps = (dispatch) => (
-    {
-        onClickPushPage: (token, id, navigator) => {
-            dispatch(getCouponDetailsRequest({
-                token,
-                id,
-                navigator,
-                routeData: {comp: PublishCouponsDetail, props: {key: "PublishCouponsDetail"}}
-            }))
-        },
-        onRefresh: (token, page) => {
-            dispatch(refreshUserCouponListRequest({token, page}))
-        }
-
-    }
-)
 
 export default connect(mapStateToProps, {getUserCouponInfoRequest, getUserCouponListRequest})(SellingCoupons)
