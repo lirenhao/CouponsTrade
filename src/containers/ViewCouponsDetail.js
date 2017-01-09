@@ -44,7 +44,7 @@ class ViewCouponsDetail extends React.Component {
                 </BottomToolbar>
             )}>
                 <CouponDetail
-                    DetailInformation={this.props.couponInfo}>
+                    couponInfo={this.props.couponInfo}>
                 </CouponDetail>
             </Page>
         )

@@ -11,6 +11,7 @@ import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
 import {connect}  from 'react-redux'
 import {soldOutCouponRequest} from  '../actions'
+import {couponStateDic} from '../constants/dataDic'
 
 class PublishCouponsDetail extends React.Component {
     render() {
@@ -24,9 +25,10 @@ class PublishCouponsDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )} renderBottomToolbar={() => (
-                <div className="tab-bar btnTab">
+                <div className="tab-bar">
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
+                                disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
                                 onClick={() => this.props.soldOutCouponRequest(
                                     {
                                         apiType: 'soldOutCoupon',
@@ -43,6 +45,7 @@ class PublishCouponsDetail extends React.Component {
                     </div>
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
+                                disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
                                 onClick={() => this.props.soldOutCouponRequest(
                                     {
                                         apiType: 'soldOutCoupon',
@@ -56,18 +59,18 @@ class PublishCouponsDetail extends React.Component {
                 </div>
             )}>
                 <CouponDetail
-                    DetailInformation={this.props.couponInfo}>
+                    couponInfo={this.props.couponInfo}>
                 </CouponDetail>
             </Page>
         )
     }
 }
 
-const mapStateToProps = (state) => (
-    {
-        couponInfo: state.publishedCoupons.couponInfo,
-        token: state.token
-    }
+const mapStateToProps = (state)=>(
+{
+    couponInfo: state.publishedCoupons.couponInfo,
+    token: state.token
+}
 )
 
 export default connect(mapStateToProps, {soldOutCouponRequest})(PublishCouponsDetail)
