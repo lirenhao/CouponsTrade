@@ -49,7 +49,7 @@ const OrderInfo = (props) => {
     }
 
     const renderBottomToolbar = () => {
-        if (orderState !== "已支付" && orderState !== "已完成") {
+        if (orderState !== "已支付" && orderState !== "已完成" && orderState !== "已取消") {
             return (
                 <BottomToolbar modifier="material">
                     <div className="tab-bar">
@@ -68,36 +68,26 @@ const OrderInfo = (props) => {
                                     onClick={() => {
                                         ons.notification.confirm({
                                             title: "",
-                                            messageHTML: "确定要删除订单吗？",
+                                            messageHTML: "确定要取消订单吗？",
                                             buttonLabels: ["确认", "取消"]
                                         }).then(res => {
                                             if (res === 0) {
-                                                function* test() {
-                                                    yield props.cancelOrderRequest({
-                                                        apiType: 'cancelOrder',
-                                                        param: {id: orderNo, token: props.token},
-                                                        router: () => props.navigator.popPage()
-                                                    })
-                                                    yield props.getOrderListRequest({
-                                                        apiType: 'getOrderList',
-                                                        param: {...props.orderPage, token: props.token}
-                                                    })
-                                                }
-
-                                                const gen1 = test()
-                                                gen1.next()
-                                                setTimeout(() => gen1.next(), 800)
-
+                                                props.cancelOrderRequest({
+                                                    apiType: 'cancelOrder',
+                                                    param: {id: orderNo, token: props.token},
+                                                    router: () => props.navigator.popPage()
+                                                })
                                             }
                                         })
                                     }}>
-                                <ons-icon icon="ion-android-close"> 删除</ons-icon>
+                                <ons-icon icon="ion-android-close"> 取消</ons-icon>
                             </button>
                         </div>
                     </div>
                 </BottomToolbar>
             )
-        } else if (orderState === "已支付") {
+        } else if
+        (orderState === "已支付") {
             return (
                 <BottomToolbar modifier="material">
                     <Button modifier="large noRadius"
@@ -129,7 +119,8 @@ const OrderInfo = (props) => {
             <List modifier="inset marginT">
                 <ListItem>
                     <div className="left">
-                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`}
+                        <img className='list__item__thumbnail'
+                             src={`http://placekitten.com/g/40/40`}
                              alt="商品图片"/>
                     </div>
                     <div className="center">{couponName }</div>

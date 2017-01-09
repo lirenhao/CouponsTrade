@@ -610,7 +610,7 @@ app.post(`/${ServerPath.CANCEL_ORDER}`, (req, res) => {
     console.log("收到取消订单请求")
     const {token, id} = req.body
     if (state.token == token) {
-        delete state.order.orderInfo[id]
+        state.order.orderInfo[id].orderState = "已取消"
         res.json({code: ResponseCode.SUCCESS})
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
@@ -843,7 +843,7 @@ app.listen(3000, function () {
  * @param coupon 优惠券详细信息对象
  * @returns {{id: *, couponName: *, sellingPrice: *, description: *}}
  */
-const getCouponListItem = (coupon)=> {
+const getCouponListItem = (coupon) => {
     return {
         id: coupon.id,
         couponName: coupon.couponName,
@@ -874,14 +874,14 @@ const getCouponList = (coupons, couponName, total, number, size) => {
     } else {
         if (number > 0) {
             const newCoupons = coupons.slice(number * size, (Number(number) + 1) * size)
-            couponList = newCoupons.map((m)=> {
+            couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = Number(number) + 1
         }
         else {
             const newCoupons = coupons.slice(0, size)
-            couponList = newCoupons.map((m)=> {
+            couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = 1
@@ -933,7 +933,7 @@ const getUserCouponList = (coupons, userName, couponName, couponState, total, nu
  * @param size 每页条数
  * @returns {{total: *, number: number, couponList: *}}
  */
-const getResult = (couponList, total, number, size)=> {
+const getResult = (couponList, total, number, size) => {
     let newNumber = 0
     let startNumber = 0
     let endNumber = 0
