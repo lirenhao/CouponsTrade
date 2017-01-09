@@ -43,7 +43,7 @@ const CheckBoxComponent = ({input}) => {
 class CouponFields extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {isOpen: false, couponTypeName: <ons-icon icon="ion-ios-paw-outline"> 选择类型</ons-icon>}
+        this.state = {isOpen: false, couponTypeName: '选择类型'}
         this.handleClick = this.handleClick.bind(this)
         this.handleHide = this.handleHide.bind(this)
         this.handleShow = this.handleShow.bind(this)
@@ -51,9 +51,9 @@ class CouponFields extends React.Component {
 
     handleClick(couponType) {
         const map = {
-            "0": <ons-icon icon="ion-ios-rose-outline"> 其他</ons-icon>,
+            "0": <ons-icon icon="ion-ios-rose"> 其他</ons-icon>,
             "1": <ons-icon icon="ion-ios-wineglass"> 餐饮</ons-icon>,
-            "2": <ons-icon icon="ion-ios-game-controller-b-outline"> 娱乐</ons-icon>
+            "2": <ons-icon icon="ion-ios-game-controller-b"> 娱乐</ons-icon>
         }
         const couponTypeName = map[couponType]
         this.setState({couponTypeName: couponTypeName})
@@ -77,14 +77,14 @@ class CouponFields extends React.Component {
                            handleClick: this.handleClick, handleHide: this.handleHide
                        }}>
                     <List modifier="inset marginT">
+                        <ListItem modifier="handleShow">
+                            <button className="handleShow"
+                                    onClick={this.handleShow}>{this.state.couponTypeName}</button>
+                        </ListItem>
                         <ListItem>
                             <div className="center">
                                 <Field type="text" name="couponName" component={InputComponent} placeholder="优惠券名称"/>
                             </div>
-                        </ListItem>
-                        <ListItem modifier="handleShow">
-                            <button className="handleShow"
-                                    onClick={this.handleShow}>{this.state.couponTypeName}</button>
                         </ListItem>
                         <ListItem>
                             <div className="center">
@@ -108,7 +108,7 @@ class CouponFields extends React.Component {
                         </ListItem>
                         <ListItem>
                             <div className="center">
-                                <Field type="date" name="endDate" component={InputComponent} placeholder=""/>
+                                <Field type="date" name="endDate" component={InputComponent} placeholder="选择日期"/>
                             </div>
                         </ListItem>
                         <ListItem>

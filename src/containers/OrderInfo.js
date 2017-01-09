@@ -52,7 +52,7 @@ const OrderInfo = (props) => {
         if (orderState !== "已支付" && orderState !== "已完成" && orderState !== "已取消") {
             return (
                 <BottomToolbar modifier="material">
-                    <div className="tab-bar">
+                    <div className="tab-bar btnTab">
                         <div className="tab-bar__item">
                             <button
                                 className="tab-bar__button"
