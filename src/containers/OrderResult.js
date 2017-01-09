@@ -21,7 +21,7 @@ const OrderResult = (props) => {
             param: {...page, token: props.token},
             router: () => navigator.resetPageStack([
                 {comp: Tabs, props: {key: "Tabs", index: 2}},
-                {comp: OrderList, props: {key: "orderList"}}
+                {comp: OrderList, props: {key: "orderListFromOrderResult"}}
             ])
         })
     }
