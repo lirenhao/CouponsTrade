@@ -24,7 +24,7 @@ class PublishCouponsDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )} renderBottomToolbar={() => (
-                <div className="tab-bar">
+                <div className="tab-bar btnTab">
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
                                 onClick={() => this.props.soldOutCouponRequest(
@@ -63,11 +63,11 @@ class PublishCouponsDetail extends React.Component {
     }
 }
 
-const mapStateToProps = (state)=>(
-{
-    couponInfo: state.publishedCoupons.couponInfo,
-    token: state.token
-}
+const mapStateToProps = (state) => (
+    {
+        couponInfo: state.publishedCoupons.couponInfo,
+        token: state.token
+    }
 )
 
 export default connect(mapStateToProps, {soldOutCouponRequest})(PublishCouponsDetail)
