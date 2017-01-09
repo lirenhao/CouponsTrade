@@ -7,12 +7,11 @@
  */
 import React from 'react'
 import {connect} from 'react-redux'
-import {loginRequest, signUpRequest} from '../actions'
+import {loginRequest, signUpRequest, showDialog} from '../actions'
 import {Page, Toolbar, Button, BackButton} from 'react-onsenui'
 import SignUp from '../components/SignUp'
 import SignIn from '../components/SignIn'
 import Tabs from './Tabs'
-import * as Act from '../actions'
 
 const Register = (props) => {
     return (
@@ -53,7 +52,9 @@ class Login extends React.Component {
         return (
             <Page renderToolbar={this.loginToolbar.bind(this)}>
                 <SignIn onSubmit={(param) => this.props.loginRequest({
-                    apiType: 'login', param, router: () => this.props.navigator.resetPage({
+                    apiType: 'login',
+                    param,
+                    router: () => this.props.navigator.resetPage({
                         comp: Tabs,
                         props: {key: 'tabs', index: this.props.index || 0}
                     })
