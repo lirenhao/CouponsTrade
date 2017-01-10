@@ -134,7 +134,7 @@ const OrderInfo = (props) => {
                 <ListItem>商品ID
                     <div className="right">{id}</div>
                 </ListItem>
-                <ListItem>是否支持未开始时自动退货
+                <ListItem>是否支持未开启时自动退货
                     <div className="right">{isAutomaticRefund ? "是" : "否"}</div>
                 </ListItem>
                 <ListItem>优惠券类别
