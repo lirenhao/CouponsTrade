@@ -23,6 +23,7 @@ class SearchCoupons extends React.Component {
                         apiType: 'queryCoupons',
                         param: {
                             ...this.props.page,
+                            number: 0,
                             ...this.props.query,
                             token: this.props.token
                         },

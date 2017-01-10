@@ -6,12 +6,12 @@
  * <文件描述>
  */
 import {createReducer} from 'redux-act'
-import {setCouponsQuery} from '../../actions/index'
+import {getCouponsListRequest} from '../../actions/index'
 
 export default createReducer(
     {
-        [setCouponsQuery]: (state, payload) => {
-            return {...state, ...payload.query}
+        [getCouponsListRequest]: (state, payload) => {
+            return {...state, couponName: payload.param.couponName != "" ? payload.param.couponName : "ALL"}
         }
     }, {couponName: "ALL"}
 )
