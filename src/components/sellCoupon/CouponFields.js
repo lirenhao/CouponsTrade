@@ -76,16 +76,16 @@ class CouponFields extends React.Component {
                            handleClick: this.handleClick, handleHide: this.handleHide
                        }}>
                     <List modifier="inset marginT">
+                        <ListItem modifier="handleShow">
+                            <button className="handleShow" type="button"
+                                    onClick={this.handleShow}>
+                                <ons-icon icon="ion-android-checkmark-circle">&nbsp;{this.state.couponTypeName}</ons-icon>
+                            </button>
+                        </ListItem>
                         <ListItem>
                             <div className="center">
                                 <Field type="text" name="couponName" component={InputComponent} placeholder="优惠券名称"/>
                             </div>
-                        </ListItem>
-                        <ListItem modifier="handleShow">
-                            <button className="handleShow" type="button"
-                                    onClick={this.handleShow}>
-                                <ons-icon icon="ion-ios-paw-outline">{this.state.couponTypeName}</ons-icon>
-                            </button>
                         </ListItem>
                         <ListItem>
                             <div className="center">

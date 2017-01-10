@@ -358,6 +358,10 @@ input[name*="Password"] + .text-input--material__label--active {
 .list__item--handleShow .list__item--material__center{
     border-bottom: 1px #bbb solid;
 }
-.list--sideSelect{
+.list--sideSelect {
     background-color: #fff;
+}
+.list--sideSelect .list__item{
+    color: #aaa;
+    font-size: 0.8em;
 }
