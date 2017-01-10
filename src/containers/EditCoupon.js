@@ -21,7 +21,7 @@ class EditCoupons extends React.Component {
                     <div className='left'>
                         <BackButton/>
                     </div>
-                    <div className='center'>发布的优惠券</div>
+                    <div className='center'>编辑优惠券</div>
                 </Toolbar>
             )}>
                 <EditCouponForm
