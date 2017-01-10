@@ -10,7 +10,7 @@ import React from 'react'
 import EditCouponForm from '../components/sellCoupon/EditCouponForm'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import ons from 'onsenui'
-import {editUserCouponRequest} from '../actions'
+import {updateUserCouponRequest} from '../actions'
 import {connect} from 'react-redux'
 
 class EditCoupons extends React.Component {
@@ -25,7 +25,20 @@ class EditCoupons extends React.Component {
                 </Toolbar>
             )}>
                 <EditCouponForm
-                    onSubmit={(value)=>this.props.onEditClick(value, this.props.token, this.props.navigator)}
+                    onSubmit={(value)=>
+                        ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
+                            res => {
+                                if (res === 1) {
+                                    this.props.updateUserCouponRequest(
+                                        {
+                                            apiType: 'editUserCoupon',
+                                            param: {...value, token: this.props.token},
+                                            router: () => this.props.navigator.popPage()
+                                        })
+                                }
+                            }
+                        )
+                    }
                     initialValues={{
                         ...this.props.couponInfo,
                         originalPrice: this.props.couponInfo.originalPrice.toString(),
@@ -44,19 +57,4 @@ const mapStateToProps = (state)=>(
 }
 )
 
-const mapDispatchToProps = (dispatch)=>(
-{
-    onEditClick: (param, token, navigator)=> {
-        ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
-            res => {
-                if (res === 1) {
-                    dispatch(editUserCouponRequest({param, token, navigator}))
-                }
-            }
-        )
-
-    }
-}
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditCoupons)
+export default connect(mapStateToProps, {updateUserCouponRequest})(EditCoupons)

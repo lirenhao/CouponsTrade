@@ -6,11 +6,12 @@
  * 发布优惠券列表中查看优惠券详情容器
  */
 import React from 'react'
-import {Page, Toolbar, BackButton, Button, BottomToolbar} from 'react-onsenui'
+import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponDetail from '../components/CouponDetail'
 import EditCoupons from './EditCoupon'
 import {connect}  from 'react-redux'
 import {soldOutCouponRequest} from  '../actions'
+import {couponStateDic} from '../constants/dataDic'
 
 class PublishCouponsDetail extends React.Component {
     render() {
@@ -27,22 +28,38 @@ class PublishCouponsDetail extends React.Component {
                 <div className="tab-bar">
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
-                                onClick={() => this.props.onEditCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
+                                disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
+                                onClick={() => this.props.soldOutCouponRequest(
+                                    {
+                                        apiType: 'soldOutCoupon',
+                                        param: {id: this.props.couponInfo.id, token: this.props.token},
+                                        router: () => this.props.navigator.replacePage({
+                                            comp: EditCoupons,
+                                            props: {key: "EditCoupons"}
+                                        })
+                                    }
+                                )
                                 }>
                             <ons-icon icon="ion-ios-compose-outline"> 编辑</ons-icon>
                         </button>
                     </div>
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
-                                onClick={() => this.props.onSoldOutCoupon(this.props.token, this.props.couponInfo.id, this.props.navigator)
-                                }>
+                                disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
+                                onClick={() => this.props.soldOutCouponRequest(
+                                    {
+                                        apiType: 'soldOutCoupon',
+                                        param: {id: this.props.couponInfo.id, token: this.props.token},
+                                        router: () => this.props.navigator.popPage()
+                                    }
+                                )}>
                             <ons-icon icon="ion-ios-trash-outline"> 下架</ons-icon>
                         </button>
                     </div>
                 </div>
             )}>
                 <CouponDetail
-                    DetailInformation={this.props.couponInfo}>
+                    couponInfo={this.props.couponInfo}>
                 </CouponDetail>
             </Page>
         )
@@ -56,19 +73,4 @@ const mapStateToProps = (state)=>(
 }
 )
 
-const mapDispatchToProps = (dispatch)=>(
-{
-    onEditCoupon: (token, id, navigator)=> {
-        dispatch(soldOutCouponRequest({
-            token, id, navigator, routeData: {
-                comp: EditCoupons, props: {key: "EditCoupons"}
-            }
-        }))
-    },
-    onSoldOutCoupon: (token, id, navigator)=> {
-        dispatch(soldOutCouponRequest({token, id, navigator}))
-    }
-}
-)
-
-export default connect(mapStateToProps, mapDispatchToProps)(PublishCouponsDetail)
+export default connect(mapStateToProps, {soldOutCouponRequest})(PublishCouponsDetail)

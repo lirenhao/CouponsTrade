@@ -40,7 +40,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "1",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -59,7 +59,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "2",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -78,7 +78,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "3",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -97,7 +97,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "4",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -116,7 +116,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "5",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -135,7 +135,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "6",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -154,7 +154,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "7",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -173,7 +173,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "8",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -192,7 +192,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "9",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -211,7 +211,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "呷哺呷哺100元代金券",
+                couponName: "10",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -231,7 +231,7 @@ let state = {
                 orderDate: "2016-12-22",
                 orderTime: "08:07",
                 id: "1",
-                couponName: "最后一条",
+                couponName: "11",
                 isAutomaticRefund: true,
                 couponType: "火锅",
                 couponModality: "文本",
@@ -262,7 +262,7 @@ let state = {
             endDate: "2016-12-31",
             describe: "所有地区通用券",
             userName: "1",
-            couponState: "1"
+            couponState: "0"
         },
         {
             id: "2",
@@ -610,8 +610,8 @@ app.post(`/${ServerPath.CANCEL_ORDER}`, (req, res) => {
     console.log("收到取消订单请求")
     const {token, id} = req.body
     if (state.token == token) {
-        delete state.order.orderInfo[id]
-        res.json({code: ResponseCode.SUCCESS})
+        state.order.orderInfo[id].orderState = "已取消"
+        res.json({code: ResponseCode.SUCCESS, cancelId: id})
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
 })
@@ -627,7 +627,8 @@ app.post(`/${ServerPath.RECEIPT_ORDER}`, (req, res) => {
             orderInfo: {
                 ...result,
                 couponCode: result.isOpen ? result.couponCode : "******"
-            }
+            },
+            receiptId: id
         })
     } else
         res.json({code: ResponseCode.FAIL, msg: "请求失败"})
@@ -843,7 +844,7 @@ app.listen(3000, function () {
  * @param coupon 优惠券详细信息对象
  * @returns {{id: *, couponName: *, sellingPrice: *, description: *}}
  */
-const getCouponListItem = (coupon)=> {
+const getCouponListItem = (coupon) => {
     return {
         id: coupon.id,
         couponName: coupon.couponName,
@@ -864,8 +865,11 @@ const getCouponListItem = (coupon)=> {
 const getCouponList = (coupons, couponName, total, number, size) => {
     let couponList = []
     let newNumber = 0
+    let publishedCoupons =coupons.filter((c)=>{
+        return c.couponState ==="1"
+    })
     if (couponName !== "ALL") {
-        for (let coupon of coupons) {
+        for (let coupon of publishedCoupons) {
             if (coupon.couponName.match(couponName.replace(/\s/g, ""))) {
                 couponList.push(getCouponListItem(coupon))
             }
@@ -873,20 +877,20 @@ const getCouponList = (coupons, couponName, total, number, size) => {
         return getResult(couponList, total, number, size)
     } else {
         if (number > 0) {
-            const newCoupons = coupons.slice(number * size, (Number(number) + 1) * size)
-            couponList = newCoupons.map((m)=> {
+            const newCoupons = publishedCoupons.slice(number * size, (Number(number) + 1) * size)
+            couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = Number(number) + 1
         }
         else {
-            const newCoupons = coupons.slice(0, size)
-            couponList = newCoupons.map((m)=> {
+            const newCoupons = publishedCoupons.slice(0, size)
+            couponList = newCoupons.map((m) => {
                 return getCouponListItem(m)
             })
             newNumber = 1
         }
-        return {total: coupons.length, number: newNumber, couponList: couponList}
+        return {total: publishedCoupons.length, number: newNumber, couponList: couponList}
     }
 }
 
@@ -933,7 +937,7 @@ const getUserCouponList = (coupons, userName, couponName, couponState, total, nu
  * @param size 每页条数
  * @returns {{total: *, number: number, couponList: *}}
  */
-const getResult = (couponList, total, number, size)=> {
+const getResult = (couponList, total, number, size) => {
     let newNumber = 0
     let startNumber = 0
     let endNumber = 0

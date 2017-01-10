@@ -11,6 +11,7 @@ import React from 'react'
 import {Field} from 'redux-form'
 import {Input, Switch, List, ListItem, Button} from 'react-onsenui'
 import SideSelect from './SideSelect'
+import {couponTypeListItems, couponTypeMap} from '../../constants/dataDic'
 
 const InputComponent = ({input, type, placeholder}) => {
     return (
@@ -20,7 +21,7 @@ const InputComponent = ({input, type, placeholder}) => {
                required
                float/>
     )
-};
+}
 
 const TextAreaComponent = ({input, placeholder}) => {
     return (
@@ -38,24 +39,22 @@ const CheckBoxComponent = ({input}) => {
             input.onChange(event.target.checked)
         }}/>
     )
-};
+}
 
 class CouponFields extends React.Component {
     constructor(props) {
         super(props)
-        this.state = {isOpen: false, couponTypeName: <ons-icon icon="ion-ios-paw-outline"> 选择类型</ons-icon>}
+        this.state = {
+            isOpen: false,
+            couponTypeName: this.props.couponTypeName
+        }
         this.handleClick = this.handleClick.bind(this)
         this.handleHide = this.handleHide.bind(this)
         this.handleShow = this.handleShow.bind(this)
     }
 
     handleClick(couponType) {
-        const map = {
-            "0": <ons-icon icon="ion-ios-rose-outline"> 其他</ons-icon>,
-            "1": <ons-icon icon="ion-ios-wineglass"> 餐饮</ons-icon>,
-            "2": <ons-icon icon="ion-ios-game-controller-b-outline"> 娱乐</ons-icon>
-        }
-        const couponTypeName = map[couponType]
+        const couponTypeName = couponTypeMap[couponType]
         this.setState({couponTypeName: couponTypeName})
     }
 
@@ -73,7 +72,7 @@ class CouponFields extends React.Component {
                 <Field name="couponType" component={SideSelect}
                        props={{
                            isOpen: this.state.isOpen,
-                           listItem: [{title: "其他", value: "0"}, {title: "餐饮", value: "1"}, {title: "娱乐", value: "2"}],
+                           listItem: couponTypeListItems(),
                            handleClick: this.handleClick, handleHide: this.handleHide
                        }}>
                     <List modifier="inset marginT">
@@ -83,8 +82,10 @@ class CouponFields extends React.Component {
                             </div>
                         </ListItem>
                         <ListItem modifier="handleShow">
-                            <button className="handleShow"
-                                    onClick={this.handleShow}>{this.state.couponTypeName}</button>
+                            <button className="handleShow" type="button"
+                                    onClick={this.handleShow}>
+                                <ons-icon icon="ion-ios-paw-outline">{this.state.couponTypeName}</ons-icon>
+                            </button>
                         </ListItem>
                         <ListItem>
                             <div className="center">
@@ -123,7 +124,7 @@ class CouponFields extends React.Component {
                             <Field name="describe" component={TextAreaComponent} placeholder="描述"/>
                         </ListItem>
                     </List>
-                    <Button modifier="large marginTLR marginB" disabled={this.props.invalid || this.props.submitting}
+                    <Button modifier="large marginTLR marginB" disabled={this.props.disable}
                             onClick={this.props.onSubmit}>{this.props.buttonName}</Button>
                 </Field>
             </div>
@@ -131,6 +132,11 @@ class CouponFields extends React.Component {
     }
 }
 
+CouponFields.propTypes = {
+    onSubmit: React.PropTypes.func.isRequired,
+    buttonName: React.PropTypes.string.isRequired,
+    disable: React.PropTypes.bool.isRequired
+}
 
 export default CouponFields
 

@@ -8,13 +8,10 @@
 import React from 'react'
 import {
     Page,
-    Toolbar,
-    List,
-    ListItem,
-    ListHeader
+    Toolbar
 } from 'react-onsenui'
 
-import SearchCoupons from './SearchCoupons'
+import QueryCoupons from './QueryCoupons'
 
 class Home extends React.Component {
     render() {
@@ -24,7 +21,7 @@ class Home extends React.Component {
                     <div className="center">首页</div>
                 </Toolbar>
             )}>
-                <SearchCoupons navigator={this.props.navigator}/>
+                <QueryCoupons navigator={this.props.navigator}/>
             </Page>
         )
     }

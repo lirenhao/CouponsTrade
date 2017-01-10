@@ -9,7 +9,7 @@
 
 import React from 'react'
 import {reduxForm} from 'redux-form'
-import {Button} from 'react-onsenui'
+import {couponTypeMap} from '../../constants/dataDic'
 import CouponFields from  './CouponFields'
 
 
@@ -18,7 +18,10 @@ const EditCouponForm = (props)=> {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
-                <CouponFields invalid={invalid} submitting={submitting} buttonName="确认提交" onSubmit={props.submit}/>
+                <CouponFields disable={invalid || submitting}
+                              buttonName="确认提交" onSubmit={props.submit}
+                              couponTypeName={couponTypeMap[props.initialValues.couponType]}
+                />
             </section>
         </form>
     )
@@ -44,6 +47,9 @@ const validate = (value) => {
     }
     if (!value.endDate) {
         errors.endDate = 'Required'
+    }
+    if (!value.describe) {
+        errors.describe = 'Required'
     }
     return errors
 }

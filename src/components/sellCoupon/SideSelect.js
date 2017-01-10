@@ -16,7 +16,7 @@ class SideSelect extends React.Component {
                 <SplitterSide side='right' width={220} collapse={true}
                               isOpen={this.props.isOpen} onClose={this.props.handleHide}>
                     <Page>
-                        <List>
+                        <List modifier="sideSelect">
                             {this.props.listItem.map((item, row) =>
                                 <ListItem key={row} tappable onClick={() => {
                                     this.props.handleClick(item.value)

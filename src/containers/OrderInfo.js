@@ -8,7 +8,7 @@
 import React, {PropTypes} from 'react'
 import {Page, Toolbar, BackButton, List, ListHeader, ListItem, Button, BottomToolbar} from 'react-onsenui'
 import {connect} from 'react-redux'
-import {openCouponRequest, cancelOrderRequest, receiptOrderRequest} from '../actions'
+import {openCouponRequest, cancelOrderRequest, receiptOrderRequest, getOrderListRequest} from '../actions'
 import PayOrder from './PayOrder'
 import ons from 'onsenui'
 
@@ -32,8 +32,15 @@ const OrderInfo = (props) => {
         if (orderState === "已支付" || orderState === "已完成") {
             return (
                 <ListItem>券码
-                    <div className="right">{isOpen ? couponCode : <span className="couponCodeBg" onClick={() => {
-                            props.dispatch(openCouponRequest({token: props.token, id: orderNo}))
+                    <div className="right">{isOpen ? couponCode :
+                        <span className="couponCodeBg" onClick={() => {
+                            props.openCouponRequest({
+                                apiType: 'openCoupon',
+                                param: {
+                                    token: props.token,
+                                    id: orderNo
+                                }
+                            })
                         }
                         }>获取券码</span>}</div>
                 </ListItem>
@@ -42,10 +49,10 @@ const OrderInfo = (props) => {
     }
 
     const renderBottomToolbar = () => {
-        if (orderState !== "已支付" && orderState !== "已完成") {
+        if (orderState !== "已支付" && orderState !== "已完成" && orderState !== "已取消") {
             return (
                 <BottomToolbar modifier="material">
-                    <div className="tab-bar">
+                    <div className="tab-bar btnTab">
                         <div className="tab-bar__item">
                             <button
                                 className="tab-bar__button"
@@ -61,25 +68,26 @@ const OrderInfo = (props) => {
                                     onClick={() => {
                                         ons.notification.confirm({
                                             title: "",
-                                            messageHTML: "确定要删除订单吗？",
+                                            messageHTML: "确定要取消订单吗？",
                                             buttonLabels: ["确认", "取消"]
                                         }).then(res => {
                                             if (res === 0) {
-                                                cancelOrderRequest({
-                                                    apiType: 'receiptOrder',
+                                                props.cancelOrderRequest({
+                                                    apiType: 'cancelOrder',
                                                     param: {id: orderNo, token: props.token},
-                                                    router: () => this.props.navigator.popPage()
+                                                    router: () => props.navigator.popPage()
                                                 })
                                             }
                                         })
                                     }}>
-                                <ons-icon icon="ion-android-close"> 删除</ons-icon>
+                                <ons-icon icon="ion-android-close"> 取消</ons-icon>
                             </button>
                         </div>
                     </div>
                 </BottomToolbar>
             )
-        } else if (orderState === "已支付") {
+        } else if
+        (orderState === "已支付") {
             return (
                 <BottomToolbar modifier="material">
                     <Button modifier="large noRadius"
@@ -91,10 +99,10 @@ const OrderInfo = (props) => {
                                     buttonLabels: ["确认", "取消"]
                                 }).then(res => {
                                     if (res === 0) {
-                                       receiptOrderRequest({
-                                           apiType: 'receiptOrder',
-                                           param: {id: orderNo, token: props.token},
-                                           router: () => this.props.navigator.popPage()
+                                        props.receiptOrderRequest({
+                                            apiType: 'receiptOrder',
+                                            param: {id: orderNo, token: props.token},
+                                            router: () => props.navigator.popPage()
                                         })
                                     }
                                 })
@@ -111,7 +119,9 @@ const OrderInfo = (props) => {
             <List modifier="inset marginT">
                 <ListItem>
                     <div className="left">
-                        <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="商品图片"/>
+                        <img className='list__item__thumbnail'
+                             src={`http://placekitten.com/g/40/40`}
+                             alt="商品图片"/>
                     </div>
                     <div className="center">{couponName }</div>
                     <div className="right"><span className="price">{sellingPrice + "元"}</span></div>
@@ -168,8 +178,14 @@ const OrderInfo = (props) => {
 OrderInfo.propTypes = {}
 
 const mapStateToProps = state => ({
-        token: state.token,
-        orderInfo: state.order.orderInfo
+    token: state.token,
+    orderInfo: state.order.orderInfo,
+    orderPage: state.order.page
 })
 
-export default connect(mapStateToProps, {openCouponRequest, cancelOrderRequest, receiptOrderRequest})(OrderInfo)
+export default connect(mapStateToProps, {
+    openCouponRequest,
+    cancelOrderRequest,
+    receiptOrderRequest,
+    getOrderListRequest
+})(OrderInfo)

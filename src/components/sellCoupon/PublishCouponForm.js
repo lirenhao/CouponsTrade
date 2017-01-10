@@ -6,8 +6,7 @@
  * 发布商品组建
  */
 import React from 'react'
-import {reduxForm, Field} from 'redux-form'
-import {Button} from 'react-onsenui'
+import {reduxForm} from 'redux-form'
 import CouponFields from  './CouponFields'
 
 const PublishCouponForm = (props)=> {
@@ -15,7 +14,10 @@ const PublishCouponForm = (props)=> {
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
-                <CouponFields invalid={invalid} submitting={submitting} buttonName="确认发布" onSubmit={props.submit}/>
+                <CouponFields disable={invalid || submitting}
+                              buttonName="确认发布" onSubmit={props.submit}
+                              couponTypeName="请选择"
+                />
             </section>
         </form>
     )
@@ -39,8 +41,11 @@ const validate = (value) => {
     if (!value.sellingPrice) {
         errors.sellingPrice = 'Required'
     }
-    if (!value.effectiveDate) {
-        errors.effectiveDate = 'Required'
+    if (!value.endDate) {
+        errors.endDate = 'Required'
+    }
+    if (!value.describe) {
+        errors.describe = 'Required'
     }
     return errors
 };

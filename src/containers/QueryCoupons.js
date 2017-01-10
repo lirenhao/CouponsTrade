@@ -10,7 +10,7 @@ import {connect} from 'react-redux'
 import PullRefresh from '../components/PullRefresh'
 import TypeSelect from '../components/sellCoupon/TypeSelect'
 import CouponList from '../components/sellCoupon/CouponList'
-import ViewCouponsDetail from '../containers/ViewCouponsDetail'
+import QueryCouponDetail from './QueryCouponDetail'
 import PushRefresh from '../components/PushRefresh'
 import {getCouponsListRequest, getCouponsInfoRequest} from '../actions'
 
@@ -49,8 +49,8 @@ class SearchCoupons extends React.Component {
                         apiType: 'getCouponDetails',
                         param: {id, token: this.props.token},
                         router: () => this.props.navigator.pushPage({
-                            comp: ViewCouponsDetail,
-                            props: {key: "viewCouponsDetail"}
+                            comp: QueryCouponDetail,
+                            props: {key: "QueryCouponDetail"}
                         })
                     })
                 }/>
@@ -72,11 +72,11 @@ class SearchCoupons extends React.Component {
 }
 
 const mapStateToProps = (state) => ({
-        token: state.token,
-        couponList: state.queryCoupons.couponList,
-        page: state.queryCoupons.page,
-        query: state.queryCoupons.query
-    }
+    token: state.token,
+    couponList: state.queryCoupons.couponList,
+    page: state.queryCoupons.page,
+    query: state.queryCoupons.query
+}
 )
 
 export default connect(mapStateToProps, {getCouponsListRequest, getCouponsInfoRequest})(SearchCoupons)
