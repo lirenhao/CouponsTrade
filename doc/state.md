@@ -165,7 +165,7 @@ var state={
               优惠券唯一标识（id）,                                                                             
               名称(name),                                                                     
               描述(describe),                                                                     
-              卖价(sellingPrice),                                                             
+              售卖价(sellingPrice),                                                             
               商家图片(picture)，
               订单状态(orderState)
           },{},{}],                                                                           
@@ -176,17 +176,17 @@ var state={
              订单时间(orderTime)，                                                                     
              优惠券唯一标识（id），                                                                             
              优惠券名称(couponName)，                                                               
-             是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
-             优惠券类别（中餐、西餐）（couponType），                                              
-             券码形式选项（图片或文本）(couponModality)，                                           
-             券码（图片或文本）（couponCode），                                               
-             卖价(sellingPrice)，                                                             
+             是否支持自动退货(isAutomaticRefund)，                              
+             优惠券类别（couponType），                                              
+             券码形式：图片或文本(couponModality)，                                           
+             券码（couponCode），                                               
+             售卖价(sellingPrice)，                                                             
              原价(originalPrice)，                                                            
              券面值(ticketPrice)，                                                            
              截止日期(endDate)，                                                              
-             图片（与商户相关）(picture)，                                                    
+             图片：与商户相关(picture)，                                                    
              优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
-             优惠券是否开启（isOpen），
+             是否已开启（isOpen），
              卖家昵称（sellerNickName），
              订单状态（orderState）
           }                                                                                   
@@ -209,7 +209,7 @@ var state={
              优惠券唯一标识（id）,                                                                             
              名称(couponName),                                                                     
              描述(describe),                                                                     
-             卖价(sellingPrice),                                                             
+             售卖价(sellingPrice),                                                             
              商家图片(picture),                                                               
          },{},{}],                                                                           
          优惠券详细的信息(CouponInfo)                                                         
@@ -220,12 +220,12 @@ var state={
              优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               
              券码形式选项（图片或文本）(couponModality)，                                           
              券码（图片或文本）（couponCode），                                               
-             卖价(sellingPrice)，                                                             
+             售卖价(sellingPrice)，                                                             
              原价(originalPrice)，                                                            
              券面值(ticketPrice)，                                                            
              截止日期(endDate)，                                                              
-             图片（与商户相关）(picture)，                                                    
-             优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
+             商家图片(picture)，                                                    
+             优惠券描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方） ，
              优惠券是否开启（isOpen）,
              优惠券状态（couponState）
           }                                                                                     
@@ -246,9 +246,9 @@ var state={
             优惠券列表的信息(CouponList):是一个数组                                              
             [{                                                                                  
                 优惠券唯一标识（id）,                                                                             
-                名称(couponName),                                                                     
+                优惠券名称(couponName),                                                                     
                 描述(describe),                                                                     
-                卖价(sellingPrice),                                                             
+                售卖价(sellingPrice),                                                             
                 商家图片(picture)                                                               
             },{},{}],                                                                           
             优惠券详细的信息(CouponInfo)                                                         
@@ -257,17 +257,17 @@ var state={
                优惠券名称(couponName)，                                                               
                是否支持优惠券未开启时自动退货(isAutomaticRefund)，                              
                优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）（couponType），                                               
-               券码形式选项（图片或文本）(couponModality)，                                           
+               券码形式：图片、文本(couponModality)，                                           
                券码（图片或文本）（couponCode），                                               
-               卖价(sellingPrice)，                                                             
+               售卖价(sellingPrice)，                                                             
                原价(originalPrice)，                                                            
                券面值(ticketPrice)，                                                            
                截止日期(endDate)，                                                              
-               图片（与商户相关）(picture)，                                                    
+               商户图片(picture)，                                                    
                优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
-               卖家用户名称：sellerUserName，
+               卖家用户名：sellerUserName，
                卖家昵称：sellerNickName,
-               优惠券状态：couponState,
+               优惠券状态：couponState
             }                                                                                   
       }                                                                                        
 }                                                                                             
@@ -313,22 +313,22 @@ CouponsTrade:
        名称,
        描述,
        价格,
-       图片
+       商户图片
    },
    优惠券详细的信息
    {
       优惠券唯一标识、
       优惠券名称、
-      是否支持优惠券未开启时自动退货、
-      优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）、
-      券码形式选项（图片或文本）、
-      券码（图片或文本）、
-      卖价、
+      是否支持自动退货、
+      优惠券类别、
+      券码形式：图片或文本、
+      券码、
+      售卖价、
       原价、
       券面值、
       截止日期、
-      图片（与商户相关）、
-      优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
+      商户图片、
+      优惠券描述：可消费日期、可消费的时间、商户的信息暂放在此地方
    }
 }
 
@@ -346,18 +346,18 @@ CouponsTrade:
              订单时间、
              优惠券唯一标识、
              优惠券名称、
-             是否支持优惠券未开启时自动退货、
-             优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）、
-             券码形式选项（图片或文本）、
-             券码（图片或文本）、
-             卖价、
+             是否支持自动退货、
+             优惠券类别：西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他、
+             券码形式:图片、文本
+             券码、
              原价、
-             券面值、
+             售卖价、
+             券面价、
              截止日期、
-             图片（与商户相关）、
-             优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）、
+             商户图片、
+             优惠券描述：包括：可消费日期、可消费的时间、商户的信息暂放在此地方、
              卖家昵称、
-             是否开启优惠券
+             是否已开启
       }
    }
 
@@ -374,15 +374,15 @@ CouponsTrade:
                    优惠券唯一标识、
                    优惠券名称、
                    是否支持优惠券未开启时自动退货、
-                   优惠券类别（西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他）、
-                   券码形式选项（图片或文本）、
-                   券码（图片或文本）：是真实的券码、
-                   卖价、
+                   优惠券类别:西餐、海鲜、咖啡、面包糕点、火锅、烧烤、冰激凌、快餐、自助餐、其他、
+                   券码形式：图片或文本、
+                   券码：是真实的券码、
+                   售卖价、
                    原价、
                    券面值、
                    截止日期、
-                   图片（与商户相关）、
-                   优惠券其他内容描述（可消费日期、可消费的时间、商户的信息暂放在此地方）
+                   商户图片、
+                   优惠券描述：可消费日期、可消费的时间、商户的信息暂放在此地方
             },
    }
 
