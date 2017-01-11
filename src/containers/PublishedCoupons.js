@@ -10,6 +10,7 @@ import {connect} from 'react-redux'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import CouponList from '../components/sellCoupon/CouponList'
 import PushRefresh from '../components/PushRefresh'
+import PullRefresh from '../components/PullRefresh'
 import PublishedCouponDetail from './PublishedCouponDetail'
 import {getUserCouponInfoRequest, getUserCouponListRequest} from '../actions'
 
@@ -22,6 +23,13 @@ class SellingCoupons extends React.Component {
                     <div className='center'>发布的优惠券</div>
                 </Toolbar>
             )}>
+                <PullRefresh onRefresh={(done) =>
+                    this.props.getUserCouponListRequest({
+                        apiType: 'getUserCoupons',
+                        param: {...this.props.page, number: 0, token: this.props.token},
+                        callback: {after: [done]}
+                    })
+                }/>
                 <CouponList couponList={this.props.couponList }
                             navigator={this.props.navigator}
                             token={this.props.token}

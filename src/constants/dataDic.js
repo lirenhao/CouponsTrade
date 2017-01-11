@@ -42,7 +42,7 @@ export const couponStateDic = {
 //优惠券状态字典（中文）
 export const couponStateMap = {
     [couponStateDic.UNPUBLISHED]: "已下架",
-    [couponStateDic.PUBLISHED]: "已发布",
+    [couponStateDic.PUBLISHED]: "售卖中",
     [couponStateDic.PAYING]: "付款中",
     [couponStateDic.OVERDUE]: "已过期",
     [couponStateDic.SOLD_UNOPENED]: "已售（未开启）",
