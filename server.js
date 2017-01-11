@@ -704,8 +704,7 @@ app.post(`/${ServerPath.REFRESH_COUPON_LIST}`, function (req, res) {
 })
 
 app.post(`/${ServerPath.GET_COUPON_DETAILS}`, function (req, res) {
-    const {id, token, dataFlag} = req.body
-    console.log({id, token, dataFlag})
+    const {id, token} = req.body
     if (token === state.token) {
         const couponList = state.publishCouponList.filter((r) => {
             return r.id === id
@@ -865,8 +864,8 @@ const getCouponListItem = (coupon) => {
 const getCouponList = (coupons, couponName, total, number, size) => {
     let couponList = []
     let newNumber = 0
-    let publishedCoupons =coupons.filter((c)=>{
-        return c.couponState ==="1"
+    let publishedCoupons = coupons.filter((c)=> {
+        return c.couponState === "1"
     })
     if (couponName !== "ALL") {
         for (let coupon of publishedCoupons) {
