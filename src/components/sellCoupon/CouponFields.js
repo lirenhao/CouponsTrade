@@ -109,7 +109,7 @@ class CouponFields extends React.Component {
                         </ListItem>
                         <ListItem>
                             <div className="center">
-                                <Field type="date" name="endDate" component={InputComponent} placeholder=""/>
+                                <Field type="date" name="endDate" component={InputComponent} placeholder="截止日期"/>
                             </div>
                         </ListItem>
                         <ListItem>

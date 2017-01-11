@@ -365,3 +365,11 @@ input[name*="Password"] + .text-input--material__label--active {
     color: #aaa;
     font-size: 0.8em;
 }
+/*date插件*/
+/*input[type="date"]:before{
+    color:#aaa;
+    content:attr(placeholder);
+}
+input.text-input--material[type="date"]:before{
+    content:'' !important;
+}*/
