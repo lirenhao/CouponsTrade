@@ -25,7 +25,7 @@ class PublishCouponsDetail extends React.Component {
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
             )} renderBottomToolbar={() => (
-                <div className="tab-bar">
+                <div className="tab-bar btnTab">
                     <div className="tab-bar__item">
                         <button className="tab-bar__button" type="submit"
                                 disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
