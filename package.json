@@ -10,7 +10,7 @@
     "onsenui": "^2.0.4",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
-    "react-dropzone": "^3.8.0",
+    "react-dropzone": "3.6.0",
     "react-onsenui": "^1.0.4",
     "react-redux": "^4.4.6",
     "react-waypoint": "^4.1.0",
