@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field} from 'redux-form'
-import {Input, Switch, List, ListItem, Button} from 'react-onsenui'
+import {Input, Switch, List, ListItem, Button, Icon} from 'react-onsenui'
 import SideSelect from './SideSelect'
 import {couponTypeListItems, couponTypeMap} from '../../constants/dataDic'
 import Dropzone from 'react-dropzone'
@@ -41,16 +41,14 @@ const CheckBoxComponent = ({input}) => {
 }
 
 const ChooseImageComponent = ({input}) => {
-    const imgSrc = input.value ? input.value.preview : ''
-
     return (
-        <Dropzone className="center"
+        <Dropzone className="center" accept="image/*"
                   onDrop={(files) => {
                       input.onChange(files[0])
                   }}>
-            <img src={imgSrc}/>
-            <img src={imgSrc}/>
-            <ons-icon icon="ion-ios-camera-outline"></ons-icon>
+            <img src={input.value.preview}/>
+            <img src={input.value.preview}/>
+            <Icon icon="ion-ios-camera-outline"/>
         </Dropzone>
     )
 }
