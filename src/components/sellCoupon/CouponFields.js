@@ -5,13 +5,13 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-
-
 import React from 'react'
 import {Field} from 'redux-form'
+import * as ons from 'onsenui'
 import {Input, Switch, List, ListItem, Button} from 'react-onsenui'
 import SideSelect from './SideSelect'
 import {couponTypeListItems, couponTypeMap} from '../../constants/dataDic'
+import Dropzone from 'react-dropzone'
 
 const InputComponent = ({input, type, placeholder}) => {
     return (
@@ -31,13 +31,31 @@ const TextAreaComponent = ({input, placeholder}) => {
                   placeholder={placeholder}
         />
     )
-};
+}
 
 const CheckBoxComponent = ({input}) => {
     return (
         <Switch checked={!!input.value} onChange={(event) => {
             input.onChange(event.target.checked)
         }}/>
+    )
+}
+
+const ChooseImageComponent = ({input}) => {
+    const imgSrc = input.value ? input.value.preview : 'http://placekitten.com/g/40/40'
+
+    function click() {
+        if (ons.platform.isIOS())
+            this.open()
+    }
+
+    return (
+        <Dropzone className="center" onClick={click}
+                  onDrop={(files) => {
+                      input.onChange(files[0])
+                  }}>
+            <img src={imgSrc}/>
+        </Dropzone>
     )
 }
 
@@ -77,9 +95,13 @@ class CouponFields extends React.Component {
                        }}>
                     <List modifier="inset marginT">
                         <ListItem modifier="handleShow">
+                            <Field name="chooseImage" component={ChooseImageComponent}/>
+                        </ListItem>
+                        <ListItem modifier="handleShow">
                             <button className="handleShow" type="button"
                                     onClick={this.handleShow}>
-                                <ons-icon icon="ion-android-checkmark-circle">&nbsp;{this.state.couponTypeName}</ons-icon>
+                                <ons-icon
+                                    icon="ion-android-checkmark-circle">&nbsp;{this.state.couponTypeName}</ons-icon>
                             </button>
                         </ListItem>
                         <ListItem>
