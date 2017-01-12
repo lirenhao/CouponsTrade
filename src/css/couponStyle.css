@@ -384,15 +384,15 @@ input.text-input--material[type="date"]:before{
 }*/
 /*发布页面上传图片*/
 .list__item--handleShow img{
-    width: 42px;
-    height: 42px;
+    width: 56px;
+    height: 56px;
     border-radius: 3px;
     padding: 1px;
     margin-right: .5em;
 }
 .list__item--handleShow ons-icon[icon='ion-ios-camera-outline']{
-    font-size: 2em;
+    font-size: 2.5em;
     position: relative;
-    left: -1.25em;
+    left: -1.245em;
     opacity: .5;
 }
