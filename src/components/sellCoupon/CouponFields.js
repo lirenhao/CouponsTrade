@@ -41,7 +41,7 @@ const CheckBoxComponent = ({input}) => {
 }
 
 const ChooseImageComponent = ({input}) => {
-    const imgSrc = input.value ? input.value.preview : 'http://placekitten.com/g/40/40'
+    const imgSrc = input.value ? input.value.preview : ''
 
     return (
         <Dropzone className="center"
@@ -49,6 +49,8 @@ const ChooseImageComponent = ({input}) => {
                       input.onChange(files[0])
                   }}>
             <img src={imgSrc}/>
+            <img src={imgSrc}/>
+            <ons-icon icon="ion-ios-camera-outline"></ons-icon>
         </Dropzone>
     )
 }

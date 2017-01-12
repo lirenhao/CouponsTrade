@@ -76,7 +76,7 @@ label.text-input__container {
 }
 
 .price {
-    color: hsl(355,85%,55%);
+    color: hsl(355, 85%, 55%);
     font-size: 1.25em;
 }
 
@@ -104,7 +104,7 @@ label.text-input__container {
 
 .list--title .right .list__item__title {
     font-size: 1.25em;
-    color: hsl(355,85%,55%);
+    color: hsl(355, 85%, 55%);
 }
 
 .list--title .center .list__item__subtitle {
@@ -118,7 +118,7 @@ label.text-input__container {
     margin: 1px 2px 1px 1px;
     width: 14px;
     height: 14px;
-    background-color: hsl(200,95%,50%);
+    background-color: hsl(200, 95%, 50%);
     border-radius: 2px;
     font-size: 0.5em;
     color: #fff;
@@ -133,7 +133,7 @@ label.text-input__container {
     margin: 1px 2px 1px 1px;
     width: 14px;
     height: 14px;
-    background-color: hsl(35,95%,65%);
+    background-color: hsl(35, 95%, 65%);
     border-radius: 2px;
     font-size: 0.5em;
     color: #fff;
@@ -328,14 +328,17 @@ input[name*="Password"] + .text-input--material__label--active {
     background-image: none;
     box-shadow: 0 0 1px #ccc;
 }
-.btnTab.tab-bar button{
-    background-color: hsla(214,80%,45%,0.8);
+
+.btnTab.tab-bar button {
+    background-color: hsla(214, 80%, 45%, 0.8);
     color: #fff;
 }
-.page--material .btnTab.tab-bar button{
-    background-color: hsla(175,92%,26%,.85);
+
+.page--material .btnTab.tab-bar button {
+    background-color: hsla(175, 92%, 26%, .85);
     color: #fff;
 }
+
 /*发布选择类型按钮*/
 .handleShow {
     background: none;
@@ -346,25 +349,31 @@ input[name*="Password"] + .text-input--material__label--active {
     outline: none;
     text-align: left;
     padding-left: 0;
-    color: hsla(214,80%,45%,0.8);
+    color: hsla(214, 80%, 45%, 0.8);
 }
-.list__item--material .handleShow{
-    color: hsla(175,92%,26%,.85);
+
+.list__item--material .handleShow {
+    color: hsla(175, 92%, 26%, .85);
 }
-.list__item--handleShow{
+
+.list__item--handleShow {
     padding-top: 0;
     padding-bottom: 0;
 }
-.list__item--handleShow .list__item--material__center{
+
+.list__item--handleShow .list__item--material__center {
     border-bottom: 1px #bbb solid;
 }
+
 .list--sideSelect {
     background-color: #fff;
 }
-.list--sideSelect .list__item{
+
+.list--sideSelect .list__item {
     color: #aaa;
     font-size: 0.8em;
 }
+
 /*date插件*/
 /*input[type="date"]:before{
     color:#aaa;
@@ -373,3 +382,17 @@ input[name*="Password"] + .text-input--material__label--active {
 input.text-input--material[type="date"]:before{
     content:'' !important;
 }*/
+/*发布页面上传图片*/
+.list__item--handleShow img{
+    width: 42px;
+    height: 42px;
+    border-radius: 3px;
+    padding: 1px;
+    margin-right: .5em;
+}
+.list__item--handleShow ons-icon[icon='ion-ios-camera-outline']{
+    font-size: 2em;
+    position: relative;
+    left: -1.25em;
+    opacity: .5;
+}
