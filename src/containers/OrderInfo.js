@@ -131,7 +131,7 @@ const OrderInfo = (props) => {
                 <ListItem>卖家昵称
                     <div className="right">{sellerNickName}</div>
                 </ListItem>
-                <ListItem>商品ID
+                <ListItem>优惠券ID
                     <div className="right">{id}</div>
                 </ListItem>
                 <ListItem>可自动退货

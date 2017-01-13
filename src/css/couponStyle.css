@@ -313,7 +313,7 @@ input[name*="Password"] + .text-input--material__label--active {
     font-size: 0.8em;
 }
 
-/*售卖列表商品描述*/
+/*售卖列表优惠券描述*/
 .list__item--sell__subtitle {
     font-size: .5em;
     color: #aaa;
