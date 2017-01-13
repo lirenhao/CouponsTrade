@@ -87,13 +87,19 @@
   - 包括：可消费日期、可消费的时间等信息，商户的信息暂放在此
 - 优惠券图片（与商户相关）：picture
 - `优惠券是否开启`：isOpen
-- 优惠券状态：couponState
+- 优惠券后台状态：couponState
   - `未发布`：0-unpublished
   - 发布:     1-published
   - 付款中:   2-paying
   - 过期:     3-overdue
   - 已售（未开启）:4-soldUnOpened
   - 已售（已开启）:5-soldOpened
+- 优惠券前台状态：
+  - 售卖中：对应后台状态发布
+  - 已售：对应后台状态已售
+  - 付款中
+  - 已过期
+  - 已下架
 
 ### 3 订单：order
 - 付款方式：paymentMethod
