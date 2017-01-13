@@ -207,8 +207,8 @@ var state={
          优惠券列表的信息(CouponList):是一个数组                                              
          [{                                                                                  
              优惠券唯一标识（id）,                                                                             
-             名称(couponName),                                                                     
-             描述(describe),                                                                     
+             优惠券名称(couponName),                                                                     
+             优惠券描述(describe),                                                                     
              售卖价(sellingPrice),                                                             
              优惠券相关图片(picture),                                                               
          },{},{}],                                                                           
@@ -310,9 +310,9 @@ CouponsTrade:
    优惠券列表的信息
    {
        优惠券唯一标识,
-       名称,
-       描述,
-       价格,
+       优惠券名称,
+       优惠券描述,
+       售卖价,
        优惠券相关图片
    },
    优惠券详细的信息
