@@ -7,6 +7,7 @@
  */
 import React from 'react'
 import {Field} from 'redux-form'
+import * as ons from 'onsenui'
 import {Input, Switch, List, ListItem, Button, Icon} from 'react-onsenui'
 import SideSelect from './SideSelect'
 import {couponTypeListItems, couponTypeMap} from '../../constants/dataDic'
@@ -41,8 +42,14 @@ const CheckBoxComponent = ({input}) => {
 }
 
 const ChooseImageComponent = ({input}) => {
+    function handleClick() {
+        if (ons.platform.isIOS())
+            this.open()
+    }
+
     return (
         <Dropzone className="center" accept="image/*"
+                  onClick={handleClick}
                   onDrop={(files) => {
                       input.onChange(files[0])
                   }}>
