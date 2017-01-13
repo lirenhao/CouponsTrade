@@ -134,7 +134,7 @@ const OrderInfo = (props) => {
                 <ListItem>商品ID
                     <div className="right">{id}</div>
                 </ListItem>
-                <ListItem>是否支持未开启时自动退货
+                <ListItem>可自动退货
                     <div className="right">{isAutomaticRefund ? "是" : "否"}</div>
                 </ListItem>
                 <ListItem>优惠券类别
@@ -144,7 +144,7 @@ const OrderInfo = (props) => {
                     <div className="right">{couponModality}</div>
                 </ListItem>
                 {returnCouponModality()}
-                <ListItem>卖价
+                <ListItem>售卖价
                     <div className="right">{sellingPrice}</div>
                 </ListItem>
             </List>
@@ -152,13 +152,13 @@ const OrderInfo = (props) => {
                 <ListItem>原价
                     <div className="right">{originalPrice}</div>
                 </ListItem>
-                <ListItem>券面值
+                <ListItem>券面价
                     <div className="right">{ticketPrice}</div>
                 </ListItem>
                 <ListItem>截止日期
                     <div className="right">{endDate}</div>
                 </ListItem>
-                <ListItem>描述
+                <ListItem>优惠券描述
                     <div className="right">{describe}</div>
                 </ListItem>
                 <ListItem>是否已开启
