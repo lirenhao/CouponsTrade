@@ -38,7 +38,7 @@ const CouponDetail = (props) => {
                     <div className="right">{couponInfo.couponName}</div>
                 </ListItem>
                 <ListItem>
-                    <div className="center">可自动退款</div>
+                    <div className="center">可自动退货</div>
                     <div className="right">{ couponInfo.isAutomaticRefund === true ? "是" : "否"}</div>
                 </ListItem>
                 <ListItem>
