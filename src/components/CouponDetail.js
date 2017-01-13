@@ -54,12 +54,12 @@ const CouponDetail = (props) => {
                     <div className="right">{couponInfo.endDate}</div>
                 </ListItem>
                 <ListItem>
-                    <div className="center">优惠券图片</div>
+                    <div className="center">优惠券相关图片</div>
                     <div className="right"></div>
                 </ListItem>
                 <ListItem>
                     <div className="center">
-                        <div className="list__item__title">使用规则</div>
+                        <div className="list__item__title">优惠券描述</div>
                         <div className="list__item__subtitle grayColor">{couponInfo.describe}</div>
                     </div>
                 </ListItem>

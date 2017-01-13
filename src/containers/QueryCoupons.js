@@ -31,7 +31,7 @@ class SearchCoupons extends React.Component {
                     })
                 }/>
                 <section>
-                    <input type="search" placeholder="商品名称" className="search-input"
+                    <input type="search" placeholder="优惠券名称" className="search-input"
                            onBlur={(event) =>
                                this.props.getCouponsListRequest({
                                    apiType: 'queryCoupons',
