@@ -313,7 +313,7 @@ input[name*="Password"] + .text-input--material__label--active {
     font-size: 0.8em;
 }
 
-/*售卖列表优惠券描述*/
+/*售卖列表商品描述*/
 .list__item--sell__subtitle {
     font-size: .5em;
     color: #aaa;
@@ -375,24 +375,25 @@ input[name*="Password"] + .text-input--material__label--active {
 }
 
 /*date插件*/
-/*input[type="date"]:before{
-    color:#aaa;
+input[type="date"]::before{
+    color:#999;
     content:attr(placeholder);
 }
-input.text-input--material[type="date"]:before{
+input[type="date"][value^="2"]::before{
     content:'' !important;
-}*/
+}
 /*发布页面上传图片*/
 .list__item--handleShow img{
     width: 56px;
     height: 56px;
-    border-radius: 3px;
+    border-radius: 4px;
     padding: 1px;
+    border: none;
     margin-right: .5em;
 }
 .list__item--handleShow ons-icon[icon='ion-ios-camera-outline']{
     font-size: 2.5em;
     position: relative;
     left: -1.245em;
-    opacity: .5;
+    opacity: .3;
 }
