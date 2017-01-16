@@ -110,7 +110,7 @@ class Mine extends React.Component {
                     this.props.logoutRequest({
                         apiType: 'logout',
                         param: {token: this.props.token},
-                        router: (res) => this.props.navigator.resetPage({
+                        router: (res) => this.props.app.resetPage({
                             comp: Login,
                             props: {key: "login", index: 2}
                         })

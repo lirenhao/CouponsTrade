@@ -8,7 +8,7 @@
 import React from 'react'
 import {Page, Toolbar, BackButton, Button, Modal} from 'react-onsenui'
 import OrderList from './OrderList'
-import Tabs from './Tabs'
+import Mine from './Mine'
 import {connect} from 'react-redux'
 import {getOrderListRequest} from '../actions'
 
@@ -20,8 +20,8 @@ const OrderResult = (props) => {
             apiType: 'getOrderList',
             param: {...page, token: props.token},
             router: () => navigator.resetPageStack([
-                {comp: Tabs, props: {key: "Tabs" + Math.random(), index: 2}},
-                {comp: OrderList, props: {key: "orderListFromOrderResult" + Math.random()}}
+                {comp: Mine, props: {key: "mine" + Math.random()}},
+                {comp: OrderList, props: {key: "orderList" + Math.random()}}
             ])
         })
     }
