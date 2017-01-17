@@ -20,7 +20,7 @@ const OrderResult = (props) => {
             apiType: 'getOrderList',
             param: {...page, token: props.token},
             router: () => navigator.resetPageStack([
-                {comp: Mine, props: {key: "mine" + Math.random()}},
+                {...navigator.routes[0]},
                 {comp: OrderList, props: {key: "orderList" + Math.random()}}
             ])
         })
