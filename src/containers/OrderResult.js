@@ -8,7 +8,6 @@
 import React from 'react'
 import {Page, Toolbar, BackButton, Button, Modal} from 'react-onsenui'
 import OrderList from './OrderList'
-import Mine from './Mine'
 import {connect} from 'react-redux'
 import {getOrderListRequest} from '../actions'
 
