@@ -14,7 +14,7 @@ export default {
     output: {
         filename: '[name].js',
         path: 'build',
-        publicPath: "/build/"
+        publicPath: "build/"
     },
     module: {
         loaders: [
