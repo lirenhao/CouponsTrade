@@ -11,7 +11,7 @@ import {ListItem} from 'react-onsenui'
 import PriceComponent from '../Price'
 
 const CouponInfo = (props)=> {
-    const {couponName, sellingPrice, describe, onClick} = props;
+    const {couponName, sellingPrice, describe, onClick} = props
     return (
         <ListItem modifier='chevron sell' onClick={onClick}>
             <div className='left'>

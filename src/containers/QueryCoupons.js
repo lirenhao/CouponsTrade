@@ -13,11 +13,12 @@ import CouponList from '../components/sellCoupon/CouponList'
 import QueryCouponDetail from './QueryCouponDetail'
 import PushRefresh from '../components/PushRefresh'
 import {getCouponsListRequest, getCouponsInfoRequest} from '../actions'
+import {Page} from 'react-onsenui'
 
 class SearchCoupons extends React.Component {
     render() {
         return (
-            <div>
+            <Page>
                 <PullRefresh onRefresh={(done) =>
                     this.props.getCouponsListRequest({
                         apiType: 'queryCoupons',
@@ -67,7 +68,7 @@ class SearchCoupons extends React.Component {
                             }
                         })
                     }/>
-            </div>
+            </Page>
         )
     }
 }
