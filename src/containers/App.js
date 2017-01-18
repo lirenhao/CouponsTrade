@@ -1,6 +1,6 @@
 import React from "react"
 import {connect} from "react-redux"
-import {Navigator} from "react-onsenui"
+import * as Ons from "react-onsenui"
 import Login from "./Login"
 import Dialog from "../components/Dialog"
 import Loading from "../components/Loading"
@@ -19,7 +19,7 @@ const renderPage = (route, navigator) => {
 const App = (props) => {
     return (
         <div>
-            <Navigator
+            <Ons.Navigator
                 initialRoute={{comp: Login, props: {key: "login"}}}
                 renderPage={renderPage}
             />
