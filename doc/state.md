@@ -39,7 +39,7 @@ var state = {
             size: ""
         },
         orderList: [{
-            **id: "",**
+            id: "",
             couponName: "",
             describe: "",
             sellingPrice: "",
@@ -50,7 +50,7 @@ var state = {
             orderNo:"",
             orderDate:"",
             orderTime:"",
-            **id: "",**
+            id: "",
             couponName: "",
             isAutomaticRefund: "",
             couponType: "",
@@ -67,7 +67,7 @@ var state = {
             orderState:""
         }
     },
-    publishCoupon: {
+    publishedCoupons: {
         query: {
              orderState: "",
              couponName: ""
@@ -77,14 +77,13 @@ var state = {
              number: "",
              size: ""
         },
-        publishCouponList: [{
+        CouponList: [{
             id: "1212232321",
             couponName: "呷哺呷哺",
             describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
             sellingPrice: "70",
-            picture: ""
         }],
-        publishCouponInfo: {
+        CouponInfo: {
             id: "",
             couponName: "呷哺呷哺",
             isAutomaticRefund: "是",
@@ -95,13 +94,12 @@ var state = {
             originalPrice: "50",
             ticketPrice: "100",
             endDate: "20161215",
-            picture: "",
             describe: "该券仅限周三使用，请各位小主们尽快下单吧~~",
             isOpen:"",
             couponState:"已下架"
         }
     },
-    **queryCoupon**: {
+    queryCoupons: {
         query: {
             couponName: ""
         },
@@ -110,15 +108,14 @@ var state = {
             number: "",
             size: ""
         },
-        **queryCouponList**:[{
+        CouponList:[{
             id:"",
             couponName: "",
             describe: "",
-            sellingPrice: "",
-            **picture: ""**(项目state中没有该值)
+            sellingPrice: ""
             },{}],
-        **queryCouponInfo**: {
-            **id**: "",
+        CouponInfo: {
+            id: "",
             couponName: "",
             isAutomaticRefund: "",
             couponType: "",
@@ -128,11 +125,10 @@ var state = {
             originalPrice: "",
             ticketPrice: "",
             endDate: "",
-            **picture**: "",
             describe: "",
-            **sellerUserName**:"",
+            userName:"",
             couponState:"",
-            **sellerNickName**:""
+            nickName:""
         }
     }
 }
