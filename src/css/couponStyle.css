@@ -76,7 +76,7 @@ label.text-input__container {
 }
 
 .price {
-    color: hsl(355, 85%, 55%);
+    color: hsl(11, 60%, 59%);
     font-size: 1.25em;
 }
 
@@ -104,7 +104,7 @@ label.text-input__container {
 
 .list--title .right .list__item__title {
     font-size: 1.25em;
-    color: hsl(355, 85%, 55%);
+    color: hsl(11, 60%, 59%);
 }
 
 .list--title .center .list__item__subtitle {
@@ -330,12 +330,14 @@ input[name*="Password"] + .text-input--material__label--active {
 }
 
 .btnTab.tab-bar button {
-    background-color: hsla(214, 80%, 45%, 0.8);
+    /*background-color: hsla(214, 80%, 45%, 0.8);*/
+    background-color: #da6d63;
     color: #fff;
 }
 
 .page--material .btnTab.tab-bar button {
-    background-color: hsla(175, 92%, 26%, .85);
+    /*background-color: hsla(175, 92%, 26%, .85);*/
+    background-color: #da6d63;
     color: #fff;
 }
 
@@ -349,11 +351,13 @@ input[name*="Password"] + .text-input--material__label--active {
     outline: none;
     text-align: left;
     padding-left: 0;
-    color: hsla(214, 80%, 45%, 0.8);
+    /*color: hsla(214, 80%, 45%, 0.8);*/
+    color: #da6d63;
 }
 
 .list__item--material .handleShow {
-    color: hsla(175, 92%, 26%, .85);
+    /*color: hsla(175, 92%, 26%, .85);*/
+    color: #da6d63;
 }
 
 .list__item--handleShow {
