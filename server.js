@@ -834,7 +834,7 @@ app.post(`/${ServerPath.PUBLISH_COUPON}`, function (req, res) {
         }
     } else
         res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
-});
+})
 
 
 app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
@@ -842,11 +842,12 @@ app.post(`/${ServerPath.QUERY_COUPONS}`, function (req, res) {
         if (token === state.token) {
             let newNumber = couponName === "" ? 0 : number
             let newCouponName = couponName === "" ? "ALL" : couponName
-            const couponListObj = getCouponList(state.publishCouponList, newCouponName, total, newNumber, size)
+            let newSize =Number(size)
+            const couponListObj = getCouponList(state.publishCouponList, newCouponName, total, newNumber, newSize)
             res.json({
                 code: ResponseCode.SUCCESS,
                 couponList: couponListObj.couponList,
-                page: {total: couponListObj.total, number: couponListObj.number, size: size}
+                page: {total: couponListObj.total, number: couponListObj.number, size: newSize}
             })
         } else {
             res.json({code: ResponseCode.FAIL, msg: "用户未登录"})
@@ -928,7 +929,7 @@ app.post(`/${ServerPath.SOLD_OUT_COUPON}`, function (req, res) {
 });
 
 app.post(`/${ServerPath.EDIT_USER_COUPON}`, function (req, res) {
-    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName, couponState} = req.body
+    const {token, id, couponName, isAutomaticRefund, couponType, couponModality, couponCode, sellingPrice, originalPrice, ticketPrice, endDate, describe, userName} = req.body
     if (state.token === token) {
         const couponInfo = {
             id,
