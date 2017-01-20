@@ -12,11 +12,11 @@ import React from "react"
 import reducer from "../src/reducers/index"
 import {createStore} from "redux"
 import {expect} from 'chai';
-import document from './browser'
-import "./shims"
+import './browser'
+import './shims'
 import 'document-register-element'
 import {Provider} from "react-redux"
-import {Page, Button,Input} from "react-onsenui"
+import {Button, Input} from "react-onsenui"
 import PublishCoupon from "../src/containers/PublishCoupon"
 
 
@@ -40,7 +40,7 @@ describe("优惠券平台整体需求功能", ()=> {
             subject.find('Input').at(15).simulate("change", {target: {value: "2017-01-20"}})
             subject.find('textarea').simulate("change", {target: {value: "测试数据"}})
             subject.find(Button).simulate("submit")
-            store.dispatch({type:"SHOW_DIALOG",payload:"发布成功"})
+            store.dispatch({type: "SHOW_DIALOG", payload: "发布成功"})
             const dialog = store.getState().dialog
             expect(dialog.msg).to.equal("发布成功")
             expect(dialog.show).to.equal(true)

@@ -6,5 +6,5 @@
  * <文件描述>
  */
 
-import 'mutationobserver-shim';
-global['MutationObserver'] = window.MutationObserver;
+import 'mutationobserver-shim'
+global['MutationObserver'] = window.MutationObserver
