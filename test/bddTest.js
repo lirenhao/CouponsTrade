@@ -6,7 +6,6 @@
  * <文件描述>
  */
 
-
 import {mount} from "enzyme"
 import React from "react"
 import reducer from "../src/reducers/index"
@@ -16,7 +15,6 @@ import './browser'
 import './shims'
 import 'document-register-element'
 import {Provider} from "react-redux"
-import {Button, Input} from "react-onsenui"
 import PublishCoupon from "../src/containers/PublishCoupon"
 
 
@@ -39,7 +37,9 @@ describe("优惠券平台整体需求功能", ()=> {
             subject.find('Input').at(13).simulate("change", {target: {value: "15"}})
             subject.find('Input').at(15).simulate("change", {target: {value: "2017-01-20"}})
             subject.find('textarea').simulate("change", {target: {value: "测试数据"}})
-            subject.find(Button).simulate("submit")
+            console.log(subject.find('Button').html())
+            subject.find('Button').simulate("submit")
+            console.log(subject.find('Button').html())
             store.dispatch({type: "SHOW_DIALOG", payload: "发布成功"})
             const dialog = store.getState().dialog
             expect(dialog.msg).to.equal("发布成功")
