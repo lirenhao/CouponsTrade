@@ -23,18 +23,21 @@ const Navigator = (props) => {
         <Ons.Navigator
             renderPage={renderPage.bind(props.app)}
             initialRoute={props.initialRoute}
-            onPrePush={(event) => {
-                console.log('onPrePush', event)
-            }}
-            onPrePop={(event) => {
-                console.log('onPrePop', event)
-            }}
+            onPrePush={props.pushPage}
+            onPrePop={props.popPage}
         />
     )
 }
 
 Navigator.propTypes = {
     initialRoute: React.PropTypes.object.isRequired
+}
+
+Navigator.defaultProps = {
+    popPage: () => {
+    },
+    pushPage: () => {
+    }
 }
 
 export default Navigator
