@@ -30,7 +30,7 @@ class ViewCouponsDetail extends React.Component {
                 <CouponDetail
                     couponInfo={this.props.couponInfo}>
                 </CouponDetail>
-                    <Button modifier="large marginTLR" type="submit" onClick={() =>
+                    <Button modifier="large marginTLR marginB" type="submit" onClick={() =>
                         this.props.createOrderRequest({
                             apiType: 'createOrder',
                             param: {
