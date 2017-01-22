@@ -58,10 +58,11 @@ const PaymentForm = props => {
                 <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
             </List>
             {/*<p>应付金额：{props.price}元</p>*/}
-            <List modifier="pay">
+            <List modifier="pay marginB">
                 <label htmlFor="content"><ListHeader>请在30分钟内进行支付！</ListHeader></label>
                 <Button modifier="large noRadius" type="submit" disabled={submitting}
-                        onClick={handleClick}>确认支付</Button>
+                        onClick={handleClick}>
+                    <ons-icon icon="ion-ios-wineglass"></ons-icon> 确认支付</Button>
             </List>
         </form>
     )

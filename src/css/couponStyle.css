@@ -326,7 +326,7 @@ input[name*="Password"] + .text-input--material__label--active {
 .btntab button:active{
     height: 3em !important;
 }
-.btntab ons-icon[icon="ion-android-checkmark-circle"]{
+ons-icon[icon="ion-android-checkmark-circle"]{
     line-height: .4em;
     animation: linght 2s infinite 1s;
     -webkit-animation: linght 2s infinite 1s;
@@ -339,6 +339,30 @@ input[name*="Password"] + .text-input--material__label--active {
     50%{transform: rotateY(0deg)}
     100%{transform: rotateY(360deg)}
 }
+ons-icon[icon="ion-ios-wineglass"]{
+    line-height: 0;
+    transform-origin: bottom left;
+    -webkit-transform-origin: bottom left;
+    animation: cheers 2s infinite 1s;
+    -webkit-animation: cheers 2s infinite 1s;
+}
+@-webkit-keyframes cheers {
+    70%{
+        -webkit-transform: rotate(0deg);
+    }
+    85%{
+        -webkit-transform: rotate(15deg);
+    }
+}
+@keyframes cheers {
+    70%{
+        transform: rotate(0deg);
+    }
+    85%{
+        transform: rotate(15deg);
+    }
+}
+
 
 /*发布选择类型按钮*/
 .handleShow {
