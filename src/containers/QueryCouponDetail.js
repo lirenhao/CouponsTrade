@@ -8,7 +8,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import {Page, Toolbar, BackButton, BottomToolbar, Button} from 'react-onsenui'
+import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
 import PayOrder from './PayOrder'
 import CouponDetail from '../components/CouponDetail'
 import {createOrderRequest} from '../actions'
@@ -24,9 +24,13 @@ class ViewCouponsDetail extends React.Component {
                     </div>
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
-            )} renderBottomToolbar={() => (
-                <BottomToolbar>
-                    <Button modifier="large noRadius" type="submit" onClick={() =>
+            )}
+
+            >
+                <CouponDetail
+                    couponInfo={this.props.couponInfo}>
+                </CouponDetail>
+                    <Button modifier="large marginTLR" type="submit" onClick={() =>
                         this.props.createOrderRequest({
                             apiType: 'createOrder',
                             param: {
@@ -41,11 +45,6 @@ class ViewCouponsDetail extends React.Component {
                     }>
                         我要买
                     </Button>
-                </BottomToolbar>
-            )}>
-                <CouponDetail
-                    couponInfo={this.props.couponInfo}>
-                </CouponDetail>
             </Page>
         )
     }

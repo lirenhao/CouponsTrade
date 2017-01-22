@@ -223,21 +223,9 @@ input[name*="Password"] + .text-input--material__label--active {
 }
 
 .myDialog {
-    padding: 1.5em 0 1em;
+    padding: 1.5em .5em 1em;
     text-align: center;
     position: relative;
-}
-
-.myDialog span {
-    width: 1.75em;
-    height: 1.75em;
-    background-color: #aaa;
-    color: #fff;
-    position: absolute;
-    line-height: 1.75em;
-    box-shadow: #000 0 0 4px;
-    right: 0;
-    top: 0;
 }
 
 /*开启券码*/
@@ -324,21 +312,32 @@ input[name*="Password"] + .text-input--material__label--active {
 }
 
 /*编辑删除、支付取消优惠券页面，固定在底部的俩按钮*/
-.btnTab.tab-bar {
-    background-image: none;
-    box-shadow: 0 0 1px #ccc;
+.btntab {
+    width: calc(100% - 16px);
+    margin: 1em auto;
 }
-
-.btnTab.tab-bar button {
-    /*background-color: hsla(214, 80%, 45%, 0.8);*/
+.btntab button{
+    height: 3em;
+}
+.btntab .button-bar__item:first-child button{
     background-color: #da6d63;
     color: #fff;
 }
-
-.page--material .btnTab.tab-bar button {
-    /*background-color: hsla(175, 92%, 26%, .85);*/
-    background-color: #da6d63;
-    color: #fff;
+.btntab button:active{
+    height: 3em !important;
+}
+.btntab ons-icon[icon="ion-android-checkmark-circle"]{
+    line-height: .4em;
+    animation: linght 2s infinite 1s;
+    -webkit-animation: linght 2s infinite 1s;
+}
+@-webkit-keyframes linght {
+    50%{-webkit-transform: rotateY(0deg)}
+    100%{-webkit-transform: rotateY(360deg)}
+}
+@keyframes linght {
+    50%{transform: rotateY(0deg)}
+    100%{transform: rotateY(360deg)}
 }
 
 /*发布选择类型按钮*/

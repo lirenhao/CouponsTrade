@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {List, ListItem, ListHeader, Button, Input, BottomToolbar} from 'react-onsenui'
+import {List, ListItem, ListHeader, Button, Input} from 'react-onsenui'
 import ItemInfo from './ItemInfo'
 
 const defaultValue = {
@@ -58,10 +58,11 @@ const PaymentForm = props => {
                 <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
             </List>
             {/*<p>应付金额：{props.price}元</p>*/}
-            <BottomToolbar>
+            <List modifier="pay">
+                <label htmlFor="content"><ListHeader>请在30分钟内进行支付！</ListHeader></label>
                 <Button modifier="large noRadius" type="submit" disabled={submitting}
                         onClick={handleClick}>确认支付</Button>
-            </BottomToolbar>
+            </List>
         </form>
     )
 };

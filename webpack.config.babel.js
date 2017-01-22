@@ -43,5 +43,6 @@ export default {
         new OpenBrowserPlugin({
             url: "http://localhost:8080"
         }),
-    ]
+    ],
+    devtool: "eval"
 }

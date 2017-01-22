@@ -48,74 +48,73 @@ const OrderInfo = (props) => {
         }
     }
 
-    const renderBottomToolbar = () => {
+    const RenderBtn = () => {
         if (orderState !== "已支付" && orderState !== "已完成" && orderState !== "已取消") {
             return (
-                <BottomToolbar modifier="material">
-                    <div className="tab-bar btnTab">
-                        <div className="tab-bar__item">
-                            <button
-                                className="tab-bar__button"
+                <div className="button-bar btntab">
+                    <div className="button-bar__item">
+                        <button className="button-bar__button"
                                 onClick={() => props.navigator.pushPage({
                                     comp: PayOrder,
                                     props: {key: "payOrder"}
                                 })}>
-                                <ons-icon icon="ion-android-done"> 支付</ons-icon>
-                            </button>
-                        </div>
-                        <div className="tab-bar__item">
-                            <button className="tab-bar__button"
-                                    onClick={() => {
-                                        ons.notification.confirm({
-                                            title: "",
-                                            messageHTML: "确定要取消订单吗？",
-                                            buttonLabels: ["确认", "取消"]
-                                        }).then(res => {
-                                            if (res === 0) {
-                                                props.cancelOrderRequest({
-                                                    apiType: 'cancelOrder',
-                                                    param: {id: orderNo, token: props.token},
-                                                    router: () => props.navigator.popPage()
-                                                })
-                                            }
-                                        })
-                                    }}>
-                                <ons-icon icon="ion-android-close"> 取消</ons-icon>
-                            </button>
-                        </div>
+                            <ons-icon icon="ion-android-done"> 支付</ons-icon>
+                        </button>
                     </div>
-                </BottomToolbar>
+                    <div className="button-bar__item">
+                        <button className="button-bar__button"
+                                onClick={() => {
+                                    ons.notification.confirm({
+                                        title: "",
+                                        messageHTML: "确定要取消订单吗？",
+                                        buttonLabels: ["确认", "取消"]
+                                    }).then(res => {
+                                        if (res === 0) {
+                                            props.cancelOrderRequest({
+                                                apiType: 'cancelOrder',
+                                                param: {id: orderNo, token: props.token},
+                                                router: () => props.navigator.popPage()
+                                            })
+                                        }
+                                    })
+                                }}>
+                            <ons-icon icon="ion-android-close"> 取消</ons-icon>
+                        </button>
+                    </div>
+                </div>
             )
         } else if
         (orderState === "已支付") {
             return (
-                <BottomToolbar modifier="material">
-                    <Button modifier="large noRadius"
-                            onClick={() => {
-                                ons.notification.confirm({
-                                    title: "",
-                                    messageHTML: "在优惠券使用前确认收货有风险，货款将直接打给卖家," +
-                                    "确定要收货吗？",
-                                    buttonLabels: ["确认", "取消"]
-                                }).then(res => {
-                                    if (res === 0) {
-                                        props.receiptOrderRequest({
-                                            apiType: 'receiptOrder',
-                                            param: {id: orderNo, token: props.token},
-                                            router: () => props.navigator.popPage()
-                                        })
-                                    }
-                                })
-                            }}
-                    >确认收货</Button>
-                </BottomToolbar>
+                <div className="button-bar btntab">
+                    <div className="button-bar__item">
+                        <button className="button-bar__button"
+                                onClick={() => {
+                                    ons.notification.confirm({
+                                        title: "",
+                                        messageHTML: "在优惠券使用前确认收货有风险，货款将直接打给卖家," +
+                                        "确定要收货吗？",
+                                        buttonLabels: ["确认", "取消"]
+                                    }).then(res => {
+                                        if (res === 0) {
+                                            props.receiptOrderRequest({
+                                                apiType: 'receiptOrder',
+                                                param: {id: orderNo, token: props.token},
+                                                router: () => props.navigator.popPage()
+                                            })
+                                        }
+                                    })
+                                }}>
+                            <ons-icon icon="ion-android-checkmark-circle"></ons-icon> 确认收货
+                        </button>
+                    </div>
+                </div>
             )
         }
     }
 
     return (
-        <Page renderToolbar={renderToolbar}
-              renderBottomToolbar={renderBottomToolbar}>
+        <Page renderToolbar={renderToolbar}>
             <List modifier="inset marginT">
                 <ListItem>
                     <div className="left">
@@ -148,7 +147,7 @@ const OrderInfo = (props) => {
                     <div className="right">{sellingPrice}</div>
                 </ListItem>
             </List>
-            <List modifier="inset marginT marginB">
+            <List modifier="inset marginT">
                 <ListItem>原价
                     <div className="right">{originalPrice}</div>
                 </ListItem>
@@ -171,6 +170,7 @@ const OrderInfo = (props) => {
                     <div className="right">{orderDate + " " + orderTime}</div>
                 </ListItem>
             </List>
+            <RenderBtn/>
         </Page>
     )
 }

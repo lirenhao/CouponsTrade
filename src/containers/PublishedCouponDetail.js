@@ -24,10 +24,13 @@ class PublishCouponsDetail extends React.Component {
 
                     <div className='center'>优惠券详细信息</div>
                 </Toolbar>
-            )} renderBottomToolbar={() => (
-                <div className="tab-bar btnTab">
-                    <div className="tab-bar__item">
-                        <button className="tab-bar__button" type="submit"
+            )}>
+                <CouponDetail
+                    couponInfo={this.props.couponInfo}>
+                </CouponDetail>
+                <div className="button-bar btntab">
+                    <div className="button-bar__item">
+                        <button className="button-bar__button" type="submit"
                                 disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
                                 onClick={() => this.props.soldOutCouponRequest(
                                     {
@@ -43,8 +46,8 @@ class PublishCouponsDetail extends React.Component {
                             <ons-icon icon="ion-ios-compose-outline"> 编辑</ons-icon>
                         </button>
                     </div>
-                    <div className="tab-bar__item">
-                        <button className="tab-bar__button" type="submit"
+                    <div className="button-bar__item">
+                        <button className="button-bar__button" type="submit"
                                 disabled={this.props.couponInfo.couponState !== couponStateDic.PUBLISHED}
                                 onClick={() => this.props.soldOutCouponRequest(
                                     {
@@ -57,20 +60,16 @@ class PublishCouponsDetail extends React.Component {
                         </button>
                     </div>
                 </div>
-            )}>
-                <CouponDetail
-                    couponInfo={this.props.couponInfo}>
-                </CouponDetail>
             </Page>
         )
     }
 }
 
-const mapStateToProps = (state)=>(
-{
-    couponInfo: state.publishedCoupons.couponInfo,
-    token: state.token
-}
+const mapStateToProps = (state) => (
+    {
+        couponInfo: state.publishedCoupons.couponInfo,
+        token: state.token
+    }
 )
 
 export default connect(mapStateToProps, {soldOutCouponRequest})(PublishCouponsDetail)
