@@ -335,7 +335,7 @@ input:disabled + .switch__toggle {
   box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.4);
 }
 .switch.switch--material input:checked + .switch__toggle {
-  background-color: rgba(219,99,99,0.5);
+  background-color: rgba(218,109,99,0.5);
   -webkit-box-shadow: none;
   box-shadow: none;
 }
@@ -733,17 +733,17 @@ ons-range[disabled] .range {
   background-size: 100% 1px;
   background-repeat: no-repeat;
   background-position: bottom;
-  background-image: -webkit-linear-gradient(90deg, #ccc, #ccc 100%);
-  background-image: -moz-linear-gradient(90deg, #ccc, #ccc 100%);
-  background-image: -o-linear-gradient(90deg, #ccc, #ccc 100%);
-  background-image: linear-gradient(0deg, #ccc, #ccc 100%);
+  background-image: -webkit-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: -moz-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: -o-linear-gradient(90deg, #bbb, #bbb 100%);
+  background-image: linear-gradient(0deg, #bbb, #bbb 100%);
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .navigation-bar {
-    background-image: -webkit-linear-gradient(90deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: -moz-linear-gradient(90deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: -o-linear-gradient(90deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: linear-gradient(0deg, #ccc, #ccc 50%, transparent 50%);
+    background-image: -webkit-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -moz-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -o-linear-gradient(90deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: linear-gradient(0deg, #bbb, #bbb 50%, transparent 50%);
   }
 }
 .navigation-bar__bg {
@@ -912,7 +912,7 @@ ons-range[disabled] .range {
   box-shadow: none;
   font-weight: 400;
   border-bottom: none;
-  border-top: 1px solid #ccc;
+  border-top: 1px solid #bbb;
   position: absolute;
   bottom: 0px;
   right: 0px;
@@ -922,17 +922,17 @@ ons-range[disabled] .range {
   background-size: 100% 1px;
   background-repeat: no-repeat;
   background-position: top;
-  background-image: -webkit-linear-gradient(270deg, #ccc, #ccc 100%);
-  background-image: -moz-linear-gradient(270deg, #ccc, #ccc 100%);
-  background-image: -o-linear-gradient(270deg, #ccc, #ccc 100%);
-  background-image: linear-gradient(180deg, #ccc, #ccc 100%);
+  background-image: -webkit-linear-gradient(270deg, #bbb, #bbb 100%);
+  background-image: -moz-linear-gradient(270deg, #bbb, #bbb 100%);
+  background-image: -o-linear-gradient(270deg, #bbb, #bbb 100%);
+  background-image: linear-gradient(180deg, #bbb, #bbb 100%);
 }
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .bottom-bar {
-    background-image: -webkit-linear-gradient(270deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: -moz-linear-gradient(270deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: -o-linear-gradient(270deg, #ccc, #ccc 50%, transparent 50%);
-    background-image: linear-gradient(180deg, #ccc, #ccc 50%, transparent 50%);
+    background-image: -webkit-linear-gradient(270deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -moz-linear-gradient(270deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: -o-linear-gradient(270deg, #bbb, #bbb 50%, transparent 50%);
+    background-image: linear-gradient(180deg, #bbb, #bbb 50%, transparent 50%);
   }
 }
 .bottom-bar__line-height {
@@ -997,7 +997,7 @@ ons-range[disabled] .range {
   -webkit-box-shadow: 0 1px 5px rgba(0,0,0,0.3);
   box-shadow: 0 1px 5px rgba(0,0,0,0.3);
   padding: 0;
-  background-color: rgba(218,109,99,0.8);
+  background-color: rgba(218,109,99,0.9);
   -webkit-background-size: 0;
   background-size: 0;
 }
@@ -1963,7 +1963,7 @@ ons-range[disabled] .range {
 .button-bar__item.active > .button-bar__button,
 :checked + .button-bar__button {
   background-color: #da6d63;
-  color: #fff;
+  color: rgba(255,255,255,0.9);
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -2165,7 +2165,7 @@ ons-range[disabled] .range {
   padding: 0;
   height: 49px;
   letter-spacing: 0;
-  color: rgba(56,102,163,0.4);
+  color: #ccc;
   text-shadow: 0 1px none;
   vertical-align: top;
   background-color: transparent;
@@ -2219,10 +2219,10 @@ ons-range[disabled] .range {
   padding: 0;
 }
 .tab-bar__button {
-  color: rgba(56,102,163,0.4);
+  color: #ccc;
 }
 :checked + .tab-bar__button {
-  color: #da6d63;
+  color: rgba(218,109,99,0.9);
   background-color: transparent;
   -webkit-box-shadow: none;
   box-shadow: none;
@@ -2408,10 +2408,10 @@ ons-range[disabled] .range {
 }
 :checked + .tab-bar--top-border__button {
   background-color: transparent;
-  border-bottom: 4px solid #da6d63;
+  border-bottom: 4px solid rgba(218,109,99,0.9);
 }
 .tab-bar--material {
-  background-color: #da6d63;
+  background-color: rgba(218,109,99,0.9);
   border-bottom-width: 0px;
   -webkit-box-shadow: 0 4px 2px -2px rgba(0,0,0,0.14), 0 3px 5px -2px rgba(0,0,0,0.12), 0 5px 1px -4px rgba(0,0,0,0.2);
   box-shadow: 0 4px 2px -2px rgba(0,0,0,0.14), 0 3px 5px -2px rgba(0,0,0,0.12), 0 5px 1px -4px rgba(0,0,0,0.2);
@@ -3663,7 +3663,7 @@ ons-range[disabled] .range {
   margin-top: 0;
 }
 .list__item_active:active {
-  background-color: #c9c9c9;
+  background-color: #d9d9d9;
   -webkit-transition: none;
   -moz-transition: none;
   -o-transition: none;
@@ -3718,7 +3718,7 @@ ons-range[disabled] .range {
     </ul>
  */
 .list__item--tappable:active {
-  background-color: #c9c9c9;
+  background-color: #d9d9d9;
 }
 /* topdoc
   name: Switch in List Item
@@ -4510,16 +4510,16 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   margin-right: 0px;
 }
 .search-input::-webkit-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .search-input::-moz-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .search-input::-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .search-input:-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .search-input:disabled {
   opacity: 0.3;
@@ -4576,16 +4576,16 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   box-sizing: border-box;
 }
 .text-input::-webkit-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .text-input::-moz-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .text-input::-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .text-input:-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 .text-input:disabled {
   opacity: 0.3;
@@ -4597,22 +4597,22 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .text-input:disabled::-webkit-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
 }
 .text-input:disabled::-moz-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
 }
 .text-input:disabled::-ms-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
 }
 .text-input:disabled:-ms-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
 }
 .text-input::-ms-clear {
   display: none;
@@ -4685,28 +4685,28 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .text-input--underbar:disabled::-webkit-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
   border: none;
   background-color: transparent;
 }
 .text-input--underbar:disabled::-moz-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
   border: none;
   background-color: transparent;
 }
 .text-input--underbar:disabled::-ms-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
   border: none;
   background-color: transparent;
 }
 .text-input--underbar:disabled:-ms-input-placeholder {
   border: none;
   background-color: transparent;
-  color: #ccc;
+  color: #999;
   border: none;
   background-color: transparent;
 }
@@ -4782,7 +4782,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   pointer-events: none;
 }
 .text-input--material__label--active {
-  color: #c9c9c9;
+  color: #ccc;
   -webkit-transform: translate(0, -75%) scale(0.75);
   -moz-transform: translate(0, -75%) scale(0.75);
   -ms-transform: translate(0, -75%) scale(0.75);
@@ -4799,11 +4799,11 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   transition: transform 0.1s ease-in, color 0.1s ease-in;
 }
 .text-input--material:focus {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(#c9c9c9), to(#c9c9c9)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
-  background-image: -webkit-linear-gradient(#c9c9c9, #c9c9c9), -webkit-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: -moz-linear-gradient(#c9c9c9, #c9c9c9), -moz-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: -o-linear-gradient(#c9c9c9, #c9c9c9), -o-linear-gradient(bottom, transparent 1px, #afafaf 1px);
-  background-image: linear-gradient(#c9c9c9, #c9c9c9), linear-gradient(to top, transparent 1px, #afafaf 1px);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#ccc)), -webkit-gradient(linear, left bottom, left top, color-stop(1px, transparent), color-stop(1px, #afafaf));
+  background-image: -webkit-linear-gradient(#ccc, #ccc), -webkit-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: -moz-linear-gradient(#ccc, #ccc), -moz-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: -o-linear-gradient(#ccc, #ccc), -o-linear-gradient(bottom, transparent 1px, #afafaf 1px);
+  background-image: linear-gradient(#ccc, #ccc), linear-gradient(to top, transparent 1px, #afafaf 1px);
   -webkit-animation: material-text-input-animate 0.3s forwards;
   -moz-animation: material-text-input-animate 0.3s forwards;
   -o-animation: material-text-input-animate 0.3s forwards;
@@ -4916,7 +4916,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .textarea::-webkit-input-placeholder,
 .textarea::-moz-placeholder,
 .textarea:-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 /* topdoc
   name: Textarea Transparent
@@ -4972,7 +4972,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .textarea--transparent::-webkit-input-placeholder,
 .textarea--transparent::-moz-placeholder,
 .textarea--transparent:-ms-input-placeholder {
-  color: #ccc;
+  color: #999;
 }
 /* topdoc
   name: Dialog
@@ -5403,7 +5403,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   font-size: 20px;
   font-weight: 500;
   padding: 0 24px;
-  color: #212121;
+  color: #727272;
 }
 .alert-dialog-content--material {
   font-family: 'Roboto', 'Noto', sans-serif;
@@ -6141,7 +6141,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
   color: #fff;
   vertical-align: middle;
   text-align: center;
-  background-color: rgba(218,109,99,0.5);
+  background-color: #da6d63;
   border: 0px solid currentColor;
   -webkit-border-radius: 50%;
   border-radius: 50%;
@@ -6156,7 +6156,7 @@ input[type="search"].search-input::-webkit-search-cancel-button {
 .fab:active {
   -webkit-box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
   box-shadow: 0 8px 10px 1px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.4);
-  background-color: rgba(218,109,99,0.5);
+  background-color: #da6d63;
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;

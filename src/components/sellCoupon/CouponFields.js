@@ -75,6 +75,7 @@ class CouponFields extends React.Component {
     handleClick(couponType) {
         const couponTypeName = couponTypeMap[couponType]
         this.setState({couponTypeName: couponTypeName})
+        this.refs.rolling.className += ' rolling'
     }
 
     handleHide() {
@@ -101,8 +102,9 @@ class CouponFields extends React.Component {
                         <ListItem modifier="handleShow">
                             <button className="handleShow" type="button"
                                     onClick={this.handleShow}>
-                                <ons-icon
-                                    icon="ion-android-checkmark-circle">&nbsp;{this.state.couponTypeName}</ons-icon>
+                                <ons-icon ref="rolling" icon="ion-android-checkmark-circle">
+                                    &nbsp;{this.state.couponTypeName}
+                                </ons-icon>
                             </button>
                         </ListItem>
                         <ListItem>
