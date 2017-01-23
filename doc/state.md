@@ -69,7 +69,6 @@ var state = {
     },
     publishedCoupons: {
         query: {
-             orderState: "",
              couponName: ""
         },
         page: {
