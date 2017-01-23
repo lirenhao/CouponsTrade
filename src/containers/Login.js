@@ -38,7 +38,7 @@ class Login extends React.Component {
             <Toolbar>
                 <div className='center'>登录</div>
                 <div className='right'>
-                    <Button modifier='quiet signUp' onClick={() =>
+                    <Button modifier='quiet' onClick={() =>
                         this.props.navigator.pushPage({
                             comp: Register,
                             props: {key: 'register', signUp: this.props.signUpRequest}
