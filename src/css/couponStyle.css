@@ -75,7 +75,7 @@ label.text-input__container {
 }
 
 .price {
-    color: hsl(11, 60%, 59%);
+    color: #da6d63;
     font-size: 1.25em;
 }
 
@@ -103,7 +103,7 @@ label.text-input__container {
 
 .list--title .right .list__item__title {
     font-size: 1.25em;
-    color: hsl(11, 60%, 59%);
+    color: #da6d63;
 }
 
 .list--title .center .list__item__subtitle {
@@ -225,7 +225,6 @@ input[name*="Password"] + .text-input--material__label--active {
 .myDialog {
     padding: 1.5em .5em 1em;
     text-align: center;
-    position: relative;
 }
 
 /*开启券码*/
@@ -438,12 +437,12 @@ input[type="date"][value^="2"]::before {
     border-radius: 4px;
     padding: 1px;
     border: none;
-    margin-right: .5em;
+    margin-right: 8px;
 }
 
 .list__item--handleShow ons-icon[icon='ion-ios-camera-outline'] {
-    font-size: 2.5em;
+    font-size: 42px;
     position: relative;
-    left: -1.245em;
+    left: -52.5px;
     opacity: .3;
 }
