@@ -19,7 +19,7 @@ export default (path, param = {}) => {
             'Content-Type': 'application/x-www-form-urlencoded'
         }
     }
-    return fetch(`http://localhost:3000/${path}`, options)
+    return fetch(`http://10.2.54.64:3000/${path}`, options)
         .then(function (res) {
             return res.json()
         })
