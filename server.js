@@ -612,11 +612,6 @@ let state = {
   ]
 };
 
-app.get('/test', (req, res) => {
-  console.log(11111111)
-})
-
-
 app.post(`/${ServerPath.SIGN_UP}`, function (req, res) {
   const {inviteCode} = req.body;
   if (state.inviteCode == inviteCode)
