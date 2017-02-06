@@ -260,7 +260,7 @@ let state = {
       originalPrice: 20,
       ticketPrice: 50,
       endDate: "2016-12-31",
-      describe: "所有地区通用券",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "0"
     },
@@ -275,7 +275,7 @@ let state = {
       originalPrice: 20,
       ticketPrice: 50,
       endDate: "2016-12-31",
-      describe: "所有地区通用券",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "2",
       couponState: "1"
     },
@@ -290,7 +290,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "2",
       couponState: "1"
     },
@@ -305,7 +305,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -320,7 +320,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -335,7 +335,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -350,7 +350,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -365,7 +365,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -380,7 +380,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -395,7 +395,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -410,7 +410,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -425,7 +425,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -440,7 +440,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -455,7 +455,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -470,7 +470,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -485,7 +485,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -500,7 +500,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -515,7 +515,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -530,7 +530,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -545,7 +545,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -560,7 +560,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -575,7 +575,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -590,7 +590,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     },
@@ -605,7 +605,7 @@ let state = {
       originalPrice: 150,
       ticketPrice: 300,
       endDate: "2016-12-31",
-      describe: "所有地区通用券（海淀区西二旗店、上地店）",
+      describe: "仅限周三使用，属于全国通用券，如需开具发票请到具体门店进行询问。",
       userName: "1",
       couponState: "1"
     }
