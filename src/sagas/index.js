@@ -7,8 +7,8 @@
  */
 import * as Async from './async'
 
-export default function* sagas() {
-    yield [
-        Async.request()
-    ]
+export default function* sagas(api) {
+  yield [
+    Async.request(api)
+  ]
 }
