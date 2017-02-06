@@ -623,8 +623,9 @@ app.post(`/${ServerPath.SIGN_UP}`, function (req, res) {
 app.post(`/${ServerPath.LOGIN}`, function (req, res) {
   console.log("登录")
   const {username, password} = req.body;
-  if (state.login.username == username && state.login.password == password)
+  if (state.login.username == username && state.login.password == password) {
     res.json({code: ResponseCode.SUCCESS, token: state.token});
+  }
   else
     res.json({code: ResponseCode.FAIL, msg: "账号或密码错误"})
 });

@@ -19,6 +19,7 @@ import PublishCoupon from "../src/containers/PublishCoupon"
 import Login from '../src/containers/Login'
 import createSagaMiddleware from 'redux-saga'
 import sagas from '../src/sagas'
+import fetch from 'node-fetch'
 
 describe("优惠券平台整体需求功能", () => {
   describe("登录以后，发布优惠券", () => {
@@ -30,14 +31,25 @@ describe("优惠券平台整体需求功能", () => {
       token: "123456789"
     }
     beforeEach(() => {
-      store = createStore(reducer, state, applyMiddleware(sagaMiddleware))
+      store = createStore(reducer, applyMiddleware(sagaMiddleware))
       subject = mount(<Provider store={store}><PublishCoupon/></Provider>)
       sagaMiddleware.run(sagas, store.getState)
     })
 
     it("登录", () => {
       const wrapper = mount(<Provider store={store}><Login/></Provider>)
-      wrapper.find("Button").at(1).simulate("submit")
+      // wrapper.find("Button").at(1).simulate("submit")
+      const options = {
+        method: 'post',
+        body: {
+          username: "1",
+          password: "1"
+        },
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+      fetch('http://localhost:3000/login', options).then(v=>console.log(v))
     })
     // it("发布优惠券成功", () => {
     //   subject.find('Input').at(10).simulate("change", {target: {value: "星巴克test"}})
