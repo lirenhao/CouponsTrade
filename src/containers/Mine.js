@@ -106,7 +106,7 @@ class Mine extends React.Component {
                         购买的优惠券
                     </ListItem>
                 </List>
-                <Button modifier="large light marginTLR" onClick={() =>
+                <Button modifier="large light marginTLR marginB" onClick={() =>
                     this.props.logoutRequest({
                         apiType: 'logout',
                         param: {token: this.props.token},

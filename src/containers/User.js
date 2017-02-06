@@ -35,7 +35,7 @@ class User extends React.Component {
                 </Toolbar>
             )}>
                 <UserShow user={this.props.userInfo}/>
-                <Button modifier="large marginTLR"
+                <Button modifier="large marginTLR marginB"
                         onClick={() => this.props.navigator.pushPage({
                                 comp: Edit,
                                 props: {

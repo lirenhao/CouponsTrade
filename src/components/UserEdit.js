@@ -51,7 +51,7 @@ const UserEdit = (props) => {
                 <ListItem>
                 </ListItem>
             </List>
-            <Button modifier="large marginTLR"
+            <Button modifier="large marginTLR marginB"
                     disabled={invalid || submitting}
                     onClick={props.submit}>
                 确认修改
