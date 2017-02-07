@@ -13,7 +13,7 @@ export default {
   },
   output: {
     filename: '[name].js',
-    path: '/build',
+    path: __dirname + '/build',
     publicPath: "/build"
   },
   module: {
