@@ -14,7 +14,7 @@ export default {
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'build'),
-    publicPath: "../build/"
+    publicPath: "build/"
   },
   module: {
     rules: [
