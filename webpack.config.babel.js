@@ -13,8 +13,8 @@ export default {
   },
   output: {
     filename: '[name].js',
-    path: __dirname + '/build',
-    publicPath: "/build"
+    path: path.resolve(__dirname, 'build'),
+    publicPath: "../build/"
   },
   module: {
     rules: [
