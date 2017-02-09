@@ -1,6 +1,6 @@
 import React from 'react'
 import * as Ons from 'react-onsenui'
-import Navigator from './Navigator'
+import Navigator from '../components/Navigator'
 import Home from './Home'
 import Post from './Post'
 import Mine from './Mine'
