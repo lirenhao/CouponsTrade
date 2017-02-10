@@ -7,7 +7,6 @@
  */
 import {put, call, take} from 'redux-saga/effects'
 import * as Act from '../actions'
-import {ResponseCode} from '../constants'
 
 export function* request(api) {
     while (true) {
@@ -17,7 +16,6 @@ export function* request(api) {
             before: [Act.onload],
             success: [(res) => ({type: action.type.replace(/REQUEST/, 'SUCCESS'), payload: res})],
             fail: [Act.showDialog],
-            exception: [Act.showDialog],
             after: [Act.unload],
             ...handle
         }
@@ -25,7 +23,6 @@ export function* request(api) {
             before: [],
             success: [],
             fail: [],
-            exception: [],
             after: [],
             ...callback
         }
@@ -33,22 +30,14 @@ export function* request(api) {
         yield call(callbackHandle, handle.before, callback.before)
         try {
             let res = yield call(api, apiType, param)
-            console.log("--------------------------------------")
-            console.log(res)
-            console.log("--------------------------------------")
-            if (res.code == ResponseCode.SUCCESS) {
-                // 成功后的处理
-                yield call(callbackHandle, handle.success, callback.success, res)
-                if (router) {
-                    yield call(router, res)
-                }
-            } else {
-                // 失败后的处理
-                yield call(callbackHandle, handle.fail, callback.fail, res.msg)
+            // 成功后的处理
+            yield call(callbackHandle, handle.success, callback.success, res)
+            if (router) {
+                yield call(router, res)
             }
         } catch (e) {
             // 异常的处理
-            yield call(callbackHandle, handle.exception, callback.exception, e.message)
+            yield call(callbackHandle, handle.fail, callback.fail, e)
         }
         // 请求之后的处理
         yield call(callbackHandle, handle.after, callback.after)
