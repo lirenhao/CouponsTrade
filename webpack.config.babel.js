@@ -7,8 +7,7 @@ import OpenBrowserPlugin from 'open-browser-webpack-plugin'
 
 export default {
   devServer: {
-    historyApiFallback: true,
-    contentBase: path.resolve(__dirname, "build"),
+    historyApiFallback: true
   },
   entry: {
     bundle: ['react-hot-loader/patch',
@@ -40,8 +39,7 @@ export default {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: "优惠券交易平台",
-      filename: 'index.html'
+      title: "优惠券运营平台"
     }),
     new OpenBrowserPlugin({
       url: "http://localhost:8080"
