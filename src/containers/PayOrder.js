@@ -14,43 +14,43 @@ import {payOrderRequest} from '../actions'
 import OrderResult from './OrderResult'
 
 const renderToolbar = () => {
-    return (
-        <Toolbar>
-            <div className='left'><BackButton/></div>
-            <div className="center">确认订单</div>
-        </Toolbar>
-    )
+  return (
+    <Toolbar>
+      <div className='left'><BackButton/></div>
+      <div className="center">确认订单</div>
+    </Toolbar>
+  )
 }
 
 const PayOrder = props => {
-    return (
-        <Page renderToolbar={renderToolbar}>
-            <SellerInfo {...props.data}/>
-            <PaymentForm {...props.itemData}
-                         navigator={props.navigator}
-                         onSubmit={(value) =>
-                             props.payOrderRequest({
-                                 apiType: 'pay',
-                                 param: {
-                                     token: props.token,
-                                     orderNo: props.orderInfo.orderNo,
-                                     ...value,
-                                 },
-                                 router: () => props.navigator.pushPage({
-                                     comp: OrderResult,
-                                     props: {key: "orderResult"}
-                                 })
-                             })
-                         }/>
-        </Page>
-    )
+  return (
+    <Page renderToolbar={renderToolbar}>
+      <SellerInfo {...props.data}/>
+      <PaymentForm {...props.itemData}
+                   navigator={props.navigator}
+                   onSubmit={(value) =>
+                     props.payOrderRequest({
+                       apiType: 'pay',
+                       param: {
+                         token: props.token,
+                         orderNo: props.orderInfo.orderNo,
+                         ...value,
+                       },
+                       router: () => props.navigator.pushPage({
+                         comp: OrderResult,
+                         props: {key: "orderResult"}
+                       })
+                     })
+                   }/>
+    </Page>
+  )
 }
 
 const mapStateToProps = state => ({
-    token: state.token,
-    orderInfo: state.order.orderInfo,
-    data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
-    itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
+  token: state.token,
+  orderInfo: state.order.orderInfo,
+  data: {name: state.order.orderInfo.sellerNickName, tel: "18688886666"},
+  itemData: {item: state.order.orderInfo.couponName, price: state.order.orderInfo.sellingPrice}
 })
 
 export default connect(mapStateToProps, {payOrderRequest})(PayOrder)

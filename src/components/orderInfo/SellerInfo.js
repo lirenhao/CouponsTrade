@@ -9,19 +9,19 @@ import React, {PropTypes} from 'react'
 import {List, ListItem, ListHeader} from 'react-onsenui'
 
 const Address = ({name, tel}) => {
-    return (
-        <List modifier="pay" renderHeader={() => <ListHeader>卖家信息</ListHeader>}>
-            <ListItem>{name + " " + tel}</ListItem>
-        </List>
-    )
-};
+  return (
+    <List modifier="pay" renderHeader={() => <ListHeader>卖家信息</ListHeader>}>
+      <ListItem>{name + " " + tel}</ListItem>
+    </List>
+  )
+}
 
 Address.propTypes = {
-    name: PropTypes.string.isRequired,
-    tel: PropTypes.oneOfType([
-        PropTypes.number,
-        PropTypes.string
-    ]).isRequired,
-};
+  name: PropTypes.string.isRequired,
+  tel: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number
+  ]).isRequired,
+}
 
 export default Address
