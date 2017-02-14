@@ -7,76 +7,67 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button, List, ListItem} from 'react-onsenui'
-
-const SignUpField = ({input, type, placeholder}) => {
-    return (
-        <Input {...input}
-               type={type}
-               placeholder={placeholder}
-               modifier='underbar'
-               float/>
-    )
-}
+import * as Ons from 'react-onsenui'
+import InputField from './common/InputField'
 
 const SignUp = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <List modifier="inset marginT ">
-                <ListItem>
+            <Ons.List modifier="inset marginT ">
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="nickname"
-                               component={SignUpField}
+                               component={InputField}
                                placeholder="输入昵称"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="phoneNumber"
-                               component={SignUpField}
+                               component={InputField}
                                placeholder="输入手机号"/>
                     </div>
-                </ListItem>
-                <ListItem>
-                </ListItem>
-            </List>
-            <Button modifier='large quiet'>获取验证码</Button>
-            <List modifier="inset marginB">
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
+                </Ons.ListItem>
+            </Ons.List>
+            <Ons.Button modifier='large quiet'>获取验证码</Ons.Button>
+            <Ons.List modifier="inset marginB">
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="validateCode"
-                               component={SignUpField}
+                               component={InputField}
                                placeholder="输入验证码"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="password"
                                name="password"
-                               component={SignUpField}
+                               component={InputField}
                                placeholder="输入密码"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="inviteCode"
-                               component={SignUpField}
+                               component={InputField}
                                placeholder="输入邀请码"/>
                     </div>
-                </ListItem>
-                <ListItem>
-                </ListItem>
-            </List>
-            <Button modifier="large marginTLR marginB"
-                    disabled={invalid || submitting}
-                    onClick={props.submit}>
+                </Ons.ListItem>
+                <Ons.ListItem>
+                </Ons.ListItem>
+            </Ons.List>
+            <Ons.Button modifier="large marginTLR marginB"
+                        disabled={invalid || submitting}
+                        onClick={props.submit}>
                 注册
-            </Button>
+            </Ons.Button>
         </form>
     )
 }

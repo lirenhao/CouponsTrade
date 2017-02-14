@@ -6,35 +6,35 @@
  * 用户信息展示组件
  */
 import React from 'react'
-import {List, ListItem, ListHeader} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
 
-const UserShow = (props) => {
+const UserInfo = (props) => {
     const {user} = props
     return (
-            <List modifier='inset marginT mine'>
-                <ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></ListHeader>
-                <ListItem>
+            <Ons.List modifier='inset marginT mine'>
+                <Ons.ListHeader><img src={`http://placekitten.com/g/40/40`} alt=""/></Ons.ListHeader>
+                <Ons.ListItem>
                     昵称
                     <div className="right">{user.nickname}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     手机号
                     <div className="right">{user.phoneNo}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     邀请码
                     <div className="right">{user.inviteCode}</div>
-                </ListItem>
-            </List>
+                </Ons.ListItem>
+            </Ons.List>
     )
 }
 
 /**
- * UserShow所需的参数
+ * UserInfo所需的参数
  * @param user 用户的基本信息
  * @type {{user: *}}
  */
-UserShow.propTypes = {
+UserInfo.propTypes = {
     user: React.PropTypes.shape({
         nickname: React.PropTypes.string.isRequired,
         phoneNo: React.PropTypes.string.isRequired,
@@ -42,4 +42,4 @@ UserShow.propTypes = {
     }).isRequired
 }
 
-export default UserShow
+export default UserInfo

@@ -7,60 +7,51 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button, List, ListItem} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
+import InputField from './common/InputField'
 
-const UserEditField = ({input, type, placeholder}) => {
-    return (
-        <Input {...input}
-               type={type}
-               placeholder={placeholder}
-               modifier='underbar'
-               float/>
-    )
-}
-
-const UserEdit = (props) => {
+const UserUpdate = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <List modifier="inset marginT">
-                <ListItem>
+            <Ons.List modifier="inset marginT">
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="nickname"
-                               component={UserEditField}
+                               component={InputField}
                                placeholder="昵称"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="number"
                                name="phoneNo"
-                               component={UserEditField}
+                               component={InputField}
                                placeholder="手机号"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <Field type="text"
                                name="inviteCode"
-                               component={UserEditField}
+                               component={InputField}
                                placeholder="邀请码"/>
                     </div>
-                </ListItem>
-                <ListItem>
-                </ListItem>
-            </List>
-            <Button modifier="large marginTLR marginB"
+                </Ons.ListItem>
+                <Ons.ListItem>
+                </Ons.ListItem>
+            </Ons.List>
+            <Ons.Button modifier="large marginTLR marginB"
                     disabled={invalid || submitting}
                     onClick={props.submit}>
                 确认修改
-            </Button>
+            </Ons.Button>
         </form>
     )
 }
 
-UserEdit.propTypes = {
+UserUpdate.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
 }
 
@@ -79,5 +70,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "userEdit", validate
-})(UserEdit)
+    form: "userUpdate", validate
+})(UserUpdate)

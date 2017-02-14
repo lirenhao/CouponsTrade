@@ -9,8 +9,8 @@ import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton, Button} from "react-onsenui";
 import {updateUserInfoRequest, showDialog} from "../actions";
-import UserShow from "../components/UserShow";
-import UserEdit from "../components/UserEdit";
+import UserShow from "../components/UserInfo";
+import UserEdit from "../components/UserUpdate";
 
 const Edit = (props) => {
     return (

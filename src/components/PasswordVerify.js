@@ -8,16 +8,7 @@
 import React from 'react'
 import {Field,reduxForm} from 'redux-form'
 import * as Ons from 'react-onsenui'
-
-const passwordVerifyField = ({input, type, placeholder}) => {
-    return (
-        <Ons.Input {...input}
-               type={type}
-               placeholder={placeholder}
-               modifier='underbar'
-               float/>
-    )
-}
+import InputField from './common/InputField'
 
 const PasswordVerify = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
@@ -27,7 +18,7 @@ const PasswordVerify = (props) => {
             <section>
                     <Field type="text"
                            name="oldPassword"
-                           component={passwordVerifyField}
+                           component={InputField}
                            placeholder="请输入原密码"
                            required/>
                 <br/>

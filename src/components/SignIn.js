@@ -7,45 +7,32 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button, List, ListItem} from 'react-onsenui'
-
-const defaultValue = {
-    username: "1",
-    password: "1"
-};
-
-const SignInField = ({input, type, placeholder}) => {
-    return (
-        <Input {...input}
-               type={type}
-               placeholder={placeholder}
-               required
-               float/>
-    )
-};
+import * as Ons from 'react-onsenui'
+import InputField from './common/InputField'
 
 const SignIn = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <br/>
-            <List modifier="inset signIn">
-                <ListItem>
+            <Ons.List modifier="inset signIn">
+                <Ons.ListItem>
                     <div className="center">
-                        <Field type="number" name="username" component={SignInField} placeholder="输入手机号"/>
+                        <Field type="number" name="username" component={InputField} placeholder="输入手机号"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
-                        <Field type="password" name="password" component={SignInField} placeholder="输入密码"/>
+                        <Field type="password" name="password" component={InputField} placeholder="输入密码"/>
                     </div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center"><a href="#">切换账户</a></div>
                     <div className="right"><a href="#">忘记密码？</a></div>
-                </ListItem>
-            </List>
-            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>登录</Button>
+                </Ons.ListItem>
+            </Ons.List>
+            <Ons.Button modifier="large marginTLR" disabled={invalid || submitting}
+                        onClick={props.submit}>登录</Ons.Button>
         </form>
     )
 }
@@ -66,6 +53,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "signIn", validate,
-    initialValues: defaultValue
+    form: "signIn", validate
 })(SignIn)
