@@ -7,7 +7,6 @@
  */
 import React from 'react'
 import * as Ons from 'react-onsenui'
-import PriceComponent from './Price'
 
 const CouponList = ({couponList, onClickPushPage}) => {
     return (
@@ -22,7 +21,7 @@ const CouponList = ({couponList, onClickPushPage}) => {
                     <div className="list__item__subtitle">{row.describe}</div>
                 </div>
                 <div className='right price'>
-                    <PriceComponent price={row.sellingPrice}/>
+                    <div>￥{row.sellingPrice}</div>
                 </div>
             </Ons.ListItem>
         )}/>

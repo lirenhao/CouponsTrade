@@ -8,7 +8,6 @@
 
 import React from 'react'
 import * as Ons from 'react-onsenui'
-import PriceComponent from './Price'
 import {couponStateMap, couponTypeMap} from '../constants/dataDic'
 
 const CouponInfo = (props) => {
@@ -23,10 +22,10 @@ const CouponInfo = (props) => {
                     <div className="center">{couponInfo.nickname}</div>
                     <div className="right">
                         <div className="list__item__title">
-                            <PriceComponent price={couponInfo.sellingPrice}/>
+                            <div>￥{couponInfo.sellingPrice}</div>
                         </div>
                         <div className="list__item__subtitle">
-                            <PriceComponent price={couponInfo.ticketPrice}/>
+                            <div>￥{couponInfo.ticketPrice}</div>
                         </div>
                     </div>
                 </Ons.ListItem>
