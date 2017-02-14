@@ -1,35 +1,31 @@
 /**
  * Author：pengfei
- * Create Date：2016/12/15
+ * Create Date：2016/12/8
  * Modified By：pengfei
  * Why & What is modified  <修改原因描述>
- * <文件描述>
+ * 发布商品组建
  */
-
-
 import React from 'react'
 import {reduxForm} from 'redux-form'
-import {couponTypeMap} from '../../constants/dataDic'
-import CouponFields from  './CouponFields'
+import SaleFields from  './common/SaleFields'
 
-
-const EditCouponForm = (props)=> {
+const SaleCreate = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <section>
-                <CouponFields disable={invalid || submitting}
-                              buttonName="确认提交" onSubmit={props.submit}
-                              couponTypeName={couponTypeMap[props.initialValues.couponType]}
-                />
+                <SaleFields disable={invalid || submitting}
+                            buttonName='确认发布'
+                            onSubmit={props.submit}
+                            couponTypeName='请选择'/>
             </section>
         </form>
     )
 }
 
-EditCouponForm.propTypes = {
+SaleCreate.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
-};
+}
 
 const validate = (value) => {
     const errors = {}
@@ -55,5 +51,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "EditCouponForm", validate
-})(EditCouponForm)
+    form: 'saleCreate', validate
+})(SaleCreate)

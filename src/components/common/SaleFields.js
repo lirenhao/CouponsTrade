@@ -8,18 +8,18 @@
 import React from 'react'
 import {Field} from 'redux-form'
 import * as ons from 'onsenui'
-import {Input, Switch, List, ListItem, Button, Icon} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
+import Dropzone from 'react-dropzone'
 import SideSelect from './SideSelect'
 import {couponTypeListItems, couponTypeMap} from '../../constants/dataDic'
-import Dropzone from 'react-dropzone'
 
 const InputComponent = ({input, type, placeholder}) => {
     return (
-        <Input {...input}
-               type={type}
-               placeholder={placeholder}
-               required
-               float/>
+        <Ons.Input {...input}
+                   type={type}
+                   placeholder={placeholder}
+                   required
+                   float/>
     )
 }
 
@@ -35,7 +35,7 @@ const TextAreaComponent = ({input, placeholder}) => {
 
 const CheckBoxComponent = ({input}) => {
     return (
-        <Switch checked={!!input.value} onChange={(event) => {
+        <Ons.Switch checked={!!input.value} onChange={(event) => {
             input.onChange(event.target.checked)
         }}/>
     )
@@ -95,62 +95,62 @@ class CouponFields extends React.Component {
                            listItem: couponTypeListItems(),
                            handleClick: this.handleClick, handleHide: this.handleHide
                        }}>
-                    <List modifier="inset marginT">
-                        <ListItem modifier="handleShow">
+                    <Ons.List modifier="inset marginT">
+                        <Ons.ListItem modifier="handleShow">
                             <Field name="chooseImage" component={ChooseImageComponent}/>
-                        </ListItem>
-                        <ListItem modifier="handleShow">
+                        </Ons.ListItem>
+                        <Ons.ListItem modifier="handleShow">
                             <button className="handleShow" type="button"
                                     onClick={this.handleShow}>
                                 <ons-icon ref="rolling" icon="ion-android-checkmark-circle">
                                     &nbsp;{this.state.couponTypeName}
                                 </ons-icon>
                             </button>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="text" name="couponName" component={InputComponent} placeholder="优惠券名称"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="text" name="couponCode" component={InputComponent} placeholder="优惠券码"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="number" name="originalPrice" component={InputComponent} placeholder="原价"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="number" name="sellingPrice" component={InputComponent} placeholder="售卖价"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="number" name="ticketPrice" component={InputComponent} placeholder="券面价"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 <Field type="date" name="endDate" component={InputComponent} placeholder="截止日期"/>
                             </div>
-                        </ListItem>
-                        <ListItem>
+                        </Ons.ListItem>
+                        <Ons.ListItem>
                             <div className="center">
                                 自动退货
                             </div>
                             <div className="right">
                                 <Field name="isAutomaticRefund" component={CheckBoxComponent}/>
                             </div>
-                        </ListItem>
+                        </Ons.ListItem>
                         <ListItem>
                             <Field name="describe" component={TextAreaComponent} placeholder="描述"/>
                         </ListItem>
-                    </List>
-                    <Button modifier="large marginTLR marginB" disabled={this.props.disable}
-                            onClick={this.props.onSubmit}>{this.props.buttonName}</Button>
+                    </Ons.List>
+                    <Ons.Button modifier="large marginTLR marginB" disabled={this.props.disable}
+                                onClick={this.props.onSubmit}>{this.props.buttonName}</Ons.Button>
                 </Field>
             </div>
         )
