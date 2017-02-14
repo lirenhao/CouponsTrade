@@ -259,7 +259,7 @@ var state={
                券面价(ticketPrice)，                                                            
                截止日期(endDate)，                                                              
                优惠券相关图片(picture)，                                                    
-               优惠券其他内容描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
+               优惠券描述(describe)（可消费日期、可消费的时间、商户的信息暂放在此地方）,
                卖家用户名：userName，
                卖家昵称：nickName,
                优惠券状态：couponState
