@@ -9,8 +9,8 @@ import React from "react";
 import {connect} from "react-redux";
 import {Page, Toolbar, BackButton} from "react-onsenui";
 import {verifyPasswordRequest, updatePasswordRequest, showDialog} from "../actions";
-import OldPassword from "../components/OldPassword";
-import NewPassword from "../components/NewPassword";
+import OldPassword from "../components/PasswordVerify";
+import NewPassword from "../components/PasswordUpdate";
 
 const UpdatePassword = (props) => {
     return (

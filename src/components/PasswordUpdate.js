@@ -7,11 +7,11 @@
  */
 import React from 'react'
 import {Field, reduxForm} from 'redux-form'
-import {Input, Button} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
 
-const newPasswordField = ({input, type, placeholder}) => {
+const passwordUpdateField = ({input, type, placeholder}) => {
     return (
-        <Input {...input}
+        <Ons.Input {...input}
                type={type}
                placeholder={placeholder}
                modifier='underbar'
@@ -19,7 +19,7 @@ const newPasswordField = ({input, type, placeholder}) => {
     )
 };
 
-const NewPassword = (props) => {
+const PasswordUpdate = (props) => {
     const {handleSubmit, onSubmit, invalid, submitting} = props;
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -27,23 +27,23 @@ const NewPassword = (props) => {
                 <br/>
                 <Field type="text"
                        name="newPassword"
-                       component={newPasswordField}
+                       component={passwordUpdateField}
                        placeholder="请输入新密码"
                        required/>
                 <Field type="text"
                        name="renewPassword"
-                       component={newPasswordField}
+                       component={passwordUpdateField}
                        placeholder="请再次输入新密码"
                        required/>
             </section>
             <br/>
             <br/>
-            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确定</Button>
+            <Ons.Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确定</Ons.Button>
         </form>
     )
 };
 
-NewPassword.propTypes = {
+PasswordUpdate.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
 };
 
@@ -62,5 +62,5 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-    form: "newPassword", validate
-})(NewPassword)
+    form: "passwordUpdate", validate
+})(PasswordUpdate)

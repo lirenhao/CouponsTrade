@@ -4,53 +4,52 @@
  * Modified By：likon
  * Why & What is modified  <修改原因描述>
  * 原密码组件
- */ 
-
+ */
 import React from 'react'
 import {Field,reduxForm} from 'redux-form'
-import {Input,Button} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
 
-const oldPasswordField = ({input, type, placeholder}) => {
+const passwordVerifyField = ({input, type, placeholder}) => {
     return (
-        <Input {...input}
+        <Ons.Input {...input}
                type={type}
                placeholder={placeholder}
                modifier='underbar'
                float/>
     )
-};
+}
 
-const OldPassword = (props) => {
-    const {handleSubmit, onSubmit, invalid, submitting} = props;
+const PasswordVerify = (props) => {
+    const {handleSubmit, onSubmit, invalid, submitting} = props
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
             <br/>
             <section>
                     <Field type="text"
                            name="oldPassword"
-                           component={oldPasswordField}
+                           component={passwordVerifyField}
                            placeholder="请输入原密码"
                            required/>
                 <br/>
             </section>
             <br/>
-            <Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确定</Button>
+            <Ons.Button modifier="large marginTLR" disabled={invalid || submitting} onClick={props.submit}>确定</Ons.Button>
         </form>
     )
-};
+}
 
-OldPassword.propTypes = {
+PasswordVerify.propTypes = {
     onSubmit: React.PropTypes.func.isRequired
-};
+}
 
 const validate = (value) => {
-    const errors = {};
+    const errors = {}
     if (!value.oldPassword) {
         errors.oldPassword = 'Required'
     }
     return errors
-};
+}
 
 export default reduxForm({
-    form: "OldPassword", validate
-})(OldPassword)
+    form: "passwordVerify", validate
+})(PasswordVerify)
