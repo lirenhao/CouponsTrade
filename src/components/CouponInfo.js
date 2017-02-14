@@ -7,17 +7,16 @@
  */
 
 import React from 'react'
-import {List, ListItem} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
 import PriceComponent from './Price'
-import {couponStateMap,couponTypeMap} from '../constants/dataDic'
+import {couponStateMap, couponTypeMap} from '../constants/dataDic'
 
-
-const CouponDetail = (props) => {
-    const {couponInfo}=props;
+const CouponInfo = (props) => {
+    const {couponInfo}=props
     return (
         <div>
-            <List modifier="inset marginT title">
-                <ListItem>
+            <Ons.List modifier="inset marginT title">
+                <Ons.ListItem>
                     <div className="left">
                         <img className='list__item__thumbnail' src={`http://placekitten.com/g/40/40`} alt="用户头像"/>
                     </div>
@@ -30,48 +29,48 @@ const CouponDetail = (props) => {
                             <PriceComponent price={couponInfo.ticketPrice}/>
                         </div>
                     </div>
-                </ListItem>
-            </List>
-            <List modifier="inset marginT">
-                <ListItem>
+                </Ons.ListItem>
+            </Ons.List>
+            <Ons.List modifier="inset marginT">
+                <Ons.ListItem>
                     <div className="center">优惠券名称</div>
                     <div className="right">{couponInfo.couponName}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">可自动退货</div>
                     <div className="right">{ couponInfo.isAutomaticRefund === true ? "是" : "否"}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">优惠券类别</div>
                     <div className="right">{couponTypeMap[couponInfo.couponType]}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">优惠券状态</div>
                     <div className="right">{couponStateMap[couponInfo.couponState]}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">截止日期</div>
                     <div className="right">{couponInfo.endDate}</div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">优惠券相关图片</div>
                     <div className="right"></div>
-                </ListItem>
-                <ListItem>
+                </Ons.ListItem>
+                <Ons.ListItem>
                     <div className="center">
                         <div className="list__item__title">优惠券描述</div>
                         <div className="list__item__subtitle grayColor">{couponInfo.describe}</div>
                     </div>
-                </ListItem>
-            </List>
+                </Ons.ListItem>
+            </Ons.List>
             <div>
                 {props.children}
             </div>
         </div>
     )
-};
+}
 
-CouponDetail.propTypes = {
+CouponInfo.propTypes = {
     couponInfo: React.PropTypes.shape({
         nickname: React.PropTypes.string.isRequired,
         originalPrice: React.PropTypes.number.isRequired,
@@ -84,11 +83,6 @@ CouponDetail.propTypes = {
         //picture:React.PropTypes.string.isRequired,
         describe: React.PropTypes.string.isRequired
     }).isRequired
-};
+}
 
-export default CouponDetail
-
-
-
-
-
+export default CouponInfo

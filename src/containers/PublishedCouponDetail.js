@@ -7,7 +7,7 @@
  */
 import React from 'react'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
-import CouponDetail from '../components/CouponDetail'
+import CouponDetail from '../components/CouponInfo'
 import EditCoupons from './EditCoupon'
 import {connect}  from 'react-redux'
 import {soldOutCouponRequest} from  '../actions'

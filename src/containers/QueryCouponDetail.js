@@ -10,7 +10,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {Page, Toolbar, BackButton, Button} from 'react-onsenui'
 import PayOrder from './PayOrder'
-import CouponDetail from '../components/CouponDetail'
+import CouponDetail from '../components/CouponInfo'
 import {createOrderRequest} from '../actions'
 
 class ViewCouponsDetail extends React.Component {

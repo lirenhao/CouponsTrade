@@ -6,24 +6,24 @@
  * <文件描述>
  */
 import React from 'react'
-import {List, Icon} from 'react-onsenui'
+import * as Ons from 'react-onsenui'
 
-const TypeSelect = (props) => {
+const TypeSelect = () => {
     return (
         <ons-list modifier="noborder">
             <ons-list-item>
                 <ons-row>
                     <ons-col>
                         全部分类
-                        <Icon icon="ion-arrow-down-b"/>
+                        <Ons.Icon icon="ion-arrow-down-b"/>
                     </ons-col>
                     <ons-col>
                         全城
-                        <Icon icon="ion-arrow-down-b"/>
+                        <Ons.Icon icon="ion-arrow-down-b"/>
                     </ons-col>
                     <ons-col>
                         智能排序
-                        <Icon icon="ion-arrow-down-b"/>
+                        <Ons.Icon icon="ion-arrow-down-b"/>
                     </ons-col>
                 </ons-row>
             </ons-list-item>
