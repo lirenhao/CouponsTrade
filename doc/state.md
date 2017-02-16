@@ -139,7 +139,7 @@ var state = {
 var state={                                                                                   
      登录用户Token(token):"",                                                                  
      登录用户基本信息(userInfo)：{
-       电话号码(phoneNo)，                                                                     
+       手机号(phoneNo)，                                                                     
        邀请人个数(inviteCount)，                                                              
        昵称(nickName)                                                                         
        },                                                                                     
@@ -282,7 +282,7 @@ var state={
   - 请求用户信息时，需要返回的数据：
   user基本信息
     {
-      电话号码、邀请人个数、昵称
+      手机号、邀请人个数、昵称
     }
 
   
