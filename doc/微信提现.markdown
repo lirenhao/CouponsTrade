@@ -3,9 +3,9 @@
 # Table of Contents
 - [术语](#术语)
 - [步骤](#步骤)
-    - [用户与移动应用关联](#用户与移动应用关联)
-    - [用户与公众号关联](#用户与公众号关联)
-    - [实现提现](#实现提现)
+    - [移动应用微信授权登录](#移动应用微信授权登录)
+    - [公众账号获取用户信息的两种方式](#公众账号获取用户信息的两种方式)
+    - [企业付款](#企业付款)
 - [注意点](#注意点)
 
 ## 术语
@@ -22,7 +22,8 @@ openid是公众账号或移动应用的普通用户的一个唯一的标识，�
 如果开发者拥有多个移动应用、网站应用和公众帐号，可通过获取用户基本信息中的unionid来区分用户的唯一性，因为同一用户，对同一个微信开放平台下的不同应用（移动应用、网站应用和公众帐号），unionid是相同的。
 
 ## 步骤
-### [移动应用微信授权登录](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317851&token=&lang=zh_CN)
+### 移动应用微信授权登录
+[移动应用微信授权登录详细文档](https://open.weixin.qq.com/cgi-bin/showdocument?action=dir_list&t=resource/res_list&verify=1&id=open1419317851&token=&lang=zh_CN)
 
 - 请求code
 - 通过code获取access_token和openid
@@ -42,7 +43,8 @@ openid是公众账号或移动应用的普通用户的一个唯一的标识，�
 - 获取用户基本信息  
 开发者可通过OpenID来获取用户基本信息，基本信息中包涵unionid
 
-### [企业付款](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_1)
+### 企业付款
+[企业付款详细文档](https://pay.weixin.qq.com/wiki/doc/api/tools/mch_pay.php?chapter=14_1)
 
 - 通过unionid使公共账号的openid与用户绑定
 - 通过公共账号的openid和appid向用户发起企业付款
