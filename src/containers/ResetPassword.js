@@ -13,54 +13,54 @@ import OldPassword from "../components/PasswordVerify";
 import NewPassword from "../components/PasswordUpdate";
 
 const UpdatePassword = (props) => {
-    return (
-        <Page renderToolbar={() => (
-            <Toolbar>
-                <div className='left'><BackButton/></div>
-                <div className='center'>新密码</div>
-            </Toolbar>
-        )}>
-            <NewPassword onSubmit={(value) =>
-                props.updatePasswordRequest({
-                    apiType: 'updatePassword',
-                    param: {...value, token: props.token},
-                    router: () => props.navigator.popPage(),
-                    handle: {success: [() => showDialog("密码重置成功")]}
-                })
-            }/>
-        </Page>
-    )
+  return (
+    <Page renderToolbar={() => (
+      <Toolbar>
+        <div className='left'><BackButton/></div>
+        <div className='center'>新密码</div>
+      </Toolbar>
+    )}>
+      <NewPassword onSubmit={(value) =>
+        props.updatePasswordRequest({
+          apiType: 'updatePassword',
+          param: {...value, token: props.token},
+          router: () => props.navigator.popPage(),
+          handle: {success: [() => showDialog("密码重置成功")]}
+        })
+      }/>
+    </Page>
+  )
 }
 
 const VerifyPassword = (props) => {
-    return (
-        <Page>
-            <Page renderToolbar={() => (
-                <Toolbar>
-                    <div className='left'><BackButton/></div>
-                    <div className='center'>原密码</div>
-                </Toolbar>
-            )}>
-                <OldPassword onSubmit={(value) =>
-                    props.verifyPasswordRequest({
-                        apiType: 'verifyPassword', param: {...value, token: props.token},
-                        router: () => props.navigator.replacePage({
-                            comp: UpdatePassword,
-                            props: {
-                                key: 'updatePassword',
-                                token: props.token,
-                                updatePasswordRequest: props.updatePasswordRequest
-                            }
-                        })
-                    })
-                }/>
-            </Page>
-        </Page>
-    )
+  return (
+    <Page>
+      <Page renderToolbar={() => (
+        <Toolbar>
+          <div className='left'><BackButton/></div>
+          <div className='center'>原密码</div>
+        </Toolbar>
+      )}>
+        <OldPassword onSubmit={(value) =>
+          props.verifyPasswordRequest({
+            apiType: 'verifyPassword', param: {...value, token: props.token},
+            router: () => props.navigator.replacePage({
+              comp: UpdatePassword,
+              props: {
+                key: 'updatePassword',
+                token: props.token,
+                updatePasswordRequest: props.updatePasswordRequest
+              }
+            })
+          })
+        }/>
+      </Page>
+    </Page>
+  )
 }
 
 const mapStateToProps = (state) => ({
-    token: state.token
+  token: state.token
 })
 
 export default connect(mapStateToProps, {verifyPasswordRequest, updatePasswordRequest})(VerifyPassword)

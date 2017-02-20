@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import EditCouponForm from '../components/SaleUpdates'
+import EditCouponForm from '../components/SaleUpdate'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import ons from 'onsenui'
 import {updateUserCouponRequest} from '../actions'

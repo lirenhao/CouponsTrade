@@ -13,7 +13,7 @@ import LogMonitor from 'redux-devtools-log-monitor'
  * <LogMonitor />：日志监控
  */
 export default createDevTools(
-  <DockMonitor defaultIsVisible={true}
+  <DockMonitor defaultIsVisible={false}
                toggleVisibilityKey='ctrl-h'
                changePositionKey='ctrl-q'>
     <LogMonitor />

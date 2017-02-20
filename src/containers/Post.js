@@ -10,17 +10,17 @@ import {Page, Toolbar} from "react-onsenui";
 import PublishCoupon from "./PublishCoupon";
 
 class Post extends React.Component {
-    render() {
-        return (
-            <Page key="post" renderToolbar={() => (
-                <Toolbar>
-                    <div className='center'>发布</div>
-                </Toolbar>
-            )}>
-                <PublishCoupon navigator={this.props.navigator }/>
-            </Page>
-        )
-    }
+  render() {
+    return (
+      <Page key="post" renderToolbar={() => (
+        <Toolbar>
+          <div className='center'>发布</div>
+        </Toolbar>
+      )}>
+        <PublishCoupon navigator={this.props.navigator }/>
+      </Page>
+    )
+  }
 }
 
 export default Post

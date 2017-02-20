@@ -13,59 +13,59 @@ import UserShow from "../components/UserInfo";
 import UserEdit from "../components/UserUpdate";
 
 const Edit = (props) => {
-    return (
-        <Page renderToolbar={() => (
-            <Toolbar>
-                <div className='left'><BackButton/></div>
-                <div className='center'>编辑个人信息</div>
-            </Toolbar>
-        )}>
-            <UserEdit onSubmit={props.userEdit} initialValues={props.user}/>
-        </Page>
-    )
+  return (
+    <Page renderToolbar={() => (
+      <Toolbar>
+        <div className='left'><BackButton/></div>
+        <div className='center'>编辑个人信息</div>
+      </Toolbar>
+    )}>
+      <UserEdit onSubmit={props.userEdit} initialValues={props.user}/>
+    </Page>
+  )
 }
 
 class User extends React.Component {
-    render() {
-        return (
-            <Page renderToolbar={() => (
-                <Toolbar>
-                    <div className='left'><BackButton/></div>
-                    <div className='center'>个人信息</div>
-                </Toolbar>
-            )}>
-                <UserShow user={this.props.userInfo}/>
-                <Button modifier="large marginTLR marginB"
-                        onClick={() => this.props.navigator.pushPage({
-                                comp: Edit,
-                                props: {
-                                    key: 'userEdit',
-                                    user: this.props.userInfo,
-                                    userEdit: (value) => this.props.updateUserInfoRequest({
-                                            apiType: 'updateUserInfo',
-                                            param: {...value, token: this.props.token},
-                                            router: () => this.props.navigator.popPage(),
-                                            handle: {
-                                                success: [
-                                                    () => updateUserInfoRequest(value),
-                                                    () => showDialog("信息编辑成功")
-                                                ]
-                                            }
-                                        }
-                                    )
-                                }
-                            }
-                        )}>
-                    编辑信息
-                </ Button >
-            </ Page >
-        )
-    }
+  render() {
+    return (
+      <Page renderToolbar={() => (
+        <Toolbar>
+          <div className='left'><BackButton/></div>
+          <div className='center'>个人信息</div>
+        </Toolbar>
+      )}>
+        <UserShow user={this.props.userInfo}/>
+        <Button modifier="large marginTLR marginB"
+                onClick={() => this.props.navigator.pushPage({
+                    comp: Edit,
+                    props: {
+                      key: 'userEdit',
+                      user: this.props.userInfo,
+                      userEdit: (value) => this.props.updateUserInfoRequest({
+                          apiType: 'updateUserInfo',
+                          param: {...value, token: this.props.token},
+                          router: () => this.props.navigator.popPage(),
+                          handle: {
+                            success: [
+                              () => updateUserInfoRequest(value),
+                              () => showDialog("信息编辑成功")
+                            ]
+                          }
+                        }
+                      )
+                    }
+                  }
+                )}>
+          编辑信息
+        </ Button >
+      </ Page >
+    )
+  }
 }
 
 const mapStateToProps = (state) => ({
-    token: state.token,
-    userInfo: state.userInfo
+  token: state.token,
+  userInfo: state.userInfo
 })
 
 export default connect(mapStateToProps, {updateUserInfoRequest})(User)
