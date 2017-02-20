@@ -7,7 +7,7 @@
  */
 
 import React from 'react'
-import EditCouponForm from '../components/SaleUpdate'
+import SaleUpdate from '../components/SaleUpdate'
 import {Page, Toolbar, BackButton} from 'react-onsenui'
 import ons from 'onsenui'
 import {updateUserCouponRequest} from '../actions'
@@ -24,7 +24,7 @@ class EditCoupons extends React.Component {
           <div className='center'>编辑优惠券</div>
         </Toolbar>
       )}>
-        <EditCouponForm
+        <SaleUpdate
           onSubmit={(value) =>
             ons.notification.confirm("是否确认提交", {title: "说明", buttonLabels: ["否", "是"]}).then(
               res => {

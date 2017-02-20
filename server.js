@@ -741,8 +741,7 @@ app.post(`/${ServerPath.GET_ORDER_INFO}`, (req, res) => {
     res.json({
       code: ResponseCode.SUCCESS,
       orderInfo: {
-        ...result,
-        couponCode: result.isOpen ? result.couponCode : "******"
+        ...result
       }
     })
   } else

@@ -9,6 +9,8 @@ import React from "react";
 import {Page, Toolbar, BackButton} from "react-onsenui";
 import InviteCode from "../components/InviteCode";
 
+//TODO 可能要改
+
 const CreateInviteCode = (props) => {
   return (
     <Page renderToolbar={() => (

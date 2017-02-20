@@ -14,7 +14,7 @@ const OrderList = (props) => {
       modifier='order'
       dataSource={props.orderList}
       renderRow={(row, index) => (
-        <Ons.ListItem key={index} onClick={props.getOrderInfo}>
+        <Ons.ListItem key={index} onClick={() => props.getOrderInfo(row)}>
           <div className='left'>
             <img src={`http://placekitten.com/g/${40 + index}/${40 + index}`}
                  alt='图片' className='list__item__thumbnail'/>

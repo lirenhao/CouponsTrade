@@ -6,14 +6,13 @@
  * <文件描述>
  */
 import React from 'react'
-import * as ons from 'onsenui'
 import * as Ons from 'react-onsenui'
 
 const OrderInfo = (props) => {
   const {
     orderNo, orderDate, orderTime, id, couponName, isAutomaticRefund,
     couponType, couponModality, couponCode, sellingPrice, originalPrice,
-    ticketPrice, endDate, describe, isOpen, sellerNickName, orderState
+    ticketPrice, endDate, describe, sellerNickName, orderState
   } = props.orderInfo
 
   return (
@@ -45,17 +44,9 @@ const OrderInfo = (props) => {
         <Ons.ListItem>券码形式
           <div className="right">{couponModality}</div>
         </Ons.ListItem>
-        {orderState === "已支付" || orderState === "已完成" ?
-          (<Ons.ListItem>券码
-              <div className="right">
-                {isOpen ? couponCode :
-                  <span className="couponCodeBg" onClick={props.orderOpen}>
-                                        获取券码
-                                    </span>}
-              </div>
-            </Ons.ListItem>
-          ) : ""
-        }
+        <Ons.ListItem>券码
+          <div className="right">{couponCode}</div>
+        </Ons.ListItem>
         <Ons.ListItem>售卖价
           <div className="right">{sellingPrice}</div>
         </Ons.ListItem>
@@ -73,9 +64,6 @@ const OrderInfo = (props) => {
         <Ons.ListItem>优惠券描述
           <div className="right">{describe}</div>
         </Ons.ListItem>
-        <Ons.ListItem>是否已开启
-          <div className="right">{isOpen ? "是" : "否"}</div>
-        </Ons.ListItem>
         <Ons.ListItem>订单编号
           <div className="right">{orderNo}</div>
         </Ons.ListItem>
@@ -83,56 +71,6 @@ const OrderInfo = (props) => {
           <div className="right">{orderDate + " " + orderTime}</div>
         </Ons.ListItem>
       </Ons.List>
-      {orderState === "未支付" || (
-        <div className="button-bar btntab">
-          <div className="button-bar__item">
-            <button className="button-bar__button" onClick={props.orderPay}>
-              <ons-icon icon="ion-android-done"> 支付</ons-icon>
-            </button>
-          </div>
-          <div className="button-bar__item">
-            <button className="button-bar__button"
-                    onClick={() => {
-                      ons.notification.confirm({
-                        title: "",
-                        messageHTML: "确定要取消订单吗？",
-                        buttonLabels: ["确认", "取消"]
-                      }).then(res => {
-                        if (res === 0) {
-                          props.orderCancel()
-                        }
-                      })
-                    }}>
-              <ons-icon icon="ion-android-close"> 取消</ons-icon>
-            </button>
-          </div>
-        </div>
-      )}
-      {orderState === "已支付" || (
-        <div className="button-bar btntab">
-          <div className="button-bar__item">
-            <button className="button-bar__button"
-                    onClick={() => {
-                      ons.notification.confirm({
-                        title: "",
-                        messageHTML: "在优惠券使用前确认收货有风险，货款将直接打给卖家," +
-                        "确定要收货吗？",
-                        buttonLabels: ["确认", "取消"]
-                      }).then(res => {
-                        if (res === 0) {
-                          props.receiptOrderRequest({
-                            apiType: 'receiptOrder',
-                            param: {id: orderNo, token: props.token},
-                            router: () => props.navigator.popPage()
-                          })
-                        }
-                      })
-                    }}>
-              <ons-icon icon="ion-android-checkmark-circle">确认收货</ons-icon>
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }
@@ -144,7 +82,7 @@ OrderInfo.propTypes = {
     orderTime: React.PropTypes.string.isRequired,
     id: React.PropTypes.string.isRequired,
     couponName: React.PropTypes.string.isRequired,
-    isAutomaticRefund: React.PropTypes.string.isRequired,
+    isAutomaticRefund: React.PropTypes.bool.isRequired,
     couponType: React.PropTypes.string.isRequired,
     couponModality: React.PropTypes.string.isRequired,
     couponCode: React.PropTypes.string.isRequired,
@@ -153,7 +91,6 @@ OrderInfo.propTypes = {
     ticketPrice: React.PropTypes.string.isRequired,
     endDate: React.PropTypes.string.isRequired,
     describe: React.PropTypes.string.isRequired,
-    isOpen: React.PropTypes.string.isRequired,
     sellerNickName: React.PropTypes.string.isRequired,
     orderState: React.PropTypes.string.isRequired
   }).isRequired,
