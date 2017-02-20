@@ -5,9 +5,13 @@
  * Why & What is modified  <修改原因描述>
  * <文件描述>
  */
-import React from 'react'
+import React, {PropTypes} from 'react'
 import {Field, reduxForm} from 'redux-form'
 import * as Ons from 'react-onsenui'
+
+const defaultVale = {
+  payment: "微信"
+}
 
 const RadioField = ({input, row}) => {
   return (
@@ -31,7 +35,7 @@ const OrderPay = (props) => {
       <Ons.List
         modifier="pay"
         renderHeader={() => <Ons.ListHeader>支付方式</Ons.ListHeader>}
-        dataSource={["微信", "支付宝"]}
+        dataSource={["微信"]}
         renderRow={(row) => (
           <Ons.ListItem key={row} tappable>
             <label className='right'>
@@ -61,7 +65,7 @@ const OrderPay = (props) => {
         <Field id="content" name="content" component="textArea" className="textarea" placeholder="说点什么吧..."/>
       </Ons.List>
       <Ons.List modifier="pay marginB">
-        <label htmlFor="content"><ListHeader>请在30分钟内进行支付！</ListHeader></label>
+        <label htmlFor="content"><Ons.ListHeader>请在30分钟内进行支付！</Ons.ListHeader></label>
         <Ons.Button
           modifier="large noRadius"
           type="submit"
@@ -75,15 +79,18 @@ const OrderPay = (props) => {
 }
 
 OrderPay.propTypes = {
-  handleSubmit: React.PropTypes.func.isRequired,
-  orderInfo: React.PropTypes.shape({
-    sellerNickName: React.PropTypes.string.isRequired,
-    sellerTel: React.PropTypes.string.isRequired,
-    couponName: React.PropTypes.string.isRequired,
-    sellingPrice: React.PropTypes.string.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  orderInfo: PropTypes.shape({
+    sellerNickName: PropTypes.string.isRequired,
+    sellerTel: PropTypes.oneOfType([
+      PropTypes.string, PropTypes.number]).isRequired,
+    couponName: PropTypes.string.isRequired,
+    sellingPrice: PropTypes.oneOfType([
+      PropTypes.string, PropTypes.number]).isRequired
   }).isRequired
 }
 
 export default reduxForm({
-  form: 'orderPay'
+  form: 'orderPay',
+  initialValues: defaultVale
 })(OrderPay)

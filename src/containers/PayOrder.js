@@ -24,9 +24,9 @@ const renderToolbar = () => {
 const PayOrder = props => {
   return (
     <Page renderToolbar={renderToolbar}>
-      <OrderPay orderInfo={props.orderInfo}
+      <OrderPay orderInfo={{...props.orderInfo, sellerTel: 18612121212}}
                 navigator={props.navigator}
-                handleSubmit={(value) =>
+                onSubmit={(value) =>
                   props.payOrderRequest({
                     apiType: 'pay',
                     param: {
