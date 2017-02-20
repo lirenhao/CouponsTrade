@@ -24,8 +24,8 @@ class SideSelect extends React.Component {
                   this.props.handleHide()
                 }}>
                   <label className='left'>
-                    <Input name={this.props.input.name}
-                           type='radio' checked={item.value == this.props.input.value}/>
+                    <Ons.Input name={this.props.input.name}
+                               type='radio' checked={item.value == this.props.input.value}/>
                   </label>
                   <label htmlFor={`radio-${row}`} className='center'>
                     {item.title}

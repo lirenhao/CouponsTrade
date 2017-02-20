@@ -10,8 +10,8 @@ import * as Ons from 'react-onsenui'
 
 const CouponList = ({couponList, onClickPushPage}) => {
   return (
-    <Ons.List dataSource={couponList} renderRow={(row) => (
-      <Ons.ListItem modifier='chevron sell' onClick={() => onClickPushPage(row.id)}>
+    <Ons.List dataSource={couponList} renderRow={(row, index) => (
+      <Ons.ListItem key={index} modifier='chevron sell' onClick={() => onClickPushPage(row.id)}>
         <div className='left'>
           <img className="list__item__thumbnail" src="http://placekitten.com/g/40/40" alt="Cute kitten"/>
         </div>

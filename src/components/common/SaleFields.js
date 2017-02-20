@@ -55,7 +55,7 @@ const ChooseImageComponent = ({input}) => {
               }}>
       <img src={input.value.preview}/>
       <img src={input.value.preview}/>
-      <Icon icon="ion-ios-camera-outline"/>
+      <Ons.Icon icon="ion-ios-camera-outline"/>
     </Dropzone>
   )
 }
@@ -145,9 +145,9 @@ class CouponFields extends React.Component {
                 <Field name="isAutomaticRefund" component={CheckBoxComponent}/>
               </div>
             </Ons.ListItem>
-            <ListItem>
+            <Ons.ListItem>
               <Field name="describe" component={TextAreaComponent} placeholder="描述"/>
-            </ListItem>
+            </Ons.ListItem>
           </Ons.List>
           <Ons.Button modifier="large marginTLR marginB" disabled={this.props.disable}
                       onClick={this.props.onSubmit}>{this.props.buttonName}</Ons.Button>

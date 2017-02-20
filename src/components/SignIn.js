@@ -10,6 +10,11 @@ import {Field, reduxForm} from 'redux-form'
 import * as Ons from 'react-onsenui'
 import InputField from './common/InputField'
 
+const testValue = {
+  username: "1",
+  password: "1"
+}
+
 const SignIn = (props) => {
   const {handleSubmit, onSubmit, invalid, submitting} = props
   return (
@@ -53,5 +58,6 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-  form: "signIn", validate
+  form: "signIn", validate,
+  initialValues: testValue
 })(SignIn)
