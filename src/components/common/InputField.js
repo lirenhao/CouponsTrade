@@ -9,13 +9,13 @@ import React from 'react'
 import * as Ons from 'react-onsenui'
 
 const InputField = ({input, type, placeholder}) => {
-    return (
-        <Ons.Input {...input}
-                   type={type}
-                   placeholder={placeholder}
-                   modifier='underbar'
-                   float/>
-    )
+  return (
+    <Ons.Input {...input}
+               type={type}
+               placeholder={placeholder}
+               modifier='underbar'
+               float/>
+  )
 }
 
 export default InputField

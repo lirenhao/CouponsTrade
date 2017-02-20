@@ -9,26 +9,26 @@ import React from 'react'
 import * as Ons from 'react-onsenui'
 
 const TypeSelect = () => {
-    return (
-        <ons-list modifier="noborder">
-            <ons-list-item>
-                <ons-row>
-                    <ons-col>
-                        全部分类
-                        <Ons.Icon icon="ion-arrow-down-b"/>
-                    </ons-col>
-                    <ons-col>
-                        全城
-                        <Ons.Icon icon="ion-arrow-down-b"/>
-                    </ons-col>
-                    <ons-col>
-                        智能排序
-                        <Ons.Icon icon="ion-arrow-down-b"/>
-                    </ons-col>
-                </ons-row>
-            </ons-list-item>
-        </ons-list>
-    )
+  return (
+    <ons-list modifier="noborder">
+      <ons-list-item>
+        <ons-row>
+          <ons-col>
+            全部分类
+            <Ons.Icon icon="ion-arrow-down-b"/>
+          </ons-col>
+          <ons-col>
+            全城
+            <Ons.Icon icon="ion-arrow-down-b"/>
+          </ons-col>
+          <ons-col>
+            智能排序
+            <Ons.Icon icon="ion-arrow-down-b"/>
+          </ons-col>
+        </ons-row>
+      </ons-list-item>
+    </ons-list>
+  )
 }
 
 export default TypeSelect

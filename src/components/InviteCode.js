@@ -9,15 +9,15 @@ import React from 'react'
 
 
 const InviteCode = (props) => {
-    return (
-        <div className="inviteBg">
-            {props.inviteCode}
-        </div>
-    )
+  return (
+    <div className="inviteBg">
+      {props.inviteCode}
+    </div>
+  )
 }
 
 InviteCode.propTypes = {
-    inviteCode: React.PropTypes.string.isRequired
+  inviteCode: React.PropTypes.string.isRequired
 }
 
 export default InviteCode

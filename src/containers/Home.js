@@ -7,24 +7,24 @@
  */
 import React from 'react'
 import {
-    Page,
-    Toolbar
+  Page,
+  Toolbar
 } from 'react-onsenui'
 
 import QueryCoupons from './QueryCoupons'
 
 class Home extends React.Component {
-    render() {
-        return (
-            <Page renderToolbar={() => (
-                <Toolbar>
-                    <div className="center">首页</div>
-                </Toolbar>
-            )}>
-                <QueryCoupons navigator={this.props.navigator}/>
-            </Page>
-        )
-    }
+  render() {
+    return (
+      <Page renderToolbar={() => (
+        <Toolbar>
+          <div className="center">首页</div>
+        </Toolbar>
+      )}>
+        <QueryCoupons navigator={this.props.navigator}/>
+      </Page>
+    )
+  }
 }
 
 export default Home

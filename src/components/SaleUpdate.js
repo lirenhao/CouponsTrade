@@ -11,46 +11,46 @@ import SaleFields from  './common/SaleFields'
 import {couponTypeMap} from '../constants/dataDic'
 
 const SaleUpdate = (props) => {
-    const {handleSubmit, onSubmit, invalid, submitting} = props
-    return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <section>
-                <SaleFields disable={invalid || submitting}
-                            buttonName='确认提交'
-                            onSubmit={props.submit}
-                            couponTypeName={couponTypeMap[props.initialValues.couponType]}/>
-            </section>
-        </form>
-    )
+  const {handleSubmit, onSubmit, invalid, submitting} = props
+  return (
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <section>
+        <SaleFields disable={invalid || submitting}
+                    buttonName='确认提交'
+                    onSubmit={props.submit}
+                    couponTypeName={couponTypeMap[props.initialValues.couponType]}/>
+      </section>
+    </form>
+  )
 }
 
 SaleUpdate.propTypes = {
-    onSubmit: React.PropTypes.func.isRequired
+  onSubmit: React.PropTypes.func.isRequired
 }
 
 const validate = (value) => {
-    const errors = {}
-    if (!value.couponName) {
-        errors.couponName = 'Required'
-    }
-    if (!value.couponCode) {
-        errors.couponCode = 'Required'
-    }
-    if (!value.originalPrice) {
-        errors.originalPrice = 'Required'
-    }
-    if (!value.sellingPrice) {
-        errors.sellingPrice = 'Required'
-    }
-    if (!value.endDate) {
-        errors.endDate = 'Required'
-    }
-    if (!value.describe) {
-        errors.describe = 'Required'
-    }
-    return errors
+  const errors = {}
+  if (!value.couponName) {
+    errors.couponName = 'Required'
+  }
+  if (!value.couponCode) {
+    errors.couponCode = 'Required'
+  }
+  if (!value.originalPrice) {
+    errors.originalPrice = 'Required'
+  }
+  if (!value.sellingPrice) {
+    errors.sellingPrice = 'Required'
+  }
+  if (!value.endDate) {
+    errors.endDate = 'Required'
+  }
+  if (!value.describe) {
+    errors.describe = 'Required'
+  }
+  return errors
 }
 
 export default reduxForm({
-    form: 'saleUpdate', validate
+  form: 'saleUpdate', validate
 })(SaleUpdate)

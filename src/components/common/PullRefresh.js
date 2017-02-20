@@ -10,59 +10,59 @@ import * as Ons from 'react-onsenui'
 
 class PullRefresh extends React.Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {state: 'initial'}
-        this.handleChange = this.handleChange.bind(this)
-        this.handleLoad = this.handleLoad.bind(this)
-        this.getContent = this.getContent.bind(this)
-    }
+  constructor(props) {
+    super(props)
+    this.state = {state: 'initial'}
+    this.handleChange = this.handleChange.bind(this)
+    this.handleLoad = this.handleLoad.bind(this)
+    this.getContent = this.getContent.bind(this)
+  }
 
-    handleChange(event) {
-        this.setState({state: event.state})
-    }
+  handleChange(event) {
+    this.setState({state: event.state})
+  }
 
-    handleLoad(done) {
-        this.props.onRefresh(done)
-    }
+  handleLoad(done) {
+    this.props.onRefresh(done)
+  }
 
-    getContent() {
-        switch (this.state.state) {
-            case 'initial':
-                return (
-                    <div className="up">
-                        <Ons.Icon icon="ion-arrow-down-c"/> 下拉刷新
-                    </div>
-                );
-            case 'preaction':
-                return (
-                    <div className="up">
-                        <Ons.Icon icon="ion-arrow-up-c"/> 释放刷新
-                    </div>
-                );
-            case 'action':
-                return (
-                    <div className="up">
-                        <Ons.Icon icon="ion-refresh"/> 加载中…
-                    </div>
-                )
-        }
-    }
-
-    render() {
+  getContent() {
+    switch (this.state.state) {
+      case 'initial':
         return (
-            <Ons.PullHook
-                onChange={this.handleChange}
-                onLoad={this.handleLoad}
-            >
-                {this.getContent()}
-            </Ons.PullHook>
+          <div className="up">
+            <Ons.Icon icon="ion-arrow-down-c"/> 下拉刷新
+          </div>
+        );
+      case 'preaction':
+        return (
+          <div className="up">
+            <Ons.Icon icon="ion-arrow-up-c"/> 释放刷新
+          </div>
+        );
+      case 'action':
+        return (
+          <div className="up">
+            <Ons.Icon icon="ion-refresh"/> 加载中…
+          </div>
         )
     }
+  }
+
+  render() {
+    return (
+      <Ons.PullHook
+        onChange={this.handleChange}
+        onLoad={this.handleLoad}
+      >
+        {this.getContent()}
+      </Ons.PullHook>
+    )
+  }
 }
 
 PullRefresh.propTypes = {
-    onRefresh: React.PropTypes.func.isRequired
+  onRefresh: React.PropTypes.func.isRequired
 }
 
 export default PullRefresh

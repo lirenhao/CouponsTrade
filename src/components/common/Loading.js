@@ -9,16 +9,16 @@ import React from 'react'
 import * as Ons from 'react-onsenui'
 
 const Loading = (props) => {
-    return (
-        <Ons.Modal isOpen={props.loading}
-                   modifier='load' animation='fade'>
-            <Ons.ProgressCircular indeterminate/>
-        </Ons.Modal>
-    )
+  return (
+    <Ons.Modal isOpen={props.loading}
+               modifier='load' animation='fade'>
+      <Ons.ProgressCircular indeterminate/>
+    </Ons.Modal>
+  )
 }
 
 Loading.propTypes = {
-    loading: React.PropTypes.bool.isRequired
+  loading: React.PropTypes.bool.isRequired
 }
 
 export default Loading

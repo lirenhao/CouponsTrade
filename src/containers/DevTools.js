@@ -13,9 +13,9 @@ import LogMonitor from 'redux-devtools-log-monitor'
  * <LogMonitor />：日志监控
  */
 export default createDevTools(
-    <DockMonitor defaultIsVisible={false}
-                 toggleVisibilityKey='ctrl-h'
-                 changePositionKey='ctrl-q'>
-        <LogMonitor />
-    </DockMonitor>
+  <DockMonitor defaultIsVisible={true}
+               toggleVisibilityKey='ctrl-h'
+               changePositionKey='ctrl-q'>
+    <LogMonitor />
+  </DockMonitor>
 )

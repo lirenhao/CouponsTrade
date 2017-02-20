@@ -6,20 +6,20 @@
  * <文件描述>
  */
 import React from "react";
-import {Page, Toolbar, BackButton } from "react-onsenui";
+import {Page, Toolbar, BackButton} from "react-onsenui";
 import InviteCode from "../components/InviteCode";
 
 const CreateInviteCode = (props) => {
-    return (
-        <Page renderToolbar={() => (
-            <Toolbar>
-                <div className='left'><BackButton/></div>
-                <div className='center'>生成邀请码</div>
-            </Toolbar>
-        )}>
-            <InviteCode inviteCode={props.inviteCode}/>
-        </Page>
-    )
+  return (
+    <Page renderToolbar={() => (
+      <Toolbar>
+        <div className='left'><BackButton/></div>
+        <div className='center'>生成邀请码</div>
+      </Toolbar>
+    )}>
+      <InviteCode inviteCode={props.inviteCode}/>
+    </Page>
+  )
 }
 
 export default CreateInviteCode
