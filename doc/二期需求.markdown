@@ -42,8 +42,7 @@
     - [手续费](#手续费)
 
 ## 用例图
-
-![用例图](/doc/map/coupon-trand-use-case-map.png)
+![用例图](/doc/map/coupon-trand-use-case-map1.png)
 
 ## 术语
 
