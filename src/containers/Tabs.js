@@ -11,7 +11,10 @@ const renderTabs = (appNavigator) => {
             content: <Ons.Page key="homePage">
                 <Navigator initialRoute={{comp: Home, props: {key: "home"}}} app={appNavigator}/>
             </Ons.Page>,
-            tab: <Ons.Tab key="homeTab" label="首页" icon="ion-home"/>
+            tab: <Ons.Tab key="homeTab">
+                <div className="tab-bar__icon"><Ons.Icon icon="ion-home"/></div>
+                <div className="tab-bar__label">首页</div>
+            </Ons.Tab>
         },
         {
             content: <Ons.Page key="postPage">
