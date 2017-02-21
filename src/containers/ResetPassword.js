@@ -34,27 +34,25 @@ const UpdatePassword = (props) => {
 
 const VerifyPassword = (props) => {
   return (
-    <Page>
-      <Page renderToolbar={() => (
-        <Toolbar>
-          <div className='left'><BackButton/></div>
-          <div className='center'>原密码</div>
-        </Toolbar>
-      )}>
-        <OldPassword onSubmit={(value) =>
-          props.verifyPasswordRequest({
-            apiType: 'verifyPassword', param: {...value, token: props.token},
-            router: () => props.navigator.replacePage({
-              comp: UpdatePassword,
-              props: {
-                key: 'updatePassword',
-                token: props.token,
-                updatePasswordRequest: props.updatePasswordRequest
-              }
-            })
+    <Page renderToolbar={() => (
+      <Toolbar>
+        <div className='left'><BackButton/></div>
+        <div className='center'>原密码</div>
+      </Toolbar>
+    )}>
+      <OldPassword onSubmit={(value) =>
+        props.verifyPasswordRequest({
+          apiType: 'verifyPassword', param: {...value, token: props.token},
+          router: () => props.navigator.replacePage({
+            comp: UpdatePassword,
+            props: {
+              key: 'updatePassword',
+              token: props.token,
+              updatePasswordRequest: props.updatePasswordRequest
+            }
           })
-        }/>
-      </Page>
+        })
+      }/>
     </Page>
   )
 }

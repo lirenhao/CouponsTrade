@@ -11,6 +11,7 @@ import OrderList from './OrderList'
 import {connect} from 'react-redux'
 import {getOrderListRequest} from '../actions'
 
+//TODO 最后再改
 const OrderResult = (props) => {
   const {res, navigator, getOrderListRequest, page} = props;
 

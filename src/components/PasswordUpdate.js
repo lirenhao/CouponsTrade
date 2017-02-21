@@ -53,5 +53,6 @@ const validate = (value) => {
 }
 
 export default reduxForm({
-  form: "passwordUpdate", validate
+  form: "passwordUpdate",
+  validate
 })(PasswordUpdate)
