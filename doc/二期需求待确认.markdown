@@ -14,7 +14,7 @@
 - [发布优惠券](#发布优惠券)
 
 ## 用例图
-![用例图](/doc/map/coupon-trand-use-case-map9.png)
+![用例图](/doc/map/coupon-trand-use-case-map10.png)
 
 ## 邀请码有效时间限制
 - 描述：邀请码是否要添加有效时间限制：半小时，不确定
