@@ -693,6 +693,7 @@ app.post(`/${ServerPath.GET_ORDER_LIST}`, (req, res) => {
       orderState: orderInfo[i].orderState
     }
   })
+  state.order.orderList.reverse()
   let {token, size}=req.body
   const total = state.order.orderList.length
   size = size < total ? size : total
