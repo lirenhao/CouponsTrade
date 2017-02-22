@@ -19,7 +19,14 @@ class EditCoupons extends React.Component {
             <Page renderToolbar={() => (
                 <Toolbar>
                     <div className='left'>
-                        <BackButton/>
+                        <BackButton onClick={()=>
+                            this.props.updateUserCouponRequest(
+                                {
+                                    apiType: 'editUserCoupon',
+                                    param: {id:this.props.couponInfo.id, token: this.props.token},
+                                    router: () => this.props.navigator.popPage()
+                                })
+                        }/>
                     </div>
                     <div className='center'>编辑优惠券</div>
                 </Toolbar>
