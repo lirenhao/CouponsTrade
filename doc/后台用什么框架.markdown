@@ -1,0 +1,71 @@
+## 后台
+- 描述：需要开会进行讨论再确认
+
+- 用什么做服务?
+  - play
+- sockiet.io不支持scala和java，支持C++,ios,server中只有javascript
+- 框架太多，服务如何跑起来？
+- 开发客户端部分，测试方面只能测试自己写的库，reactUI很少去测试
+
+- jsp是如何开发的？
+
+- 页面单元测试，如何测试？
+  - 不会用loaderrunner去进行测试
+  - 开jT,跑起来，CRTL+F5做刷新。。。。。
+
+- play
+  - 启动一个run的环境
+  - server每次做修改，都得重启APP
+  - 页面开发跑动态服务
+
+- node
+  - webpack hmr环境进行跑起来
+
+- 区别
+  - 单页面，多页面
+
+- 后台
+  - run sockit.io的环境
+  - run sbt
+
+
+- 解决方案：
+  - 像webpack一样
+
+
+- build
+  - 因为不分前后台环境，keduowa如何跑起来? 老的：makefire 新的：marven creadm
+  - 包括测试报告的生成，这些都得要有的。
+
+- 测试
+  - 客户端：
+    - 不要求代码覆盖率百分百，要求启动起来用hmr去写，测试做到即改及看。
+  - server
+    - 不要求测试，前端要请求数据，就得有数据返回，前端要什么数据，就直接先给数据，后补全逻辑（包括持久等）
+
+
+- 没法拿出来
+- scala的环境
+  - 任务发布：用sbt
+
+- node部分
+  - 用grunt和gulp
+    - glup与webpack不同，webpack只负责打包
+    - glup与SBT是一个级别的
+
+
+- 决定：
+  - 崔哥想用node写server
+  - 数据库：用livrDB
+  - 后台做所有用户的资源整合
+  - 不需要spring做aop
+  - 用node的好处
+    - 1、自己做热加载，因为Node的库不支持做热加载，从整个javascript和node的实现上可以做热加载
+    - 原则：函数式的
+    - 所有东西都可以实现热加载，本质：哪个文件进行了修改，就将对应的文件删除
+    - 提高了开发效率，但对程序员的要求比较高，要能区分出哪些不可以被删除，哪些可以被删除
+    - 对持久化来说：
+  - 需要学习的内容
+    - express
+    - express router
+    - node cluster：管理客户的并发数，通过管理
