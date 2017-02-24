@@ -39,7 +39,7 @@
 
 - 测试
   - 客户端：
-    - 不要求代码覆盖率百分百，要求启动起来用hmr去写，测试做到即改及看。
+    - 不要求代码覆盖率百分百，要求启动起来用hmr去写，测试做到即改及看。自己写的库要去测试
   - server
     - 不要求测试，前端要请求数据，就得有数据返回，前端要什么数据，就直接先给数据，后补全逻辑（包括持久等）
 
@@ -67,5 +67,9 @@
     - 对持久化来说：
   - 需要学习的内容
     - express
-    - express router
-    - node cluster：管理客户的并发数，通过管理
+      - express
+      - express router
+      - express middleware
+    - node cluster：管理用户的高并发数，通过管理进程
+    - node modules(![node modules](https://nodejs.org/api/cluster.html) ：实现后台服务的热加载
+    - ATOM，插件emmet
