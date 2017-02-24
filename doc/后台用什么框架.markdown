@@ -10,8 +10,8 @@
 - jsp是如何开发的？
 
 - 页面单元测试，如何测试？
-  - 不会用loaderrunner去进行测试
-  - 开jT,跑起来，CRTL+F5做刷新。。。。。
+  - 不会用loaderunner去进行测试
+  - 开jT,跑起来，CtrL+F5做刷新。。。。。
 
 - play
   - 启动一个run的环境
