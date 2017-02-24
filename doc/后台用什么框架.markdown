@@ -34,7 +34,7 @@
 
 
 - build
-  - 因为不分前后台环境，keduowa如何跑起来? 老的：makefire 新的：marven creadm
+  - 因为不分前后台环境，cordova如何跑起来? 老的：makefire 新的：marven creadm
   - 包括测试报告的生成，这些都得要有的。
 
 - 测试
@@ -56,7 +56,7 @@
 
 - 决定：
   - 崔哥想用node写server
-  - 数据库：用livrDB
+  - 数据库：用liveDB
   - 后台做所有用户的资源整合
   - 不需要spring做aop
   - 用node的好处
