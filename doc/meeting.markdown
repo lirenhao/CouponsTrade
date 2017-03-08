@@ -24,36 +24,37 @@
 ## 20170308-会议内容
 ### 关于开发服务端和客户端一些内容
 #### 服务端的express
-- 是Node.js Web 应用程序框架，是无session的，需要自己做
+- 是Node.js Web 应用程序框架，有session的中间件
 - 如何做session？
   - 通过将cookie设置为http only
   - cookie是带path的
   - 用cookie的key做区分
 
-##### express的storage做session有两种途径
-- 包括：localStorage和sessionStorage,它们都是用来存储客户端临时信息的对象
+##### storage做WEB的存储有两种途径
+- 包括：localStorage和sessionStorage
 
 ###### localStorage
 - 描述：localStorage是全局的，是application级的
 - 注：clear localStorage是清除
 - 作用：
-  - 向服务器发送请求，cookie不想带着一些内容上传给服务端
-    - 在服务端存储cookie,这样cookie可以不需要经过网络传输
-  - 跨域的javascript，无法读取localStorage，javascript只能访问自己域名的localStorage
-    - 跨域解决：可以操作本地的dom，给dom中添加一个javascript标签，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
-    - 因为每个请求都带有cookies，原来通过document.cokies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
+  - cookie的部分信息存储到localStorage中，可以减少客户端向服务端传送的信息
+  - 跨域的javascript，无法读取别人的localStorage，javascript只能访问自己域名的localStorage
+    - 攻击方式：可以操作本地的dom，给dom中添加一个javascript标签。
+    - 因为每个请求都带有cookies，原来通过document.cookies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
 - 什么样的cookie需要存储在localStorage中？
   - 如：在页面中会多次用到cookie的地方，需要用localStorage存储起来
   - 如：初始化的一些数据不需要存储到localSorage中
+  - 有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
 
 ###### sessionStorage
-- 它是与会话有关的
-- 举例：无论打开多少网页，session都是共享的，但关闭网页后，session就没了
+- 
+- sessionStorage是会话级的
+- 举例：无论打开多少网页，前提是会话为keep alive，sessionStorage都是共享的，但关闭网页后sessionStorage就没了
 
 
 #### 客户端的cookie
 - 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
-- 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
+- 只要浏览器经过验证，无论本域或者跨域,将cookie设置为http only，cookie都是读不出来的
 - cookie的有效期为一次会话
 - 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
 - 注：cookie是需要签名的，不需要加密
