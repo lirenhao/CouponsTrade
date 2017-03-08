@@ -23,17 +23,10 @@
 
 ## 20170308-会议内容
 ### 关于开发服务端和客户端一些内容
-#### 服务端的express
-- 是Node.js Web 应用程序框架，有session的中间件
-- 如何做session？
-  - 通过将cookie设置为http only
-  - cookie是带path的
-  - 用cookie的key做区分
-
-##### storage做WEB的存储有两种途径
+#### storage做WEB的存储有两种途径
 - 包括：localStorage和sessionStorage
 
-###### localStorage
+##### localStorage
 - 描述：localStorage是全局的，是application级的
 - 注：clear localStorage是清除
 - 作用：
@@ -46,7 +39,7 @@
   - 如：初始化的一些数据不需要存储到localStorage中
 - cookie中的部分信息存储到localstorage中，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
 
-###### sessionStorage
+##### sessionStorage
 - sessionStorage是会话级的
 - 举例：无论打开多少网页，前提是会话为keep online，sessionStorage都是共享的，但关闭网页后sessionStorage就没了。
 
