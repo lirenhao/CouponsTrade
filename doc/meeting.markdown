@@ -23,7 +23,7 @@
 
 ## 20170308-会议内容
 ### 关于开发服务端和客户端一些内容
-#### express
+#### 服务端的express
 - 是Node.js Web 应用程序框架，是无session的，需要自己做
 - 如何做session？
   - 通过将cookie设置为http only
@@ -49,7 +49,7 @@
 - 举例：无论打开多少网页，session都是共享的，但关闭网页后，session就没了
 
 
-#### cookie
+#### 客户端的cookie
 - 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到local storage或local session中，然后将cookie删掉
 - 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
 - cookie的有效期为一次会话
