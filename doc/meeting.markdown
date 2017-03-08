@@ -49,7 +49,7 @@
 ###### sessionStorage
 - 
 - sessionStorage是会话级的
-- 举例：无论打开多少网页，前提是会话为keep alive，sessionStorage都是共享的，但关闭网页后sessionStorage就没了
+- 举例：无论打开多少网页，前提是会话为keep online，sessionStorage都是共享的，但关闭网页后sessionStorage就没了。
 
 
 #### 客户端的cookie
