@@ -47,7 +47,6 @@
   - 有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
 
 ###### sessionStorage
-- 
 - sessionStorage是会话级的
 - 举例：无论打开多少网页，前提是会话为keep online，sessionStorage都是共享的，但关闭网页后sessionStorage就没了。
 
