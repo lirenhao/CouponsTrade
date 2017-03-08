@@ -21,6 +21,45 @@
 
 描述：项目中需要应用的技术、提交的交付物、注意事项
 
+## 20170308-会议内容
+### 关于开发服务端和客户端一些内容
+#### express
+- 是Node.js Web 应用程序框架，是无session的，需要自己做
+- 如何做session？
+  - 通过将cookie设置为http only
+  - cookie是带path的
+  - 用cookie的key做区分
+
+##### express做session有两种途径
+- 包括：local storage和local session
+
+###### local storage
+- 描述：local  storage是全局的，是application级的
+- 注：clear 是清除
+- 作用：
+  - 向服务器发送请求，cookie不想带着一些内容上传给服务端
+    - 在服务端存储
+  - 跨域的javascript，无法读取local storage，javascript只能访问自己域名的local storage
+    - 跨域解决：可以操作本地的dom，给dom中添加一个javascript标签，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
+    - 因为每个请求都带有cookies，原来通过document.cokies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
+
+
+###### local session
+- 它是与会话有关的
+- 举例：无论打开多少网页，session都是共享的，但关闭网页后，session就没了
+
+
+#### cookie
+- 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到local storage或local session中，然后将cookie删掉
+- 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
+- cookie的有效期为一次会话
+
+
+
+
+
+
+
 ## 20170301-会议内容
 ### 风险分析小组成立
 - **术语**
