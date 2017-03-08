@@ -27,8 +27,7 @@
 - 包括：localStorage和sessionStorage
 
 ##### localStorage
-- 描述：localStorage是全局的，是application级的
-- 注：clear localStorage是清除
+- localStorage是全局的，是application级的
 - 作用：
   - cookie的部分信息存储到localStorage中，可以减少客户端向服务端传送的信息
   - 跨域的javascript，无法读取别人的localStorage，javascript只能访问自己域名的localStorage
@@ -38,18 +37,17 @@
   - 如：需要在服务器端存储起来的数据，需要用localStorage存储起来
   - 如：初始化的一些数据不需要存储到localStorage中
 - cookie中的部分信息存储到localstorage中，能有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
+- 注：clear localStorage是清除
 
 ##### sessionStorage
 - sessionStorage是会话级的
 - 举例：无论打开多少网页，前提是会话为keep online，sessionStorage都是共享的，但关闭网页后sessionStorage就没了。
 
-
 #### 客户端的cookie
-- 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
+- 服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
 - 将cookie设置为http only，cookie都是读不出来的
 - 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
 - 注：cookie是需要签名的，不需要加密
-
 
 
 ## 20170301-会议内容
