@@ -31,18 +31,20 @@
   - 用cookie的key做区分
 
 ##### express的storage做session有两种途径
-- 包括：localStorage和sessionStorage
+- 包括：localStorage和sessionStorage,它们都是用来存储客户端临时信息的对象
 
 ###### localStorage
 - 描述：localStorage是全局的，是application级的
 - 注：clear localStorage是清除
 - 作用：
   - 向服务器发送请求，cookie不想带着一些内容上传给服务端
-    - 在服务端存储
+    - 在服务端存储cookie,这样cookie可以不需要经过网络传输
   - 跨域的javascript，无法读取localStorage，javascript只能访问自己域名的localStorage
     - 跨域解决：可以操作本地的dom，给dom中添加一个javascript标签，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
     - 因为每个请求都带有cookies，原来通过document.cokies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
-
+- 什么样的cookie需要存储在localStorage中？
+  - 如：在页面中会多次用到cookie的地方，需要用localStorage存储起来
+  - 如：初始化的一些数据不需要存储到localSorage中
 
 ###### sessionStorage
 - 它是与会话有关的
@@ -54,10 +56,7 @@
 - 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
 - cookie的有效期为一次会话
 - 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
-
-
-
-
+- 注：cookie是需要签名的，不需要加密
 
 
 
