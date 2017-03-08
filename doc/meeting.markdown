@@ -23,12 +23,12 @@
 
 ## 20170308-会议内容
 ### 关于开发服务端和客户端一些内容
-#### storage做WEB的存储有两种途径
-- 包括：localStorage和sessionStorage
+#### WEB存储有两种途径
+- localStorage和sessionStorage
 
 ##### localStorage
 - localStorage是全局的，是application级的
-- 作用：
+- 用法：
   - cookie的部分信息存储到localStorage中，可以减少客户端向服务端传送的信息
   - 跨域的javascript，无法读取别人的localStorage，javascript只能访问自己域名的localStorage
     - 攻击方式：可以操作本地的dom，给dom中添加一个javascript标签。
@@ -47,7 +47,6 @@
 - 服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
 - 将cookie设置为http only，cookie都是读不出来的
 - 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
-- 注：cookie是需要签名的，不需要加密
 
 
 ## 20170301-会议内容
