@@ -23,7 +23,7 @@
 
 ## 20170308-会议内容
 ### 关于开发服务端和客户端一些内容
-#### WEB存储有两种途径
+#### web端存储数据有两种途径
 - localStorage和sessionStorage
 
 ##### localStorage
