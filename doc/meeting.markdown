@@ -35,7 +35,7 @@
 
 ###### local storage
 - 描述：local  storage是全局的，是application级的
-- 注：clear 是清除
+- 注：clear local  storage是清除
 - 作用：
   - 向服务器发送请求，cookie不想带着一些内容上传给服务端
     - 在服务端存储
@@ -53,6 +53,7 @@
 - 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到local storage或local session中，然后将cookie删掉
 - 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
 - cookie的有效期为一次会话
+- 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
 
 
 
