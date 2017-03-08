@@ -52,7 +52,7 @@
 
 
 #### 客户端的cookie
-- 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到local storage或local session中，然后将cookie删掉
+- 描述：服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
 - 将cookie设置为http only，只要浏览器经过验证，无论本域或者跨域，cookie都是读不出来的
 - cookie的有效期为一次会话
 - 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
