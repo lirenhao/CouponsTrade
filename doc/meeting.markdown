@@ -44,7 +44,7 @@
 - 什么样的cookie需要存储在localStorage中？
   - 如：在页面中会多次用到cookie的地方，需要用localStorage存储起来
   - 如：初始化的一些数据不需要存储到localStorage中
-  - 有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
+- cookie中的部分信息存储到localstorage中，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
 
 ###### sessionStorage
 - sessionStorage是会话级的
