@@ -43,7 +43,7 @@
     - 因为每个请求都带有cookies，原来通过document.cookies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
 - 什么样的cookie需要存储在localStorage中？
   - 如：在页面中会多次用到cookie的地方，需要用localStorage存储起来
-  - 如：初始化的一些数据不需要存储到localSorage中
+  - 如：初始化的一些数据不需要存储到localStorage中
   - 有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
 
 ###### sessionStorage
