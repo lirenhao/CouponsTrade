@@ -30,21 +30,21 @@
   - cookie是带path的
   - 用cookie的key做区分
 
-##### express做session有两种途径
-- 包括：local storage和local session
+##### express的storage做session有两种途径
+- 包括：localStorage和sessionStorage
 
-###### local storage
-- 描述：local  storage是全局的，是application级的
-- 注：clear local  storage是清除
+###### localStorage
+- 描述：localStorage是全局的，是application级的
+- 注：clear localStorage是清除
 - 作用：
   - 向服务器发送请求，cookie不想带着一些内容上传给服务端
     - 在服务端存储
-  - 跨域的javascript，无法读取local storage，javascript只能访问自己域名的local storage
+  - 跨域的javascript，无法读取localStorage，javascript只能访问自己域名的localStorage
     - 跨域解决：可以操作本地的dom，给dom中添加一个javascript标签，有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
     - 因为每个请求都带有cookies，原来通过document.cokies获取所有的cookie，现在cookies每个cookie都有自己的key，不容易获取cookie的所有的信息
 
 
-###### local session
+###### sessionStorage
 - 它是与会话有关的
 - 举例：无论打开多少网页，session都是共享的，但关闭网页后，session就没了
 
