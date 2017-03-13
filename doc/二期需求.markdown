@@ -41,7 +41,8 @@
     - [消息通知](#消息通知)
 
 ## 用例图
-![用例图](/doc/map/coupon-trand-use-case-map9.png)
+![用例图](/doc/map/coupon-trand-use-case-1.png)
+![用例图](/doc/map/coupon-trand-use-case-2.png)
 
 ## 术语
 
