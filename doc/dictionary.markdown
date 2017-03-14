@@ -70,7 +70,7 @@
 - 优惠券售卖价：sellingPrice
 - 优惠券券面价：ticketPrice
 - 优惠券截止日期：endDate
-- 优惠券是否支持自动退货：isAutomaticRefund
+- 优惠券是否支持退货：ismaticRefund
 - 优惠券类别：couponType
   - 西餐 0-Western Food
   - 海鲜 1-seafood
@@ -93,8 +93,9 @@
   - 发布:     1-published
   - 付款中:   2-paying
   - 过期:     3-overdue
-  - 已售（未开启）:4-soldUnOpened
-  - 已售（已开启）:5-soldOpened
+  - 已售:     4-soldUnOpened
+  - 被退货    5-backGoods
+  - 仲裁      6-arbitration
 - 优惠券前台状态：
   - 售卖中：对应后台状态发布
   - 已售：对应后台状态已售（未开启）和已售（已开启）
