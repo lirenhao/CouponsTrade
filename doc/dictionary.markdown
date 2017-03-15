@@ -93,12 +93,13 @@
   - 已支付：havePaid
   - 仲裁：arbitration
   - 退货：returnedGoods
-- 订单前台状态：orderState
-  - 出售中：onSale
+- 求购优惠券前台状态：buyCouponState
+  - 求购中：inPlay
   - 已下架：soldOut
   - 已支付：havePaid
   - 仲裁：arbitration
   - 退货：returnedGoods
+
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -123,6 +124,7 @@
   - 拒绝退货:8-rejectBackGoods
   - 仲裁开启:9-arbitrationOpen
   - 仲裁结束:10-arbitrationEnd
+
 
 ### 4 Action
 - 开始等待：onLoad
