@@ -55,7 +55,7 @@
 
 
 - 决定：
-  - 崔哥想用node写server
+  - 用node写server
   - 数据库：用liveDB
   - 后台做所有用户的资源整合
   - 不需要spring做aop

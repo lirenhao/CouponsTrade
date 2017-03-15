@@ -2,6 +2,10 @@
 [TOC]:#
 
 # Table of Contents
+- [20170303-会议内容](#20170303-会议内容)
+    - [项目框架](#项目框架)
+- [20170308-会议内容](#20170308-会议内容)
+    - [关于开发服务端和客户端一些内容](#关于开发服务端和客户端一些内容)
 - [20170301-会议内容](#20170301-会议内容)
     - [风险分析小组成立](#风险分析小组成立)
 - [20170227-会议主要内容](#20170227-会议主要内容)
@@ -20,6 +24,50 @@
 - [1 项目交付物-20161221](#1-项目交付物-20161221)
 
 描述：项目中需要应用的技术、提交的交付物、注意事项
+
+## 20170303-会议内容
+### 项目框架
+- 确定接口
+  - 框架与子系统之间如何传递消息
+  - 子系统之间的接口如何确定
+- 框架分为：head、page、tag，
+  - head导航
+  - page：
+    - page之间是物理隔离的
+    - page用来做子系统的布局
+    - 会有多个子系统的集成
+  - tag:参数包括名字、图标、位置、path（待定）、按钮（）
+- 框架的搭建要符合约定大于配置
+- 项目目录：page之间、子系统之间无相互引用，通过字符串path串联起来
+  - index页面是可以配置的，作用是看哪个page标为index
+
+## 20170308-会议内容
+### 关于开发服务端和客户端一些内容
+#### web端存储数据有两种途径
+- localStorage和sessionStorage
+
+##### localStorage
+- localStorage是全局的，是application级的
+- 用法：
+  - cookie的部分信息存储到localStorage中，可以减少客户端向服务端传送的信息
+  - 跨域的javascript，无法读取别人的localStorage，javascript只能访问自己域名的localStorage
+    - 攻击方式：可以操作本地的dom，给dom中添加一个javascript标签。
+    - 因为每个请求都带有cookie，原来通过document.cookies获取所有的cookie，现在将cookie存储到localStorage中，每个cookie都有自己的key，不容易获取cookie的所有的信息
+- 什么样的cookie需要存储在localStorage中？
+  - 如：需要在服务器端存储起来的数据，需要用localStorage存储起来
+  - 如：初始化的一些数据不需要存储到localStorage中
+- cookie中的部分信息存储到localstorage中，能有效的阻止了网络嗅探，但不能完全阻止跨域攻击。
+- 注：clear localStorage是清除
+
+##### sessionStorage
+- sessionStorage是会话级的
+- 举例：无论打开多少网页，前提是会话为keep online，sessionStorage都是共享的，但关闭网页后sessionStorage就没了。
+
+#### 客户端的cookie
+- 服务端传cookie，要想cookie不暴露，减少cookie的传输,需要将cookie存到localStorage或sessionStorage中，然后将cookie删掉
+- 将cookie设置为http only，cookie都是读不出来的
+- 注：cookie设置为http only,客户端不能访问，但是可以修改，可以进行直接赋值
+
 
 ## 20170301-会议内容
 ### 风险分析小组成立
