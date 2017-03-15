@@ -27,11 +27,11 @@
 - 是指解密,在本项目中是指优惠券是否解密
 
 ### 优惠券状态
-- 未发布：优惠券在进行编辑时，优惠券的状态会从发布变为未发布
-- 发布：是指正在发布中的优惠券
-- 过期：优惠券超过优惠券的截止日期
-- 已售（开启）：优惠券已经售卖，并且已解密
-- 已售（未开启）:优惠券已经售卖，并且未解密
+- 出售中：
+- 已支付：
+- 已下架：
+- 退货：
+- 仲裁：
 
 ### 邀请人数
 - 是指邀请人已经邀请用户的个数
@@ -63,14 +63,14 @@
 - 优惠券详情：CouponInfo
 - `下架优惠券`:soldOut
 - 编辑优惠券：edit
-- **优惠券唯一标识：id**
+- 优惠券唯一标识：id
 - 优惠券名称：couponName
 - 优惠券码：couponCode
 - 优惠券原价：originalPrice
 - 优惠券售卖价：sellingPrice
 - 优惠券券面价：ticketPrice
 - 优惠券截止日期：endDate
-- 优惠券是否支持退货：ismaticRefund
+- 优惠券是否支持退货：isMaticRefund
 - 优惠券类别：couponType
   - 西餐 0-Western Food
   - 海鲜 1-seafood
@@ -85,23 +85,20 @@
 - 券码形式：couponModality
   - 包括：图片或文本
 - 优惠券描述：describe
-  - 包括：可消费日期、可消费的时间等信息，商户的信息暂放在此
+  - 包括：可消费日期、可消费的时间等信息，
 - 优惠券图片（与商户相关）：picture
-- `优惠券是否开启`：isOpen
-- 优惠券后台状态：couponState
-  - `未发布`：0-unpublished
-  - 发布:     1-published
-  - 付款中:   2-paying
-  - 过期:     3-overdue
-  - 已售:     4-soldUnOpened
-  - 被退货    5-backGoods
-  - 仲裁      6-arbitration
-- 优惠券前台状态：
-  - 售卖中：对应后台状态发布
-  - 已售：对应后台状态已售（未开启）和已售（已开启）
-  - 付款中：对应后台状态付款中
-  - 已过期：对应后台状态过期
-  - 已下架：对应后台状态未发布
+- 优惠券前台状态：couponState
+  - 出售中：onSale
+  - 已下架：soldOut
+  - 已支付：havePaid
+  - 仲裁：arbitration
+  - 退货：returnedGoods
+- 订单前台状态：orderState
+  - 出售中：onSale
+  - 已下架：soldOut
+  - 已支付：havePaid
+  - 仲裁：arbitration
+  - 退货：returnedGoods
 
 ### 3 订单：order
 - 付款方式：paymentMethod
@@ -170,7 +167,7 @@
 - 发布优惠券成功：publishCouponSuccess
 - 获取订单详细信息请求：getOrderInfoRequest
 - 获取订单详细信息成功：getOrderInfoSuccess
-- 开启优惠券请求：openCouponRequest
-- 开启优惠券成功：openCouponSuccess
+- 优惠券请求：CouponRequest
+- 优惠券成功：CouponSuccess
 
 
